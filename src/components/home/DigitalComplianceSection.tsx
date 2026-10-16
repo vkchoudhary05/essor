@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowRight, LayoutDashboard, ClipboardCheck, AlertOctagon, Sparkles, QrCode } from 'lucide-react';
+import dashboardImage from '../../assets/images/digital_compliance_dashboard_preview_1791962116109.jpg';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -154,12 +155,11 @@ export const DigitalComplianceSection: React.FC<DigitalComplianceSectionProps> =
 
           <div ref={tabletImageRef} className="lg:col-span-6">
             <div className="rounded-2xl overflow-hidden border border-emerald-900/15 shadow-2xl bg-white group ring-1 ring-emerald-500/20 hover:ring-emerald-500/60 transition-all duration-500">
-              <img
-                src="/src/assets/images/digital_compliance_dashboard_preview_1791962116109.jpg"
-                alt="Digital food safety compliance dashboard on tablet"
-                referrerPolicy="no-referrer"
-                className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
-              />
+        <img
+  src={dashboardImage}
+  alt="Digital food safety compliance dashboard on tablet"
+  className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
+/>
             </div>
           </div>
 

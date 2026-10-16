@@ -4,6 +4,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { WHY_ESSOR_POINTS } from '../../data/initialData';
 import { CheckCircle2, Sparkles, Award } from 'lucide-react';
 import { Logo } from '../common/Logo';
+import auditImage from '../../assets/images/audit_readiness_inspection_1791962115904.jpg';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -75,11 +76,10 @@ export const WhyEssorSection: React.FC = () => {
 
             <div className="relative rounded-2xl overflow-hidden border border-emerald-900/15 shadow-xl group bg-white">
               <img
-                src="/src/assets/images/audit_readiness_inspection_1791962115904.jpg"
-                alt="Food safety inspection on processing line"
-                referrerPolicy="no-referrer"
-                className="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-105"
-              />
+  src={auditImage}
+  alt="Food safety inspection on processing line"
+  className="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-105"
+/>
               <div className="p-4 bg-[#062E21] text-white text-[11px] font-semibold flex items-center justify-between border-t border-emerald-700/30">
                 <div className="flex items-center gap-2">
                   <Logo variant="icon-only" size="sm" className="w-5 h-5" />

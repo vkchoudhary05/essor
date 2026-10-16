@@ -12,7 +12,10 @@ import {
 import { CMSContent } from '../../types';
 import { Logo } from '../common/Logo';
 import { scrollToElement } from '../../hooks/useSmoothScroll';
-
+import heroImage from '../../assets/images/hero_food_safety_facility_1791962115935.jpg';
+import auditImage from '../../assets/images/audit_readiness_inspection_1791962115904.jpg';
+import labImage from '../../assets/images/food_factory_lab_testing_1791965811882.jpg';
+import dashboardImage from '../../assets/images/digital_compliance_dashboard_preview_1791962116109.jpg';
 interface HeroSectionProps {
   cms: CMSContent;
   onNavigate: (path: string) => void;
@@ -178,7 +181,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
       title: 'Consult',
       tagline: 'Audit readiness & SOP implementation',
       description: 'End-to-end audit readiness, deep gap analysis, and tailored SOP architecture engineered for GFSI, BRCGS, FSSC 22000, and ISO standards.',
-      image: '/src/assets/images/audit_readiness_inspection_1791962115904.jpg',
+      image: auditImage,
       alt: 'Senior Lead Auditor inspecting food processing facility compliance and SOP implementation',
       highlights: [
         'GFSI, BRCGS & FSSC 22000 gap assessments',
@@ -194,7 +197,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
       title: 'Managed',
       tagline: 'Continuous hygiene & CAPA cycles',
       description: 'Ongoing technical oversight, routine sanitation audits, microbiological sampling, and systematic Corrective & Preventive Action (CAPA) tracking.',
-      image: '/src/assets/images/food_factory_lab_testing_1791965811882.jpg',
+      image: labImage,
       alt: 'Food science specialist conducting laboratory microbial culture testing',
       highlights: [
         'Scheduled on-site plant verification visits',
@@ -210,7 +213,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
       title: 'Digital Platform',
       tagline: 'Automated workflows & instant registry',
       description: 'Secure centralized software for audit scheduling, evidence vaulting, and instant public QR-code certificate verification.',
-      image: '/src/assets/images/digital_compliance_dashboard_preview_1791962116109.jpg',
+      image: dashboardImage,
       alt: 'Digital compliance tablet dashboard showing audit records and certificate registry',
       highlights: [
         'Instant QR-verifiable certificate registry',
@@ -366,12 +369,11 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               className="relative rounded-2xl overflow-hidden shadow-xl border border-emerald-900/15 bg-white group"
             >
               <div className="aspect-[4/3] sm:aspect-[16/11] relative overflow-hidden bg-emerald-50/40">
-                <img
-                  src="/src/assets/images/hero_food_safety_facility_1791962115935.jpg"
-                  alt="Lead food safety auditor conducting plant audit in cleanroom facility"
-                  referrerPolicy="no-referrer"
-                  className="w-full h-full object-cover object-center group-hover:scale-104 transition-transform duration-700 ease-out"
-                />
+               <img
+  src={heroImage}
+  alt="Food safety auditor reviewing a clean food production facility"
+  className="w-full h-full object-cover object-center"
+/>
                 <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-black/20" />
 
                 {/* Clean Top Monogram Seal */}

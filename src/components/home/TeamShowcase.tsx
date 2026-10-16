@@ -4,6 +4,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowRight, Users } from 'lucide-react';
 import { TEAM_CAPABILITIES } from '../../data/initialData';
 import { Logo } from '../common/Logo';
+import teamImage from '../../assets/images/team_consulting_operations_1791962117427.jpg';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -94,12 +95,11 @@ export const TeamShowcase: React.FC<TeamShowcaseProps> = ({ onNavigate }) => {
           {/* Real Advisory Team Photography */}
           <div ref={photoRef} className="lg:col-span-5">
             <div className="rounded-2xl overflow-hidden border border-emerald-900/15 shadow-xl group relative bg-white">
-              <img
-                src="/src/assets/images/team_consulting_operations_1791962117427.jpg"
-                alt="ESSOR consulting team conducting technical review in facility conference room"
-                referrerPolicy="no-referrer"
-                className="w-full h-80 object-cover transition-transform duration-700 group-hover:scale-105"
-              />
+         <img
+  src={teamImage}
+  alt="ESSOR consulting team conducting technical review in facility conference room"
+  className="w-full h-80 object-cover transition-transform duration-700 group-hover:scale-105"
+/>
               <div className="p-4 bg-[#062E21] text-white space-y-1 border-t border-emerald-700/30">
                 <div className="flex items-center gap-2">
                   <Logo variant="icon-only" size="sm" className="w-4 h-4" />

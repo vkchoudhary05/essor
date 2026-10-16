@@ -3,6 +3,7 @@ import { ArrowRight, Target, Eye, Compass, Award, ShieldCheck, CheckCircle2, Spa
 import { CMSContent } from '../../types';
 import { TEAM_CAPABILITIES } from '../../data/initialData';
 import { Logo } from '../common/Logo';
+import teamImage from '../../assets/images/team_consulting_operations_1791962117427.jpg';
 
 interface AboutPageProps {
   cms: CMSContent;
@@ -119,12 +120,11 @@ export const AboutPage: React.FC<AboutPageProps> = ({ cms, onNavigate, onOpenEnq
 
             <div className="lg:col-span-6">
               <div className="rounded-2xl overflow-hidden border border-emerald-900/15 shadow-xl bg-white group">
-                <img
-                  src="/src/assets/images/team_consulting_operations_1791962117427.jpg"
-                  alt="ESSOR consulting team conducting technical review"
-                  referrerPolicy="no-referrer"
-                  className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
-                />
+              <img
+  src={teamImage}
+  alt="ESSOR consulting team conducting technical review"
+  className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
+/>
                 <div className="p-4 bg-[#062E21] text-white text-xs flex items-center justify-between border-t border-emerald-700/30">
                   <div className="flex items-center gap-2">
                     <Logo variant="icon-only" size="sm" className="w-5 h-5" />

@@ -10,6 +10,7 @@ import {
   ShieldCheck
 } from 'lucide-react';
 import { Logo } from '../common/Logo';
+import heroImage from '../../assets/images/hero_food_safety_facility_1791962115935.jpg';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -197,12 +198,11 @@ export const SectorsShowcase: React.FC<SectorsShowcaseProps> = ({
           {/* Left Column: Real Stainless-Steel Food Facility Showcase */}
           <div className="lg:col-span-6 space-y-6">
             <div ref={imageCardRef} className="relative rounded-2xl overflow-hidden shadow-xl border border-emerald-900/15 bg-neutral-900 group">
-              <img
-                src="/src/assets/images/hero_food_safety_facility_1791962115935.jpg"
-                alt="State of the art automated food processing and packaging facility with stainless steel conveyors"
-                referrerPolicy="no-referrer"
-                className="w-full h-80 sm:h-96 object-cover transition-transform duration-700 group-hover:scale-105"
-              />
+             <img
+  src={heroImage}
+  alt="State of the art automated food processing and packaging facility with stainless steel conveyors"
+  className="w-full h-80 sm:h-96 object-cover transition-transform duration-700 group-hover:scale-105"
+/>
               <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-transparent pointer-events-none" />
               
               <div className="absolute bottom-0 inset-x-0 p-6 text-white space-y-2">

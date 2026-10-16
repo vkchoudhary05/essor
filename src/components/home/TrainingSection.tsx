@@ -4,6 +4,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowRight, Award, Microscope, Sparkles } from 'lucide-react';
 import { TrainingCourse } from '../../types';
 import { Logo } from '../common/Logo';
+import labImage from '../../assets/images/food_factory_lab_testing_1791965811882.jpg';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -180,12 +181,11 @@ export const TrainingSection: React.FC<TrainingSectionProps> = ({
           </div>
 
           <div className="lg:col-span-6 h-64 lg:h-full relative overflow-hidden group">
-            <img
-              src="/src/assets/images/food_factory_lab_testing_1791965811882.jpg"
-              alt="State of the art food microbiology cleanroom testing laboratory"
-              referrerPolicy="no-referrer"
-              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 min-h-[260px]"
-            />
+           <img
+  src={labImage}
+  alt="State of the art food microbiology cleanroom testing laboratory"
+  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 min-h-[260px]"
+/>
           </div>
         </div>
 
