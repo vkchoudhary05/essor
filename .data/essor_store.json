@@ -60,15 +60,21 @@
       "role": "PARTICIPANT",
       "organizationId": "org-1",
       "isActive": true
+    },
+    {
+      "id": "usr-1792136375826",
+      "name": "CONTENT_MANAGER User",
+      "email": "content_manager@essorcompliance.com",
+      "role": "CONTENT_MANAGER",
+      "isActive": true
     }
   ],
   "currentUser": {
-    "id": "usr-1",
-    "name": "Vivek Baliyan (Lead Administrator)",
-    "email": "iamvivekbaliyan07@gmail.com",
-    "role": "SUPER_ADMIN",
-    "isActive": true,
-    "lastLoginAt": "2026-10-14T08:55:02.721Z"
+    "id": "usr-1792136375826",
+    "name": "CONTENT_MANAGER User",
+    "email": "content_manager@essorcompliance.com",
+    "role": "CONTENT_MANAGER",
+    "isActive": true
   },
   "organizations": [
     {
@@ -970,14 +976,16 @@
   "cms": {
     "companyName": "ESSOR Compliance Solutions",
     "tagline": "Your Partner in Food Safety & Continuous Compliance",
-    "heroHeadline": "Built around practical food-safety execution.",
+    "heroHeadline": "Built around measurable compliance in everyday operations.",
     "heroSubheadline": "We help organizations strengthen food-safety systems, prepare for audits, develop people and maintain compliance in everyday operations.",
     "purpose": "We are committed to helping organizations build robust and audit-ready food-safety systems. Through expert assessment, structured implementation, team capability development, and ongoing compliance support, we enable our clients to meet applicable standards, address gaps effectively, and maintain readiness beyond the audit cycle.",
     "vision": "Build trust through food-safety expertise, create recurring value through managed compliance, and scale delivery through an AI-enabled compliance platform.",
     "mission": "Help growing manufacturers and exporters move from audit pressure to disciplined, continuous compliance.",
-    "contactEmail": "contact@essorcompliance.com",
-    "contactPhone": "+91 (0) 22 4900 1200",
-    "officeAddress": "Corporate Office: Registered Tech Centre & Client Support Hub, Mumbai & New Delhi, India",
+    "contactEmail": "business@essorcompliance.com",
+    "businessEmail": "business@essorcompliance.com",
+    "trainingEmail": "training@essorcompliance.com",
+    "contactPhone": "+91 6395843850",
+    "officeAddress": "IT Park, Sahastradhara Road, Dehradun, Uttarakhand 248013, India",
     "linkedinUrl": "https://linkedin.com/company/essor-compliance-solutions",
     "disclaimer": "ESSOR Compliance Solutions provides independent consulting, gap assessments, training, and operational compliance support. ESSOR is not an accredited certification body and does not grant official certification credentials; third-party certification audits are conducted independently by accredited certification bodies.",
     "privacyPolicy": "ESSOR Compliance Solutions is committed to respecting your business and personal privacy. We collect information solely to provide compliance consulting, process service enquiries, and deliver tailored training proposals. We do not sell or monetize personal or corporate client data to third parties.",
@@ -1013,6 +1021,16 @@
     }
   ],
   "auditLogs": [
+    {
+      "id": "log-1792136375827-2732",
+      "actorName": "CONTENT_MANAGER User",
+      "actorEmail": "content_manager@essorcompliance.com",
+      "action": "SWITCH_ROLE",
+      "entityType": "USER",
+      "entityId": "usr-1792136375826",
+      "summary": "Simulated role changed to CONTENT_MANAGER",
+      "timestamp": "2026-10-16T07:39:35.827Z"
+    },
     {
       "id": "log-1",
       "actorName": "System Bootstrap",

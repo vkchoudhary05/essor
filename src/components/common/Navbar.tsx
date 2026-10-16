@@ -15,7 +15,8 @@ import {
   PhoneCall,
   X,
   Award,
-  ArrowUp
+  ArrowUp,
+  MapPin
 } from 'lucide-react';
 import { scrollToElement } from '../../hooks/useSmoothScroll';
 
@@ -103,53 +104,250 @@ export const Navbar: React.FC<NavbarProps> = ({
         className="fixed top-0 left-0 right-0 h-[2.5px] z-50 pointer-events-none transition-all duration-75"
         style={{
           width: `${scrollProgress}%`,
-          background: 'linear-gradient(90deg, #166534 0%, #22C55E 50%, #BBF7D0 100%)',
-          boxShadow: '0 0 8px rgba(74, 222, 128, 0.55)'
+          background: 'linear-gradient(90deg, #062E21 0%, #0E5C3A 40%, #16A34A 80%, #4ADE80 100%)',
+          boxShadow: '0 0 10px rgba(34, 197, 94, 0.45)'
         }}
         aria-hidden="true"
       />
 
       {/* ========================================================================= */}
-      {/* 1. TOP MICRO-UTILITY STRIP (Executive accredited banner)                  */}
       {/* ========================================================================= */}
-      <div className="bg-[#14532D] text-green-50 text-[11px] py-1.5 border-b border-green-200/20 hidden sm:block relative z-40 transition-colors">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-          <div className="flex items-center gap-4">
-            <span className="flex items-center gap-1.5 text-neutral-300">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-              <span className="text-green-200 font-semibold">GFSI & BRCGS</span> Accredited Practice
-            </span>
-            <span className="text-neutral-700">|</span>
-            <span className="text-neutral-400 hidden xl:inline">
-              Global Compliance, Auditing & Technical Advisory
+      {/* 1. TOP MICRO-UTILITY STRIP (Smooth Right-to-Left Ticker Tape)             */}
+      {/* ========================================================================= */}
+      <div 
+        className="bg-[#041F16] text-emerald-50 text-[11px] py-1.5 border-b border-emerald-800/40 relative z-40 overflow-hidden select-none"
+        role="region"
+        aria-label="Live Compliance Announcement and Contact Ticker"
+      >
+        <div className="max-w-[1440px] mx-auto px-2 sm:px-4 lg:px-8 flex items-center justify-between gap-2 sm:gap-3">
+          
+          {/* Static Left Anchor: Live Practice Badge */}
+          <div className="shrink-0 flex items-center gap-1.5 bg-[#062E21] px-2.5 py-1 rounded-full border border-emerald-700/50 shadow-xs z-10">
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+            <span className="text-[10px] sm:text-[11px] font-bold text-white tracking-wide whitespace-nowrap">
+              LIVE PRACTICE
             </span>
           </div>
 
-          <div className="flex items-center gap-4">
-            <a
-              href="mailto:enquiries@essorcompliance.com"
-              className="hidden lg:flex items-center gap-1 text-green-50 hover:text-white transition-colors"
-            >
-              <Mail className="w-3 h-3 text-green-300" />
-              <span className="font-medium">enquiries@essorcompliance.com</span>
-            </a>
-            <span className="hidden lg:inline text-neutral-700">|</span>
-            <a 
-              href="tel:+442079460920" 
-              className="flex items-center gap-1 text-green-50 hover:text-white transition-colors"
-            >
-              <Phone className="w-3 h-3 text-green-300" />
-              <span className="font-medium">+44 20 7946 0920</span>
-            </a>
-            <span className="text-neutral-700">|</span>
+          {/* Marquee Viewport with Edge Fade Gradients */}
+          <div className="relative flex-1 overflow-hidden min-w-0">
+            {/* Left fade vignette */}
+            <div className="absolute left-0 top-0 bottom-0 w-6 sm:w-12 bg-gradient-to-r from-[#041F16] to-transparent z-10 pointer-events-none" />
+            {/* Right fade vignette */}
+            <div className="absolute right-0 top-0 bottom-0 w-6 sm:w-12 bg-gradient-to-l from-[#041F16] to-transparent z-10 pointer-events-none" />
+
+            {/* Seamless Infinite Moving Track (Right to Left) */}
+            <div className="animate-nav-ticker flex items-center py-0.5 whitespace-nowrap">
+              {/* Copy 1 */}
+              <div className="flex items-center gap-6 sm:gap-8 shrink-0 pr-6 sm:pr-8">
+                {/* Contact Phone */}
+                <a
+                  href="tel:+916395843850"
+                  className="inline-flex items-center gap-2 text-white hover:text-emerald-300 transition-colors group/item cursor-pointer"
+                  title="Call or WhatsApp: +91 63958 43850"
+                >
+                  <span className="px-1.5 py-0.5 rounded text-[9px] font-black uppercase tracking-wider bg-emerald-500/25 text-emerald-300 border border-emerald-500/40">
+                    Call / WhatsApp
+                  </span>
+                  <Phone className="w-3.5 h-3.5 text-emerald-400 group-hover/item:scale-110 transition-transform shrink-0" />
+                  <span className="font-bold text-white tracking-wide underline decoration-emerald-500/40 underline-offset-2">
+                    +91 63958 43850
+                  </span>
+                </a>
+
+                <span className="text-emerald-700/80">◆</span>
+
+                {/* Business Email */}
+                <a
+                  href="mailto:business@essorcompliance.com"
+                  className="inline-flex items-center gap-2 text-white hover:text-emerald-300 transition-colors group/item cursor-pointer"
+                  title="Business & Advisory: business@essorcompliance.com"
+                >
+                  <span className="px-1.5 py-0.5 rounded text-[9px] font-black uppercase tracking-wider bg-teal-500/25 text-teal-300 border border-teal-500/40">
+                    Business Inquiries
+                  </span>
+                  <Mail className="w-3.5 h-3.5 text-teal-300 group-hover/item:scale-110 transition-transform shrink-0" />
+                  <span className="font-semibold text-emerald-100 group-hover/item:text-white underline decoration-teal-500/40 underline-offset-2">
+                    business@essorcompliance.com
+                  </span>
+                </a>
+
+                <span className="text-emerald-700/80">◆</span>
+
+                {/* Training Email */}
+                <a
+                  href="mailto:training@essorcompliance.com"
+                  className="inline-flex items-center gap-2 text-white hover:text-emerald-300 transition-colors group/item cursor-pointer"
+                  title="Training Programs: training@essorcompliance.com"
+                >
+                  <span className="px-1.5 py-0.5 rounded text-[9px] font-black uppercase tracking-wider bg-emerald-500/25 text-emerald-300 border border-emerald-500/40">
+                    Training Academy
+                  </span>
+                  <GraduationCap className="w-3.5 h-3.5 text-emerald-300 group-hover/item:scale-110 transition-transform shrink-0" />
+                  <span className="font-semibold text-emerald-100 group-hover/item:text-white underline decoration-emerald-500/40 underline-offset-2">
+                    training@essorcompliance.com
+                  </span>
+                </a>
+
+                <span className="text-emerald-700/80">◆</span>
+
+                {/* Corporate Address */}
+                <span className="inline-flex items-center gap-2 text-emerald-100">
+                  <span className="px-1.5 py-0.5 rounded text-[9px] font-black uppercase tracking-wider bg-emerald-900/70 text-emerald-200 border border-emerald-700/50">
+                    Headquarters
+                  </span>
+                  <MapPin className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                  <span className="font-normal text-emerald-200/90">
+                    IT Park Campus, Sahastradhara Road, Dehradun, Uttarakhand
+                  </span>
+                </span>
+
+                <span className="text-emerald-700/80">◆</span>
+
+                {/* Standards text */}
+                <span className="inline-flex items-center gap-2 text-emerald-100">
+                  <span className="px-1.5 py-0.5 rounded text-[9px] font-black uppercase tracking-wider bg-emerald-500/25 text-emerald-300 border border-emerald-500/40">
+                    Accredited Practice
+                  </span>
+                  <ShieldCheck className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                  <span className="font-bold text-white">GFSI & BRCGS Audit Readiness</span>
+                  <span className="text-emerald-300/80">· ISO 22000 · FSSC 22000 · HACCP · US FDA FSMA</span>
+                </span>
+
+                <span className="text-emerald-700/80">◆</span>
+
+                {/* Deliverables summary text */}
+                <span className="inline-flex items-center gap-2 text-emerald-100">
+                  <Sparkles className="w-3.5 h-3.5 text-amber-300 shrink-0" />
+                  <span className="font-medium text-emerald-100">
+                    Gap Assessments · Operational Mock Audits · NC / CAPA Permanent Closure
+                  </span>
+                </span>
+
+                <span className="text-emerald-700/80">◆</span>
+
+                {/* Consultation prompt text */}
+                <span className="inline-flex items-center gap-2 text-emerald-200">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                  <span className="font-semibold text-white">24-Hour Technical Assessment Response</span>
+                  <span className="text-emerald-300/80">for Food Processors, Packagers & Exporters</span>
+                </span>
+              </div>
+
+              {/* Copy 2 (Seamless Infinite Loop) */}
+              <div className="flex items-center gap-6 sm:gap-8 shrink-0 pr-6 sm:pr-8" aria-hidden="true">
+                {/* Contact Phone */}
+                <a
+                  href="tel:+916395843850"
+                  tabIndex={-1}
+                  className="inline-flex items-center gap-2 text-white hover:text-emerald-300 transition-colors group/item cursor-pointer"
+                  title="Call or WhatsApp: +91 63958 43850"
+                >
+                  <span className="px-1.5 py-0.5 rounded text-[9px] font-black uppercase tracking-wider bg-emerald-500/25 text-emerald-300 border border-emerald-500/40">
+                    Call / WhatsApp
+                  </span>
+                  <Phone className="w-3.5 h-3.5 text-emerald-400 group-hover/item:scale-110 transition-transform shrink-0" />
+                  <span className="font-bold text-white tracking-wide underline decoration-emerald-500/40 underline-offset-2">
+                    +91 63958 43850
+                  </span>
+                </a>
+
+                <span className="text-emerald-700/80">◆</span>
+
+                {/* Business Email */}
+                <a
+                  href="mailto:business@essorcompliance.com"
+                  tabIndex={-1}
+                  className="inline-flex items-center gap-2 text-white hover:text-emerald-300 transition-colors group/item cursor-pointer"
+                  title="Business & Advisory: business@essorcompliance.com"
+                >
+                  <span className="px-1.5 py-0.5 rounded text-[9px] font-black uppercase tracking-wider bg-teal-500/25 text-teal-300 border border-teal-500/40">
+                    Business Inquiries
+                  </span>
+                  <Mail className="w-3.5 h-3.5 text-teal-300 group-hover/item:scale-110 transition-transform shrink-0" />
+                  <span className="font-semibold text-emerald-100 group-hover/item:text-white underline decoration-teal-500/40 underline-offset-2">
+                    business@essorcompliance.com
+                  </span>
+                </a>
+
+                <span className="text-emerald-700/80">◆</span>
+
+                {/* Training Email */}
+                <a
+                  href="mailto:training@essorcompliance.com"
+                  tabIndex={-1}
+                  className="inline-flex items-center gap-2 text-white hover:text-emerald-300 transition-colors group/item cursor-pointer"
+                  title="Training Programs: training@essorcompliance.com"
+                >
+                  <span className="px-1.5 py-0.5 rounded text-[9px] font-black uppercase tracking-wider bg-emerald-500/25 text-emerald-300 border border-emerald-500/40">
+                    Training Academy
+                  </span>
+                  <GraduationCap className="w-3.5 h-3.5 text-emerald-300 group-hover/item:scale-110 transition-transform shrink-0" />
+                  <span className="font-semibold text-emerald-100 group-hover/item:text-white underline decoration-emerald-500/40 underline-offset-2">
+                    training@essorcompliance.com
+                  </span>
+                </a>
+
+                <span className="text-emerald-700/80">◆</span>
+
+                {/* Corporate Address */}
+                <span className="inline-flex items-center gap-2 text-emerald-100">
+                  <span className="px-1.5 py-0.5 rounded text-[9px] font-black uppercase tracking-wider bg-emerald-900/70 text-emerald-200 border border-emerald-700/50">
+                    Headquarters
+                  </span>
+                  <MapPin className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                  <span className="font-normal text-emerald-200/90">
+                    IT Park Campus, Sahastradhara Road, Dehradun, Uttarakhand
+                  </span>
+                </span>
+
+                <span className="text-emerald-700/80">◆</span>
+
+                {/* Standards text */}
+                <span className="inline-flex items-center gap-2 text-emerald-100">
+                  <span className="px-1.5 py-0.5 rounded text-[9px] font-black uppercase tracking-wider bg-emerald-500/25 text-emerald-300 border border-emerald-500/40">
+                    Accredited Practice
+                  </span>
+                  <ShieldCheck className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                  <span className="font-bold text-white">GFSI & BRCGS Audit Readiness</span>
+                  <span className="text-emerald-300/80">· ISO 22000 · FSSC 22000 · HACCP · US FDA FSMA</span>
+                </span>
+
+                <span className="text-emerald-700/80">◆</span>
+
+                {/* Deliverables summary text */}
+                <span className="inline-flex items-center gap-2 text-emerald-100">
+                  <Sparkles className="w-3.5 h-3.5 text-amber-300 shrink-0" />
+                  <span className="font-medium text-emerald-100">
+                    Gap Assessments · Operational Mock Audits · NC / CAPA Permanent Closure
+                  </span>
+                </span>
+
+                <span className="text-emerald-700/80">◆</span>
+
+                {/* Consultation prompt text */}
+                <span className="inline-flex items-center gap-2 text-emerald-200">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                  <span className="font-semibold text-white">24-Hour Technical Assessment Response</span>
+                  <span className="text-emerald-300/80">for Food Processors, Packagers & Exporters</span>
+                </span>
+              </div>
+            </div>
+          </div>
+
+          {/* Static Right Anchor: Portals Login */}
+          <div className="shrink-0 z-10 flex items-center">
             <button
               onClick={() => handleLinkClick('/login')}
-              className="flex items-center gap-1 text-green-100 hover:text-white transition-colors font-medium cursor-pointer"
+              className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1 rounded-full bg-emerald-900/60 hover:bg-emerald-800 text-emerald-100 hover:text-white border border-emerald-700/50 text-[10px] sm:text-[11px] font-semibold transition-all cursor-pointer shadow-xs active:scale-95"
+              title="Sign in to Client, Consultant or Trainer Portals"
             >
-              <Lock className="w-3 h-3 text-green-300" />
-              <span>Portals Login</span>
+              <Lock className="w-3 h-3 text-emerald-400" />
+              <span className="hidden sm:inline">Portals</span>
+              <span>Login</span>
             </button>
           </div>
+
         </div>
       </div>
 
@@ -159,8 +357,8 @@ export const Navbar: React.FC<NavbarProps> = ({
       <header 
         className={`sticky top-0 z-40 w-full transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
           scrolled 
-            ? 'bg-[#FAF9F5]/92 backdrop-blur-xl border-b border-[#D4AF37]/35 shadow-lg shadow-black/5 py-2' 
-            : 'bg-[#FAF9F5]/95 backdrop-blur-md border-b border-neutral-200/80 py-3.5'
+            ? 'bg-white/95 backdrop-blur-xl border-b border-emerald-900/10 shadow-lg shadow-emerald-950/5 py-2.5' 
+            : 'bg-[#F8FAFC]/95 backdrop-blur-md border-b border-emerald-900/8 py-3.5'
         }`}
       >
         <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
@@ -169,7 +367,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             {/* Brand Logo */}
             <div 
               onClick={() => handleLinkClick('/')}
-              className="cursor-pointer shrink-0 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D4AF37] rounded-xl p-1 -ml-1 transition-transform duration-300 active:scale-95"
+              className="cursor-pointer shrink-0 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600 rounded-xl p-1 -ml-1 transition-transform duration-300 active:scale-95"
               role="button"
               tabIndex={0}
               onKeyDown={(e) => e.key === 'Enter' && handleLinkClick('/')}
@@ -180,7 +378,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
             {/* Desktop Navigation: Trending Floating Island Pill Menu */}
             <nav 
-              className="hidden xl:flex min-w-0 items-center p-1 rounded-full bg-white/90 border border-neutral-200 shadow-sm backdrop-blur-md text-xs font-semibold transition-all duration-300"
+              className="hidden xl:flex min-w-0 items-center p-1 rounded-full bg-white/95 border border-emerald-900/10 shadow-xs backdrop-blur-md text-xs font-semibold transition-all duration-300"
               aria-label="Primary Navigation"
             >
               {navLinks.map((link) => {
@@ -193,8 +391,8 @@ export const Navbar: React.FC<NavbarProps> = ({
                     onClick={() => handleLinkClick(link.path)}
                     className={`relative flex items-center gap-1.5 px-2.5 2xl:px-3.5 py-1.5 rounded-full whitespace-nowrap transition-all duration-300 cursor-pointer ${
                       isActive 
-                        ? 'bg-[#0A1310] text-[#F5DC9A] shadow-xs scale-100' 
-                        : 'text-neutral-700 hover:text-[#0B1713] hover:bg-neutral-100/90 hover:scale-102'
+                        ? 'bg-[#062E21] text-white shadow-sm scale-100' 
+                        : 'text-neutral-700 hover:text-[#062E21] hover:bg-emerald-50/80 hover:scale-102'
                     }`}
                   >
                     {isVerify && (
@@ -205,7 +403,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                     )}
                     <span>{link.label}</span>
                     {link.badge && !isActive && (
-                      <span className="px-1.5 py-0.2 rounded-full text-[9px] font-bold bg-[#FAF0D4] text-[#876212] border border-[#D4AF37]/30">
+                      <span className="px-1.5 py-0.2 rounded-full text-[9px] font-bold bg-emerald-100 text-[#064E3B] border border-emerald-200">
                         {link.badge}
                       </span>
                     )}
@@ -219,17 +417,17 @@ export const Navbar: React.FC<NavbarProps> = ({
               {/* Portals Login Pill */}
               <button
                 onClick={() => handleLinkClick('/login')}
-                className="inline-flex items-center gap-1.5 px-3 py-2 rounded-full text-xs font-semibold text-neutral-800 hover:text-black bg-white hover:bg-neutral-100 border border-neutral-200 shadow-sm transition-all duration-200 active:scale-95 cursor-pointer"
+                className="inline-flex items-center gap-1.5 px-3 py-2 rounded-full text-xs font-semibold text-[#062E21] hover:text-black bg-white hover:bg-emerald-50/80 border border-emerald-900/15 shadow-2xs transition-all duration-200 active:scale-95 cursor-pointer"
                 title="Access Auditor, Client, or Trainer Portal"
               >
-                <Lock className="w-3.5 h-3.5 text-[#C49A32]" />
+                <Lock className="w-3.5 h-3.5 text-emerald-700" />
                 <span>Portals</span>
               </button>
 
               {/* Discuss Requirements CTA */}
               <button
                 onClick={() => onOpenEnquiry()}
-                className="group relative inline-flex items-center gap-2 whitespace-nowrap px-3.5 2xl:px-4.5 py-2 rounded-full text-xs font-bold text-white bg-gradient-to-r from-[#166534] via-[#15803D] to-[#4ADE80] hover:brightness-105 active:scale-95 transition-all duration-300 shadow-md shadow-green-700/20 ring-1 ring-green-100/70 cursor-pointer"
+                className="group relative inline-flex items-center gap-2 whitespace-nowrap px-4 py-2 rounded-full text-xs font-bold text-white bg-gradient-to-r from-[#062E21] via-[#0E5C3A] to-[#15803D] hover:from-[#042419] hover:via-[#0B4A2F] hover:to-[#166534] active:scale-95 transition-all duration-300 shadow-md shadow-emerald-900/20 ring-1 ring-emerald-400/30 cursor-pointer"
               >
                 <span>Discuss requirements</span>
                 <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
@@ -307,12 +505,12 @@ export const Navbar: React.FC<NavbarProps> = ({
         </div>
 
         {/* Accredited Trust Banner in Drawer */}
-        <div className="bg-[#0A1310] px-5 py-2.5 flex items-center justify-between text-xs text-neutral-300 border-b border-[#D4AF37]/30">
-          <span className="flex items-center gap-1.5 text-[#F5DC9A] font-semibold text-[11px]">
-            <Sparkles className="w-3.5 h-3.5 text-[#D4AF37]" />
+        <div className="bg-[#062E21] px-5 py-2.5 flex items-center justify-between text-xs text-neutral-300 border-b border-emerald-700/40">
+          <span className="flex items-center gap-1.5 text-emerald-300 font-semibold text-[11px]">
+            <Sparkles className="w-3.5 h-3.5 text-emerald-400" />
             <span>Accredited GFSI Practice</span>
           </span>
-          <span className="text-[10px] text-neutral-400">Ver. 2026</span>
+          <span className="text-[10px] text-emerald-300/80">Ver. 2026</span>
         </div>
 
         {/* Scrollable Navigation Links List with Staggered Slide In */}
@@ -337,18 +535,18 @@ export const Navbar: React.FC<NavbarProps> = ({
                   mobileMenuOpen ? 'translate-x-0 opacity-100' : 'translate-x-6 opacity-0'
                 } ${
                   isActive
-                    ? 'bg-[#0A1310] text-[#F5DC9A] shadow-xs'
+                    ? 'bg-[#062E21] text-white shadow-xs'
                     : isVerify
-                    ? 'bg-[#FAF0D4]/70 text-[#876212] border border-[#D4AF37]/40 hover:bg-[#FAF0D4]'
+                    ? 'bg-emerald-50 text-emerald-900 border border-emerald-300 hover:bg-emerald-100'
                     : 'text-neutral-800 hover:bg-white hover:shadow-xs'
                 }`}
               >
                 <div className="flex items-center gap-3">
                   <div className={`p-1.5 rounded-lg ${
                     isActive 
-                      ? 'bg-[#182C24] text-[#D4AF37]' 
+                      ? 'bg-emerald-900/60 text-emerald-300' 
                       : isVerify 
-                      ? 'bg-white text-[#C49A32]' 
+                      ? 'bg-white text-emerald-700' 
                       : 'bg-neutral-100 text-neutral-600'
                   }`}>
                     <Icon className="w-4 h-4" />
@@ -362,7 +560,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                       {link.badge}
                     </span>
                   )}
-                  <ChevronRight className={`w-4 h-4 ${isActive ? 'text-[#D4AF37]' : 'text-neutral-400'}`} />
+                  <ChevronRight className={`w-4 h-4 ${isActive ? 'text-emerald-400' : 'text-neutral-400'}`} />
                 </div>
               </button>
             );
@@ -382,10 +580,10 @@ export const Navbar: React.FC<NavbarProps> = ({
             </div>
             <button
               onClick={() => handleLinkClick('/login')}
-              className="w-full flex items-center justify-between px-3.5 py-3 rounded-xl bg-white border border-neutral-200 text-sm font-semibold text-neutral-800 hover:border-[#D4AF37] transition-all cursor-pointer shadow-2xs"
+              className="w-full flex items-center justify-between px-3.5 py-3 rounded-xl bg-white border border-neutral-200 text-sm font-semibold text-neutral-800 hover:border-emerald-600 transition-all cursor-pointer shadow-2xs"
             >
               <div className="flex items-center gap-3">
-                <div className="p-1.5 rounded-lg bg-neutral-100 text-[#C49A32]">
+                <div className="p-1.5 rounded-lg bg-emerald-50 text-emerald-800">
                   <Lock className="w-4 h-4" />
                 </div>
                 <div className="text-left">
@@ -413,20 +611,46 @@ export const Navbar: React.FC<NavbarProps> = ({
               setMobileMenuOpen(false);
               onOpenEnquiry();
             }}
-            className="w-full inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl text-xs font-bold uppercase tracking-wider text-[#0A1310] bg-gradient-to-r from-[#F5DC9A] via-[#D4AF37] to-[#B38728] shadow-md shadow-[#D4AF37]/20 active:scale-95 transition-all cursor-pointer"
+            className="w-full inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl text-xs font-bold uppercase tracking-wider text-white bg-gradient-to-r from-[#062E21] via-[#0E5C3A] to-[#15803D] hover:from-[#042419] hover:via-[#0B4A2F] hover:to-[#166534] shadow-md shadow-emerald-950/20 active:scale-95 transition-all cursor-pointer"
           >
             <span>Discuss Requirements</span>
             <ArrowRight className="w-4 h-4" />
           </button>
 
-          {/* Direct Phone Assistance */}
-          <a
-            href="tel:+442079460920"
-            className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs font-medium text-neutral-700 bg-neutral-50 hover:bg-neutral-100 border border-neutral-200 transition-colors"
-          >
-            <Phone className="w-3.5 h-3.5 text-[#876212]" />
-            <span>24/7 Advisory: +44 20 7946 0920</span>
-          </a>
+          {/* Direct Phone & Email Assistance for Mobile */}
+          <div className="space-y-1.5 pt-1">
+            <a
+              href="tel:+916395843850"
+              className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold text-emerald-950 bg-emerald-50 hover:bg-emerald-100/80 border border-emerald-300 transition-colors shadow-2xs"
+            >
+              <Phone className="w-3.5 h-3.5 text-emerald-700" />
+              <span>Call / WhatsApp: +91 63958 43850</span>
+            </a>
+
+            <div className="grid grid-cols-1 gap-1.5 pt-1">
+              <a
+                href="mailto:business@essorcompliance.com"
+                className="flex items-center justify-between px-3 py-2 rounded-lg text-xs font-medium text-neutral-700 bg-neutral-50 hover:bg-emerald-50 border border-neutral-200 transition-colors"
+              >
+                <span className="flex items-center gap-2">
+                  <Mail className="w-3.5 h-3.5 text-emerald-700 shrink-0" />
+                  <span className="font-semibold text-emerald-900">Business:</span>
+                </span>
+                <span className="text-[11px] text-neutral-600">business@essorcompliance.com</span>
+              </a>
+
+              <a
+                href="mailto:training@essorcompliance.com"
+                className="flex items-center justify-between px-3 py-2 rounded-lg text-xs font-medium text-neutral-700 bg-neutral-50 hover:bg-emerald-50 border border-neutral-200 transition-colors"
+              >
+                <span className="flex items-center gap-2">
+                  <Mail className="w-3.5 h-3.5 text-teal-700 shrink-0" />
+                  <span className="font-semibold text-teal-900">Training:</span>
+                </span>
+                <span className="text-[11px] text-neutral-600">training@essorcompliance.com</span>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -435,7 +659,7 @@ export const Navbar: React.FC<NavbarProps> = ({
       {/* ========================================================================= */}
       <button
         onClick={scrollToTop}
-        className={`fixed bottom-6 right-6 z-40 p-3 rounded-full bg-[#0A1310] text-[#F5DC9A] border border-[#D4AF37]/50 shadow-xl transition-all duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] cursor-pointer hover:bg-black hover:scale-110 active:scale-90 ${
+        className={`fixed bottom-6 right-6 z-40 p-3 rounded-full bg-[#062E21] text-emerald-300 border border-emerald-500/40 shadow-xl transition-all duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] cursor-pointer hover:bg-[#041F16] hover:scale-110 active:scale-90 ${
           showBackToTop ? 'translate-y-0 opacity-100 pointer-events-auto' : 'translate-y-8 opacity-0 pointer-events-none'
         }`}
         aria-label="Scroll back to top"

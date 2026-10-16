@@ -387,6 +387,8 @@ export interface CMSContent {
   vision: string;
   mission: string;
   contactEmail: string;
+  businessEmail: string;
+  trainingEmail: string;
   contactPhone: string;
   officeAddress: string;
   linkedinUrl: string;

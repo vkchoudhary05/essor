@@ -173,17 +173,17 @@ export const SectorsShowcase: React.FC<SectorsShowcaseProps> = ({
     <section 
       id="sectors-showcase" 
       ref={sectionRef} 
-      className="py-16 sm:py-20 bg-white border-b border-[#D4AF37]/25 relative overflow-hidden"
+      className="py-16 sm:py-20 bg-white border-b border-emerald-900/10 relative overflow-hidden"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Heading */}
         <div ref={headerRef} className="max-w-3xl mb-8">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FAF0D4] border border-[#D4AF37]/50 text-xs font-bold uppercase tracking-wider text-[#876212] mb-3">
-            <Building2 className="w-4 h-4 text-[#C29B38]" />
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-xs font-bold uppercase tracking-wider text-emerald-900 mb-3">
+            <Building2 className="w-4 h-4 text-emerald-600" />
             <span>Facility Scope & Processing Environments</span>
           </div>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#0B1713] tracking-tight leading-tight">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#062E21] tracking-tight leading-tight">
             Specialized compliance architecture tailored to your production floor
           </h2>
           <p className="text-base text-neutral-600 mt-3 font-normal">
@@ -196,7 +196,7 @@ export const SectorsShowcase: React.FC<SectorsShowcaseProps> = ({
           
           {/* Left Column: Real Stainless-Steel Food Facility Showcase */}
           <div className="lg:col-span-6 space-y-6">
-            <div ref={imageCardRef} className="relative rounded-2xl overflow-hidden shadow-xl border border-[#D4AF37]/40 bg-neutral-900 group">
+            <div ref={imageCardRef} className="relative rounded-2xl overflow-hidden shadow-xl border border-emerald-900/15 bg-neutral-900 group">
               <img
                 src="/src/assets/images/hero_food_safety_facility_1791962115935.jpg"
                 alt="State of the art automated food processing and packaging facility with stainless steel conveyors"
@@ -206,8 +206,8 @@ export const SectorsShowcase: React.FC<SectorsShowcaseProps> = ({
               <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-transparent pointer-events-none" />
               
               <div className="absolute bottom-0 inset-x-0 p-6 text-white space-y-2">
-                <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded bg-[#0A1310]/90 border border-[#D4AF37]/50 text-[10px] uppercase tracking-widest text-[#F5DC9A] font-bold">
-                  <Logo variant="icon-only" size="sm" className="w-3.5 h-3.5 scale-75" />
+                <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded bg-[#062E21]/90 border border-emerald-500/40 text-[10px] uppercase tracking-widest text-emerald-300 font-bold">
+                  <Logo variant="icon-only" size="sm" className="w-4 h-4" />
                   <span>Field Environment Benchmark</span>
                 </div>
                 <h3 className="text-lg font-bold text-white">
@@ -220,17 +220,17 @@ export const SectorsShowcase: React.FC<SectorsShowcaseProps> = ({
             </div>
 
             {/* Quick Metrics Bar Under Image */}
-            <div ref={metricsRef} className="home-content-grid grid grid-cols-3 gap-3 p-4 rounded-xl bg-[#FAF9F5] border border-[#D4AF37]/30 text-center">
+            <div ref={metricsRef} className="home-content-grid grid grid-cols-3 gap-3 p-4 rounded-xl bg-[#F8FAFC] border border-emerald-900/10 text-center">
               <div>
-                <div className="text-xl font-extrabold text-[#0B1713]">100%</div>
+                <div className="text-xl font-extrabold text-[#062E21]">100%</div>
                 <div className="text-[11px] text-neutral-600 font-medium">Audit Prep Record</div>
               </div>
-              <div className="border-x border-[#D4AF37]/30">
-                <div className="text-xl font-extrabold text-[#876212]">16+</div>
+              <div className="border-x border-emerald-900/10">
+                <div className="text-xl font-extrabold text-emerald-700">16+</div>
                 <div className="text-[11px] text-neutral-600 font-medium">Standards Schemes</div>
               </div>
               <div>
-                <div className="text-xl font-extrabold text-[#0B1713]">&lt; 48h</div>
+                <div className="text-xl font-extrabold text-[#062E21]">&lt; 48h</div>
                 <div className="text-[11px] text-neutral-600 font-medium">CAPA Resolution Engine</div>
               </div>
             </div>
@@ -249,8 +249,8 @@ export const SectorsShowcase: React.FC<SectorsShowcaseProps> = ({
                     onClick={() => handleSelectSector(sector)}
                     className={`px-3.5 py-2 rounded-xl text-xs font-bold tracking-tight transition-all text-left cursor-pointer ${
                       isSelected
-                        ? 'bg-gradient-to-r from-[#0C1A15] to-[#0A1310] text-[#F5DC9A] border border-[#D4AF37]/60 shadow-md ring-1 ring-[#D4AF37]/30 scale-[1.02]'
-                        : 'bg-[#FAF9F5] hover:bg-neutral-100 text-neutral-700 border border-neutral-200'
+                        ? 'bg-[#062E21] text-white border border-emerald-500 shadow-md ring-1 ring-emerald-400/40 scale-[1.02]'
+                        : 'bg-[#F8FAFC] hover:bg-emerald-50/60 text-neutral-700 border border-neutral-200 hover:border-emerald-300'
                     }`}
                   >
                     {sector.name}
@@ -260,18 +260,18 @@ export const SectorsShowcase: React.FC<SectorsShowcaseProps> = ({
             </div>
 
             {/* Selected Sector Deep Dive Panel */}
-            <div ref={panelRef} className="p-6 rounded-2xl border border-[#D4AF37]/35 bg-[#FAF9F5] space-y-4 shadow-sm">
-              <div className="flex items-center justify-between border-b border-[#D4AF37]/20 pb-3">
+            <div ref={panelRef} className="p-6 rounded-2xl border border-emerald-900/10 bg-[#F8FAFC] space-y-4 shadow-sm">
+              <div className="flex items-center justify-between border-b border-emerald-900/10 pb-3">
                 <div>
-                  <span className="text-[11px] font-black uppercase tracking-wider text-[#876212]">
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-emerald-800">
                     {selectedSector.category}
                   </span>
-                  <h4 className="text-base font-bold text-[#0B1713] mt-0.5">
+                  <h4 className="text-base font-bold text-[#062E21] mt-0.5">
                     {selectedSector.name}
                   </h4>
                 </div>
-                <span className="px-3 py-1 rounded-full bg-[#FAF0D4] text-[#876212] border border-[#D4AF37]/40 text-xs font-bold flex items-center gap-1">
-                  <Award className="w-3.5 h-3.5 text-[#C29B38]" />
+                <span className="px-3 py-1 rounded-full bg-emerald-100 text-emerald-900 border border-emerald-300 text-xs font-bold flex items-center gap-1">
+                  <Award className="w-3.5 h-3.5 text-emerald-600" />
                   <span>Verified Protocol</span>
                 </span>
               </div>
@@ -287,8 +287,8 @@ export const SectorsShowcase: React.FC<SectorsShowcaseProps> = ({
                 </span>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                   {selectedSector.keyHazards.map((hazard, hIdx) => (
-                    <div key={hIdx} className="flex items-start gap-2 text-xs text-neutral-700 bg-white p-2 rounded-lg border border-[#D4AF37]/25 hover:border-[#D4AF37]/60 transition-colors">
-                      <CheckCircle2 className="w-3.5 h-3.5 text-[#C29B38] shrink-0 mt-0.5" />
+                    <div key={hIdx} className="flex items-start gap-2 text-xs text-neutral-700 bg-white p-2 rounded-lg border border-emerald-900/10 hover:border-emerald-500 transition-colors">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" />
                       <span className="line-clamp-2">{hazard}</span>
                     </div>
                   ))}
@@ -299,17 +299,17 @@ export const SectorsShowcase: React.FC<SectorsShowcaseProps> = ({
               <div className="pt-2 flex flex-wrap items-center gap-2">
                 <span className="text-[11px] font-bold text-neutral-500">Frameworks:</span>
                 {selectedSector.applicableStandards.map((std, sIdx) => (
-                  <span key={sIdx} className="px-2.5 py-0.5 rounded-md bg-white border border-[#D4AF37]/30 text-[11px] font-bold text-[#0B1713]">
+                  <span key={sIdx} className="px-2.5 py-0.5 rounded-md bg-white border border-emerald-900/15 text-[11px] font-bold text-[#062E21]">
                     {std}
                   </span>
                 ))}
               </div>
 
               {/* Audit Highlight */}
-              <div className="p-3.5 rounded-xl bg-[#FAF0D4]/70 border border-[#D4AF37]/40 text-xs text-[#0B1713] flex items-start gap-2.5">
-                <ShieldCheck className="w-4 h-4 text-[#876212] shrink-0 mt-0.5" />
+              <div className="p-3.5 rounded-xl bg-emerald-50/80 border border-emerald-200 text-xs text-[#062E21] flex items-start gap-2.5">
+                <ShieldCheck className="w-4 h-4 text-emerald-700 shrink-0 mt-0.5" />
                 <div>
-                  <strong className="font-bold text-[#876212]">Compliance Highlight: </strong>
+                  <strong className="font-bold text-emerald-900">Compliance Highlight: </strong>
                   {selectedSector.complianceHighlight}
                 </div>
               </div>
@@ -318,14 +318,14 @@ export const SectorsShowcase: React.FC<SectorsShowcaseProps> = ({
               <div className="pt-2 flex items-center justify-between">
                 <button
                   onClick={() => onOpenEnquiry(selectedSector.name)}
-                  className="inline-flex items-center gap-2 text-xs font-bold text-[#0B1713] hover:text-[#876212] cursor-pointer group"
+                  className="inline-flex items-center gap-2 text-xs font-bold text-[#062E21] hover:text-emerald-700 cursor-pointer group"
                 >
                   <span>Request Facility Assessment</span>
-                  <ArrowRight className="w-3.5 h-3.5 text-[#876212] transition-transform group-hover:translate-x-1" />
+                  <ArrowRight className="w-3.5 h-3.5 text-emerald-700 transition-transform group-hover:translate-x-1" />
                 </button>
                 <button
                   onClick={() => onNavigate('/services')}
-                  className="text-xs font-semibold text-[#876212] hover:underline cursor-pointer"
+                  className="text-xs font-semibold text-emerald-700 hover:underline cursor-pointer"
                 >
                   View All Services
                 </button>

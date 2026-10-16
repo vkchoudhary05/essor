@@ -7,11 +7,7 @@ import {
   GraduationCap, 
   FileEdit, 
   ShieldCheck, 
-  LogOut, 
-  UserCheck, 
-  ChevronRight,
   ExternalLink,
-  Lock,
   Menu,
   X,
   Building2,
@@ -22,7 +18,6 @@ import {
   Server
 } from 'lucide-react';
 import { User, UserRole } from '../../types';
-import { StorageService } from '../../services/storage';
 
 interface AdminLayoutProps {
   currentUser: User;
@@ -61,36 +56,36 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({
   ];
 
   const roleColors: Record<UserRole, string> = {
-    SUPER_ADMIN: 'bg-purple-100 text-purple-800 border-purple-200',
-    ADMIN: 'bg-blue-100 text-blue-800 border-blue-200',
-    OPERATIONS_MANAGER: 'bg-indigo-100 text-indigo-800 border-indigo-200',
-    TRAINER: 'bg-emerald-100 text-emerald-800 border-emerald-200',
-    AUDITOR_CONSULTANT: 'bg-amber-100 text-amber-800 border-amber-200',
-    CLIENT_ADMIN: 'bg-teal-100 text-teal-800 border-teal-200',
-    CLIENT_STAFF: 'bg-cyan-100 text-cyan-800 border-cyan-200',
-    PARTICIPANT: 'bg-neutral-100 text-neutral-800 border-neutral-200',
-    SALES: 'bg-emerald-100 text-emerald-800 border-emerald-200',
-    CONTENT_MANAGER: 'bg-indigo-100 text-indigo-800 border-indigo-200'
+    SUPER_ADMIN: 'bg-emerald-950 text-emerald-200 border-emerald-600/50',
+    ADMIN: 'bg-emerald-900 text-emerald-100 border-emerald-500/50',
+    OPERATIONS_MANAGER: 'bg-teal-900 text-teal-200 border-teal-500/50',
+    TRAINER: 'bg-emerald-800 text-emerald-100 border-emerald-400/50',
+    AUDITOR_CONSULTANT: 'bg-amber-900 text-amber-200 border-amber-500/50',
+    CLIENT_ADMIN: 'bg-teal-950 text-teal-200 border-teal-600/50',
+    CLIENT_STAFF: 'bg-neutral-800 text-neutral-200 border-neutral-600/50',
+    PARTICIPANT: 'bg-neutral-800 text-neutral-200 border-neutral-600/50',
+    SALES: 'bg-emerald-900 text-emerald-200 border-emerald-500/50',
+    CONTENT_MANAGER: 'bg-indigo-900 text-indigo-200 border-indigo-500/50'
   };
 
   return (
-    <div className="min-h-screen bg-[#F4F6F3] flex flex-col">
+    <div className="min-h-screen bg-[#F8FAFC] flex flex-col">
       
       {/* Top Admin Bar */}
-      <header className="bg-[#142B3A] text-white border-b border-[#213f54] sticky top-0 z-30">
+      <header className="bg-gradient-to-r from-[#041F16] via-[#062E21] to-[#0A3828] text-white border-b border-emerald-500/30 sticky top-0 z-30 shadow-lg shadow-black/20">
         <div className="px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           
           <div className="flex items-center gap-4">
             <button
               onClick={() => setMobileNavOpen(!mobileNavOpen)}
-              className="md:hidden p-2 text-neutral-300 hover:text-white"
+              className="md:hidden p-2 text-neutral-300 hover:text-white cursor-pointer"
             >
               {mobileNavOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
 
             <div className="flex items-center gap-3">
               <Logo size="sm" theme="dark" />
-              <span className="hidden sm:inline-block text-xs font-mono font-semibold uppercase tracking-wider text-[#D9B76A] pl-2 border-l border-neutral-600">
+              <span className="hidden sm:inline-block text-xs font-mono font-bold uppercase tracking-wider text-emerald-300 pl-3 border-l border-emerald-700/50">
                 Administration & Operations Console
               </span>
             </div>
@@ -101,11 +96,11 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({
             
             {/* Interactive Role Switcher for verification */}
             <div className="hidden sm:flex items-center gap-2">
-              <span className="text-[11px] text-neutral-400 font-medium">Simulate Role:</span>
+              <span className="text-[11px] text-emerald-200/70 font-bold uppercase tracking-wider">Simulate Role:</span>
               <select
                 value={currentUser.role}
                 onChange={(e) => onRoleChange(e.target.value as UserRole)}
-                className="text-xs bg-[#0e202c] text-white border border-[#2b4c62] rounded px-2.5 py-1 focus:outline-none focus:ring-1 focus:ring-[#D9B76A]"
+                className="text-xs bg-[#041F16] text-white border border-emerald-500/40 rounded-lg px-2.5 py-1 focus:outline-none focus:ring-1 focus:ring-emerald-400"
               >
                 <option value="SUPER_ADMIN">SUPER_ADMIN (Full Governance)</option>
                 <option value="ADMIN">ADMIN (Operations & Audit)</option>
@@ -115,12 +110,12 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({
             </div>
 
             {/* Active user badge */}
-            <div className="flex items-center gap-2 pl-2 border-l border-neutral-700">
+            <div className="flex items-center gap-2 pl-3 border-l border-emerald-700/40">
               <div className="text-right hidden md:block">
-                <div className="text-xs font-semibold text-white leading-tight">{currentUser.name}</div>
-                <div className="text-[10px] text-neutral-400">{currentUser.email}</div>
+                <div className="text-xs font-bold text-white leading-tight">{currentUser.name}</div>
+                <div className="text-[10px] text-emerald-300/80 font-mono">{currentUser.email}</div>
               </div>
-              <span className={`px-2 py-0.5 text-[10px] font-bold rounded border ${roleColors[currentUser.role]}`}>
+              <span className={`px-2.5 py-0.5 text-[10px] font-bold rounded-lg border ${roleColors[currentUser.role]}`}>
                 {currentUser.role}
               </span>
             </div>
@@ -128,7 +123,7 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({
             {/* Exit to Public Website */}
             <button
               onClick={onExitAdmin}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-neutral-300 hover:text-white bg-white/10 hover:bg-white/15 rounded-md transition-colors"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold uppercase tracking-wider text-emerald-200 hover:text-white bg-white/10 hover:bg-white/15 border border-emerald-500/30 rounded-xl transition-all cursor-pointer"
               title="Return to Public Website"
             >
               <span>Public Website</span>
@@ -143,8 +138,8 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({
         
         {/* Desktop Sidebar Navigation */}
         <aside className="w-64 shrink-0 hidden md:block space-y-6">
-          <div className="bg-white rounded-xl border border-neutral-200 p-3 shadow-xs space-y-1">
-            <div className="px-3 py-2 text-[11px] font-bold uppercase tracking-wider text-neutral-400">
+          <div className="bg-white rounded-2xl border border-emerald-900/10 p-3 shadow-xs space-y-1">
+            <div className="px-3 py-2 text-[11px] font-bold uppercase tracking-wider text-emerald-800">
               Management Modules
             </div>
 
@@ -155,10 +150,10 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({
                 <button
                   key={item.id}
                   onClick={() => onSelectSection(item.id)}
-                  className={`w-full flex items-center justify-between px-3 py-2.5 text-xs font-semibold rounded-lg transition-colors ${
+                  className={`w-full flex items-center justify-between px-3 py-2.5 text-xs font-bold rounded-xl transition-all cursor-pointer ${
                     isActive 
-                      ? 'bg-[#142B3A] text-white shadow-xs' 
-                      : 'text-neutral-600 hover:bg-neutral-100 hover:text-neutral-900'
+                      ? 'bg-gradient-to-r from-[#062E21] to-[#0E5C3A] text-white shadow-md shadow-emerald-950/20' 
+                      : 'text-neutral-600 hover:bg-emerald-50/60 hover:text-[#062E21]'
                   }`}
                 >
                   <div className="flex items-center gap-2.5">
@@ -167,7 +162,7 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({
                   </div>
 
                   {item.badge !== undefined && item.badge > 0 && (
-                    <span className="w-5 h-5 rounded-full bg-[#547565] text-white text-[10px] flex items-center justify-center font-bold">
+                    <span className="w-5 h-5 rounded-full bg-emerald-500 text-[#041F16] text-[10px] flex items-center justify-center font-black">
                       {item.badge}
                     </span>
                   )}
@@ -177,12 +172,12 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({
           </div>
 
           {/* Security & Access Notice */}
-          <div className="p-4 rounded-xl bg-white border border-neutral-200 text-xs text-neutral-600 space-y-2">
-            <div className="flex items-center gap-2 text-neutral-900 font-bold">
-              <ShieldCheck className="w-4 h-4 text-[#547565]" />
+          <div className="p-4 rounded-2xl bg-white border border-emerald-900/10 text-xs text-neutral-600 space-y-2">
+            <div className="flex items-center gap-2 text-[#062E21] font-bold">
+              <ShieldCheck className="w-4 h-4 text-emerald-600" />
               <span>RBAC Policy Active</span>
             </div>
-            <p className="text-[11px] leading-relaxed text-neutral-500">
+            <p className="text-[11px] leading-relaxed text-neutral-500 font-normal">
               Role permissions strictly enforced on every record mutation and audit event.
             </p>
           </div>
@@ -190,11 +185,11 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({
 
         {/* Mobile Navigation Drawer */}
         {mobileNavOpen && (
-          <div className="fixed inset-0 z-40 md:hidden bg-black/50 p-4">
-            <div className="bg-white rounded-xl p-4 space-y-2 max-w-xs shadow-xl">
+          <div className="fixed inset-0 z-40 md:hidden bg-black/60 p-4">
+            <div className="bg-white rounded-2xl p-4 space-y-2 max-w-xs shadow-2xl border border-emerald-900/15">
               <div className="flex items-center justify-between pb-2 border-b border-neutral-200">
-                <span className="text-xs font-bold uppercase tracking-wider text-neutral-600">Admin Modules</span>
-                <button onClick={() => setMobileNavOpen(false)} className="p-1 text-neutral-500">
+                <span className="text-xs font-bold uppercase tracking-wider text-[#062E21]">Admin Modules</span>
+                <button onClick={() => setMobileNavOpen(false)} className="p-1 text-neutral-500 cursor-pointer">
                   <X className="w-5 h-5" />
                 </button>
               </div>
@@ -207,8 +202,8 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({
                       onSelectSection(item.id);
                       setMobileNavOpen(false);
                     }}
-                    className={`w-full flex items-center gap-3 px-3 py-2 text-xs font-semibold rounded-lg ${
-                      activeSection === item.id ? 'bg-[#142B3A] text-white' : 'text-neutral-700 hover:bg-neutral-100'
+                    className={`w-full flex items-center gap-3 px-3 py-2 text-xs font-bold rounded-xl cursor-pointer ${
+                      activeSection === item.id ? 'bg-[#062E21] text-white' : 'text-neutral-700 hover:bg-emerald-50'
                     }`}
                   >
                     <Icon className="w-4 h-4" />

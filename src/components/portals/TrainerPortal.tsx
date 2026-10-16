@@ -57,12 +57,12 @@ export const TrainerPortal: React.FC<TrainerPortalProps> = ({ currentUser, onNav
   };
 
   return (
-    <div className="w-full bg-[#fafbf9] py-10 min-h-screen">
+    <div className="w-full bg-[#F8FAFC] py-10 min-h-screen">
       
       {/* Toast Notification */}
       {toastMessage && (
-        <div className="fixed bottom-6 right-6 z-50 p-4 rounded-lg bg-[#142B3A] text-white text-xs font-semibold shadow-xl border border-[#234257] flex items-center gap-2 animate-in slide-in-from-bottom-2">
-          <CheckCircle className="w-4 h-4 text-[#F5E4B5]" />
+        <div className="fixed bottom-6 right-6 z-50 p-4 rounded-xl bg-[#041F16] text-white text-xs font-semibold shadow-2xl border border-emerald-500/40 flex items-center gap-2 animate-in slide-in-from-bottom-2">
+          <CheckCircle className="w-4 h-4 text-emerald-400" />
           <span>{toastMessage}</span>
         </div>
       )}
@@ -70,21 +70,21 @@ export const TrainerPortal: React.FC<TrainerPortalProps> = ({ currentUser, onNav
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
         
         {/* Trainer Top Profile Header */}
-        <div className="p-6 sm:p-8 rounded-2xl bg-[#142B3A] text-white shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-6">
+        <div className="p-6 sm:p-8 rounded-2xl bg-gradient-to-r from-[#041F16] via-[#062E21] to-[#0A3828] text-white shadow-xl border border-emerald-500/30 flex flex-col md:flex-row md:items-center justify-between gap-6">
           <div className="flex items-center gap-4">
-            <div className="w-14 h-14 rounded-xl bg-[#0e271d] text-[#F5E4B5] flex items-center justify-center font-bold text-xl border border-[#D9B76A]/40">
+            <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#062E21] to-[#0E5C3A] text-emerald-300 flex items-center justify-center font-bold text-xl border border-emerald-500/40 shadow-md">
               <GraduationCap className="w-8 h-8" />
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <span className="text-xs font-semibold uppercase tracking-wider text-[#D9B76A]">
+                <span className="text-xs font-bold uppercase tracking-wider text-emerald-300">
                   Trainer Operations Console
                 </span>
-                <span className="text-[10px] bg-white/10 px-2 py-0.5 rounded font-mono">
+                <span className="text-[10px] bg-white/10 px-2 py-0.5 rounded font-mono text-emerald-200">
                   ROLE: {currentUser.role}
                 </span>
               </div>
-              <h1 className="text-2xl font-bold tracking-tight mt-0.5">
+              <h1 className="text-2xl font-black tracking-tight mt-0.5">
                 {currentUser.name}
               </h1>
               <p className="text-xs text-neutral-300">
@@ -93,14 +93,14 @@ export const TrainerPortal: React.FC<TrainerPortalProps> = ({ currentUser, onNav
             </div>
           </div>
 
-          <div className="flex items-center gap-4 border-t md:border-t-0 md:border-l border-white/10 pt-4 md:pt-0 md:pl-6 text-xs text-neutral-300">
+          <div className="flex items-center gap-4 border-t md:border-t-0 md:border-l border-emerald-500/20 pt-4 md:pt-0 md:pl-6 text-xs text-neutral-300">
             <div>
-              <span className="text-[10px] text-neutral-400 block uppercase font-semibold">Active Sessions</span>
+              <span className="text-[10px] text-neutral-400 block uppercase font-bold">Active Sessions</span>
               <strong className="text-lg font-mono text-white">{sessions.length}</strong>
             </div>
             <div>
-              <span className="text-[10px] text-neutral-400 block uppercase font-semibold">Total Trainees</span>
-              <strong className="text-lg font-mono text-[#F5E4B5]">
+              <span className="text-[10px] text-neutral-400 block uppercase font-bold">Total Trainees</span>
+              <strong className="text-lg font-mono text-emerald-300">
                 {sessions.reduce((acc, s) => acc + s.enrollments.length, 0)}
               </strong>
             </div>
@@ -108,17 +108,17 @@ export const TrainerPortal: React.FC<TrainerPortalProps> = ({ currentUser, onNav
         </div>
 
         {/* Sessions Tab Selector */}
-        <div className="flex flex-wrap gap-3 border-b border-neutral-200 pb-3">
+        <div className="flex flex-wrap gap-3 border-b border-emerald-900/10 pb-3">
           {sessions.map(s => {
             const isSelected = activeSession?.id === s.id;
             return (
               <button
                 key={s.id}
                 onClick={() => setActiveSessionId(s.id)}
-                className={`px-4 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center gap-2 ${
+                className={`px-4 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center gap-2 cursor-pointer ${
                   isSelected 
-                    ? 'bg-[#142B3A] text-white shadow-sm' 
-                    : 'bg-white text-neutral-600 hover:bg-neutral-100 border border-neutral-200'
+                    ? 'bg-gradient-to-r from-[#062E21] to-[#0E5C3A] text-white shadow-md shadow-emerald-950/20' 
+                    : 'bg-white text-neutral-600 hover:bg-emerald-50/50 hover:text-[#062E21] border border-neutral-200'
                 }`}
               >
                 <Calendar className="w-3.5 h-3.5" />

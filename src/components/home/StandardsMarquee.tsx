@@ -1,15 +1,15 @@
 import React from 'react';
 import { STANDARDS_BADGES } from '../../data/initialData';
-import { ShieldCheck, Award } from 'lucide-react';
+import { Award } from 'lucide-react';
 
 export const StandardsMarquee: React.FC = () => {
   return (
-    <section className="py-9 bg-[#FAF9F5] border-b border-[#D4AF37]/25 relative overflow-hidden">
+    <section className="py-9 bg-[#F8FAFC] border-b border-emerald-900/10 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-5 border-b border-[#D4AF37]/20 pb-4">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-5 border-b border-emerald-900/10 pb-4">
           <div className="flex items-center gap-2">
-            <Award className="w-4 h-4 text-[#C29B38]" />
-            <span className="text-xs font-black tracking-widest uppercase text-[#876212]">
+            <Award className="w-4 h-4 text-emerald-600" />
+            <span className="text-xs font-bold tracking-widest uppercase text-emerald-900">
               Audit Standards & Regulatory Protocols Supported
             </span>
           </div>
@@ -22,9 +22,9 @@ export const StandardsMarquee: React.FC = () => {
           {STANDARDS_BADGES.map((std) => (
             <div
               key={std.name}
-              className="px-4 py-2 rounded-xl bg-white border border-[#D4AF37]/35 text-xs font-bold text-[#0B1713] shadow-xs tracking-tight hover:border-[#D4AF37] hover:shadow-sm hover:bg-[#FAF0D4]/30 transition-all flex items-center gap-2"
+              className="px-4 py-2 rounded-xl bg-white border border-emerald-900/10 text-xs font-bold text-[#062E21] shadow-2xs tracking-tight hover:border-emerald-500 hover:shadow-xs hover:bg-emerald-50/50 transition-all flex items-center gap-2"
             >
-              <div className="w-1.5 h-1.5 rounded-full bg-[#D4AF37]" />
+              <div className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
               <span>{std.name}</span>
             </div>
           ))}

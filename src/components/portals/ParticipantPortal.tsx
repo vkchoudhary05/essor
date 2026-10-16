@@ -54,11 +54,11 @@ export const ParticipantPortal: React.FC<ParticipantPortalProps> = ({ currentUse
   };
 
   return (
-    <div className="w-full bg-[#fafbf9] py-10 min-h-screen">
+    <div className="w-full bg-[#F8FAFC] py-10 min-h-screen">
       
       {toastMessage && (
-        <div className="fixed bottom-6 right-6 z-50 p-4 rounded-lg bg-[#142B3A] text-white text-xs font-semibold shadow-xl border border-[#234257] flex items-center gap-2">
-          <CheckCircle className="w-4 h-4 text-[#F5E4B5]" />
+        <div className="fixed bottom-6 right-6 z-50 p-4 rounded-xl bg-[#041F16] text-white text-xs font-semibold shadow-2xl border border-emerald-500/40 flex items-center gap-2">
+          <CheckCircle className="w-4 h-4 text-emerald-400" />
           <span>{toastMessage}</span>
         </div>
       )}
@@ -66,21 +66,21 @@ export const ParticipantPortal: React.FC<ParticipantPortalProps> = ({ currentUse
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
         
         {/* Profile Card */}
-        <div className="p-6 sm:p-8 rounded-2xl bg-[#142B3A] text-white shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-6">
+        <div className="p-6 sm:p-8 rounded-2xl bg-gradient-to-r from-[#041F16] via-[#062E21] to-[#0A3828] text-white shadow-xl border border-emerald-500/30 flex flex-col md:flex-row md:items-center justify-between gap-6">
           <div className="flex items-center gap-4">
-            <div className="w-14 h-14 rounded-xl bg-[#0e271d] text-[#F5E4B5] flex items-center justify-center font-bold text-xl border border-[#D9B76A]/40">
+            <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#062E21] to-[#0E5C3A] text-emerald-300 flex items-center justify-center font-bold text-xl border border-emerald-500/40 shadow-md">
               <Award className="w-8 h-8" />
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <span className="text-xs font-semibold uppercase tracking-wider text-[#D9B76A]">
+                <span className="text-xs font-bold uppercase tracking-wider text-emerald-300">
                   Trainee & Participant Portal
                 </span>
-                <span className="text-[10px] bg-white/10 px-2 py-0.5 rounded font-mono">
+                <span className="text-[10px] bg-white/10 px-2 py-0.5 rounded font-mono text-emerald-200">
                   {currentUser.role}
                 </span>
               </div>
-              <h1 className="text-2xl font-bold tracking-tight mt-0.5">
+              <h1 className="text-2xl font-black tracking-tight mt-0.5">
                 {currentUser.name}
               </h1>
               <p className="text-xs text-neutral-300">
@@ -90,14 +90,14 @@ export const ParticipantPortal: React.FC<ParticipantPortalProps> = ({ currentUse
           </div>
 
           <div className="text-right">
-            <span className="text-[10px] text-neutral-400 block uppercase font-semibold">Earned Credentials</span>
-            <strong className="text-2xl font-mono text-[#F5E4B5]">{certificates.length}</strong>
+            <span className="text-[10px] text-neutral-400 block uppercase font-bold">Earned Credentials</span>
+            <strong className="text-2xl font-mono text-emerald-300">{certificates.length}</strong>
           </div>
         </div>
 
         {/* Certificates Showcase */}
         <div className="space-y-4">
-          <h2 className="text-base font-bold text-[#142B3A] uppercase tracking-wider">
+          <h2 className="text-base font-bold text-[#062E21] uppercase tracking-wider">
             My Official Certificates of Completion
           </h2>
 

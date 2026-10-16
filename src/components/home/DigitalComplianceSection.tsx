@@ -75,18 +75,18 @@ export const DigitalComplianceSection: React.FC<DigitalComplianceSectionProps> =
     <section 
       id="digital-platform-section"
       ref={sectionRef} 
-      className="py-16 sm:py-20 bg-white border-b border-[#D4AF37]/25 relative overflow-hidden"
+      className="py-16 sm:py-20 bg-white border-b border-emerald-900/10 relative overflow-hidden"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           
           <div ref={leftColRef} className="lg:col-span-6 space-y-6">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FAF0D4] border border-[#D4AF37]/45 text-xs font-bold uppercase tracking-wider text-[#876212]">
-              <Sparkles className="w-3.5 h-3.5 text-[#D4AF37]" />
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-xs font-bold uppercase tracking-wider text-emerald-900">
+              <Sparkles className="w-3.5 h-3.5 text-emerald-600" />
               <span>Digital Platform & Registry</span>
             </div>
             
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#0B1713] tracking-tight leading-tight">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#062E21] tracking-tight leading-tight">
               Make food safety compliance intuitive to manage
             </h2>
             
@@ -95,56 +95,56 @@ export const DigitalComplianceSection: React.FC<DigitalComplianceSectionProps> =
             </p>
 
             <div ref={modulesGridRef} className="home-content-grid grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-              <div className="p-4 rounded-xl border border-[#D4AF37]/30 bg-[#FAF9F5] hover:bg-white hover:border-[#D4AF37] hover:shadow-md transition-all group">
+              <div className="p-4 rounded-xl border border-emerald-900/10 bg-[#F8FAFC] hover:bg-white hover:border-emerald-500 hover:shadow-md transition-all group">
                 <div className="flex items-center gap-2 mb-1.5">
-                  <div className="p-1 rounded-md bg-[#FAF0D4] text-[#876212] group-hover:bg-[#0A1310] group-hover:text-[#F5DC9A] transition-colors">
+                  <div className="p-1 rounded-md bg-emerald-100 text-emerald-800 group-hover:bg-[#062E21] group-hover:text-emerald-300 transition-colors">
                     <LayoutDashboard className="w-4 h-4" />
                   </div>
-                  <h3 className="text-xs font-bold text-[#0B1713]">Compliance Dashboard</h3>
+                  <h3 className="text-xs font-bold text-[#062E21]">Compliance Dashboard</h3>
                 </div>
                 <p className="text-[11px] text-neutral-600">Action tracking, audit schedules, document readiness</p>
               </div>
 
-              <div className="p-4 rounded-xl border border-[#D4AF37]/30 bg-[#FAF9F5] hover:bg-white hover:border-[#D4AF37] hover:shadow-md transition-all group">
+              <div className="p-4 rounded-xl border border-emerald-900/10 bg-[#F8FAFC] hover:bg-white hover:border-emerald-500 hover:shadow-md transition-all group">
                 <div className="flex items-center gap-2 mb-1.5">
-                  <div className="p-1 rounded-md bg-[#FAF0D4] text-[#876212] group-hover:bg-[#0A1310] group-hover:text-[#F5DC9A] transition-colors">
+                  <div className="p-1 rounded-md bg-emerald-100 text-emerald-800 group-hover:bg-[#062E21] group-hover:text-emerald-300 transition-colors">
                     <ClipboardCheck className="w-4 h-4" />
                   </div>
-                  <h3 className="text-xs font-bold text-[#0B1713]">Digital Inspections</h3>
+                  <h3 className="text-xs font-bold text-[#062E21]">Digital Inspections</h3>
                 </div>
                 <p className="text-[11px] text-neutral-600">GMP walk observations, owners, due dates & photo proof</p>
               </div>
 
-              <div className="p-4 rounded-xl border border-[#D4AF37]/30 bg-[#FAF9F5] hover:bg-white hover:border-[#D4AF37] hover:shadow-md transition-all group">
+              <div className="p-4 rounded-xl border border-emerald-900/10 bg-[#F8FAFC] hover:bg-white hover:border-emerald-500 hover:shadow-md transition-all group">
                 <div className="flex items-center gap-2 mb-1.5">
-                  <div className="p-1 rounded-md bg-[#FAF0D4] text-[#876212] group-hover:bg-[#0A1310] group-hover:text-[#F5DC9A] transition-colors">
+                  <div className="p-1 rounded-md bg-emerald-100 text-emerald-800 group-hover:bg-[#062E21] group-hover:text-emerald-300 transition-colors">
                     <QrCode className="w-4 h-4" />
                   </div>
-                  <h3 className="text-xs font-bold text-[#0B1713]">Instant Registry</h3>
+                  <h3 className="text-xs font-bold text-[#062E21]">Instant Registry</h3>
                 </div>
                 <p className="text-[11px] text-neutral-600">Tamper-proof certificate QR verification</p>
               </div>
 
-              <div className="p-4 rounded-xl border border-[#D4AF37]/30 bg-[#FAF9F5] hover:bg-white hover:border-[#D4AF37] hover:shadow-md transition-all group">
+              <div className="p-4 rounded-xl border border-emerald-900/10 bg-[#F8FAFC] hover:bg-white hover:border-emerald-500 hover:shadow-md transition-all group">
                 <div className="flex items-center gap-2 mb-1.5">
-                  <div className="p-1 rounded-md bg-[#FAF0D4] text-[#876212] group-hover:bg-[#0A1310] group-hover:text-[#F5DC9A] transition-colors">
+                  <div className="p-1 rounded-md bg-emerald-100 text-emerald-800 group-hover:bg-[#062E21] group-hover:text-emerald-300 transition-colors">
                     <AlertOctagon className="w-4 h-4" />
                   </div>
-                  <h3 className="text-xs font-bold text-[#0B1713]">Complaint Workflow</h3>
+                  <h3 className="text-xs font-bold text-[#062E21]">Complaint Workflow</h3>
                 </div>
                 <p className="text-[11px] text-neutral-600">Intake, RCA investigation, CAPA closure and verification</p>
               </div>
             </div>
 
-            <div className="p-4 rounded-xl bg-[#FAF0D4]/70 border border-[#D4AF37]/40 text-xs text-[#0B1713]">
-              <strong className="text-[#876212]">Our Guiding Principle: </strong> 
+            <div className="p-4 rounded-xl bg-emerald-50/70 border border-emerald-200 text-xs text-[#062E21]">
+              <strong className="text-emerald-900">Our Guiding Principle: </strong> 
               Technology supports your people by making compliance work more visible and organized; it does not replace responsible food-safety decisions.
             </div>
 
             <div>
               <button
                 onClick={() => onNavigate('/digital-compliance')}
-                className="inline-flex items-center gap-2 px-6 py-3.5 text-xs font-bold uppercase tracking-wider text-[#0A1310] bg-gradient-to-r from-[#F5DC9A] via-[#D4AF37] to-[#B38728] hover:brightness-105 active:scale-[0.98] rounded-xl transition-all shadow-md shadow-[#D4AF37]/20 cursor-pointer group"
+                className="inline-flex items-center gap-2 px-6 py-3.5 text-xs font-bold uppercase tracking-wider text-white bg-gradient-to-r from-[#062E21] via-[#0E5C3A] to-[#15803D] hover:from-[#042419] hover:via-[#0B4A2F] hover:to-[#166534] active:scale-[0.98] rounded-xl transition-all shadow-md shadow-emerald-950/20 ring-1 ring-emerald-400/30 cursor-pointer group"
               >
                 <span>Explore Digital Modules</span>
                 <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
@@ -153,7 +153,7 @@ export const DigitalComplianceSection: React.FC<DigitalComplianceSectionProps> =
           </div>
 
           <div ref={tabletImageRef} className="lg:col-span-6">
-            <div className="rounded-2xl overflow-hidden border border-[#D4AF37]/50 shadow-2xl bg-[#FAF0D4]/30 group ring-1 ring-[#D4AF37]/30 hover:ring-[#D4AF37]/70 transition-all duration-500">
+            <div className="rounded-2xl overflow-hidden border border-emerald-900/15 shadow-2xl bg-white group ring-1 ring-emerald-500/20 hover:ring-emerald-500/60 transition-all duration-500">
               <img
                 src="/src/assets/images/digital_compliance_dashboard_preview_1791962116109.jpg"
                 alt="Digital food safety compliance dashboard on tablet"

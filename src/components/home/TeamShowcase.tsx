@@ -68,19 +68,19 @@ export const TeamShowcase: React.FC<TeamShowcaseProps> = ({ onNavigate }) => {
 
   return (
     <section 
-      id="team-showcase"
+      id="team-showcase" 
       ref={sectionRef} 
-      className="py-16 sm:py-20 bg-[#FAF9F5] border-t border-[#D4AF37]/25 relative overflow-hidden"
+      className="py-16 sm:py-20 bg-[#F8FAFC] border-t border-emerald-900/10 relative overflow-hidden"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
         <div ref={headerRef} className="max-w-3xl mb-8">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FAF0D4] border border-[#D4AF37]/45 text-xs font-bold uppercase tracking-wider text-[#876212] mb-3">
-            <Users className="w-4 h-4 text-[#C29B38]" />
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-xs font-bold uppercase tracking-wider text-emerald-900 mb-3">
+            <Users className="w-4 h-4 text-emerald-600" />
             <span>Our Team & Lead Assessors</span>
           </div>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#0B1713] tracking-tight leading-tight">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#062E21] tracking-tight leading-tight">
             Consulting experience that strengthens audit readiness
           </h2>
           <p className="text-base text-neutral-600 mt-2 font-normal">
@@ -93,17 +93,17 @@ export const TeamShowcase: React.FC<TeamShowcaseProps> = ({ onNavigate }) => {
           
           {/* Real Advisory Team Photography */}
           <div ref={photoRef} className="lg:col-span-5">
-            <div className="rounded-2xl overflow-hidden border border-[#D4AF37]/45 shadow-xl group relative bg-[#FAF0D4]/30">
+            <div className="rounded-2xl overflow-hidden border border-emerald-900/15 shadow-xl group relative bg-white">
               <img
                 src="/src/assets/images/team_consulting_operations_1791962117427.jpg"
                 alt="ESSOR consulting team conducting technical review in facility conference room"
                 referrerPolicy="no-referrer"
                 className="w-full h-80 object-cover transition-transform duration-700 group-hover:scale-105"
               />
-              <div className="p-4 bg-[#10241D] text-white space-y-1 border-t border-[#D4AF37]/30">
+              <div className="p-4 bg-[#062E21] text-white space-y-1 border-t border-emerald-700/30">
                 <div className="flex items-center gap-2">
-                  <Logo variant="icon-only" size="sm" className="w-3.5 h-3.5 scale-75" />
-                  <span className="text-[11px] font-bold uppercase tracking-wider text-[#F5DC9A]">
+                  <Logo variant="icon-only" size="sm" className="w-4 h-4" />
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-emerald-300">
                     Technical Review & Advisory Governance
                   </span>
                 </div>
@@ -119,21 +119,21 @@ export const TeamShowcase: React.FC<TeamShowcaseProps> = ({ onNavigate }) => {
             {TEAM_CAPABILITIES.map((member, idx) => (
               <div
                 key={idx}
-                className="p-5 rounded-2xl bg-white border border-[#D4AF37]/30 shadow-xs space-y-2 hover:border-[#D4AF37] hover:shadow-md transition-all group hover:-translate-y-1"
+                className="p-5 rounded-2xl bg-white border border-emerald-900/10 shadow-xs space-y-2 hover:border-emerald-500 hover:shadow-md transition-all group hover:-translate-y-1"
               >
                 <div className="flex items-center justify-between">
-                  <div className="w-8 h-8 rounded-lg bg-[#0C1A15] text-[#F5DC9A] border border-[#D4AF37]/40 flex items-center justify-center font-bold text-xs shadow-xs">
+                  <div className="w-8 h-8 rounded-lg bg-[#062E21] text-emerald-300 border border-emerald-500/40 flex items-center justify-center font-bold text-xs shadow-xs">
                     0{idx + 1}
                   </div>
-                  <span className="text-[10px] uppercase font-bold text-[#876212] px-2 py-0.5 rounded bg-[#FAF0D4]">
+                  <span className="text-[10px] uppercase font-bold text-emerald-800 px-2 py-0.5 rounded bg-emerald-50 border border-emerald-200/80">
                     Pillar
                   </span>
                 </div>
                 
-                <h3 className="text-sm font-bold text-[#0B1713] group-hover:text-[#876212] transition-colors">
+                <h3 className="text-sm font-bold text-[#062E21] group-hover:text-emerald-700 transition-colors">
                   {member.group}
                 </h3>
-                <p className="text-xs font-semibold text-[#876212]">
+                <p className="text-xs font-semibold text-emerald-800">
                   {member.subtitle}
                 </p>
                 <p className="text-xs text-neutral-600 leading-relaxed pt-1">
@@ -149,10 +149,10 @@ export const TeamShowcase: React.FC<TeamShowcaseProps> = ({ onNavigate }) => {
         <div className="text-center">
           <button
             onClick={() => onNavigate('/team')}
-            className="text-xs font-bold uppercase tracking-wider text-[#0B1713] hover:text-[#876212] inline-flex items-center gap-1.5 cursor-pointer group"
+            className="text-xs font-bold uppercase tracking-wider text-[#062E21] hover:text-emerald-700 inline-flex items-center gap-1.5 cursor-pointer group"
           >
             <span>Read Full Team Capability Profile & Advisory Standards</span>
-            <ArrowRight className="w-3.5 h-3.5 text-[#876212] transition-transform group-hover:translate-x-1" />
+            <ArrowRight className="w-3.5 h-3.5 text-emerald-600 transition-transform group-hover:translate-x-1" />
           </button>
         </div>
 

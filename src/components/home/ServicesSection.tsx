@@ -96,16 +96,16 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
     <section 
       id="services-section"
       ref={sectionRef} 
-      className="py-16 sm:py-20 bg-white border-b border-[#D4AF37]/25 relative overflow-hidden"
+      className="py-16 sm:py-20 bg-white border-b border-emerald-900/10 relative overflow-hidden"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div ref={headerRef} className="max-w-3xl mb-8">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FAF0D4] border border-[#D4AF37]/45 text-xs font-bold uppercase tracking-wider text-[#876212] mb-3">
-            <Sparkles className="w-3.5 h-3.5 text-[#D4AF37]" />
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-xs font-bold uppercase tracking-wider text-emerald-900 mb-3">
+            <Sparkles className="w-3.5 h-3.5 text-emerald-600" />
             <span>Consulting & Managed Execution</span>
           </div>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#0B1713] tracking-tight leading-tight">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#062E21] tracking-tight leading-tight">
             Support for every stage of your compliance journey
           </h2>
           <p className="text-base text-neutral-600 mt-2 font-normal">
@@ -120,7 +120,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
               type="button"
               onClick={() => moveRail(-1)}
               aria-label="Show previous services"
-              className="w-9 h-9 inline-flex items-center justify-center rounded-full border border-green-200 bg-white text-green-800 shadow-sm transition hover:bg-green-50 hover:border-green-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-600"
+              className="w-9 h-9 inline-flex items-center justify-center rounded-full border border-emerald-200 bg-white text-emerald-800 shadow-sm transition hover:bg-emerald-50 hover:border-emerald-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600"
             >
               <ChevronLeft className="w-4 h-4" />
             </button>
@@ -128,7 +128,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
               type="button"
               onClick={() => moveRail(1)}
               aria-label="Show next services"
-              className="w-9 h-9 inline-flex items-center justify-center rounded-full border border-green-200 bg-white text-green-800 shadow-sm transition hover:bg-green-50 hover:border-green-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-600"
+              className="w-9 h-9 inline-flex items-center justify-center rounded-full border border-emerald-200 bg-white text-emerald-800 shadow-sm transition hover:bg-emerald-50 hover:border-emerald-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600"
             >
               <ChevronRight className="w-4 h-4" />
             </button>
@@ -145,11 +145,11 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
           {services.length > 0 ? [...services, ...services].map((srv, idx) => (
             <div
               key={`${srv.id}-${idx}`}
-              className="group w-[290px] sm:w-[320px] shrink-0 p-6 rounded-2xl border border-[#D4AF37]/30 bg-[#FAF9F5] hover:bg-white hover:border-[#D4AF37] hover:shadow-xl transition-all duration-300 flex flex-col justify-between hover:-translate-y-1"
+              className="group w-[290px] sm:w-[320px] shrink-0 p-6 rounded-2xl border border-emerald-900/10 bg-[#F8FAFC] hover:bg-white hover:border-emerald-500 hover:shadow-xl transition-all duration-300 flex flex-col justify-between hover:-translate-y-1"
             >
               <div className="space-y-3.5">
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-mono font-bold text-[#876212] px-2.5 py-0.5 rounded-md bg-[#FAF0D4] border border-[#D4AF37]/30">
+                  <span className="text-xs font-mono font-bold text-emerald-800 px-2.5 py-0.5 rounded-md bg-emerald-100/70 border border-emerald-200">
                     0{(idx % services.length) + 1}.
                   </span>
                   <span className="text-[11px] font-bold uppercase tracking-wider text-neutral-500">
@@ -157,7 +157,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
                   </span>
                 </div>
 
-                <h3 className="text-lg font-bold text-[#0B1713] group-hover:text-[#876212] transition-colors">
+                <h3 className="text-lg font-bold text-[#062E21] group-hover:text-emerald-700 transition-colors">
                   {srv.title}
                 </h3>
 
@@ -165,40 +165,40 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
                   {srv.shortDescription}
                 </p>
 
-                <ul className="space-y-1.5 pt-2 border-t border-[#D4AF37]/20">
+                <ul className="space-y-1.5 pt-2 border-t border-emerald-900/10">
                   {srv.deliverables.slice(0, 3).map((item, dIdx) => (
                     <li key={dIdx} className="text-[12px] text-neutral-700 flex items-start gap-2">
-                      <CheckCircle2 className="w-3.5 h-3.5 text-[#C29B38] shrink-0 mt-0.5" />
+                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" />
                       <span className="line-clamp-1">{item}</span>
                     </li>
                   ))}
                 </ul>
               </div>
 
-              <div className="pt-5 mt-4 border-t border-[#D4AF37]/20 flex items-center justify-between">
+              <div className="pt-5 mt-4 border-t border-emerald-900/10 flex items-center justify-between">
                 <button
                   onClick={() => onNavigate(`/services/${srv.slug}`)}
-                  className="inline-flex items-center gap-1.5 text-xs font-bold text-[#0B1713] hover:text-[#876212] transition-colors cursor-pointer group/link"
+                  className="inline-flex items-center gap-1.5 text-xs font-bold text-[#062E21] hover:text-emerald-700 transition-colors cursor-pointer group/link"
                 >
                   <span>View Service Scope</span>
-                  <ChevronRight className="w-3.5 h-3.5 text-[#876212] transition-transform group-hover/link:translate-x-1" />
+                  <ChevronRight className="w-3.5 h-3.5 text-emerald-600 transition-transform group-hover/link:translate-x-1" />
                 </button>
 
                 <button
                   onClick={() => onOpenEnquiry(srv.slug)}
-                  className="text-xs font-bold text-[#876212] hover:text-[#0B1713] underline underline-offset-2 cursor-pointer"
+                  className="text-xs font-bold text-emerald-700 hover:text-[#062E21] underline underline-offset-2 cursor-pointer"
                 >
                   Enquire
                 </button>
               </div>
             </div>
           )) : (
-            <div className="w-[320px] rounded-2xl border border-[#D4AF37]/30 bg-[#FAF9F5] px-6 py-8 text-center">
-              <p className="text-sm font-semibold text-[#0B1713]">Our service catalogue is loading.</p>
+            <div className="w-[320px] rounded-2xl border border-emerald-900/15 bg-[#F8FAFC] px-6 py-8 text-center">
+              <p className="text-sm font-semibold text-[#062E21]">Our service catalogue is loading.</p>
               <p className="mt-1 text-xs text-neutral-600">You can still contact our food-safety team to discuss your requirements.</p>
               <button
                 onClick={() => onOpenEnquiry()}
-                className="mt-4 text-xs font-bold text-[#876212] underline underline-offset-4 cursor-pointer"
+                className="mt-4 text-xs font-bold text-emerald-700 underline underline-offset-4 cursor-pointer"
               >
                 Discuss your requirements
               </button>
@@ -207,9 +207,9 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
           </div>
         </div>
 
-        <div ref={bannerRef} className="mt-12 p-6 rounded-2xl bg-[#FAF0D4]/40 border border-[#D4AF37]/40 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <div ref={bannerRef} className="mt-12 p-6 rounded-2xl bg-emerald-50/60 border border-emerald-200/80 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <div>
-            <h4 className="text-sm font-bold text-[#0B1713]">
+            <h4 className="text-sm font-bold text-[#062E21]">
               Our Adaptive Scope Role
             </h4>
             <p className="text-xs text-neutral-600 mt-1 max-w-2xl">
@@ -218,7 +218,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
           </div>
           <button
             onClick={() => onNavigate('/services')}
-            className="px-6 py-3 text-xs font-bold uppercase tracking-wider text-[#0A1310] bg-gradient-to-r from-[#F5DC9A] via-[#D4AF37] to-[#B38728] hover:brightness-105 active:scale-[0.98] rounded-xl transition-all shadow-md shadow-[#D4AF37]/20 shrink-0 cursor-pointer"
+            className="px-6 py-3 text-xs font-bold uppercase tracking-wider text-white bg-gradient-to-r from-[#062E21] via-[#0E5C3A] to-[#15803D] hover:from-[#042419] hover:via-[#0B4A2F] hover:to-[#166534] active:scale-[0.98] rounded-xl transition-all shadow-md shadow-emerald-950/20 ring-1 ring-emerald-400/30 shrink-0 cursor-pointer"
           >
             Browse All Services
           </button>

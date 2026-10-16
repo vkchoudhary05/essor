@@ -109,18 +109,18 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
         aria-labelledby="enquiry-modal-title"
       >
         {/* Header bar */}
-        <div className="flex items-center justify-between px-6 py-4 bg-[#142B3A] text-white">
+        <div className="flex items-center justify-between px-6 py-4 bg-[#062E21] text-white border-b border-emerald-800/40">
           <div>
             <h3 id="enquiry-modal-title" className="text-lg font-bold">
               Discuss Your Requirements
             </h3>
-            <p className="text-xs text-neutral-300">
+            <p className="text-xs text-emerald-200">
               Direct consultation with our food-safety and audit-readiness specialists
             </p>
           </div>
           <button
             onClick={onClose}
-            className="p-1.5 rounded-lg text-neutral-300 hover:text-white hover:bg-white/10 transition-colors"
+            className="p-1.5 rounded-lg text-emerald-300 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
             aria-label="Close dialog"
           >
             <X className="w-5 h-5" />
@@ -140,14 +140,14 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
                 Thank you for reaching out to ESSOR Compliance Solutions. Our technical team has received your enquiry and will review your facility requirements.
               </p>
               
-              <div className="p-4 rounded-lg bg-neutral-50 border border-neutral-200 max-w-sm mx-auto text-center space-y-1">
-                <span className="text-xs uppercase tracking-wider text-neutral-500 font-medium">
+              <div className="p-4 rounded-lg bg-emerald-50/60 border border-emerald-200 max-w-sm mx-auto text-center space-y-1">
+                <span className="text-xs uppercase tracking-wider text-emerald-800 font-bold">
                   Your Reference Number
                 </span>
-                <div className="text-xl font-mono font-bold text-[#142B3A] select-all">
+                <div className="text-xl font-mono font-bold text-[#062E21] select-all">
                   {submittedRef}
                 </div>
-                <p className="text-[11px] text-neutral-400">
+                <p className="text-[11px] text-neutral-500">
                   Please keep this reference for follow-up communications.
                 </p>
               </div>
@@ -155,7 +155,7 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
               <div className="pt-4">
                 <button
                   onClick={onClose}
-                  className="px-6 py-2.5 text-xs font-semibold uppercase tracking-wider text-white bg-[#142B3A] hover:bg-[#1f3f54] rounded-lg transition-colors"
+                  className="px-6 py-2.5 text-xs font-bold uppercase tracking-wider text-white bg-[#062E21] hover:bg-[#041F16] rounded-xl transition-colors cursor-pointer shadow-sm"
                 >
                   Return to Website
                 </button>
@@ -181,7 +181,7 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
                     value={formData.name}
                     onChange={e => setFormData({ ...formData, name: e.target.value })}
                     placeholder="e.g. Sunil Mehta"
-                    className="w-full px-3 py-2 text-sm rounded-lg border border-neutral-300 focus:outline-none focus:ring-2 focus:ring-[#547565] focus:border-transparent"
+                    className="w-full px-3 py-2 text-sm rounded-lg border border-neutral-300 focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:border-emerald-600"
                   />
                 </div>
 
@@ -195,7 +195,7 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
                     value={formData.email}
                     onChange={e => setFormData({ ...formData, email: e.target.value })}
                     placeholder="name@company.com"
-                    className="w-full px-3 py-2 text-sm rounded-lg border border-neutral-300 focus:outline-none focus:ring-2 focus:ring-[#547565] focus:border-transparent"
+                    className="w-full px-3 py-2 text-sm rounded-lg border border-neutral-300 focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:border-emerald-600"
                   />
                 </div>
               </div>
@@ -211,7 +211,7 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
                     value={formData.companyName}
                     onChange={e => setFormData({ ...formData, companyName: e.target.value })}
                     placeholder="e.g. AgroNutri Global Exports"
-                    className="w-full px-3 py-2 text-sm rounded-lg border border-neutral-300 focus:outline-none focus:ring-2 focus:ring-[#547565] focus:border-transparent"
+                    className="w-full px-3 py-2 text-sm rounded-lg border border-neutral-300 focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:border-emerald-600"
                   />
                 </div>
 
@@ -224,7 +224,7 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
                     value={formData.phone}
                     onChange={e => setFormData({ ...formData, phone: e.target.value })}
                     placeholder="+91 98200 00000"
-                    className="w-full px-3 py-2 text-sm rounded-lg border border-neutral-300 focus:outline-none focus:ring-2 focus:ring-[#547565] focus:border-transparent"
+                    className="w-full px-3 py-2 text-sm rounded-lg border border-neutral-300 focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:border-emerald-600"
                   />
                 </div>
               </div>
@@ -237,7 +237,7 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
                   <select
                     value={formData.serviceId}
                     onChange={e => setFormData({ ...formData, serviceId: e.target.value })}
-                    className="w-full px-3 py-2 text-sm rounded-lg border border-neutral-300 bg-white focus:outline-none focus:ring-2 focus:ring-[#547565] focus:border-transparent"
+                    className="w-full px-3 py-2 text-sm rounded-lg border border-neutral-300 bg-white focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:border-emerald-600"
                   >
                     <option value="">Select a service category...</option>
                     {services.map(s => (
@@ -257,7 +257,7 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
                     value={formData.auditStandard}
                     onChange={e => setFormData({ ...formData, auditStandard: e.target.value })}
                     placeholder="e.g. BRCGS, FSSC 22000, HACCP, FSSAI"
-                    className="w-full px-3 py-2 text-sm rounded-lg border border-neutral-300 focus:outline-none focus:ring-2 focus:ring-[#547565] focus:border-transparent"
+                    className="w-full px-3 py-2 text-sm rounded-lg border border-neutral-300 focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:border-emerald-600"
                   />
                 </div>
               </div>
@@ -271,7 +271,7 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
                   value={formData.message}
                   onChange={e => setFormData({ ...formData, message: e.target.value })}
                   placeholder="Tell us about your processing lines, upcoming audit schedule, or specific compliance gaps..."
-                  className="w-full px-3 py-2 text-sm rounded-lg border border-neutral-300 focus:outline-none focus:ring-2 focus:ring-[#547565] focus:border-transparent resize-none"
+                  className="w-full px-3 py-2 text-sm rounded-lg border border-neutral-300 focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:border-emerald-600 resize-none"
                 />
               </div>
 
@@ -284,7 +284,7 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
                     name="preferredMethod"
                     checked={formData.preferredContactMethod === 'EMAIL'}
                     onChange={() => setFormData({ ...formData, preferredContactMethod: 'EMAIL' })}
-                    className="text-[#547565] focus:ring-[#547565]"
+                    className="text-[#062E21] focus:ring-emerald-600"
                   />
                   <span>Email</span>
                 </label>
@@ -294,7 +294,7 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
                     name="preferredMethod"
                     checked={formData.preferredContactMethod === 'PHONE'}
                     onChange={() => setFormData({ ...formData, preferredContactMethod: 'PHONE' })}
-                    className="text-[#547565] focus:ring-[#547565]"
+                    className="text-[#062E21] focus:ring-emerald-600"
                   />
                   <span>Phone</span>
                 </label>
@@ -304,7 +304,7 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
                     name="preferredMethod"
                     checked={formData.preferredContactMethod === 'EITHER'}
                     onChange={() => setFormData({ ...formData, preferredContactMethod: 'EITHER' })}
-                    className="text-[#547565] focus:ring-[#547565]"
+                    className="text-[#062E21] focus:ring-emerald-600"
                   />
                   <span>Either</span>
                 </label>
@@ -318,7 +318,7 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
                     required
                     checked={formData.privacyAcknowledged}
                     onChange={e => setFormData({ ...formData, privacyAcknowledged: e.target.checked })}
-                    className="mt-0.5 rounded text-[#547565] focus:ring-[#547565]"
+                    className="mt-0.5 rounded text-[#062E21] focus:ring-emerald-600"
                   />
                   <span className="text-xs text-neutral-500 leading-snug">
                     I acknowledge that ESSOR Compliance Solutions provides independent food-safety consulting and audit preparation support, and I agree to have my business enquiry processed in accordance with the privacy policy.
@@ -331,7 +331,7 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
                 <button
                   type="button"
                   onClick={onClose}
-                  className="px-4 py-2 text-xs font-semibold uppercase tracking-wider text-neutral-600 hover:text-neutral-900 transition-colors"
+                  className="px-4 py-2 text-xs font-semibold uppercase tracking-wider text-neutral-600 hover:text-neutral-900 transition-colors cursor-pointer"
                 >
                   Cancel
                 </button>
@@ -339,7 +339,7 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="inline-flex items-center gap-2 px-5 py-2.5 text-xs font-semibold uppercase tracking-wider text-white bg-[#142B3A] hover:bg-[#1f3f54] active:bg-[#0f212c] rounded-lg transition-colors disabled:opacity-50"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-white bg-gradient-to-r from-[#062E21] via-[#0E5C3A] to-[#15803D] hover:from-[#042419] hover:via-[#0B4A2F] hover:to-[#166534] active:scale-[0.98] rounded-xl transition-all shadow-md shadow-emerald-950/20 ring-1 ring-emerald-400/30 disabled:opacity-50 cursor-pointer"
                 >
                   {isSubmitting ? (
                     <>

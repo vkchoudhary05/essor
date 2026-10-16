@@ -5,12 +5,8 @@ import {
   Mail, 
   ArrowRight, 
   ShieldCheck, 
-  UserCheck, 
-  CheckCircle,
-  Building2,
-  GraduationCap,
-  FileCheck,
-  ChevronLeft
+  ChevronLeft,
+  Sparkles
 } from 'lucide-react';
 import { User, UserRole } from '../../types';
 import { StorageService } from '../../services/storage';
@@ -113,14 +109,14 @@ export const LoginPage: React.FC<LoginPageProps> = ({
   };
 
   return (
-    <div className="w-full bg-[#fafbf9] py-16 min-h-screen">
+    <div className="w-full bg-[#F8FAFC] py-16 min-h-screen">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
         
         <button
           onClick={() => onNavigate('/')}
-          className="inline-flex items-center gap-1.5 text-xs font-semibold text-neutral-500 hover:text-[#142B3A] transition-colors"
+          className="inline-flex items-center gap-1.5 text-xs font-bold text-neutral-500 hover:text-emerald-700 transition-colors cursor-pointer group"
         >
-          <ChevronLeft className="w-4 h-4" />
+          <ChevronLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
           <span>Return to Homepage</span>
         </button>
 
@@ -128,15 +124,16 @@ export const LoginPage: React.FC<LoginPageProps> = ({
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           
           {/* Left: Role Switcher / Instant Demo Auth */}
-          <div className="lg:col-span-7 bg-white p-8 rounded-2xl border border-neutral-200 shadow-sm space-y-5">
-            <div className="border-b border-neutral-100 pb-4">
-              <span className="text-xs font-semibold uppercase tracking-wider text-[#547565]">
-                Role-Based Access Control (RBAC)
-              </span>
-              <h2 className="text-xl font-bold text-[#142B3A] mt-1">
+          <div className="lg:col-span-7 bg-white p-8 sm:p-10 rounded-2xl border border-emerald-900/10 shadow-xl space-y-5">
+            <div className="border-b border-emerald-900/10 pb-4">
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-xs font-bold uppercase tracking-wider text-emerald-900 mb-2">
+                <Sparkles className="w-3.5 h-3.5 text-emerald-600" />
+                <span>Role-Based Access Control (RBAC)</span>
+              </div>
+              <h2 className="text-xl font-bold text-[#062E21] mt-1">
                 Select Persona for Immediate Portal Access
               </h2>
-              <p className="text-xs text-neutral-500 mt-1">
+              <p className="text-xs text-neutral-500 mt-1 font-normal">
                 Test the application from any perspective with isolated permissions and workflows:
               </p>
             </div>
@@ -148,25 +145,25 @@ export const LoginPage: React.FC<LoginPageProps> = ({
                   <div
                     key={p.role}
                     onClick={() => handleSelectPersona(p)}
-                    className={`p-3.5 rounded-xl border transition-all cursor-pointer flex items-center justify-between gap-4 ${
+                    className={`p-3.5 rounded-xl border transition-all cursor-pointer flex items-center justify-between gap-4 group ${
                       isCurrent 
-                        ? 'bg-neutral-50 border-[#142B3A] ring-1 ring-[#142B3A]/20' 
-                        : 'bg-white border-neutral-200 hover:border-neutral-400 hover:bg-neutral-50/50'
+                        ? 'bg-emerald-50/70 border-emerald-500 ring-1 ring-emerald-500/30' 
+                        : 'bg-white border-neutral-200 hover:border-emerald-400 hover:bg-emerald-50/30'
                     }`}
                   >
                     <div className="min-w-0">
                       <div className="flex items-center gap-2">
-                        <span className="text-xs font-bold text-neutral-900">{p.name}</span>
-                        <span className="px-1.5 py-0.5 rounded text-[9px] font-bold uppercase bg-neutral-100 text-neutral-700">
+                        <span className="text-xs font-bold text-[#062E21] group-hover:text-emerald-700 transition-colors">{p.name}</span>
+                        <span className="px-1.5 py-0.5 rounded-md text-[9px] font-bold uppercase bg-emerald-100/70 text-emerald-900 border border-emerald-200/80">
                           {p.role}
                         </span>
                       </div>
-                      <p className="text-[11px] text-neutral-500 mt-0.5 line-clamp-1">{p.desc}</p>
+                      <p className="text-[11px] text-neutral-500 mt-0.5 line-clamp-1 font-normal">{p.desc}</p>
                     </div>
 
-                    <div className="flex items-center gap-1 text-xs font-bold text-[#142B3A] shrink-0">
+                    <div className="flex items-center gap-1 text-xs font-bold text-[#062E21] group-hover:text-emerald-700 shrink-0">
                       <span>Launch</span>
-                      <ArrowRight className="w-3.5 h-3.5" />
+                      <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
                     </div>
                   </div>
                 );
@@ -175,20 +172,20 @@ export const LoginPage: React.FC<LoginPageProps> = ({
           </div>
 
           {/* Right: Traditional Form Login */}
-          <div className="lg:col-span-5 bg-white p-8 rounded-2xl border border-neutral-200 shadow-sm space-y-5">
+          <div className="lg:col-span-5 bg-white p-8 rounded-2xl border border-emerald-900/10 shadow-xl space-y-5">
             <div>
-              <Logo size="sm" />
-              <h3 className="text-lg font-bold text-[#142B3A] mt-4">
+              <Logo size="md" />
+              <h3 className="text-lg font-bold text-[#062E21] mt-4">
                 Enterprise Credentials Login
               </h3>
-              <p className="text-xs text-neutral-500">
+              <p className="text-xs text-neutral-500 font-normal">
                 Single sign-on for corporate compliance staff and partners.
               </p>
             </div>
 
             <form onSubmit={handleFormLogin} className="space-y-4 text-xs">
               <div>
-                <label className="block font-semibold text-neutral-700 mb-1">
+                <label className="block font-bold text-neutral-700 mb-1">
                   Corporate Email
                 </label>
                 <div className="relative">
@@ -199,13 +196,13 @@ export const LoginPage: React.FC<LoginPageProps> = ({
                     value={email}
                     onChange={e => setEmail(e.target.value)}
                     placeholder="name@company.com"
-                    className="w-full pl-9 pr-3 py-2 text-xs border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#547565]"
+                    className="w-full pl-9 pr-3 py-2.5 text-xs rounded-xl border border-neutral-300 focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:border-emerald-600"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block font-semibold text-neutral-700 mb-1">
+                <label className="block font-bold text-neutral-700 mb-1">
                   Password
                 </label>
                 <div className="relative">
@@ -216,36 +213,36 @@ export const LoginPage: React.FC<LoginPageProps> = ({
                     value={password}
                     onChange={e => setPassword(e.target.value)}
                     placeholder="••••••••••••"
-                    className="w-full pl-9 pr-3 py-2 text-xs border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#547565]"
+                    className="w-full pl-9 pr-3 py-2.5 text-xs rounded-xl border border-neutral-300 focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:border-emerald-600"
                   />
                 </div>
               </div>
 
               <div className="flex items-center justify-between text-[11px]">
-                <label className="flex items-center gap-1.5 text-neutral-600 cursor-pointer">
+                <label className="flex items-center gap-1.5 text-neutral-600 cursor-pointer font-medium">
                   <input
                     type="checkbox"
                     checked={rememberMe}
                     onChange={e => setRememberMe(e.target.checked)}
-                    className="rounded text-[#547565]"
+                    className="rounded text-[#062E21] focus:ring-emerald-600"
                   />
                   <span>Remember session</span>
                 </label>
-                <button type="button" className="text-[#547565] hover:underline">
+                <button type="button" className="text-emerald-700 font-semibold hover:underline cursor-pointer">
                   Forgot password?
                 </button>
               </div>
 
               <button
                 type="submit"
-                className="w-full py-2.5 text-xs font-semibold uppercase tracking-wider text-white bg-[#142B3A] hover:bg-[#1e3f54] rounded-lg transition-colors shadow-xs"
+                className="w-full py-3.5 text-xs font-bold uppercase tracking-wider text-white bg-gradient-to-r from-[#062E21] via-[#0E5C3A] to-[#15803D] hover:from-[#042419] hover:via-[#0B4A2F] hover:to-[#166534] active:scale-[0.98] rounded-xl transition-all shadow-md shadow-emerald-950/20 ring-1 ring-emerald-400/30 cursor-pointer"
               >
                 Sign In to Platform
               </button>
             </form>
 
-            <div className="pt-3 border-t border-neutral-100 text-[11px] text-neutral-400 flex items-center gap-1.5">
-              <ShieldCheck className="w-4 h-4 text-[#547565] shrink-0" />
+            <div className="pt-3 border-t border-emerald-900/10 text-[11px] text-neutral-500 flex items-center gap-1.5 font-medium">
+              <ShieldCheck className="w-4 h-4 text-emerald-600 shrink-0" />
               <span>TLS encrypted session with audit log tracking</span>
             </div>
           </div>
