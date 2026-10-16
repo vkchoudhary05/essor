@@ -458,12 +458,15 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               >
                 {/* Real Photographic Card Header */}
                 <div className="relative aspect-[16/10] overflow-hidden bg-emerald-50/40">
-                  <img
-                    src={pillar.image}
-                    alt={pillar.alt}
-                    referrerPolicy="no-referrer"
-                    className="w-full h-full object-cover group-hover:scale-106 transition-transform duration-700 ease-out"
-                  />
+         
+<img
+  src={heroImage}
+  alt="Food safety auditor reviewing a clean food production facility"
+  className="w-full h-full object-cover object-center"
+  loading="eager"
+  fetchPriority="high"
+/>
+
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
                   
                   {/* Pillar Number Tag */}
