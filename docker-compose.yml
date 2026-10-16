@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: essor-compliance-platform
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      - DATABASE_URL=postgresql://essor_admin:essor_secure_pass@db:5432/essor_compliance_db?schema=public
+    depends_on:
+      db:
+        condition: service_healthy
+
+  db:
+    image: postgres:16-alpine
+    container_name: essor-postgres-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: essor_admin
+      POSTGRES_PASSWORD: essor_secure_pass
+      POSTGRES_DB: essor_compliance_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - essor_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U essor_admin -d essor_compliance_db"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  essor_pgdata:
+    driver: local

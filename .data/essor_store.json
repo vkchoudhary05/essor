@@ -1,0 +1,1027 @@
+{
+  "users": [
+    {
+      "id": "usr-1",
+      "name": "Vivek Baliyan (Lead Administrator)",
+      "email": "iamvivekbaliyan07@gmail.com",
+      "role": "SUPER_ADMIN",
+      "isActive": true,
+      "lastLoginAt": "2026-10-14T08:55:02.721Z"
+    },
+    {
+      "id": "usr-2",
+      "name": "Aditi Sharma (Operations Head)",
+      "email": "aditi.sharma@essorcompliance.com",
+      "role": "ADMIN",
+      "isActive": true
+    },
+    {
+      "id": "usr-3",
+      "name": "Vikram Sen (Lead Scheduler)",
+      "email": "vikram.sen@essorcompliance.com",
+      "role": "OPERATIONS_MANAGER",
+      "isActive": true
+    },
+    {
+      "id": "usr-4",
+      "name": "Dr. Priya Rao (Principal Food Technologist)",
+      "email": "priya.rao@essorcompliance.com",
+      "role": "TRAINER",
+      "isActive": true
+    },
+    {
+      "id": "usr-5",
+      "name": "Rajesh Verma (Lead Auditor)",
+      "email": "rajesh.verma@essorcompliance.com",
+      "role": "AUDITOR_CONSULTANT",
+      "isActive": true
+    },
+    {
+      "id": "usr-6",
+      "name": "Sunil Mehta (QA Director, AgroNutri)",
+      "email": "s.mehta@agronutriexports.com",
+      "role": "CLIENT_ADMIN",
+      "organizationId": "org-1",
+      "isActive": true
+    },
+    {
+      "id": "usr-7",
+      "name": "Anand Joshi (Shift QA Lead, AgroNutri)",
+      "email": "a.joshi@agronutriexports.com",
+      "role": "CLIENT_STAFF",
+      "organizationId": "org-1",
+      "siteId": "site-1",
+      "isActive": true
+    },
+    {
+      "id": "usr-8",
+      "name": "Neha Verma (Trainee / QA Specialist)",
+      "email": "neha.verma@agronutriexports.com",
+      "role": "PARTICIPANT",
+      "organizationId": "org-1",
+      "isActive": true
+    }
+  ],
+  "currentUser": {
+    "id": "usr-1",
+    "name": "Vivek Baliyan (Lead Administrator)",
+    "email": "iamvivekbaliyan07@gmail.com",
+    "role": "SUPER_ADMIN",
+    "isActive": true,
+    "lastLoginAt": "2026-10-14T08:55:02.721Z"
+  },
+  "organizations": [
+    {
+      "id": "org-1",
+      "legalName": "AgroNutri Global Exports Ltd.",
+      "code": "AGRO-01",
+      "industry": "Spices, Seasonings & Ready-to-Cook Blends",
+      "businessType": "Export Food Manufacturer",
+      "primaryEmail": "quality.assurance@agronutriexports.com",
+      "primaryPhone": "+91 20 4910 8800",
+      "headquartersAddress": "Plot 45, Chakan Industrial Area Phase II, Pune, Maharashtra 410501",
+      "assignedAccountManager": "Aditi Sharma",
+      "status": "ACTIVE",
+      "serviceAgreements": [
+        "BRCGS Food Safety Issue 9 Certification Readiness",
+        "Continuous Managed Compliance - Monthly GMP Reviews",
+        "Corporate Allergen Control & Validation Workshop"
+      ],
+      "sites": [
+        {
+          "id": "site-1",
+          "organizationId": "org-1",
+          "name": "Pune Spices Processing & Blending Unit 1",
+          "siteCode": "AGRO-PUN-01",
+          "address": "Plot 45, Chakan Phase II",
+          "city": "Pune",
+          "state": "Maharashtra",
+          "country": "India",
+          "contactName": "Sunil Mehta (QA Director)",
+          "contactEmail": "s.mehta@agronutriexports.com",
+          "contactPhone": "+91 98220 11223",
+          "applicableStandards": [
+            "BRCGS Food Safety",
+            "FSSC 22000",
+            "FSSAI Schedule 4",
+            "US FDA FSMA"
+          ],
+          "isActive": true,
+          "createdAt": "2025-11-10T08:00:00Z"
+        },
+        {
+          "id": "site-2",
+          "organizationId": "org-1",
+          "name": "Nashik Dehydrated Vegetables & Cryo-Grinding Unit",
+          "siteCode": "AGRO-NSK-02",
+          "address": "Gat No. 112, Dindori Agro-Processing Zone",
+          "city": "Nashik",
+          "state": "Maharashtra",
+          "country": "India",
+          "contactName": "Kavita Deshmukh (Plant QA Lead)",
+          "contactEmail": "k.deshmukh@agronutriexports.com",
+          "contactPhone": "+91 94231 44556",
+          "applicableStandards": [
+            "ISO 22000",
+            "HACCP",
+            "Halal Export Standard"
+          ],
+          "isActive": true,
+          "createdAt": "2026-01-15T09:30:00Z"
+        }
+      ],
+      "createdAt": "2025-11-01T10:00:00Z",
+      "updatedAt": "2026-03-28T14:00:00Z"
+    },
+    {
+      "id": "org-2",
+      "legalName": "PrimeBakes Confectionery LLP",
+      "code": "PRIME-02",
+      "industry": "Commercial Bakery, Pastries & Frozen Dough",
+      "businessType": "Retail & Quick Service Supply",
+      "primaryEmail": "compliance@primebakes.com",
+      "primaryPhone": "+91 80 2839 0044",
+      "headquartersAddress": "7th Cross, Peenya Industrial Area 3rd Stage, Bengaluru, Karnataka 560058",
+      "assignedAccountManager": "Vikram Sen",
+      "status": "ACTIVE",
+      "serviceAgreements": [
+        "FSSC 22000 Version 6 Transition & Gap Assessment",
+        "Hygiene Rating Verification"
+      ],
+      "sites": [
+        {
+          "id": "site-3",
+          "organizationId": "org-2",
+          "name": "Bengaluru Central Bakery Works",
+          "siteCode": "PRIME-BLR-01",
+          "address": "Peenya 3rd Stage",
+          "city": "Bengaluru",
+          "state": "Karnataka",
+          "country": "India",
+          "contactName": "Naveen Kumar",
+          "contactEmail": "naveen.k@primebakes.com",
+          "contactPhone": "+91 99000 88771",
+          "applicableStandards": [
+            "FSSC 22000",
+            "FSSAI Hygiene Rating",
+            "GMP"
+          ],
+          "isActive": true,
+          "createdAt": "2026-02-01T11:00:00Z"
+        }
+      ],
+      "createdAt": "2026-01-20T10:00:00Z",
+      "updatedAt": "2026-03-25T11:00:00Z"
+    }
+  ],
+  "visits": [
+    {
+      "id": "vst-1",
+      "visitReference": "ECS-VST-2026-012",
+      "organizationId": "org-1",
+      "organizationName": "AgroNutri Global Exports Ltd.",
+      "siteId": "site-1",
+      "siteName": "Pune Spices Processing & Blending Unit 1",
+      "siteAddress": "Plot 45, Chakan Phase II, Pune",
+      "consultantId": "usr-5",
+      "consultantName": "Rajesh Verma",
+      "scheduledDate": "2026-03-28T09:30:00Z",
+      "visitType": "MOCK_AUDIT",
+      "standardsScope": [
+        "BRCGS Food Safety Issue 9",
+        "FSSC 22000 V6"
+      ],
+      "status": "APPROVED",
+      "startTime": "09:30",
+      "endTime": "17:15",
+      "clientRepPresent": "Sunil Mehta (QA Director) & Anand Joshi (Shift QA Lead)",
+      "consultantSummaryNotes": "Facility demonstrates high GMP discipline in dry blending zones. Two major non-conformances flagged regarding metal detector challenge frequency and wall coving seals.",
+      "findingsCount": {
+        "critical": 0,
+        "major": 1,
+        "minor": 1,
+        "observations": 3
+      },
+      "reviewedBy": "Vivek Baliyan",
+      "reviewedAt": "2026-03-29T11:00:00Z",
+      "checklistResponses": [
+        {
+          "id": "chk-1",
+          "section": "1. Senior Management Commitment & Food Safety Culture",
+          "question": "Has management established clear food safety objectives, monthly review cadence, and an active confidential reporting channel for food safety concerns?",
+          "response": "COMPLIANT",
+          "observation": "Monthly food safety committee minutes reviewed for Q4 2025 and Jan-Feb 2026. Whistleblower policy posted at staff entrance."
+        },
+        {
+          "id": "chk-2",
+          "section": "2. Hazard Analysis & Critical Control Points (HACCP / OPRP)",
+          "question": "Are Critical Limits validated for CCP-1 (Rare Earth Magnet & Metal Detection on Powder Conveyor 3)?",
+          "response": "NON_COMPLIANT",
+          "severity": "MAJOR",
+          "observation": "Reject mechanism tested only with 2.0mm Ferrous; test protocol lacks documented verification with 2.5mm Non-Ferrous and 3.0mm Stainless Steel test pieces during shift handover.",
+          "correctiveActionRequired": true
+        },
+        {
+          "id": "chk-3",
+          "section": "3. Site Standards & Structural Cleanliness",
+          "question": "Are all walls, floor drains, and pipe penetrations sealed to prevent moisture ingress and pest harborage?",
+          "response": "NON_COMPLIANT",
+          "severity": "MINOR",
+          "observation": "Floor-to-wall epoxy coving in raw spice warehouse bay 2 shows 15cm hairline crack with minor moisture pooling.",
+          "correctiveActionRequired": true
+        }
+      ],
+      "createdAt": "2026-03-20T10:00:00Z",
+      "updatedAt": "2026-03-29T11:00:00Z"
+    }
+  ],
+  "sessions": [
+    {
+      "id": "sess-101",
+      "sessionCode": "ESSOR-TRN-2026-018",
+      "courseId": "crs-3",
+      "courseTitle": "FSSC Awareness & Internal Auditor",
+      "courseCategory": "Audit & Certification",
+      "trainerId": "usr-4",
+      "trainerName": "Dr. Priya Rao",
+      "organizationId": "org-1",
+      "organizationName": "AgroNutri Global Exports Ltd.",
+      "deliveryType": "On-site corporate",
+      "startDate": "2026-03-20T09:00:00Z",
+      "endDate": "2026-03-22T17:00:00Z",
+      "venueOrLink": "Conference Room 2, AgroNutri Pune Plant",
+      "status": "COMPLETED",
+      "maxSeats": 25,
+      "attendanceThresholdPercent": 80,
+      "passingAssessmentScore": 70,
+      "enrollments": [
+        {
+          "id": "enr-1",
+          "sessionId": "sess-101",
+          "participantId": "usr-8",
+          "participantName": "Neha Verma",
+          "participantEmail": "neha.verma@agronutriexports.com",
+          "organizationId": "org-1",
+          "organizationName": "AgroNutri Global Exports Ltd.",
+          "attendance": "PRESENT",
+          "attendanceMarkedAt": "2026-03-22T16:00:00Z",
+          "attendanceMarkedBy": "Dr. Priya Rao",
+          "assessmentScore": 92,
+          "assessmentStatus": "PASSED",
+          "assessmentRemarks": "Excellent understanding of FSSC Version 6 additional requirements and PRPs.",
+          "completionStatus": "APPROVED",
+          "approvedBy": "Vivek Baliyan",
+          "approvedAt": "2026-03-23T10:00:00Z",
+          "certificateId": "cert-1",
+          "certificateNumber": "ECS-CERT-2026-0089",
+          "enrolledAt": "2026-03-10T11:00:00Z"
+        }
+      ],
+      "createdAt": "2026-03-01T09:00:00Z",
+      "updatedAt": "2026-03-23T10:00:00Z"
+    }
+  ],
+  "certificates": [
+    {
+      "id": "cert-1",
+      "certificateNumber": "ECS-CERT-2026-0089",
+      "verificationToken": "vtf-89a3f2b1-2026",
+      "participantId": "usr-8",
+      "participantName": "Neha Verma",
+      "participantEmail": "neha.verma@agronutriexports.com",
+      "organizationName": "AgroNutri Global Exports Ltd.",
+      "courseId": "crs-3",
+      "courseTitle": "FSSC Awareness & Internal Auditor",
+      "sessionId": "sess-101",
+      "completionDate": "2026-03-22T17:00:00Z",
+      "durationHours": 16,
+      "gradeScore": 92,
+      "issueDate": "2026-03-23T10:00:00Z",
+      "issuedByName": "Vivek Baliyan",
+      "issuedByRole": "Principal Lead Auditor",
+      "status": "ISSUED",
+      "verificationCount": 8,
+      "createdAt": "2026-03-23T10:00:00Z",
+      "updatedAt": "2026-10-14T08:55:13.803Z"
+    }
+  ],
+  "capas": [
+    {
+      "id": "capa-1",
+      "referenceNumber": "CAPA-2026-034",
+      "organizationId": "org-1",
+      "organizationName": "AgroNutri Global Exports Ltd.",
+      "siteId": "site-1",
+      "siteName": "Pune Spices Processing & Blending Unit 1",
+      "sourceVisitId": "vst-1",
+      "sourceVisitRef": "ECS-VST-2026-012",
+      "findingTitle": "CCP-1 Metal Detector Multi-Specimen Challenge Frequency",
+      "findingDescription": "Metal detector challenge on powder conveyor 3 lacked testing with 2.5mm Non-Ferrous and 3.0mm Stainless Steel test pieces at shift changes.",
+      "severity": "MAJOR",
+      "standardClause": "BRCGS Clause 2.12 & FSSC Requirement 2.5.4",
+      "rootCauseAnalysis": "Operator training syllabus previously covered only ferrous challenge pieces. Shift log sheet did not have dedicated columns for 3-metal specimen verification.",
+      "immediateCorrection": "Updated hourly CCP log sheet to mandate recording Fe 2.0mm, Non-Fe 2.5mm, and SS 3.0mm challenge results.",
+      "preventiveActionPlan": "Procured certified test rods and trained 14 operators on line 3. Instituted QA supervisor verification twice per shift.",
+      "responsiblePerson": "Anand Joshi (Shift QA Lead)",
+      "responsibleEmail": "a.joshi@agronutriexports.com",
+      "dueDate": "2026-04-10T18:00:00Z",
+      "status": "SUBMITTED_FOR_REVIEW",
+      "isOverdue": false,
+      "evidenceList": [
+        {
+          "id": "ev-1",
+          "uploadedBy": "Anand Joshi",
+          "uploadedByRole": "CLIENT_STAFF",
+          "filename": "Revised_CCP_Hourly_LogSheet_Line3.pdf",
+          "notes": "Attached scanned signed log sheet showing 3-piece test implementation over 7 consecutive days with zero failures.",
+          "createdAt": "2026-04-02T14:30:00Z"
+        }
+      ],
+      "createdAt": "2026-03-28T16:00:00Z",
+      "updatedAt": "2026-04-02T14:30:00Z"
+    }
+  ],
+  "enquiries": [
+    {
+      "id": "enq-101",
+      "referenceNumber": "ECS-2026-0041",
+      "name": "Sunil Mehta",
+      "email": "s.mehta@agronutriexports.com",
+      "phone": "+91 98201 44512",
+      "companyName": "AgroNutri Global Exports Ltd.",
+      "industry": "Spices & Processed Agriculture",
+      "serviceId": "srv-1",
+      "serviceTitle": "Audit & Certification Readiness",
+      "auditStandard": "BRCGS & FSSC 22000",
+      "preferredContactMethod": "EMAIL",
+      "message": "We are expanding our seasoning blending facility and need a gap assessment and complete mock audit ahead of a BRCGS unannounced surveillance audit in Q3.",
+      "status": "QUALIFIED",
+      "assignedTo": "rajesh.verma@essorcompliance.com",
+      "sourcePage": "/services/audit-readiness",
+      "privacyAcknowledged": true,
+      "notes": [
+        {
+          "id": "note-1",
+          "enquiryId": "enq-101",
+          "authorName": "Rajesh Verma",
+          "authorEmail": "rajesh.verma@essorcompliance.com",
+          "note": "Completed preliminary phone call. Client operates 2 processing lines in Pune. Scope document prepared.",
+          "createdAt": "2026-10-12T08:55:02.721Z"
+        }
+      ],
+      "statusHistory": [
+        {
+          "id": "hist-1",
+          "enquiryId": "enq-101",
+          "previousStatus": "NEW",
+          "newStatus": "CONTACTED",
+          "changedByName": "Rajesh Verma",
+          "changedByEmail": "rajesh.verma@essorcompliance.com",
+          "reason": "Initial intake discovery call scheduled",
+          "createdAt": "2026-10-11T08:55:02.721Z"
+        },
+        {
+          "id": "hist-2",
+          "enquiryId": "enq-101",
+          "previousStatus": "CONTACTED",
+          "newStatus": "QUALIFIED",
+          "changedByName": "Rajesh Verma",
+          "changedByEmail": "rajesh.verma@essorcompliance.com",
+          "reason": "Requirements match Audit Readiness Scope A",
+          "createdAt": "2026-10-12T08:55:02.721Z"
+        }
+      ],
+      "createdAt": "2026-10-10T08:55:02.721Z",
+      "updatedAt": "2026-10-12T08:55:02.721Z"
+    },
+    {
+      "id": "enq-102",
+      "referenceNumber": "ECS-2026-0042",
+      "name": "Kavita Sundaram",
+      "email": "kavita@primebakes.in",
+      "phone": "+91 97412 88910",
+      "companyName": "PrimeBakes Confectionery LLP",
+      "industry": "Bakery & Confectionery",
+      "serviceId": "srv-2",
+      "serviceTitle": "Managed Food-Safety Support",
+      "auditStandard": "FSSAI & GMP",
+      "preferredContactMethod": "PHONE",
+      "message": "Seeking monthly managed food safety reviews and allergen management protocol overhaul across our two commercial baking bakeries.",
+      "status": "NEW",
+      "sourcePage": "/services/managed-support",
+      "privacyAcknowledged": true,
+      "notes": [],
+      "statusHistory": [],
+      "createdAt": "2026-10-14T02:55:02.721Z",
+      "updatedAt": "2026-10-14T02:55:02.721Z"
+    },
+    {
+      "id": "enq-103",
+      "referenceNumber": "ECS-2026-0043",
+      "name": "Deepak Saxena",
+      "email": "d.saxena@oceanicfrozen.com",
+      "companyName": "Oceanic Frozen Seafoods Ltd.",
+      "industry": "Seafood & Cold Chain",
+      "serviceId": "srv-3",
+      "serviceTitle": "Training & Capability",
+      "auditStandard": "HACCP & Allergen",
+      "preferredContactMethod": "EMAIL",
+      "message": "Requesting on-site corporate training quote for 35 shift leaders on HACCP Implementation and Root Cause Analysis.",
+      "status": "PROPOSAL_SENT",
+      "assignedTo": "pooja.nair@essorcompliance.com",
+      "sourcePage": "/training",
+      "privacyAcknowledged": true,
+      "notes": [
+        {
+          "id": "note-2",
+          "enquiryId": "enq-103",
+          "authorName": "Pooja Nair",
+          "authorEmail": "pooja.nair@essorcompliance.com",
+          "note": "Sent proposal for 2-day on-site corporate package with practical cold-chain case studies.",
+          "createdAt": "2026-10-13T20:55:02.721Z"
+        }
+      ],
+      "statusHistory": [
+        {
+          "id": "hist-3",
+          "enquiryId": "enq-103",
+          "previousStatus": "NEW",
+          "newStatus": "PROPOSAL_SENT",
+          "changedByName": "Pooja Nair",
+          "changedByEmail": "pooja.nair@essorcompliance.com",
+          "reason": "Quotation delivered to client procurement",
+          "createdAt": "2026-10-13T20:55:02.721Z"
+        }
+      ],
+      "createdAt": "2026-10-13T08:55:02.721Z",
+      "updatedAt": "2026-10-13T20:55:02.721Z"
+    }
+  ],
+  "services": [
+    {
+      "id": "srv-1",
+      "slug": "audit-readiness",
+      "title": "Audit & Certification Readiness",
+      "category": "AUDIT_READINESS",
+      "shortDescription": "Gap assessment, documentation, implementation, mock audits, audit support and NC/CAPA closure.",
+      "fullDescription": "End-to-end support before, during and after an audit, with emphasis on evidence, implementation and structured closure. We guide organizations across international food safety standards, management systems, and specialized buyer protocols.",
+      "deliverables": [
+        "Evidence availability reviews and baseline gap assessments",
+        "Food safety management system documentation & SOP development",
+        "Operational implementation coaching & team readiness",
+        "Realistic mock audits simulating certification body rigor",
+        "Official audit coordination & technical rebuttal assistance",
+        "Non-conformity (NC) root cause analysis and CAPA verification closure"
+      ],
+      "applicableStandards": [
+        "FSSC 22000",
+        "ISO 22000",
+        "HACCP",
+        "GMP / GHP",
+        "BRCGS",
+        "SQF",
+        "IFS Food"
+      ],
+      "displayOrder": 1,
+      "status": "PUBLISHED",
+      "updatedAt": "2026-10-14T08:55:02.720Z"
+    },
+    {
+      "id": "srv-2",
+      "slug": "managed-support",
+      "title": "Managed Food-Safety Support",
+      "category": "MANAGED_SUPPORT",
+      "shortDescription": "Ongoing GMP/hygiene checks, supplier assurance, complaints, CAPA and food-safety team support.",
+      "fullDescription": "For teams that want additional operational support, we help maintain routines, evidence, actions and review cycles between audits so compliance remains active in everyday operations.",
+      "deliverables": [
+        "Monthly readiness reviews with findings registers and management-review inputs",
+        "GMP & Hygiene checklists, workplace observations, trend identification, and action tracking",
+        "Supplier assurance: qualification protocols, risk-based supplier audits, and follow-up",
+        "Customer complaint logging, root-cause investigation, trend analysis, and escalation protocols",
+        "CAPA support: root-cause analysis, corrective action execution, verification, and closure evidence",
+        "Food-safety team support: agendas, meeting cadence, KPI follow-up, and practical coaching"
+      ],
+      "displayOrder": 2,
+      "status": "PUBLISHED",
+      "updatedAt": "2026-10-14T08:55:02.721Z"
+    },
+    {
+      "id": "srv-3",
+      "slug": "training-capability",
+      "title": "Training & Capability",
+      "category": "TRAINING",
+      "shortDescription": "Food-safety, HACCP, GMP, internal auditing, regulatory and specialist training.",
+      "fullDescription": "Practical programs designed to strengthen awareness, technical knowledge and day-to-day food-safety capability across manufacturing, operations, and quality assurance personnel.",
+      "deliverables": [
+        "Open-enrolment and college/student career readiness programs",
+        "On-site corporate workshops aligned with factory floor realities",
+        "Virtual interactive sessions for multi-site and distributed teams",
+        "Customized client curriculum tailored to product risks and audit schemes",
+        "Practical role-based competency evaluations and post-training impact reviews"
+      ],
+      "displayOrder": 3,
+      "status": "PUBLISHED",
+      "updatedAt": "2026-10-14T08:55:02.721Z"
+    },
+    {
+      "id": "srv-4",
+      "slug": "digital-compliance",
+      "title": "Digital Compliance Support",
+      "category": "DIGITAL_COMPLIANCE",
+      "shortDescription": "Dashboards, digital inspections, action tracking, complaint workflows and document readiness.",
+      "fullDescription": "Digital tools can help your team organize evidence, track actions and maintain visibility across everyday food-safety activities. Technology supports your people by making compliance work visible and organized; it does not replace responsible food-safety decisions.",
+      "deliverables": [
+        "Compliance Dashboard: Visibility of actions, audits, documents, CAPA, and key indicators",
+        "Digital Inspections: Record GMP observations, owners, due dates, evidence, and actions",
+        "Knowledge Assistant: Fast, indexed retrieval of approved internal procedures and manuals",
+        "Complaint Workflow: Structured intake, RCA, corrective actions, and verification tracking",
+        "Regulatory Awareness: Surfacing relevant statutory updates and compliance action items",
+        "Audit Document Readiness: Support checklists and automated evidence workflows"
+      ],
+      "displayOrder": 4,
+      "status": "PUBLISHED",
+      "updatedAt": "2026-10-14T08:55:02.721Z"
+    },
+    {
+      "id": "srv-5",
+      "slug": "quality-management",
+      "title": "Quality & Management Systems",
+      "category": "QUALITY_MANAGEMENT",
+      "shortDescription": "Support related to ISO and other management-system requirements.",
+      "fullDescription": "Structured consulting and implementation support for integrated management systems, ensuring seamless harmony between food safety, quality management, environmental impact, and occupational safety.",
+      "deliverables": [
+        "ISO 9001 (Quality Management Systems) alignment and documentation",
+        "ISO 14001 (Environmental Management Systems) procedures and compliance register",
+        "ISO 45001 (Occupational Health & Safety) hazard assessment and operational controls",
+        "GMO / Non-GMO verification protocols, segregation procedures, and supplier validation",
+        "Integrated management system (IMS) internal audit preparation and gap mitigation"
+      ],
+      "applicableStandards": [
+        "ISO 9001",
+        "ISO 14001",
+        "ISO 45001",
+        "GMO / Non-GMO"
+      ],
+      "displayOrder": 5,
+      "status": "PUBLISHED",
+      "updatedAt": "2026-10-14T08:55:02.721Z"
+    },
+    {
+      "id": "srv-6",
+      "slug": "specialized-requirements",
+      "title": "Specialized Requirements",
+      "category": "SPECIALIZED_REQUIREMENTS",
+      "shortDescription": "Support for customer, regulatory and specialized food-safety requirements.",
+      "fullDescription": "Tailored consulting for customer-specific audit codes, export compliance mandates, religious dietary standards, and allergen-free certifications.",
+      "deliverables": [
+        "GFCO (Gluten-Free Certification Organization) scheme readiness and allergen segregation",
+        "Halal compliance frameworks, raw material traceability, and slaughter/process audits",
+        "Kosher compliance protocols, ingredient verification, and rabbinical audit support",
+        "Export Inspection Council / Agency (EIA) regulatory readiness for food exporters",
+        "Custom customer code-of-practice assessments and retailer technical standard readiness"
+      ],
+      "applicableStandards": [
+        "GFCO",
+        "Halal",
+        "Kosher",
+        "EIA (Export Inspection Agency)"
+      ],
+      "displayOrder": 6,
+      "status": "PUBLISHED",
+      "updatedAt": "2026-10-14T08:55:02.721Z"
+    }
+  ],
+  "courses": [
+    {
+      "id": "crs-1",
+      "slug": "food-safety-hygiene-fundamentals",
+      "title": "Food Safety & Hygiene Fundamentals",
+      "category": "Core Hygiene & Safety",
+      "summary": "Essential food hygiene practices, biological, chemical, and physical hazards, personal hygiene routines, and temperature control basics.",
+      "targetAudience": "Production supervisors, line operators, warehouse personnel, food handlers",
+      "keyTopics": [
+        "Cross-contamination vectors",
+        "Personal hygiene standards",
+        "Time and temperature abuse",
+        "Sanitation basics",
+        "First-line defect reporting"
+      ],
+      "deliveryModes": [
+        "Open-enrolment",
+        "College / student programs",
+        "On-site corporate",
+        "Virtual",
+        "Customized client curriculum"
+      ],
+      "duration": "1-2 Days (Configurable)",
+      "status": "PUBLISHED",
+      "displayOrder": 1,
+      "updatedAt": "2026-10-14T08:55:02.721Z"
+    },
+    {
+      "id": "crs-2",
+      "slug": "gmp-ghp-mastery",
+      "title": "GMP / GHP Implementation",
+      "category": "Core Hygiene & Safety",
+      "summary": "Practical execution of Good Manufacturing Practices and Good Hygiene Practices on the processing floor.",
+      "targetAudience": "Plant managers, hygiene officers, shift supervisors, maintenance leads",
+      "keyTopics": [
+        "Zoning and sanitary facility design",
+        "Cleaning and sanitization verification",
+        "Water and air quality checks",
+        "Foreign body prevention",
+        "Daily GMP walk inspection protocols"
+      ],
+      "deliveryModes": [
+        "On-site corporate",
+        "Virtual",
+        "Customized client curriculum"
+      ],
+      "duration": "2 Days",
+      "status": "PUBLISHED",
+      "displayOrder": 2,
+      "updatedAt": "2026-10-14T08:55:02.721Z"
+    },
+    {
+      "id": "crs-3",
+      "slug": "fssc-22000-internal-auditor",
+      "title": "FSSC Awareness & Internal Auditor",
+      "category": "Audit & Certification",
+      "summary": "Detailed breakdown of ISO 22000, sector-specific PRPs (ISO/TS 22002 series), and FSSC additional requirements with hands-on internal auditing exercises.",
+      "targetAudience": "Quality managers, internal audit teams, food safety team leaders",
+      "keyTopics": [
+        "FSSC Version 6 updates",
+        "PRP gap assessment techniques",
+        "Food defense and fraud vulnerability plans",
+        "Audit interview and evidence gathering",
+        "Audit report writing and NC classification"
+      ],
+      "deliveryModes": [
+        "Open-enrolment",
+        "On-site corporate",
+        "Virtual"
+      ],
+      "duration": "2-3 Days",
+      "status": "PUBLISHED",
+      "displayOrder": 3,
+      "updatedAt": "2026-10-14T08:55:02.721Z"
+    },
+    {
+      "id": "crs-4",
+      "slug": "iso-22000-awareness-internal-auditor",
+      "title": "ISO 22000 Awareness & Internal Auditor",
+      "category": "Audit & Certification",
+      "summary": "Mastering the Plan-Do-Check-Act cycle, hazard control plans (HACCP/OPRPs), and ISO 19011 audit guidelines for food safety management systems.",
+      "targetAudience": "Quality heads, department internal auditors, compliance managers",
+      "keyTopics": [
+        "Context of organization & risk-based thinking",
+        "OPRP vs CCP determination",
+        "Validation of control measures",
+        "Non-conformance escalation",
+        "Management review preparation"
+      ],
+      "deliveryModes": [
+        "Open-enrolment",
+        "On-site corporate",
+        "Virtual"
+      ],
+      "duration": "2 Days",
+      "status": "PUBLISHED",
+      "displayOrder": 4,
+      "updatedAt": "2026-10-14T08:55:02.721Z"
+    },
+    {
+      "id": "crs-5",
+      "slug": "haccp-implementation-team-training",
+      "title": "HACCP Implementation / Team Training",
+      "category": "Core Hygiene & Safety",
+      "summary": "The 12 steps and 7 Codex principles of Hazard Analysis and Critical Control Points, from flow diagrams to monitoring and corrective actions.",
+      "targetAudience": "Food Safety (HACCP) team members, process engineers, QA executives",
+      "keyTopics": [
+        "Product descriptions and intended use",
+        "Comprehensive hazard identification",
+        "Critical limit establishment",
+        "Monitoring system calibration",
+        "HACCP plan verification and re-validation"
+      ],
+      "deliveryModes": [
+        "On-site corporate",
+        "Customized client curriculum",
+        "Virtual"
+      ],
+      "duration": "2 Days",
+      "status": "PUBLISHED",
+      "displayOrder": 5,
+      "updatedAt": "2026-10-14T08:55:02.721Z"
+    },
+    {
+      "id": "crs-6",
+      "slug": "fssai-laws-and-regulations",
+      "title": "FSSAI Laws & Regulations",
+      "category": "Regulatory Compliance",
+      "summary": "Navigating statutory regulations, licensing, labeling standards, contaminant limits, FoSTaC compliance, and inspection readiness in India.",
+      "targetAudience": "Regulatory affairs managers, legal counsel, compliance executives, plant heads",
+      "keyTopics": [
+        "Food Safety and Standards Act 2006 framework",
+        "Licensing and registration nuances",
+        "Labeling and display amendments",
+        "Sampling procedures and legal rights",
+        "Annual returns and testing frequencies"
+      ],
+      "deliveryModes": [
+        "Open-enrolment",
+        "On-site corporate",
+        "Virtual"
+      ],
+      "duration": "1-2 Days",
+      "status": "PUBLISHED",
+      "displayOrder": 6,
+      "updatedAt": "2026-10-14T08:55:02.721Z"
+    },
+    {
+      "id": "crs-7",
+      "slug": "brcgs-awareness-internal-auditor",
+      "title": "BRCGS Awareness & Internal Auditor",
+      "category": "Audit & Certification",
+      "summary": "In-depth coverage of the BRCGS Global Food Safety Standard requirements, fundamental clauses, senior management commitment, and protocol expectations.",
+      "targetAudience": "QA managers, export manufacturers, BRCGS site coordinators",
+      "keyTopics": [
+        "Senior management commitment & culture",
+        "Environmental monitoring protocols",
+        "Pest and foreign material controls",
+        "Audit grading and non-conformity clearance timeline"
+      ],
+      "deliveryModes": [
+        "On-site corporate",
+        "Virtual",
+        "Open-enrolment"
+      ],
+      "duration": "2-3 Days",
+      "status": "PUBLISHED",
+      "displayOrder": 7,
+      "updatedAt": "2026-10-14T08:55:02.721Z"
+    },
+    {
+      "id": "crs-8",
+      "slug": "food-microbiology-and-safety",
+      "title": "Food Microbiology & Food Safety",
+      "category": "Technical & Science",
+      "summary": "Understanding critical food pathogens (Salmonella, Listeria, E. coli, Clostridium), environmental monitoring sampling plans, and laboratory test result interpretation.",
+      "targetAudience": "Microbiologists, lab chemists, sanitation supervisors, technical directors",
+      "keyTopics": [
+        "Pathogen ecology and survival kinetics",
+        "Environmental monitoring (EMP) zone mapping",
+        "Rapid testing vs reference culture methods",
+        "Investigation of out-of-spec test findings"
+      ],
+      "deliveryModes": [
+        "College / student programs",
+        "On-site corporate",
+        "Virtual"
+      ],
+      "duration": "2 Days",
+      "status": "PUBLISHED",
+      "displayOrder": 8,
+      "updatedAt": "2026-10-14T08:55:02.721Z"
+    },
+    {
+      "id": "crs-9",
+      "slug": "allergen-management",
+      "title": "Allergen Management",
+      "category": "Operational Risk",
+      "summary": "Robust identification, supply chain verification, cleaning validation (ATP/ELISA), production scheduling, and preventive cross-contact controls for major food allergens.",
+      "targetAudience": "R&D technologists, production managers, packaging coordinators, sanitation crew",
+      "keyTopics": [
+        "Major allergen lists across domestic and export markets",
+        "Cleaning validation vs verification",
+        "Rework policies and color-coded segregation",
+        "Precautionary allergen labeling (PAL)"
+      ],
+      "deliveryModes": [
+        "On-site corporate",
+        "Virtual",
+        "Customized client curriculum"
+      ],
+      "duration": "1 Day",
+      "status": "PUBLISHED",
+      "displayOrder": 9,
+      "updatedAt": "2026-10-14T08:55:02.721Z"
+    },
+    {
+      "id": "crs-10",
+      "slug": "pest-control-management",
+      "title": "Pest Control Management",
+      "category": "Operational Risk",
+      "summary": "Evaluating Integrated Pest Management (IPM) contractors, bait station layout, insect light traps, trend analysis, and proactive exclusion tactics.",
+      "targetAudience": "Facility managers, sanitation leads, third-party contractor coordinators",
+      "keyTopics": [
+        "Building design & proofing against pests",
+        "Chemical usage restrictions and MSDS compliance",
+        "Trend analysis of catch counts",
+        "Auditor expectations for pest registers"
+      ],
+      "deliveryModes": [
+        "On-site corporate",
+        "Virtual"
+      ],
+      "duration": "1 Day",
+      "status": "PUBLISHED",
+      "displayOrder": 10,
+      "updatedAt": "2026-10-14T08:55:02.721Z"
+    },
+    {
+      "id": "crs-11",
+      "slug": "food-defense-and-food-fraud",
+      "title": "Food Defense & Food Fraud (VACCP / TACCP)",
+      "category": "Operational Risk",
+      "summary": "Vulnerability assessment against economically motivated adulteration (EMA) and threat assessment for intentional contamination.",
+      "targetAudience": "Procurement heads, security managers, executive food safety teams",
+      "keyTopics": [
+        "TACCP & VACCP methodologies",
+        "Raw material supply vulnerability mapping",
+        "Physical site security & access restrictions",
+        "Mitigation strategy documentation"
+      ],
+      "deliveryModes": [
+        "On-site corporate",
+        "Virtual",
+        "Customized client curriculum"
+      ],
+      "duration": "1 Day",
+      "status": "PUBLISHED",
+      "displayOrder": 11,
+      "updatedAt": "2026-10-14T08:55:02.721Z"
+    },
+    {
+      "id": "crs-12",
+      "slug": "root-cause-analysis-and-capa",
+      "title": "Root Cause Analysis & Corrective and Preventive Action",
+      "category": "Operational Risk",
+      "summary": "Systematic problem solving using 5-Whys, Fishbone diagrams, and failure mode analysis to eliminate repeat non-conformities and customer complaints.",
+      "targetAudience": "Department heads, process engineers, quality control specialists",
+      "keyTopics": [
+        "Correction vs Corrective Action",
+        "5-Whys discipline without jumping to human error",
+        "Verification of effectiveness over 30/60/90 days",
+        "Evidence compilation for certification auditors"
+      ],
+      "deliveryModes": [
+        "On-site corporate",
+        "Virtual",
+        "Open-enrolment"
+      ],
+      "duration": "1-2 Days",
+      "status": "PUBLISHED",
+      "displayOrder": 12,
+      "updatedAt": "2026-10-14T08:55:02.721Z"
+    },
+    {
+      "id": "crs-13",
+      "slug": "food-safety-risk-assessment",
+      "title": "Food Safety Risk Assessment",
+      "category": "Technical & Science",
+      "summary": "Quantitative and qualitative risk matrices, severity vs probability scoring, and risk treatment prioritization across raw materials, processes, and finished goods.",
+      "targetAudience": "Operations directors, HACCP team leaders, compliance analysts",
+      "keyTopics": [
+        "Risk matrices and threshold definitions",
+        "Supplier risk scoring algorithms",
+        "Process change risk evaluations",
+        "Continuous risk register maintenance"
+      ],
+      "deliveryModes": [
+        "Virtual",
+        "Customized client curriculum"
+      ],
+      "duration": "1 Day",
+      "status": "PUBLISHED",
+      "displayOrder": 13,
+      "updatedAt": "2026-10-14T08:55:02.721Z"
+    },
+    {
+      "id": "crs-14",
+      "slug": "labelling-and-packaging-compliance",
+      "title": "Labelling & Packaging Compliance",
+      "category": "Regulatory Compliance",
+      "summary": "Nutritional declarations, ingredient order, claims substantiation, allergen warnings, QR code mandates, and migration limits for food contact materials.",
+      "targetAudience": "Packaging technologists, marketing teams, legal and regulatory reviewers",
+      "keyTopics": [
+        "FSSAI, FDA, and EU food labeling alignment",
+        "Front-of-pack labeling developments",
+        "Migration test reports for packaging plastics",
+        "Batch coding and shelf-life declaration compliance"
+      ],
+      "deliveryModes": [
+        "On-site corporate",
+        "Virtual",
+        "Open-enrolment"
+      ],
+      "duration": "1 Day",
+      "status": "PUBLISHED",
+      "displayOrder": 14,
+      "updatedAt": "2026-10-14T08:55:02.721Z"
+    },
+    {
+      "id": "crs-15",
+      "slug": "traceability-and-product-recall",
+      "title": "Traceability & Product Recall",
+      "category": "Operational Risk",
+      "summary": "Designing one-up / one-down traceability systems, mass balance reconciliations, mock recall execution, and crisis communication protocols.",
+      "targetAudience": "Supply chain managers, IT leads, warehouse heads, recall team members",
+      "keyTopics": [
+        "Mass balance calculation standards (aiming for 99.5%+ accuracy)",
+        "4-hour mock recall simulation drills",
+        "Regulatory notification triggers",
+        "Customer recall notification workflows"
+      ],
+      "deliveryModes": [
+        "On-site corporate",
+        "Virtual",
+        "Customized client curriculum"
+      ],
+      "duration": "1 Day",
+      "status": "PUBLISHED",
+      "displayOrder": 15,
+      "updatedAt": "2026-10-14T08:55:02.721Z"
+    },
+    {
+      "id": "crs-16",
+      "slug": "food-safety-culture",
+      "title": "Food Safety Culture",
+      "category": "Operational Risk",
+      "summary": "Transforming food safety from a policing function to shared organizational ownership, psychological safety, leadership engagement, and behavioral measurement.",
+      "targetAudience": "C-suite leaders, plant directors, HR heads, operations managers",
+      "keyTopics": [
+        "GFSI Food Safety Culture dimensions",
+        "Employee perception surveys and behavioral audits",
+        "Recognition and transparent reporting incentives",
+        "Sustaining culture through shift handovers and routine talks"
+      ],
+      "deliveryModes": [
+        "On-site corporate",
+        "Customized client curriculum",
+        "Virtual"
+      ],
+      "duration": "1 Day",
+      "status": "PUBLISHED",
+      "displayOrder": 16,
+      "updatedAt": "2026-10-14T08:55:02.721Z"
+    }
+  ],
+  "cms": {
+    "companyName": "ESSOR Compliance Solutions",
+    "tagline": "Your Partner in Food Safety & Continuous Compliance",
+    "heroHeadline": "Built around practical food-safety execution.",
+    "heroSubheadline": "We help organizations strengthen food-safety systems, prepare for audits, develop people and maintain compliance in everyday operations.",
+    "purpose": "We are committed to helping organizations build robust and audit-ready food-safety systems. Through expert assessment, structured implementation, team capability development, and ongoing compliance support, we enable our clients to meet applicable standards, address gaps effectively, and maintain readiness beyond the audit cycle.",
+    "vision": "Build trust through food-safety expertise, create recurring value through managed compliance, and scale delivery through an AI-enabled compliance platform.",
+    "mission": "Help growing manufacturers and exporters move from audit pressure to disciplined, continuous compliance.",
+    "contactEmail": "contact@essorcompliance.com",
+    "contactPhone": "+91 (0) 22 4900 1200",
+    "officeAddress": "Corporate Office: Registered Tech Centre & Client Support Hub, Mumbai & New Delhi, India",
+    "linkedinUrl": "https://linkedin.com/company/essor-compliance-solutions",
+    "disclaimer": "ESSOR Compliance Solutions provides independent consulting, gap assessments, training, and operational compliance support. ESSOR is not an accredited certification body and does not grant official certification credentials; third-party certification audits are conducted independently by accredited certification bodies.",
+    "privacyPolicy": "ESSOR Compliance Solutions is committed to respecting your business and personal privacy. We collect information solely to provide compliance consulting, process service enquiries, and deliver tailored training proposals. We do not sell or monetize personal or corporate client data to third parties.",
+    "termsOfService": "Engagements with ESSOR Compliance Solutions are governed by agreed statements of work and service contracts. Client advisory materials, gap analyses, and readiness assessments represent professional opinions based on applicable food safety standards at the time of evaluation.",
+    "cookiesPolicy": "We utilize essential session cookies to ensure secure navigation and form submission across our web platform. We do not deploy invasive third-party ad tracking cookies."
+  },
+  "documents": [
+    {
+      "id": "doc-1",
+      "organizationId": "org-1",
+      "title": "Allergen Control Protocol & Validation Study V3",
+      "category": "SOP",
+      "filename": "SOP-QA-042_Allergen_Validation.pdf",
+      "fileSizeKb": 1420,
+      "fileType": "application/pdf",
+      "uploadedByName": "Sunil Mehta",
+      "version": "3.1",
+      "isConfidential": true,
+      "createdAt": "2026-02-14T09:00:00Z"
+    }
+  ],
+  "notifications": [
+    {
+      "id": "notif-1",
+      "recipientEmail": "s.mehta@agronutriexports.com",
+      "recipientRole": "CLIENT_ADMIN",
+      "title": "Inspection Report Approved",
+      "message": "Visit report ECS-VST-2026-012 has been officially approved. Review findings and open CAPAs.",
+      "category": "VISIT",
+      "linkPath": "/client",
+      "isRead": false,
+      "createdAt": "2026-10-14T04:55:08.950Z"
+    }
+  ],
+  "auditLogs": [
+    {
+      "id": "log-1",
+      "actorName": "System Bootstrap",
+      "actorEmail": "system@essorcompliance.com",
+      "action": "INITIALIZE",
+      "entityType": "SETTINGS",
+      "entityId": "global",
+      "summary": "Backend server initialized with operational data",
+      "timestamp": "2026-10-14T08:55:08.950Z"
+    }
+  ]
+}

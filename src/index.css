@@ -1,0 +1,154 @@
+@import "tailwindcss";
+@import "lenis/dist/lenis.css";
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    background-color: #F8FAFC;
+  }
+
+  :root {
+    --gold-primary: #15803D;
+    --gold-light: #DCFCE7;
+    --gold-dark: #166534;
+    --dark-obsidian: #14532D;
+    --dark-emerald: #166534;
+    --cream-bg: #F3FAF5;
+  }
+
+  body {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    color: #111827;
+    background-color: #F8FAFC;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+    line-height: 1.5;
+  }
+
+  #root {
+    background-color: #F8FAFC;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Outfit', 'Plus Jakarta Sans', system-ui, sans-serif;
+    letter-spacing: -0.02em;
+  }
+}
+
+/* Homepage visual system: deep forest green, soft mint, and clean neutral surfaces. */
+#top {
+  background: #F3FAF5;
+}
+
+#top > section:not(#cta-section) {
+  border-color: #D1E7D8 !important;
+}
+
+#top > section:nth-of-type(odd) {
+  background-color: #FFFFFF !important;
+}
+
+#top > section:nth-of-type(even) {
+  background-color: #F3FAF5 !important;
+}
+
+#top h1,
+#top h2,
+#top h3,
+#top h4 {
+  color: #111827;
+}
+
+/* Replace the original green-black treatments with a premium midnight-navy. */
+#top [class*="bg-[#0A1310]"],
+#top [class*="bg-[#0B1713]"],
+#top [class*="bg-[#10241D]"] {
+  background-color: #14532D !important;
+}
+
+#top [class*="text-[#0A1310]"],
+#top [class*="text-[#0B1713]"] {
+  color: #111827 !important;
+}
+
+#top p {
+  color: #374151;
+}
+
+#top button[class*="bg-gradient-to-r"] {
+  background-image: linear-gradient(135deg, #166534 0%, #15803D 55%, #4ADE80 100%) !important;
+  background-color: #15803D;
+  color: #FFFFFF;
+  box-shadow: 0 8px 18px rgba(21, 128, 61, 0.20);
+}
+
+#top button[class*="bg-gradient-to-r"]:hover {
+  background-color: #166534;
+  background-image: linear-gradient(135deg, #14532D 0%, #166534 55%, #22C55E 100%) !important;
+}
+
+/* Content must never depend on JavaScript animation timing to be readable.
+   GSAP may add inline opacity styles before an off-screen trigger runs; this
+   override keeps every homepage card grid visible in all browsers. */
+#top .home-content-grid > * {
+  opacity: 1 !important;
+}
+
+/* Simple enterprise cards: information-first, restrained borders, and one action colour. */
+#top .home-content-grid > * {
+  background-color: #FFFFFF !important;
+  border-color: #D1E7D8 !important;
+  box-shadow: 0 3px 12px rgba(20, 83, 45, 0.07);
+}
+
+#top .home-content-grid > *:hover {
+  border-color: #4ADE80 !important;
+  box-shadow: 0 10px 24px rgba(21, 128, 61, 0.12);
+}
+
+/* The service rail is intentionally continuous; users can pause it to inspect a card. */
+#services-section .home-content-grid {
+  will-change: transform;
+}
+
+#cta-section {
+  background: linear-gradient(135deg, #14532D 0%, #166534 56%, #15803D 100%) !important;
+  border-color: #86EFAC !important;
+}
+
+#cta-section h2,
+#cta-section h3,
+#cta-section h4,
+#cta-section p {
+  color: inherit;
+}
+
+/* Maintain a calm, accessible enterprise presentation when motion is reduced. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Luxury Champagne Gold Utility Classes */
+.gold-gradient-bg {
+  background: linear-gradient(135deg, #FFF2D6 0%, #F5DC9A 25%, #D4AF37 55%, #B38728 85%, #8A6417 100%);
+}
+
+.gold-gradient-text {
+  background: linear-gradient(135deg, #FFF4D8 0%, #F5DC9A 30%, #D4AF37 60%, #B88E33 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gold-border-glow {
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.22);
+}
+
+.obsidian-card-bg {
+  background: linear-gradient(180deg, #10211B 0%, #0B1713 100%);
+}
