@@ -122,12 +122,12 @@ export const Navbar: React.FC<NavbarProps> = ({
         <div className="max-w-[1440px] mx-auto px-2 sm:px-4 lg:px-8 flex items-center justify-between gap-2 sm:gap-3">
           
           {/* Static Left Anchor: Live Practice Badge */}
-          <div className="shrink-0 flex items-center gap-1.5 bg-[#062E21] px-2.5 py-1 rounded-full border border-emerald-700/50 shadow-xs z-10">
+          {/* <div className="shrink-0 flex items-center gap-1.5 bg-[#062E21] px-2.5 py-1 rounded-full border border-emerald-700/50 shadow-xs z-10">
             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
             <span className="text-[10px] sm:text-[11px] font-bold text-white tracking-wide whitespace-nowrap">
               LIVE PRACTICE
             </span>
-          </div>
+          </div> */}
 
           {/* Marquee Viewport with Edge Fade Gradients */}
           <div className="relative flex-1 overflow-hidden min-w-0">
@@ -378,7 +378,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
             {/* Desktop Navigation: Trending Floating Island Pill Menu */}
             <nav 
-              className="hidden xl:flex min-w-0 items-center p-1 rounded-full bg-white/95 border border-emerald-900/10 shadow-xs backdrop-blur-md text-xs font-semibold transition-all duration-300"
+              className="hidden xl:flex min-w-0 items-center p-2 rounded-full bg-white/95 border border-emerald-900/10 shadow-xs backdrop-blur-md text-sm font-semibold transition-all duration-300"
               aria-label="Primary Navigation"
             >
               {navLinks.map((link) => {
