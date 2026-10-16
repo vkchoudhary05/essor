@@ -283,12 +283,15 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             {/* Bring the hero image directly after the intro on phones. */}
             <div className="lg:hidden relative rounded-2xl overflow-hidden border border-emerald-100 shadow-lg bg-emerald-50">
               <div className="aspect-[16/10] relative overflow-hidden">
-                <img
-                  src="/src/assets/images/hero_food_safety_facility_1791962115935.jpg"
-                  alt="Food safety auditor reviewing a clean food production facility"
-                  className="w-full h-full object-cover object-center"
-                  referrerPolicy="no-referrer"
-                />
+           
+<img
+  src={heroImage}
+  alt="Food safety auditor reviewing a clean food production facility"
+  className="w-full h-full object-cover object-center"
+  loading="eager"
+  fetchPriority="high"
+/>
+
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent" />
                 <div className="absolute bottom-3 left-3 right-3 text-white">
                   <p className="text-[10px] font-semibold text-emerald-300 uppercase tracking-wider">On-site plant inspection</p>
@@ -460,14 +463,13 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 <div className="relative aspect-[16/10] overflow-hidden bg-emerald-50/40">
          
 <img
-  src={heroImage}
-  alt="Food safety auditor reviewing a clean food production facility"
-  className="w-full h-full object-cover object-center"
-  loading="eager"
-  fetchPriority="high"
-/>
+                    src={pillar.image}
+                    alt={pillar.alt}
+                    loading="lazy"
+                    className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
+                  />
 
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none" />
                   
                   {/* Pillar Number Tag */}
                   <div className="absolute top-3 left-3 px-2.5 py-1 rounded bg-[#062E21]/90 backdrop-blur-xs text-emerald-300 text-[10px] font-bold tracking-wider uppercase border border-emerald-500/40 shadow-xs">
