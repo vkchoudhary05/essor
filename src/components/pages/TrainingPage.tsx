@@ -2,11 +2,11 @@ import React, { useState, useMemo } from 'react';
 import { Search, BookOpen, Clock, Users, ArrowRight, CheckCircle2, ChevronRight, X, Sparkles, Microscope, Award, ExternalLink } from 'lucide-react';
 import { TrainingCourse } from '../../types';
 import { Logo } from '../common/Logo';
+import { CertificatePreview } from '../common/CertificatePreview';
 
 // Direct imports for reliable Vite live bundling
 import seminarImage from '../../assets/images/corporate_training_seminar_1792395440966.jpg';
 import labImage from '../../assets/images/food_factory_lab_testing_1791965811882.jpg';
-import certSampleImage from '../../assets/images/training_certificate_sample_1792302193039.jpg';
 
 interface TrainingPageProps {
   courses: TrainingCourse[];
@@ -49,13 +49,13 @@ export const TrainingPage: React.FC<TrainingPageProps> = ({
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center text-left">
             <div className="lg:col-span-7 space-y-4">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-xs font-bold uppercase tracking-wider text-[#2E7D32]">
-                <Sparkles className="w-3.5 h-3.5 text-[#2E7D32]" />
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-xs font-bold uppercase tracking-wider text-[#3E7D25]">
+                <Sparkles className="w-3.5 h-3.5 text-[#3E7D25]" />
                 <span>ESSOR Capability Academy</span>
               </div>
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-neutral-900 tracking-tight leading-tight">
                 Build Competence Across Your{' '}
-                <span className="text-[#2E7D32]">
+                <span className="text-[#3E7D25]">
                   Food Processing Team.
                 </span>
               </h1>
@@ -74,9 +74,9 @@ export const TrainingPage: React.FC<TrainingPageProps> = ({
                 alt="Food safety compliance corporate training workshop seminar in professional classroom"
                 className="w-full h-72 sm:h-80 object-cover transition-transform duration-500 group-hover:scale-105"
               />
-              <div className="p-3 bg-[#042A1D] text-white flex items-center justify-between text-xs">
+              <div className="p-3 bg-[#012B53] text-white flex items-center justify-between text-xs">
                 <span className="font-bold">Accredited Corporate Seminars &amp; Floor Workshops</span>
-                <span className="text-[#4ADE80] font-mono">16+ Modules</span>
+                <span className="text-[#A4D65E] font-mono">16+ Modules</span>
               </div>
             </div>
           </div>
@@ -109,7 +109,7 @@ export const TrainingPage: React.FC<TrainingPageProps> = ({
               value={searchTerm}
               onChange={e => setSearchTerm(e.target.value)}
               placeholder="Search training subjects or keywords..."
-              className="w-full pl-10 pr-4 py-2.5 text-xs rounded-xl border border-neutral-300 bg-white focus:outline-none focus:ring-2 focus:ring-[#2E7D32] shadow-2xs"
+              className="w-full pl-10 pr-4 py-2.5 text-xs rounded-xl border border-neutral-300 bg-white focus:outline-none focus:ring-2 focus:ring-[#3E7D25] shadow-2xs"
             />
           </div>
 
@@ -121,7 +121,7 @@ export const TrainingPage: React.FC<TrainingPageProps> = ({
                 onClick={() => setSelectedCategory(cat)}
                 className={`px-3 py-1.5 text-xs font-bold rounded-lg transition-all cursor-pointer whitespace-nowrap shrink-0 ${
                   selectedCategory === cat
-                    ? 'bg-[#042A1D] text-white shadow-xs'
+                    ? 'bg-[#012B53] text-white shadow-xs'
                     : 'text-neutral-600 hover:text-neutral-900'
                 }`}
               >
@@ -134,7 +134,7 @@ export const TrainingPage: React.FC<TrainingPageProps> = ({
 
         {/* Results Count */}
         <div className="pt-4 text-xs text-neutral-500 font-medium">
-          Showing <span className="font-mono font-bold text-[#2E7D32]">{filteredCourses.length}</span> programs matching criteria
+          Showing <span className="font-mono font-bold text-[#3E7D25]">{filteredCourses.length}</span> programs matching criteria
         </div>
 
         {/* Catalogue Grid */}
@@ -142,11 +142,11 @@ export const TrainingPage: React.FC<TrainingPageProps> = ({
           {filteredCourses.map((course) => (
             <div
               key={course.id}
-              className="p-6 rounded-2xl bg-white border border-neutral-200 shadow-xs hover:border-[#2E7D32] hover:shadow-xl transition-all duration-300 flex flex-col justify-between group hover:-translate-y-1"
+              className="p-6 rounded-2xl bg-white border border-neutral-200 shadow-xs hover:border-[#3E7D25] hover:shadow-xl transition-all duration-300 flex flex-col justify-between group hover:-translate-y-1"
             >
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
-                  <span className="text-[11px] font-bold uppercase tracking-wider text-[#2E7D32] px-2 py-0.5 rounded bg-emerald-50 border border-emerald-200">
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-[#3E7D25] px-2 py-0.5 rounded bg-emerald-50 border border-emerald-200">
                     {course.category}
                   </span>
                   {course.duration && (
@@ -156,7 +156,7 @@ export const TrainingPage: React.FC<TrainingPageProps> = ({
                   )}
                 </div>
 
-                <h3 className="text-base font-bold text-neutral-900 group-hover:text-[#2E7D32] transition-colors leading-snug">
+                <h3 className="text-base font-bold text-neutral-900 group-hover:text-[#3E7D25] transition-colors leading-snug">
                   {course.title}
                 </h3>
 
@@ -187,15 +187,15 @@ export const TrainingPage: React.FC<TrainingPageProps> = ({
               <div className="pt-4 mt-4 border-t border-neutral-100 flex items-center justify-between gap-2">
                 <button
                   onClick={() => setSelectedCourseModal(course)}
-                  className="inline-flex items-center gap-1 text-xs font-bold text-neutral-900 hover:text-[#2E7D32] transition-colors cursor-pointer"
+                  className="inline-flex items-center gap-1 text-xs font-bold text-neutral-900 hover:text-[#3E7D25] transition-colors cursor-pointer"
                 >
                   <span>Syllabus</span>
-                  <ChevronRight className="w-3.5 h-3.5 text-[#2E7D32]" />
+                  <ChevronRight className="w-3.5 h-3.5 text-[#3E7D25]" />
                 </button>
 
                 <button
                   onClick={() => onOpenEnquiry(course.title)}
-                  className="px-3.5 py-1.5 rounded-lg bg-[#2E7D32] hover:bg-[#256629] text-xs font-bold text-white transition-all cursor-pointer shadow-2xs active:scale-95"
+                  className="px-3.5 py-1.5 rounded-lg bg-[#3E7D25] hover:bg-[#256629] text-xs font-bold text-white transition-all cursor-pointer shadow-2xs active:scale-95"
                 >
                   Enrol Team
                 </button>
@@ -206,16 +206,12 @@ export const TrainingPage: React.FC<TrainingPageProps> = ({
 
         {/* Verifiable Certificate Banner with Sample Image */}
         <div className="mt-16 rounded-2xl overflow-hidden border border-neutral-200 bg-white shadow-xl grid grid-cols-1 lg:grid-cols-12 items-center">
-          <div className="lg:col-span-5 p-4 sm:p-6 bg-neutral-900 flex items-center justify-center">
-            <img
-              src={certSampleImage}
-              alt="Verifiable Training Certificate Sample"
-              className="w-full h-auto max-h-72 object-contain rounded-lg shadow-md"
-            />
+          <div className="lg:col-span-5 p-4 sm:p-6 bg-[#012B53] flex items-center justify-center">
+            <CertificatePreview compact className="w-full rounded-lg shadow-md" />
           </div>
           <div className="lg:col-span-7 p-6 sm:p-8 space-y-3">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#2E7D32] flex items-center gap-1.5">
-              <Award className="w-4 h-4 text-[#2E7D32]" />
+            <span className="text-xs font-bold uppercase tracking-wider text-[#3E7D25] flex items-center gap-1.5">
+              <Award className="w-4 h-4 text-[#3E7D25]" />
               <span>Official Verifiable Credentials</span>
             </span>
             <h3 className="text-xl sm:text-2xl font-bold text-neutral-900">
@@ -228,14 +224,14 @@ export const TrainingPage: React.FC<TrainingPageProps> = ({
               <button
                 type="button"
                 onClick={() => onNavigate('/verify-certificate?cert=ECSFSM-LA241116')}
-                className="px-5 py-2.5 rounded-xl bg-[#042A1D] hover:bg-[#2E7D32] text-white text-xs font-bold uppercase tracking-wider transition-all cursor-pointer shadow-sm"
+                className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#012B53] via-[#0C5A91] to-[#4C8E20] hover:from-[#0C5A91] hover:via-[#012B53] hover:to-[#3E7D25] text-white text-xs font-bold uppercase tracking-wider transition-all cursor-pointer shadow-sm"
               >
                 Test Verification (Sample)
               </button>
               <button
                 type="button"
                 onClick={() => onOpenEnquiry('Corporate Training')}
-                className="px-5 py-2.5 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-[#2E7D32] text-xs font-bold uppercase tracking-wider border border-emerald-300 transition-all cursor-pointer"
+                className="px-5 py-2.5 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-[#3E7D25] text-xs font-bold uppercase tracking-wider border border-emerald-300 transition-all cursor-pointer"
               >
                 Request Custom Batch
               </button>
@@ -251,7 +247,7 @@ export const TrainingPage: React.FC<TrainingPageProps> = ({
           <div className="bg-white rounded-2xl max-w-lg w-full p-6 space-y-4 max-h-[90vh] overflow-y-auto text-left">
             <div className="flex items-start justify-between">
               <div>
-                <span className="text-[10px] font-bold uppercase tracking-wider text-[#2E7D32]">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-[#3E7D25]">
                   {selectedCourseModal.category}
                 </span>
                 <h3 className="text-lg font-bold text-neutral-900 mt-1">
@@ -275,7 +271,7 @@ export const TrainingPage: React.FC<TrainingPageProps> = ({
               <ul className="space-y-1.5">
                 {selectedCourseModal.keyTopics.map((top, idx) => (
                   <li key={idx} className="text-xs text-neutral-700 flex items-start gap-2">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-[#2E7D32] shrink-0 mt-0.5" />
+                    <CheckCircle2 className="w-3.5 h-3.5 text-[#3E7D25] shrink-0 mt-0.5" />
                     <span>{top}</span>
                   </li>
                 ))}
@@ -292,7 +288,7 @@ export const TrainingPage: React.FC<TrainingPageProps> = ({
                   setSelectedCourseModal(null);
                   onOpenEnquiry(title);
                 }}
-                className="px-5 py-2.5 rounded-xl bg-[#2E7D32] hover:bg-[#256629] text-white text-xs font-bold uppercase tracking-wider cursor-pointer shadow-sm"
+                className="px-5 py-2.5 rounded-xl bg-[#3E7D25] hover:bg-[#256629] text-white text-xs font-bold uppercase tracking-wider cursor-pointer shadow-sm"
               >
                 Enquire For My Facility
               </button>

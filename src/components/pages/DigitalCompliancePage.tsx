@@ -88,9 +88,9 @@ export const DigitalCompliancePage: React.FC<DigitalCompliancePageProps> = ({
               <Sparkles className="w-3.5 h-3.5 text-emerald-600" />
               <span>Digital Compliance Platform</span>
             </div>
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#062E21] tracking-tight leading-tight">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#012B53] tracking-tight leading-tight">
               Make compliance easier to{' '}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#062E21] via-[#0E5C3A] to-[#16A34A]">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#012B53] via-[#0C5A91] to-[#16A34A]">
                 manage and verify.
               </span>
             </h1>
@@ -104,7 +104,7 @@ export const DigitalCompliancePage: React.FC<DigitalCompliancePageProps> = ({
             <button
               onClick={() => setActiveTab('OVERVIEW')}
               className={`flex-1 py-2 text-xs font-bold rounded-lg transition-all cursor-pointer ${
-                activeTab === 'OVERVIEW' ? 'bg-[#062E21] text-white shadow-xs' : 'text-neutral-600 hover:text-[#062E21]'
+                activeTab === 'OVERVIEW' ? 'bg-[#012B53] text-white shadow-xs' : 'text-neutral-600 hover:text-[#012B53]'
               }`}
             >
               Core Modules
@@ -112,7 +112,7 @@ export const DigitalCompliancePage: React.FC<DigitalCompliancePageProps> = ({
             <button
               onClick={() => setActiveTab('INTERACTIVE_PREVIEW')}
               className={`flex-1 py-2 text-xs font-bold rounded-lg transition-all cursor-pointer ${
-                activeTab === 'INTERACTIVE_PREVIEW' ? 'bg-[#062E21] text-white shadow-xs' : 'text-neutral-600 hover:text-[#062E21]'
+                activeTab === 'INTERACTIVE_PREVIEW' ? 'bg-[#012B53] text-white shadow-xs' : 'text-neutral-600 hover:text-[#012B53]'
               }`}
             >
               Interactive Simulator
@@ -120,7 +120,7 @@ export const DigitalCompliancePage: React.FC<DigitalCompliancePageProps> = ({
             <button
               onClick={() => setActiveTab('ARCHITECTURE')}
               className={`flex-1 py-2 text-xs font-bold rounded-lg transition-all cursor-pointer ${
-                activeTab === 'ARCHITECTURE' ? 'bg-[#062E21] text-white shadow-xs' : 'text-neutral-600 hover:text-[#062E21]'
+                activeTab === 'ARCHITECTURE' ? 'bg-[#012B53] text-white shadow-xs' : 'text-neutral-600 hover:text-[#012B53]'
               }`}
             >
               Security Architecture
@@ -137,13 +137,13 @@ export const DigitalCompliancePage: React.FC<DigitalCompliancePageProps> = ({
               <span className="text-xs font-bold uppercase tracking-wider text-emerald-800">
                 The Guiding Principle
               </span>
-              <p className="text-sm font-bold text-[#062E21]">
+              <p className="text-sm font-bold text-[#012B53]">
                 "Technology supports your people by making compliance work more visible and organized; it does not replace responsible food-safety decisions."
               </p>
             </div>
             <button
               onClick={() => onOpenEnquiry('Digital Compliance Early Access')}
-              className="px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-white bg-gradient-to-r from-[#062E21] via-[#0E5C3A] to-[#15803D] hover:from-[#042419] hover:via-[#0B4A2F] hover:to-[#166534] active:scale-[0.98] rounded-xl transition-all shadow-md shadow-emerald-950/20 ring-1 ring-emerald-400/30 shrink-0 cursor-pointer"
+              className="px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-white bg-gradient-to-r from-[#012B53] via-[#0C5A91] to-[#4C8E20] hover:from-[#0C5A91] hover:via-[#012B53] hover:to-[#3E7D25] active:scale-[0.98] rounded-xl transition-all shadow-md shadow-emerald-950/20 ring-1 ring-emerald-400/30 shrink-0 cursor-pointer"
             >
               Inquire About Digital Tools
             </button>
@@ -162,12 +162,12 @@ export const DigitalCompliancePage: React.FC<DigitalCompliancePageProps> = ({
                   key={idx}
                   className="p-6 rounded-2xl bg-white border border-emerald-900/10 shadow-xs hover:border-emerald-500 hover:shadow-xl transition-all duration-300 space-y-4 group hover:-translate-y-1"
                 >
-                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#062E21] to-[#0E5C3A] text-white border border-emerald-500/40 flex items-center justify-center shadow-md">
+                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#012B53] to-[#0C5A91] text-white border border-emerald-500/40 flex items-center justify-center shadow-md">
                     <Icon className="w-6 h-6 text-emerald-300" />
                   </div>
 
                   <div>
-                    <h3 className="text-base font-bold text-[#062E21] group-hover:text-emerald-700 transition-colors">
+                    <h3 className="text-base font-bold text-[#012B53] group-hover:text-emerald-700 transition-colors">
                       {mod.title}
                     </h3>
                     <p className="text-xs text-neutral-600 leading-relaxed mt-1 font-normal">
@@ -216,7 +216,7 @@ export const DigitalCompliancePage: React.FC<DigitalCompliancePageProps> = ({
                   <span className="text-[11px] font-bold uppercase tracking-wider text-emerald-800">
                     Live Interactive Simulation
                   </span>
-                  <h3 className="text-lg font-bold text-[#062E21]">
+                  <h3 className="text-lg font-bold text-[#012B53]">
                     Digital Daily Hygiene & GMP Walk Inspection
                   </h3>
                 </div>
@@ -243,7 +243,7 @@ export const DigitalCompliancePage: React.FC<DigitalCompliancePageProps> = ({
                     <div className="space-y-1">
                       <div className="flex items-center gap-2">
                         <span className={`w-2.5 h-2.5 rounded-full shrink-0 ${item.passed ? 'bg-emerald-600' : 'bg-rose-600'}`} />
-                        <span className="text-xs font-bold text-[#062E21]">{item.label}</span>
+                        <span className="text-xs font-bold text-[#012B53]">{item.label}</span>
                       </div>
                       <p className="text-[11px] text-neutral-600 pl-4 font-normal">{item.note}</p>
                     </div>
@@ -261,7 +261,7 @@ export const DigitalCompliancePage: React.FC<DigitalCompliancePageProps> = ({
 
               <div className="p-4 rounded-xl bg-[#F8FAFC] border border-emerald-900/10 flex items-center justify-between text-xs">
                 <span className="text-neutral-700 font-medium">
-                  Passing Items: <strong className="font-mono text-[#062E21]">{demoChecks.filter(c => c.passed).length} / {demoChecks.length}</strong>
+                  Passing Items: <strong className="font-mono text-[#012B53]">{demoChecks.filter(c => c.passed).length} / {demoChecks.length}</strong>
                 </span>
                 <span className="text-neutral-500 font-normal">
                   Simulated Inspector: Shift Lead Quality (Demo)
@@ -272,7 +272,7 @@ export const DigitalCompliancePage: React.FC<DigitalCompliancePageProps> = ({
             {/* Side summary */}
             <div className="lg:col-span-5 space-y-6">
               <div className="bg-white p-6 rounded-2xl border border-emerald-900/10 shadow-xs space-y-4">
-                <h4 className="text-sm font-bold text-[#062E21] uppercase tracking-wider flex items-center gap-2">
+                <h4 className="text-sm font-bold text-[#012B53] uppercase tracking-wider flex items-center gap-2">
                   <Logo variant="icon-only" size="sm" className="w-4 h-4" />
                   <span>How Digital Records Protect Your Plant</span>
                 </h4>
@@ -288,7 +288,7 @@ export const DigitalCompliancePage: React.FC<DigitalCompliancePageProps> = ({
                 <div className="pt-4 border-t border-emerald-900/10">
                   <button
                     onClick={() => onOpenEnquiry('Digital Inspection Demo')}
-                    className="w-full py-3 text-xs font-bold uppercase tracking-wider text-white bg-gradient-to-r from-[#062E21] via-[#0E5C3A] to-[#15803D] hover:from-[#042419] hover:via-[#0B4A2F] hover:to-[#166534] active:scale-[0.98] rounded-xl transition-all shadow-md shadow-emerald-950/20 ring-1 ring-emerald-400/30 text-center cursor-pointer"
+                    className="w-full py-3 text-xs font-bold uppercase tracking-wider text-white bg-gradient-to-r from-[#012B53] via-[#0C5A91] to-[#4C8E20] hover:from-[#0C5A91] hover:via-[#012B53] hover:to-[#3E7D25] active:scale-[0.98] rounded-xl transition-all shadow-md shadow-emerald-950/20 ring-1 ring-emerald-400/30 text-center cursor-pointer"
                   >
                     Request Facility Pilot
                   </button>
@@ -308,7 +308,7 @@ export const DigitalCompliancePage: React.FC<DigitalCompliancePageProps> = ({
               <span className="text-xs font-bold uppercase tracking-wider text-emerald-800">
                 Platform Readiness & Engineering
               </span>
-              <h3 className="text-2xl font-bold text-[#062E21]">
+              <h3 className="text-2xl font-bold text-[#012B53]">
                 Multi-Tenant Isolation & Defensible Data Architecture
               </h3>
               <p className="text-sm text-neutral-600 font-normal">
@@ -319,7 +319,7 @@ export const DigitalCompliancePage: React.FC<DigitalCompliancePageProps> = ({
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-2">
               <div className="p-6 rounded-2xl border border-emerald-900/10 bg-[#F8FAFC] space-y-3">
                 <Lock className="w-6 h-6 text-emerald-700" />
-                <h4 className="text-sm font-bold text-[#062E21]">Tenant-Level Data Isolation</h4>
+                <h4 className="text-sm font-bold text-[#012B53]">Tenant-Level Data Isolation</h4>
                 <p className="text-xs text-neutral-600 leading-relaxed font-normal">
                   Every client organization's audit findings, HACCP plans, and corrective actions are isolated through strict organizational boundaries. No cross-tenant leakage.
                 </p>
@@ -327,7 +327,7 @@ export const DigitalCompliancePage: React.FC<DigitalCompliancePageProps> = ({
 
               <div className="p-6 rounded-2xl border border-emerald-900/10 bg-[#F8FAFC] space-y-3">
                 <Database className="w-6 h-6 text-emerald-700" />
-                <h4 className="text-sm font-bold text-[#062E21]">Immutable Audit Trail</h4>
+                <h4 className="text-sm font-bold text-[#012B53]">Immutable Audit Trail</h4>
                 <p className="text-xs text-neutral-600 leading-relaxed font-normal">
                   Every status transition, CAPA approval, and procedure revision is recorded with UTC timestamp, author identity, and prior values.
                 </p>
@@ -335,7 +335,7 @@ export const DigitalCompliancePage: React.FC<DigitalCompliancePageProps> = ({
 
               <div className="p-6 rounded-2xl border border-emerald-900/10 bg-[#F8FAFC] space-y-3">
                 <ShieldCheck className="w-6 h-6 text-emerald-700" />
-                <h4 className="text-sm font-bold text-[#062E21]">Strict Source Traceability</h4>
+                <h4 className="text-sm font-bold text-[#012B53]">Strict Source Traceability</h4>
                 <p className="text-xs text-neutral-600 leading-relaxed font-normal">
                   Knowledge retrieval is anchored exclusively to approved company standard operating procedures and verified statutory gazettes—preventing hallucinated compliance answers.
                 </p>
@@ -346,7 +346,7 @@ export const DigitalCompliancePage: React.FC<DigitalCompliancePageProps> = ({
               <span className="font-medium">Looking to pilot ESSOR digital compliance support in your food operations?</span>
               <button
                 onClick={() => onOpenEnquiry('Digital Compliance Enterprise Pilot')}
-                className="px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-white bg-gradient-to-r from-[#062E21] via-[#0E5C3A] to-[#15803D] hover:from-[#042419] hover:via-[#0B4A2F] hover:to-[#166534] active:scale-[0.98] rounded-xl transition-all shadow-md shadow-emerald-950/20 ring-1 ring-emerald-400/30 cursor-pointer"
+                className="px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-white bg-gradient-to-r from-[#012B53] via-[#0C5A91] to-[#4C8E20] hover:from-[#0C5A91] hover:via-[#012B53] hover:to-[#3E7D25] active:scale-[0.98] rounded-xl transition-all shadow-md shadow-emerald-950/20 ring-1 ring-emerald-400/30 cursor-pointer"
               >
                 Schedule Technical Architecture Call
               </button>

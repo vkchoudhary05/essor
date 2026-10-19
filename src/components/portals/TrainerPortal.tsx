@@ -61,7 +61,7 @@ export const TrainerPortal: React.FC<TrainerPortalProps> = ({ currentUser, onNav
       
       {/* Toast Notification */}
       {toastMessage && (
-        <div className="fixed bottom-6 right-6 z-50 p-4 rounded-xl bg-[#041F16] text-white text-xs font-semibold shadow-2xl border border-emerald-500/40 flex items-center gap-2 animate-in slide-in-from-bottom-2">
+        <div className="fixed bottom-6 right-6 z-50 p-4 rounded-xl bg-[#012542] text-white text-xs font-semibold shadow-2xl border border-emerald-500/40 flex items-center gap-2 animate-in slide-in-from-bottom-2">
           <CheckCircle className="w-4 h-4 text-emerald-400" />
           <span>{toastMessage}</span>
         </div>
@@ -70,9 +70,9 @@ export const TrainerPortal: React.FC<TrainerPortalProps> = ({ currentUser, onNav
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
         
         {/* Trainer Top Profile Header */}
-        <div className="p-6 sm:p-8 rounded-2xl bg-gradient-to-r from-[#041F16] via-[#062E21] to-[#0A3828] text-white shadow-xl border border-emerald-500/30 flex flex-col md:flex-row md:items-center justify-between gap-6">
+        <div className="p-6 sm:p-8 rounded-2xl bg-gradient-to-r from-[#012542] via-[#012B53] to-[#013C63] text-white shadow-xl border border-emerald-500/30 flex flex-col md:flex-row md:items-center justify-between gap-6">
           <div className="flex items-center gap-4">
-            <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#062E21] to-[#0E5C3A] text-emerald-300 flex items-center justify-center font-bold text-xl border border-emerald-500/40 shadow-md">
+            <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#012B53] to-[#0C5A91] text-emerald-300 flex items-center justify-center font-bold text-xl border border-emerald-500/40 shadow-md">
               <GraduationCap className="w-8 h-8" />
             </div>
             <div>
@@ -117,8 +117,8 @@ export const TrainerPortal: React.FC<TrainerPortalProps> = ({ currentUser, onNav
                 onClick={() => setActiveSessionId(s.id)}
                 className={`px-4 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center gap-2 cursor-pointer ${
                   isSelected 
-                    ? 'bg-gradient-to-r from-[#062E21] to-[#0E5C3A] text-white shadow-md shadow-emerald-950/20' 
-                    : 'bg-white text-neutral-600 hover:bg-emerald-50/50 hover:text-[#062E21] border border-neutral-200'
+                    ? 'bg-gradient-to-r from-[#012B53] to-[#0C5A91] text-white shadow-md shadow-emerald-950/20' 
+                    : 'bg-white text-neutral-600 hover:bg-emerald-50/50 hover:text-[#012B53] border border-neutral-200'
                 }`}
               >
                 <Calendar className="w-3.5 h-3.5" />

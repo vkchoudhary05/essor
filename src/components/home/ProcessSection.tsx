@@ -137,8 +137,8 @@ export const ProcessSection: React.FC<ProcessSectionProps> = ({ onNavigate }) =>
         {/* Header */}
         <div ref={headerRef} className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4 text-left">
           <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-xs font-bold uppercase tracking-wider text-[#2E7D32] mb-3">
-              <Sparkles className="w-3.5 h-3.5 text-[#2E7D32]" />
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-xs font-bold uppercase tracking-wider text-[#3E7D25] mb-3">
+              <Sparkles className="w-3.5 h-3.5 text-[#3E7D25]" />
               <span>Simplified Certification Methodology</span>
             </div>
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-neutral-900 tracking-tight leading-tight">
@@ -167,7 +167,7 @@ export const ProcessSection: React.FC<ProcessSectionProps> = ({ onNavigate }) =>
               onClick={() => setActiveView('8STEP')}
               className={`px-4 py-2 rounded-lg text-xs font-bold transition-all cursor-pointer ${
                 activeView === '8STEP'
-                  ? 'bg-[#2E7D32] text-white shadow-xs'
+                  ? 'bg-[#3E7D25] text-white shadow-xs'
                   : 'text-neutral-600 hover:text-neutral-900'
               }`}
             >
@@ -187,23 +187,23 @@ export const ProcessSection: React.FC<ProcessSectionProps> = ({ onNavigate }) =>
               return (
                 <div
                   key={step.num}
-                  className="rounded-2xl border border-neutral-200 bg-[#F8FAF9] p-6 hover:border-[#2E7D32] hover:bg-white hover:shadow-xl transition-all duration-300 flex flex-col justify-between group"
+                  className="rounded-2xl border border-neutral-200 bg-[#F8FAF9] p-6 hover:border-[#3E7D25] hover:bg-white hover:shadow-xl transition-all duration-300 flex flex-col justify-between group"
                 >
                   <div className="space-y-4">
                     <div className="flex items-center justify-between">
                       <span className="text-2xl font-black font-mono text-neutral-900">
                         {step.num}
                       </span>
-                      <div className="w-10 h-10 rounded-xl bg-white text-[#2E7D32] border border-emerald-200 flex items-center justify-center shadow-xs group-hover:bg-[#2E7D32] group-hover:text-white transition-colors">
+                      <div className="w-10 h-10 rounded-xl bg-white text-[#3E7D25] border border-emerald-200 flex items-center justify-center shadow-xs group-hover:bg-[#3E7D25] group-hover:text-white transition-colors">
                         <IconComp className="w-5 h-5" />
                       </div>
                     </div>
 
                     <div>
-                      <span className="text-[11px] font-bold uppercase tracking-wider text-[#2E7D32] block">
+                      <span className="text-[11px] font-bold uppercase tracking-wider text-[#3E7D25] block">
                         {step.phase}
                       </span>
-                      <h3 className="text-base font-bold text-neutral-900 mt-1 group-hover:text-[#2E7D32] transition-colors leading-snug">
+                      <h3 className="text-base font-bold text-neutral-900 mt-1 group-hover:text-[#3E7D25] transition-colors leading-snug">
                         {step.title}
                       </h3>
                     </div>
@@ -215,7 +215,7 @@ export const ProcessSection: React.FC<ProcessSectionProps> = ({ onNavigate }) =>
 
                   <div className="pt-4 mt-4 border-t border-neutral-200/80">
                     <div className="flex items-start gap-2 text-xs text-neutral-800">
-                      <CheckCircle2 className="w-4 h-4 text-[#2E7D32] shrink-0 mt-0.5" />
+                      <CheckCircle2 className="w-4 h-4 text-[#3E7D25] shrink-0 mt-0.5" />
                       <span className="font-medium text-[11px] leading-tight">
                         <strong>Outcome:</strong> {step.outcome}
                       </span>
@@ -236,13 +236,13 @@ export const ProcessSection: React.FC<ProcessSectionProps> = ({ onNavigate }) =>
               return (
                 <div 
                   key={idx}
-                  className="p-5 rounded-xl bg-[#F8FAF9] border border-neutral-200 hover:border-[#2E7D32] hover:bg-white hover:shadow-lg transition-all"
+                  className="p-5 rounded-xl bg-[#F8FAF9] border border-neutral-200 hover:border-[#3E7D25] hover:bg-white hover:shadow-lg transition-all"
                 >
                   <div className="flex items-center justify-between mb-3">
                     <span className="text-xs font-mono font-bold px-2 py-0.5 rounded bg-white border border-neutral-200 text-neutral-900">
                       {s.num}
                     </span>
-                    <div className="w-8 h-8 rounded-lg bg-emerald-50 text-[#2E7D32] flex items-center justify-center">
+                    <div className="w-8 h-8 rounded-lg bg-emerald-50 text-[#3E7D25] flex items-center justify-center">
                       <IconComponent className="w-4 h-4" />
                     </div>
                   </div>
@@ -255,22 +255,22 @@ export const ProcessSection: React.FC<ProcessSectionProps> = ({ onNavigate }) =>
         )}
 
         {/* Visual Callout Bar with Packaging Line Image */}
-        <div className="mt-12 rounded-2xl overflow-hidden border border-emerald-900/15 shadow-md bg-[#042A1D] text-white grid grid-cols-1 md:grid-cols-12 items-center text-left">
+        <div className="mt-12 rounded-2xl overflow-hidden border border-[#012B53]/15 shadow-xl bg-gradient-to-br from-[#012542] via-[#012B53] to-[#0C5A91] text-white grid grid-cols-1 md:grid-cols-12 items-center text-left">
           <div className="md:col-span-8 p-6 sm:p-8 space-y-2">
-            <span className="text-[11px] font-bold uppercase tracking-wider text-[#4ADE80]">
+            <span className="text-[11px] font-bold uppercase tracking-wider text-[#A4D65E]">
               Zero-Stress Factory Floor Readiness
             </span>
             <h4 className="text-lg sm:text-xl font-bold text-white">
               Facing an Upcoming FSSAI, ISO 22000, or Customer Supplier Audit?
             </h4>
-            <p className="text-xs sm:text-sm text-neutral-300 max-w-xl">
+            <p className="text-xs sm:text-sm text-white/90 max-w-xl font-medium leading-relaxed">
               We conduct a preliminary 48-hour gap inspection to uncover every finding before the official audit team arrives.
             </p>
             <div className="pt-2 flex items-center gap-3">
               <button
                 type="button"
                 onClick={() => onNavigate('/our-process')}
-                className="px-5 py-2.5 rounded-xl bg-[#2E7D32] hover:bg-[#256629] text-white text-xs font-bold uppercase tracking-wider transition-all cursor-pointer shadow-sm"
+                className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#75B72B] via-[#4C8E20] to-[#3E7D25] hover:from-[#A4D65E] hover:via-[#75B72B] hover:to-[#4C8E20] text-[#012542] text-xs font-bold uppercase tracking-wider transition-all cursor-pointer shadow-lg"
               >
                 Explore Full Methodology
               </button>

@@ -10,7 +10,7 @@ import {
   Sparkles,
   Maximize2
 } from 'lucide-react';
-import certSampleImage from '../../assets/images/training_certificate_sample_1792302193039.jpg';
+import { CertificatePreview } from '../common/CertificatePreview';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -75,8 +75,8 @@ export const CertificateSampleSection: React.FC<CertificateSampleSectionProps> =
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-xs font-bold uppercase tracking-wider text-[#2E7D32] mb-3 shadow-2xs">
-            <Award className="w-4 h-4 text-[#2E7D32]" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-xs font-bold uppercase tracking-wider text-[#3E7D25] mb-3 shadow-2xs">
+            <Award className="w-4 h-4 text-[#3E7D25]" />
             <span>Official Credential Sample</span>
           </div>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-neutral-900 tracking-tight leading-tight">
@@ -95,15 +95,15 @@ export const CertificateSampleSection: React.FC<CertificateSampleSectionProps> =
             <div className="relative group rounded-2xl overflow-hidden border border-neutral-300 shadow-xl bg-white transition-all hover:shadow-2xl">
               
               {/* Top Banner Tag */}
-              <div className="bg-[#042A1D] text-white px-4 py-2.5 flex items-center justify-between text-xs font-bold">
+              <div className="bg-[#012B53] text-white px-4 py-2.5 flex items-center justify-between text-xs font-bold">
                 <div className="flex items-center gap-2">
-                  <ShieldCheck className="w-4 h-4 text-[#4ADE80]" />
+                  <ShieldCheck className="w-4 h-4 text-[#A4D65E]" />
                   <span>Official Certificate Sample · Ref: {sampleCertNumber}</span>
                 </div>
                 <button
                   type="button"
                   onClick={onOpenCertModal}
-                  className="inline-flex items-center gap-1 text-[11px] text-[#4ADE80] hover:text-white transition-colors cursor-pointer"
+                  className="inline-flex items-center gap-1 text-[11px] text-[#A4D65E] hover:text-white transition-colors cursor-pointer"
                 >
                   <Maximize2 className="w-3.5 h-3.5" />
                   <span>Click to Enlarge</span>
@@ -116,16 +116,12 @@ export const CertificateSampleSection: React.FC<CertificateSampleSectionProps> =
                 onClick={onOpenCertModal}
                 title="Click to inspect sample certificate"
               >
-                <img 
-                  src={certSampleImage} 
-                  alt="Official Sample Food Safety Lead Auditor Training Certificate issued by ESSOR" 
-                  className="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-[1.02]"
-                />
+                <CertificatePreview className="transition-transform duration-500 group-hover:scale-[1.01]" />
 
                 {/* Hover Overlay Hint */}
-                <div className="absolute inset-0 bg-[#042A1D]/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
+                <div className="absolute inset-0 bg-[#012B53]/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
                   <span className="px-4 py-2 rounded-xl bg-white text-neutral-900 font-bold text-xs shadow-lg flex items-center gap-2">
-                    <Maximize2 className="w-4 h-4 text-[#2E7D32]" />
+                    <Maximize2 className="w-4 h-4 text-[#3E7D25]" />
                     Inspect Full Certificate
                   </span>
                 </div>
@@ -134,13 +130,13 @@ export const CertificateSampleSection: React.FC<CertificateSampleSectionProps> =
               {/* Bottom Quick Feature Strip */}
               <div className="p-3.5 bg-neutral-50 border-t border-neutral-200 flex flex-wrap items-center justify-between gap-2 text-xs">
                 <span className="font-semibold text-neutral-900 flex items-center gap-1.5">
-                  <CheckCircle2 className="w-4 h-4 text-[#2E7D32]" />
-                  Graduate: Jessica Lee Chen (ISO 22000 &amp; HACCP)
+                  <CheckCircle2 className="w-4 h-4 text-[#3E7D25]" />
+                  Graduate: Aarav Sharma (ISO 22000 &amp; HACCP)
                 </span>
                 <button
                   type="button"
                   onClick={() => onNavigate(`/verify-certificate?cert=${sampleCertNumber}`)}
-                  className="font-bold text-[#2E7D32] hover:text-neutral-900 underline underline-offset-2 cursor-pointer flex items-center gap-1"
+                  className="font-bold text-[#3E7D25] hover:text-neutral-900 underline underline-offset-2 cursor-pointer flex items-center gap-1"
                 >
                   <span>Test Verify This ID</span>
                   <ExternalLink className="w-3.5 h-3.5" />
@@ -154,7 +150,7 @@ export const CertificateSampleSection: React.FC<CertificateSampleSectionProps> =
           <div ref={infoRef} className="lg:col-span-5 space-y-5 text-left">
             
             <div className="space-y-2">
-              <span className="text-xs font-bold text-[#2E7D32] tracking-wide uppercase">
+              <span className="text-xs font-bold text-[#3E7D25] tracking-wide uppercase">
                 Enterprise Credentialing
               </span>
               <h3 className="text-xl sm:text-2xl font-black text-neutral-900 tracking-tight">
@@ -169,7 +165,7 @@ export const CertificateSampleSection: React.FC<CertificateSampleSectionProps> =
             <div className="space-y-3.5 pt-1">
               
               <div className="flex items-start gap-3 p-3.5 rounded-xl bg-white border border-neutral-200 shadow-xs">
-                <div className="p-2 rounded-lg bg-emerald-50 text-[#2E7D32] shrink-0 mt-0.5">
+                <div className="p-2 rounded-lg bg-emerald-50 text-[#3E7D25] shrink-0 mt-0.5">
                   <QrCode className="w-4 h-4" />
                 </div>
                 <div>
@@ -181,7 +177,7 @@ export const CertificateSampleSection: React.FC<CertificateSampleSectionProps> =
               </div>
 
               <div className="flex items-start gap-3 p-3.5 rounded-xl bg-white border border-neutral-200 shadow-xs">
-                <div className="p-2 rounded-lg bg-emerald-50 text-[#2E7D32] shrink-0 mt-0.5">
+                <div className="p-2 rounded-lg bg-emerald-50 text-[#3E7D25] shrink-0 mt-0.5">
                   <Award className="w-4 h-4" />
                 </div>
                 <div>
@@ -193,7 +189,7 @@ export const CertificateSampleSection: React.FC<CertificateSampleSectionProps> =
               </div>
 
               <div className="flex items-start gap-3 p-3.5 rounded-xl bg-white border border-neutral-200 shadow-xs">
-                <div className="p-2 rounded-lg bg-emerald-50 text-[#2E7D32] shrink-0 mt-0.5">
+                <div className="p-2 rounded-lg bg-emerald-50 text-[#3E7D25] shrink-0 mt-0.5">
                   <ShieldCheck className="w-4 h-4" />
                 </div>
                 <div>
@@ -211,9 +207,9 @@ export const CertificateSampleSection: React.FC<CertificateSampleSectionProps> =
               <button
                 type="button"
                 onClick={() => onNavigate(`/verify-certificate?cert=${sampleCertNumber}`)}
-                className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl text-xs font-bold uppercase tracking-wider text-white bg-[#042A1D] hover:bg-[#2E7D32] shadow-md active:scale-[0.98] transition-all cursor-pointer"
+                className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl text-xs font-bold uppercase tracking-wider text-white bg-gradient-to-r from-[#012B53] via-[#0C5A91] to-[#4C8E20] hover:from-[#0C5A91] hover:via-[#012B53] hover:to-[#3E7D25] shadow-md active:scale-[0.98] transition-all cursor-pointer"
               >
-                <ShieldCheck className="w-4 h-4 text-[#4ADE80]" />
+                <ShieldCheck className="w-4 h-4 text-[#A4D65E]" />
                 <span>Test Verify Certificate</span>
               </button>
 

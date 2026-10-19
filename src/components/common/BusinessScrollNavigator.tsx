@@ -152,14 +152,14 @@ export const BusinessScrollNavigator: React.FC<BusinessScrollNavigatorProps> = (
         aria-label="Interactive Business Roadmap Guide"
         className="fixed bottom-5 left-1/2 -translate-x-1/2 z-40 max-w-[94vw] sm:max-w-xl w-full transition-all duration-300"
       >
-        <div className="bg-[#041F16]/95 backdrop-blur-md text-white border border-emerald-500/40 rounded-2xl shadow-2xl shadow-emerald-950/60 p-2 sm:p-2.5 flex items-center justify-between gap-3 ring-1 ring-emerald-400/25">
+        <div className="bg-[#012542]/95 backdrop-blur-md text-white border border-emerald-500/40 rounded-2xl shadow-2xl shadow-emerald-950/60 p-2 sm:p-2.5 flex items-center justify-between gap-3 ring-1 ring-emerald-400/25">
           
           {/* Active Business Stage Info */}
           <button
             onClick={() => setIsExpanded(!isExpanded)}
             className="flex items-center gap-2.5 text-left flex-1 min-w-0 pl-1.5 cursor-pointer group"
           >
-            <div className="w-7 h-7 rounded-lg bg-[#062E21] border border-emerald-500/40 flex items-center justify-center shrink-0 text-emerald-300 shadow-xs group-hover:border-emerald-400 transition-colors">
+            <div className="w-7 h-7 rounded-lg bg-[#012B53] border border-emerald-500/40 flex items-center justify-center shrink-0 text-emerald-300 shadow-xs group-hover:border-emerald-400 transition-colors">
               {currentStage.icon}
             </div>
             
@@ -190,7 +190,7 @@ export const BusinessScrollNavigator: React.FC<BusinessScrollNavigatorProps> = (
             {/* Quick Consultation CTA */}
             <button
               onClick={() => onOpenEnquiry()}
-              className="px-3 py-1.5 rounded-xl bg-gradient-to-r from-[#062E21] via-[#0E5C3A] to-[#15803D] hover:from-[#042419] hover:via-[#0B4A2F] hover:to-[#166534] active:scale-[0.98] text-white font-bold text-[11px] uppercase tracking-wider transition-all shadow-md shadow-emerald-950/40 ring-1 ring-emerald-400/40 flex items-center gap-1 cursor-pointer shrink-0"
+              className="px-3 py-1.5 rounded-xl bg-gradient-to-r from-[#012B53] via-[#0C5A91] to-[#4C8E20] hover:from-[#0C5A91] hover:via-[#012B53] hover:to-[#3E7D25] active:scale-[0.98] text-white font-bold text-[11px] uppercase tracking-wider transition-all shadow-md shadow-emerald-950/40 ring-1 ring-emerald-400/40 flex items-center gap-1 cursor-pointer shrink-0"
             >
               <Sparkles className="w-3 h-3 text-emerald-300" />
               <span className="hidden xs:inline">Audit Prep</span>
@@ -201,7 +201,7 @@ export const BusinessScrollNavigator: React.FC<BusinessScrollNavigatorProps> = (
 
         {/* Expanded Business Map Modal / Drawer */}
         {isExpanded && (
-          <div className="mt-2 p-3 sm:p-4 rounded-2xl bg-[#041F16]/95 backdrop-blur-xl border border-emerald-500/50 shadow-2xl text-white space-y-2.5 animate-in fade-in slide-in-from-bottom-2 duration-200">
+          <div className="mt-2 p-3 sm:p-4 rounded-2xl bg-[#012542]/95 backdrop-blur-xl border border-emerald-500/50 shadow-2xl text-white space-y-2.5 animate-in fade-in slide-in-from-bottom-2 duration-200">
             <div className="flex items-center justify-between pb-2 border-b border-emerald-800/50">
               <div className="flex items-center gap-2">
                 <Logo variant="icon-only" size="sm" className="w-4 h-4 scale-75" />
@@ -230,7 +230,7 @@ export const BusinessScrollNavigator: React.FC<BusinessScrollNavigatorProps> = (
                     onClick={() => handleJumpTo(stage.targetId)}
                     className={`p-2.5 rounded-xl border text-left flex items-start gap-2.5 transition-all cursor-pointer ${
                       isActive
-                        ? 'bg-[#062E21] border-emerald-400 ring-1 ring-emerald-400/40 shadow-sm'
+                        ? 'bg-[#012B53] border-emerald-400 ring-1 ring-emerald-400/40 shadow-sm'
                         : 'bg-white/5 border-emerald-500/20 hover:bg-white/10 hover:border-emerald-500/50'
                     }`}
                   >
@@ -241,7 +241,7 @@ export const BusinessScrollNavigator: React.FC<BusinessScrollNavigatorProps> = (
                       <div className="text-xs font-bold text-white flex items-center gap-1.5">
                         <span>{stage.title}</span>
                         {isActive && (
-                          <span className="text-[9px] px-1.5 py-0.2 rounded-full bg-emerald-500 text-[#041F16] font-black uppercase">
+                          <span className="text-[9px] px-1.5 py-0.2 rounded-full bg-emerald-500 text-[#012542] font-black uppercase">
                             Now
                           </span>
                         )}

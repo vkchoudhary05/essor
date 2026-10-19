@@ -8,7 +8,7 @@ export const StandardsMarquee: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-5 border-b border-neutral-200 pb-3">
           <div className="flex items-center gap-2">
-            <Award className="w-4 h-4 text-[#2E7D32]" />
+            <Award className="w-4 h-4 text-[#3E7D25]" />
             <span className="text-xs font-black tracking-widest uppercase text-neutral-900">
               Audit Standards &amp; Certifications Supported (From Brochure Page 2)
             </span>
@@ -22,9 +22,9 @@ export const StandardsMarquee: React.FC = () => {
           {STANDARDS_BADGES.map((std) => (
             <div
               key={std.name}
-              className="px-3.5 py-1.5 rounded-xl bg-white border border-neutral-200 text-xs font-bold text-neutral-900 shadow-2xs hover:border-[#2E7D32] hover:bg-emerald-50/50 transition-all flex items-center gap-2"
+              className="px-3.5 py-1.5 rounded-xl bg-white border border-neutral-200 text-xs font-bold text-neutral-900 shadow-2xs hover:border-[#3E7D25] hover:bg-emerald-50/50 transition-all flex items-center gap-2"
             >
-              <div className="w-2 h-2 rounded-full bg-[#2E7D32]" />
+              <div className="w-2 h-2 rounded-full bg-[#3E7D25]" />
               <span>{std.name}</span>
             </div>
           ))}

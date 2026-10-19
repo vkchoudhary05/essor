@@ -21,13 +21,12 @@ import { CMSContent } from '../../types';
 import { BackendApiService } from '../../services/api';
 
 // Realistic Visual Assets directly imported for Vite Live bundling
-import certSampleImage from '../../assets/images/training_certificate_sample_1792302193039.jpg';
+import { CertificatePreview } from '../common/CertificatePreview';
 import freshProduceImage from '../../assets/images/fresh_produce_inspection_1792395403170.jpg';
 import packagingLineImage from '../../assets/images/packaging_line_audit_1792395423537.jpg';
 import corporateSeminarImage from '../../assets/images/corporate_training_seminar_1792395440966.jpg';
 import auditInspectionImage from '../../assets/images/audit_readiness_inspection_1791962115904.jpg';
 import labTestingImage from '../../assets/images/food_factory_lab_testing_1791965811882.jpg';
-import essorLogo from '../../assets/images/essor_logo.png';
 
 interface HeroSectionProps {
   cms: CMSContent;
@@ -185,7 +184,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               ref={trustBadgeRef}
               className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white border border-emerald-300 shadow-xs"
             >
-              <img src={essorLogo} alt="ECS Emblem" className="w-5 h-5 object-contain" />
+              <ShieldCheck className="w-5 h-5 text-[#75B72B]" aria-hidden="true" />
               <span className="text-[11px] font-black uppercase tracking-wider text-neutral-900">
                 SIMPLIFYING COMPLIANCE · STRENGTHENING FOOD SAFETY
               </span>
@@ -197,7 +196,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               className="text-3xl sm:text-4xl md:text-5xl font-black text-neutral-900 tracking-tight leading-[1.12]"
             >
               Food Safety Audits, Plant Hygiene &amp;{' '}
-              <span className="text-[#2E7D32] font-black">
+              <span className="text-[#3E7D25] font-black">
                 Certified Training
               </span>{' '}
               — Made Simple.
@@ -217,27 +216,27 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 pt-1"
             >
               <div className="flex items-center gap-2 p-2.5 rounded-xl bg-white border border-emerald-900/10 shadow-xs">
-                <CheckCircle2 className="w-4 h-4 text-[#2E7D32] shrink-0" />
+                <CheckCircle2 className="w-4 h-4 text-[#3E7D25] shrink-0" />
                 <span className="text-xs font-bold text-neutral-900">Simple &amp; Hassle-Free</span>
               </div>
               <div className="flex items-center gap-2 p-2.5 rounded-xl bg-white border border-emerald-900/10 shadow-xs">
-                <CheckCircle2 className="w-4 h-4 text-[#2E7D32] shrink-0" />
+                <CheckCircle2 className="w-4 h-4 text-[#3E7D25] shrink-0" />
                 <span className="text-xs font-bold text-neutral-900">Fast Turnaround</span>
               </div>
               <div className="flex items-center gap-2 p-2.5 rounded-xl bg-white border border-emerald-900/10 shadow-xs">
-                <CheckCircle2 className="w-4 h-4 text-[#2E7D32] shrink-0" />
+                <CheckCircle2 className="w-4 h-4 text-[#3E7D25] shrink-0" />
                 <span className="text-xs font-bold text-neutral-900">Guaranteed Results</span>
               </div>
               <div className="flex items-center gap-2 p-2.5 rounded-xl bg-white border border-emerald-900/10 shadow-xs">
-                <CheckCircle2 className="w-4 h-4 text-[#2E7D32] shrink-0" />
+                <CheckCircle2 className="w-4 h-4 text-[#3E7D25] shrink-0" />
                 <span className="text-xs font-bold text-neutral-900">Well Documented</span>
               </div>
               <div className="flex items-center gap-2 p-2.5 rounded-xl bg-white border border-emerald-900/10 shadow-xs">
-                <CheckCircle2 className="w-4 h-4 text-[#2E7D32] shrink-0" />
+                <CheckCircle2 className="w-4 h-4 text-[#3E7D25] shrink-0" />
                 <span className="text-xs font-bold text-neutral-900">Affordable Pricing</span>
               </div>
               <div className="flex items-center gap-2 p-2.5 rounded-xl bg-white border border-emerald-900/10 shadow-xs">
-                <CheckCircle2 className="w-4 h-4 text-[#2E7D32] shrink-0" />
+                <CheckCircle2 className="w-4 h-4 text-[#3E7D25] shrink-0" />
                 <span className="text-xs font-bold text-neutral-900">QR Verifiable Certs</span>
               </div>
             </div>
@@ -250,7 +249,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               <button
                 type="button"
                 onClick={() => onOpenEnquiry()}
-                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl text-sm font-bold tracking-wide text-white bg-gradient-to-r from-[#042A1D] via-[#062E21] to-[#2E7D32] hover:opacity-95 shadow-md active:scale-[0.98] transition-all cursor-pointer"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl text-sm font-bold tracking-wide text-white bg-gradient-to-r from-[#012B53] via-[#012B53] to-[#3E7D25] hover:opacity-95 shadow-md active:scale-[0.98] transition-all cursor-pointer"
               >
                 <span>Request Free Audit Guidance</span>
                 <ArrowRight className="w-4 h-4" />
@@ -279,7 +278,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                   href="tel:+916395843850"
                   className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-4 py-3.5 rounded-xl text-sm font-bold text-neutral-900 bg-white hover:bg-emerald-50 border border-emerald-600/30 shadow-xs transition-all active:scale-[0.98]"
                 >
-                  <Phone className="w-4 h-4 text-[#2E7D32]" />
+                  <Phone className="w-4 h-4 text-[#3E7D25]" />
                   <span>Call: 6395843850</span>
                 </a>
 
@@ -299,17 +298,17 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             {/* Direct Contact Bar */}
             <div className="pt-3 border-t border-neutral-200 text-xs text-neutral-700 flex flex-wrap items-center gap-y-2 gap-x-5">
               <div className="flex items-center gap-1.5">
-                <Phone className="w-3.5 h-3.5 text-[#2E7D32]" />
+                <Phone className="w-3.5 h-3.5 text-[#3E7D25]" />
                 <span className="font-bold text-neutral-900">+91 6395843850</span>
               </div>
               <div className="flex items-center gap-1.5">
-                <Mail className="w-3.5 h-3.5 text-[#2E7D32]" />
+                <Mail className="w-3.5 h-3.5 text-[#3E7D25]" />
                 <a href="mailto:business@essorcompliance.com" className="hover:text-emerald-700 font-semibold text-neutral-800 transition-colors">
                   business@essorcompliance.com
                 </a>
               </div>
               <div className="flex items-center gap-1.5">
-                <MapPin className="w-3.5 h-3.5 text-[#2E7D32]" />
+                <MapPin className="w-3.5 h-3.5 text-[#3E7D25]" />
                 <span className="font-medium text-neutral-800">Doon IT Park, Dehradun</span>
               </div>
             </div>
@@ -323,13 +322,13 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             <div className="rounded-2xl overflow-hidden border border-emerald-900/15 shadow-xl bg-white">
               
               {/* Tab Selector Header (Scrollable tabs so users see every aspect of the business) */}
-              <div className="p-2 bg-[#042A1D] text-white flex items-center gap-1 overflow-x-auto text-xs font-bold no-scrollbar">
+              <div className="p-2 bg-[#012B53] text-white flex items-center gap-1 overflow-x-auto text-xs font-bold no-scrollbar">
                 <button
                   type="button"
                   onClick={() => setActiveVisualTab('CERTIFICATE')}
                   className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg transition-colors cursor-pointer shrink-0 ${
                     activeVisualTab === 'CERTIFICATE' 
-                      ? 'bg-[#2E7D32] text-white font-extrabold shadow-xs' 
+                      ? 'bg-[#3E7D25] text-white font-extrabold shadow-xs' 
                       : 'text-neutral-300 hover:text-white hover:bg-white/10'
                   }`}
                 >
@@ -342,7 +341,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                   onClick={() => setActiveVisualTab('PRODUCE')}
                   className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg transition-colors cursor-pointer shrink-0 ${
                     activeVisualTab === 'PRODUCE' 
-                      ? 'bg-[#2E7D32] text-white font-extrabold shadow-xs' 
+                      ? 'bg-[#3E7D25] text-white font-extrabold shadow-xs' 
                       : 'text-neutral-300 hover:text-white hover:bg-white/10'
                   }`}
                 >
@@ -355,7 +354,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                   onClick={() => setActiveVisualTab('PACKAGING')}
                   className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg transition-colors cursor-pointer shrink-0 ${
                     activeVisualTab === 'PACKAGING' 
-                      ? 'bg-[#2E7D32] text-white font-extrabold shadow-xs' 
+                      ? 'bg-[#3E7D25] text-white font-extrabold shadow-xs' 
                       : 'text-neutral-300 hover:text-white hover:bg-white/10'
                   }`}
                 >
@@ -368,7 +367,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                   onClick={() => setActiveVisualTab('AUDIT')}
                   className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg transition-colors cursor-pointer shrink-0 ${
                     activeVisualTab === 'AUDIT' 
-                      ? 'bg-[#2E7D32] text-white font-extrabold shadow-xs' 
+                      ? 'bg-[#3E7D25] text-white font-extrabold shadow-xs' 
                       : 'text-neutral-300 hover:text-white hover:bg-white/10'
                   }`}
                 >
@@ -381,7 +380,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                   onClick={() => setActiveVisualTab('LAB')}
                   className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg transition-colors cursor-pointer shrink-0 ${
                     activeVisualTab === 'LAB' 
-                      ? 'bg-[#2E7D32] text-white font-extrabold shadow-xs' 
+                      ? 'bg-[#3E7D25] text-white font-extrabold shadow-xs' 
                       : 'text-neutral-300 hover:text-white hover:bg-white/10'
                   }`}
                 >
@@ -394,7 +393,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                   onClick={() => setActiveVisualTab('TRAINING')}
                   className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg transition-colors cursor-pointer shrink-0 ${
                     activeVisualTab === 'TRAINING' 
-                      ? 'bg-[#2E7D32] text-white font-extrabold shadow-xs' 
+                      ? 'bg-[#3E7D25] text-white font-extrabold shadow-xs' 
                       : 'text-neutral-300 hover:text-white hover:bg-white/10'
                   }`}
                 >
@@ -406,11 +405,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               {/* Tab 1: Certificate Sample Preview */}
               {activeVisualTab === 'CERTIFICATE' && (
                 <div className="relative group bg-neutral-900 cursor-pointer" onClick={() => onOpenCertModal?.()}>
-                  <img
-                    src={certSampleImage}
-                    alt="Official ESSOR Training Certificate Sample"
-                    className="w-full h-72 sm:h-80 object-cover object-top transition-transform duration-500 group-hover:scale-105"
-                  />
+                  <CertificatePreview compact className="h-72 sm:h-80 transition-transform duration-500 group-hover:scale-[1.02]" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-4">
                     <div className="flex items-center justify-between text-white">
                       <div>
@@ -423,7 +418,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                           </span>
                         </div>
                         <p className="text-xs text-white/90 mt-1 font-semibold">
-                          Jessica Lee Chen · Lead Food Safety Auditor (ISO 22000)
+                          Aarav Sharma · Lead Food Safety Auditor (ISO 22000)
                         </p>
                       </div>
                       <span className="px-3 py-1.5 rounded-lg bg-white/20 hover:bg-white/30 backdrop-blur-xs text-xs font-bold text-white flex items-center gap-1.5 border border-white/30">
@@ -486,7 +481,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                       <button
                         type="button"
                         onClick={() => onNavigate('/services/managed-support')}
-                        className="px-3 py-1.5 rounded-lg bg-[#2E7D32] hover:bg-[#256629] text-xs font-bold text-white shadow-xs cursor-pointer"
+                        className="px-3 py-1.5 rounded-lg bg-[#3E7D25] hover:bg-[#256629] text-xs font-bold text-white shadow-xs cursor-pointer"
                       >
                         Details
                       </button>
@@ -593,7 +588,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 <button
                   type="button"
                   onClick={() => onNavigate('/verify-certificate?cert=ECSFSM-LA241116')}
-                  className="text-[#2E7D32] hover:text-neutral-900 font-bold inline-flex items-center gap-1 cursor-pointer"
+                  className="text-[#3E7D25] hover:text-neutral-900 font-bold inline-flex items-center gap-1 cursor-pointer"
                 >
                   <span>Test Live QR Verification</span>
                   <ArrowRight className="w-3.5 h-3.5" />
@@ -611,7 +606,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               <button
                 type="button"
                 onClick={() => setShowCallbackForm(!showCallbackForm)}
-                className="px-3 py-1.5 rounded-lg bg-emerald-50 hover:bg-[#2E7D32] hover:text-white text-xs font-bold text-[#2E7D32] border border-emerald-300 transition-all cursor-pointer shrink-0"
+                className="px-3 py-1.5 rounded-lg bg-emerald-50 hover:bg-[#3E7D25] hover:text-white text-xs font-bold text-[#3E7D25] border border-emerald-300 transition-all cursor-pointer shrink-0"
               >
                 {showCallbackForm ? 'Close Form' : 'Request Callback'}
               </button>
@@ -619,7 +614,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 
             {/* Quick Callback Inline Form */}
             {showCallbackForm && (
-              <form onSubmit={handleQuickCallback} className="p-4 rounded-xl bg-white border-2 border-[#2E7D32] shadow-md space-y-3">
+              <form onSubmit={handleQuickCallback} className="p-4 rounded-xl bg-white border-2 border-[#3E7D25] shadow-md space-y-3">
                 <h4 className="text-xs font-bold text-neutral-900 uppercase tracking-wider">
                   Request 15-Minute Audit Callback
                 </h4>
@@ -641,7 +636,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                         value={cbName}
                         onChange={(e) => setCbName(e.target.value)}
                         required
-                        className="px-3 py-2 text-xs rounded-lg border border-neutral-300 focus:outline-none focus:ring-1 focus:ring-[#2E7D32]"
+                        className="px-3 py-2 text-xs rounded-lg border border-neutral-300 focus:outline-none focus:ring-1 focus:ring-[#3E7D25]"
                       />
                       <input
                         type="tel"
@@ -649,13 +644,13 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                         value={cbPhone}
                         onChange={(e) => setCbPhone(e.target.value)}
                         required
-                        className="px-3 py-2 text-xs rounded-lg border border-neutral-300 focus:outline-none focus:ring-1 focus:ring-[#2E7D32]"
+                        className="px-3 py-2 text-xs rounded-lg border border-neutral-300 focus:outline-none focus:ring-1 focus:ring-[#3E7D25]"
                       />
                     </div>
                     <select
                       value={cbService}
                       onChange={(e) => setCbService(e.target.value)}
-                      className="w-full px-3 py-2 text-xs rounded-lg border border-neutral-300 focus:outline-none focus:ring-1 focus:ring-[#2E7D32] bg-white"
+                      className="w-full px-3 py-2 text-xs rounded-lg border border-neutral-300 focus:outline-none focus:ring-1 focus:ring-[#3E7D25] bg-white"
                     >
                       <option value="FSSAI & Regulatory Licensing">FSSAI &amp; Regulatory Licensing</option>
                       <option value="ISO 22000 / FSSC 22000 Readiness">ISO 22000 / FSSC 22000 Readiness</option>
@@ -667,7 +662,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="w-full py-2.5 rounded-lg bg-[#2E7D32] hover:bg-[#256629] text-white text-xs font-bold uppercase tracking-wider transition-all disabled:opacity-50 flex items-center justify-center gap-2 cursor-pointer"
+                      className="w-full py-2.5 rounded-lg bg-[#3E7D25] hover:bg-[#256629] text-white text-xs font-bold uppercase tracking-wider transition-all disabled:opacity-50 flex items-center justify-center gap-2 cursor-pointer"
                     >
                       <Send className="w-3.5 h-3.5" />
                       <span>{isSubmitting ? 'Sending...' : 'Confirm Callback Request'}</span>
@@ -691,7 +686,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             <span className="text-xs text-neutral-600 font-medium">Audits &amp; Assessments Prepared</span>
           </div>
           <div className="p-4 rounded-xl bg-white border border-emerald-900/10 shadow-2xs">
-            <span className="text-2xl sm:text-3xl font-black text-[#2E7D32] block">99.4%</span>
+            <span className="text-2xl sm:text-3xl font-black text-[#3E7D25] block">99.4%</span>
             <span className="text-xs text-neutral-600 font-medium">First-Time Audit Pass Rate</span>
           </div>
           <div className="p-4 rounded-xl bg-white border border-emerald-900/10 shadow-2xs">
@@ -699,7 +694,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             <span className="text-xs text-neutral-600 font-medium">Accredited Training Modules</span>
           </div>
           <div className="p-4 rounded-xl bg-white border border-emerald-900/10 shadow-2xs">
-            <span className="text-2xl sm:text-3xl font-black text-[#2E7D32] block">&lt;24 Hrs</span>
+            <span className="text-2xl sm:text-3xl font-black text-[#3E7D25] block">&lt;24 Hrs</span>
             <span className="text-xs text-neutral-600 font-medium">Emergency Audit Support Response</span>
           </div>
         </div>

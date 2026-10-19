@@ -130,7 +130,7 @@ export const LoginPage: React.FC<LoginPageProps> = ({
                 <Sparkles className="w-3.5 h-3.5 text-emerald-600" />
                 <span>Role-Based Access Control (RBAC)</span>
               </div>
-              <h2 className="text-xl font-bold text-[#062E21] mt-1">
+              <h2 className="text-xl font-bold text-[#012B53] mt-1">
                 Select Persona for Immediate Portal Access
               </h2>
               <p className="text-xs text-neutral-500 mt-1 font-normal">
@@ -153,7 +153,7 @@ export const LoginPage: React.FC<LoginPageProps> = ({
                   >
                     <div className="min-w-0">
                       <div className="flex items-center gap-2">
-                        <span className="text-xs font-bold text-[#062E21] group-hover:text-emerald-700 transition-colors">{p.name}</span>
+                        <span className="text-xs font-bold text-[#012B53] group-hover:text-emerald-700 transition-colors">{p.name}</span>
                         <span className="px-1.5 py-0.5 rounded-md text-[9px] font-bold uppercase bg-emerald-100/70 text-emerald-900 border border-emerald-200/80">
                           {p.role}
                         </span>
@@ -161,7 +161,7 @@ export const LoginPage: React.FC<LoginPageProps> = ({
                       <p className="text-[11px] text-neutral-500 mt-0.5 line-clamp-1 font-normal">{p.desc}</p>
                     </div>
 
-                    <div className="flex items-center gap-1 text-xs font-bold text-[#062E21] group-hover:text-emerald-700 shrink-0">
+                    <div className="flex items-center gap-1 text-xs font-bold text-[#012B53] group-hover:text-emerald-700 shrink-0">
                       <span>Launch</span>
                       <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
                     </div>
@@ -175,7 +175,7 @@ export const LoginPage: React.FC<LoginPageProps> = ({
           <div className="lg:col-span-5 bg-white p-8 rounded-2xl border border-emerald-900/10 shadow-xl space-y-5">
             <div>
               <Logo size="md" />
-              <h3 className="text-lg font-bold text-[#062E21] mt-4">
+              <h3 className="text-lg font-bold text-[#012B53] mt-4">
                 Enterprise Credentials Login
               </h3>
               <p className="text-xs text-neutral-500 font-normal">
@@ -224,7 +224,7 @@ export const LoginPage: React.FC<LoginPageProps> = ({
                     type="checkbox"
                     checked={rememberMe}
                     onChange={e => setRememberMe(e.target.checked)}
-                    className="rounded text-[#062E21] focus:ring-emerald-600"
+                    className="rounded text-[#012B53] focus:ring-emerald-600"
                   />
                   <span>Remember session</span>
                 </label>
@@ -235,7 +235,7 @@ export const LoginPage: React.FC<LoginPageProps> = ({
 
               <button
                 type="submit"
-                className="w-full py-3.5 text-xs font-bold uppercase tracking-wider text-white bg-gradient-to-r from-[#062E21] via-[#0E5C3A] to-[#15803D] hover:from-[#042419] hover:via-[#0B4A2F] hover:to-[#166534] active:scale-[0.98] rounded-xl transition-all shadow-md shadow-emerald-950/20 ring-1 ring-emerald-400/30 cursor-pointer"
+                className="w-full py-3.5 text-xs font-bold uppercase tracking-wider text-white bg-gradient-to-r from-[#012B53] via-[#0C5A91] to-[#4C8E20] hover:from-[#0C5A91] hover:via-[#012B53] hover:to-[#3E7D25] active:scale-[0.98] rounded-xl transition-all shadow-md shadow-emerald-950/20 ring-1 ring-emerald-400/30 cursor-pointer"
               >
                 Sign In to Platform
               </button>

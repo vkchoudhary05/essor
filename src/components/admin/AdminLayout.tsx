@@ -72,7 +72,7 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({
     <div className="min-h-screen bg-[#F8FAFC] flex flex-col">
       
       {/* Top Admin Bar */}
-      <header className="bg-gradient-to-r from-[#041F16] via-[#062E21] to-[#0A3828] text-white border-b border-emerald-500/30 sticky top-0 z-30 shadow-lg shadow-black/20">
+      <header className="bg-gradient-to-r from-[#012542] via-[#012B53] to-[#013C63] text-white border-b border-emerald-500/30 sticky top-0 z-30 shadow-lg shadow-black/20">
         <div className="px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           
           <div className="flex items-center gap-4">
@@ -100,7 +100,7 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({
               <select
                 value={currentUser.role}
                 onChange={(e) => onRoleChange(e.target.value as UserRole)}
-                className="text-xs bg-[#041F16] text-white border border-emerald-500/40 rounded-lg px-2.5 py-1 focus:outline-none focus:ring-1 focus:ring-emerald-400"
+                className="text-xs bg-[#012542] text-white border border-emerald-500/40 rounded-lg px-2.5 py-1 focus:outline-none focus:ring-1 focus:ring-emerald-400"
               >
                 <option value="SUPER_ADMIN">SUPER_ADMIN (Full Governance)</option>
                 <option value="ADMIN">ADMIN (Operations & Audit)</option>
@@ -152,8 +152,8 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({
                   onClick={() => onSelectSection(item.id)}
                   className={`w-full flex items-center justify-between px-3 py-2.5 text-xs font-bold rounded-xl transition-all cursor-pointer ${
                     isActive 
-                      ? 'bg-gradient-to-r from-[#062E21] to-[#0E5C3A] text-white shadow-md shadow-emerald-950/20' 
-                      : 'text-neutral-600 hover:bg-emerald-50/60 hover:text-[#062E21]'
+                      ? 'bg-gradient-to-r from-[#012B53] to-[#0C5A91] text-white shadow-md shadow-emerald-950/20' 
+                      : 'text-neutral-600 hover:bg-emerald-50/60 hover:text-[#012B53]'
                   }`}
                 >
                   <div className="flex items-center gap-2.5">
@@ -162,7 +162,7 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({
                   </div>
 
                   {item.badge !== undefined && item.badge > 0 && (
-                    <span className="w-5 h-5 rounded-full bg-emerald-500 text-[#041F16] text-[10px] flex items-center justify-center font-black">
+                    <span className="w-5 h-5 rounded-full bg-emerald-500 text-[#012542] text-[10px] flex items-center justify-center font-black">
                       {item.badge}
                     </span>
                   )}
@@ -173,7 +173,7 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({
 
           {/* Security & Access Notice */}
           <div className="p-4 rounded-2xl bg-white border border-emerald-900/10 text-xs text-neutral-600 space-y-2">
-            <div className="flex items-center gap-2 text-[#062E21] font-bold">
+            <div className="flex items-center gap-2 text-[#012B53] font-bold">
               <ShieldCheck className="w-4 h-4 text-emerald-600" />
               <span>RBAC Policy Active</span>
             </div>
@@ -188,7 +188,7 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({
           <div className="fixed inset-0 z-40 md:hidden bg-black/60 p-4">
             <div className="bg-white rounded-2xl p-4 space-y-2 max-w-xs shadow-2xl border border-emerald-900/15">
               <div className="flex items-center justify-between pb-2 border-b border-neutral-200">
-                <span className="text-xs font-bold uppercase tracking-wider text-[#062E21]">Admin Modules</span>
+                <span className="text-xs font-bold uppercase tracking-wider text-[#012B53]">Admin Modules</span>
                 <button onClick={() => setMobileNavOpen(false)} className="p-1 text-neutral-500 cursor-pointer">
                   <X className="w-5 h-5" />
                 </button>
@@ -203,7 +203,7 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({
                       setMobileNavOpen(false);
                     }}
                     className={`w-full flex items-center gap-3 px-3 py-2 text-xs font-bold rounded-xl cursor-pointer ${
-                      activeSection === item.id ? 'bg-[#062E21] text-white' : 'text-neutral-700 hover:bg-emerald-50'
+                      activeSection === item.id ? 'bg-[#012B53] text-white' : 'text-neutral-700 hover:bg-emerald-50'
                     }`}
                   >
                     <Icon className="w-4 h-4" />

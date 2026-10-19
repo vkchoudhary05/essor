@@ -57,7 +57,7 @@ export const ParticipantPortal: React.FC<ParticipantPortalProps> = ({ currentUse
     <div className="w-full bg-[#F8FAFC] py-10 min-h-screen">
       
       {toastMessage && (
-        <div className="fixed bottom-6 right-6 z-50 p-4 rounded-xl bg-[#041F16] text-white text-xs font-semibold shadow-2xl border border-emerald-500/40 flex items-center gap-2">
+        <div className="fixed bottom-6 right-6 z-50 p-4 rounded-xl bg-[#012542] text-white text-xs font-semibold shadow-2xl border border-emerald-500/40 flex items-center gap-2">
           <CheckCircle className="w-4 h-4 text-emerald-400" />
           <span>{toastMessage}</span>
         </div>
@@ -66,9 +66,9 @@ export const ParticipantPortal: React.FC<ParticipantPortalProps> = ({ currentUse
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
         
         {/* Profile Card */}
-        <div className="p-6 sm:p-8 rounded-2xl bg-gradient-to-r from-[#041F16] via-[#062E21] to-[#0A3828] text-white shadow-xl border border-emerald-500/30 flex flex-col md:flex-row md:items-center justify-between gap-6">
+        <div className="p-6 sm:p-8 rounded-2xl bg-gradient-to-r from-[#012542] via-[#012B53] to-[#013C63] text-white shadow-xl border border-emerald-500/30 flex flex-col md:flex-row md:items-center justify-between gap-6">
           <div className="flex items-center gap-4">
-            <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#062E21] to-[#0E5C3A] text-emerald-300 flex items-center justify-center font-bold text-xl border border-emerald-500/40 shadow-md">
+            <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#012B53] to-[#0C5A91] text-emerald-300 flex items-center justify-center font-bold text-xl border border-emerald-500/40 shadow-md">
               <Award className="w-8 h-8" />
             </div>
             <div>
@@ -97,7 +97,7 @@ export const ParticipantPortal: React.FC<ParticipantPortalProps> = ({ currentUse
 
         {/* Certificates Showcase */}
         <div className="space-y-4">
-          <h2 className="text-base font-bold text-[#062E21] uppercase tracking-wider">
+          <h2 className="text-base font-bold text-[#012B53] uppercase tracking-wider">
             My Official Certificates of Completion
           </h2>
 

@@ -390,11 +390,11 @@ export default function App() {
     // Fallback 404
     pageContent = (
       <div className="py-28 text-center space-y-4 max-w-md mx-auto px-4">
-        <h1 className="text-2xl font-bold text-[#062E21]">Page Not Found</h1>
+        <h1 className="text-2xl font-bold text-[#012B53]">Page Not Found</h1>
         <p className="text-xs text-neutral-600">The page you requested does not exist or has been relocated.</p>
         <button
           onClick={() => navigateTo('/')}
-          className="px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-white bg-gradient-to-r from-[#062E21] via-[#0E5C3A] to-[#15803D] rounded-xl shadow-md cursor-pointer"
+          className="px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-white bg-gradient-to-r from-[#012B53] via-[#0C5A91] to-[#4C8E20] rounded-xl shadow-md cursor-pointer"
         >
           Return to Home
         </button>

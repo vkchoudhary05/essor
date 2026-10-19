@@ -89,13 +89,13 @@ export const ProcessPage: React.FC<ProcessPageProps> = ({ onOpenEnquiry }) => {
       <section className="py-16 sm:py-20 bg-white border-b border-emerald-900/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-left">
           <div className="max-w-3xl space-y-4">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-xs font-bold uppercase tracking-wider text-[#2E7D32]">
-              <Sparkles className="w-3.5 h-3.5 text-[#2E7D32]" />
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-xs font-bold uppercase tracking-wider text-[#3E7D25]">
+              <Sparkles className="w-3.5 h-3.5 text-[#3E7D25]" />
               <span>Simplified Certification Methodology</span>
             </div>
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-neutral-900 tracking-tight leading-tight">
               Simplified Process to Achieve{' '}
-              <span className="text-[#2E7D32]">
+              <span className="text-[#3E7D25]">
                 Food Safety Certification.
               </span>
             </h1>
@@ -113,8 +113,8 @@ export const ProcessPage: React.FC<ProcessPageProps> = ({ onOpenEnquiry }) => {
               onClick={() => setActiveTab('8STEP')}
               className={`px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer ${
                 activeTab === '8STEP'
-                  ? 'bg-[#042A1D] text-white shadow-sm'
-                  : 'bg-[#F8FAF9] text-neutral-700 border border-neutral-200 hover:border-[#2E7D32]'
+                  ? 'bg-[#012B53] text-white shadow-sm'
+                  : 'bg-[#F8FAF9] text-neutral-700 border border-neutral-200 hover:border-[#3E7D25]'
               }`}
             >
               8-Step Certification Cycle (Brochure Page 3)
@@ -123,8 +123,8 @@ export const ProcessPage: React.FC<ProcessPageProps> = ({ onOpenEnquiry }) => {
               onClick={() => setActiveTab('6STAGES')}
               className={`px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer ${
                 activeTab === '6STAGES'
-                  ? 'bg-[#042A1D] text-white shadow-sm'
-                  : 'bg-[#F8FAF9] text-neutral-700 border border-neutral-200 hover:border-[#2E7D32]'
+                  ? 'bg-[#012B53] text-white shadow-sm'
+                  : 'bg-[#F8FAF9] text-neutral-700 border border-neutral-200 hover:border-[#3E7D25]'
               }`}
             >
               Detailed Field Engagement Stages
@@ -145,14 +145,14 @@ export const ProcessPage: React.FC<ProcessPageProps> = ({ onOpenEnquiry }) => {
                 return (
                   <div
                     key={idx}
-                    className="p-6 rounded-2xl bg-white border border-neutral-200 shadow-xs hover:border-[#2E7D32] hover:shadow-xl transition-all duration-300 flex flex-col justify-between group"
+                    className="p-6 rounded-2xl bg-white border border-neutral-200 shadow-xs hover:border-[#3E7D25] hover:shadow-xl transition-all duration-300 flex flex-col justify-between group"
                   >
                     <div className="space-y-3">
                       <div className="flex items-center justify-between">
-                        <span className="text-xs font-mono font-bold px-2 py-0.5 rounded bg-emerald-50 text-[#2E7D32] border border-emerald-200">
+                        <span className="text-xs font-mono font-bold px-2 py-0.5 rounded bg-emerald-50 text-[#3E7D25] border border-emerald-200">
                           {step.num}
                         </span>
-                        <div className="w-9 h-9 rounded-xl bg-neutral-100 text-neutral-900 flex items-center justify-center group-hover:bg-[#2E7D32] group-hover:text-white transition-colors">
+                        <div className="w-9 h-9 rounded-xl bg-neutral-100 text-neutral-900 flex items-center justify-center group-hover:bg-[#3E7D25] group-hover:text-white transition-colors">
                           <IconComponent className="w-4 h-4" />
                         </div>
                       </div>
@@ -161,7 +161,7 @@ export const ProcessPage: React.FC<ProcessPageProps> = ({ onOpenEnquiry }) => {
                         <span className="text-[10px] font-bold uppercase tracking-wider text-neutral-500 block">
                           {step.phase}
                         </span>
-                        <h3 className="text-lg font-bold text-neutral-900 mt-0.5 group-hover:text-[#2E7D32] transition-colors">
+                        <h3 className="text-lg font-bold text-neutral-900 mt-0.5 group-hover:text-[#3E7D25] transition-colors">
                           {step.title}
                         </h3>
                       </div>
@@ -173,7 +173,7 @@ export const ProcessPage: React.FC<ProcessPageProps> = ({ onOpenEnquiry }) => {
 
                     <div className="pt-3 mt-4 border-t border-neutral-100 text-xs text-neutral-700">
                       <div className="flex items-start gap-1.5">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-[#2E7D32] shrink-0 mt-0.5" />
+                        <CheckCircle2 className="w-3.5 h-3.5 text-[#3E7D25] shrink-0 mt-0.5" />
                         <span className="text-[11px] font-medium leading-tight">{step.deliverable}</span>
                       </div>
                     </div>
@@ -188,17 +188,17 @@ export const ProcessPage: React.FC<ProcessPageProps> = ({ onOpenEnquiry }) => {
             {ENGAGEMENT_STAGES.map((stage) => (
               <div
                 key={stage.step}
-                className="p-8 rounded-2xl bg-white border border-neutral-200 shadow-xs hover:border-[#2E7D32] hover:shadow-xl transition-all duration-300 grid grid-cols-1 md:grid-cols-12 gap-6 items-center group"
+                className="p-8 rounded-2xl bg-white border border-neutral-200 shadow-xs hover:border-[#3E7D25] hover:shadow-xl transition-all duration-300 grid grid-cols-1 md:grid-cols-12 gap-6 items-center group"
               >
                 <div className="md:col-span-1 flex justify-start md:justify-center">
-                  <span className="w-12 h-12 rounded-xl bg-[#042A1D] text-white font-black text-base flex items-center justify-center shrink-0 shadow-md group-hover:bg-[#2E7D32] transition-colors">
+                  <span className="w-12 h-12 rounded-xl bg-[#012B53] text-white font-black text-base flex items-center justify-center shrink-0 shadow-md group-hover:bg-[#3E7D25] transition-colors">
                     0{stage.step}
                   </span>
                 </div>
 
                 <div className="md:col-span-6 space-y-2">
                   <div className="flex items-center gap-2">
-                    <span className="text-xs font-mono font-bold text-[#2E7D32] px-2 py-0.5 rounded bg-emerald-50 border border-emerald-200">
+                    <span className="text-xs font-mono font-bold text-[#3E7D25] px-2 py-0.5 rounded bg-emerald-50 border border-emerald-200">
                       STAGE 0{stage.step}
                     </span>
                     <span aria-hidden="true" className="text-neutral-300">·</span>
@@ -206,7 +206,7 @@ export const ProcessPage: React.FC<ProcessPageProps> = ({ onOpenEnquiry }) => {
                       {stage.description}
                     </span>
                   </div>
-                  <h3 className="text-2xl font-bold text-neutral-900 group-hover:text-[#2E7D32] transition-colors">
+                  <h3 className="text-2xl font-bold text-neutral-900 group-hover:text-[#3E7D25] transition-colors">
                     {stage.title}
                   </h3>
                   <p className="text-sm text-neutral-600 leading-relaxed font-normal">
@@ -215,14 +215,14 @@ export const ProcessPage: React.FC<ProcessPageProps> = ({ onOpenEnquiry }) => {
                 </div>
 
                 <div className="md:col-span-5 bg-[#F8FAF9] p-5 rounded-2xl border border-neutral-200 space-y-1.5">
-                  <span className="text-[11px] font-bold uppercase tracking-wider text-[#2E7D32] block">
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-[#3E7D25] block">
                     Target Outcome &amp; Deliverable
                   </span>
                   <p className="text-xs font-bold text-neutral-900 leading-snug">
                     {stage.outcome}
                   </p>
-                  <div className="pt-2 text-[11px] text-[#2E7D32] font-semibold flex items-center gap-1.5">
-                    <CheckCircle2 className="w-4 h-4 text-[#2E7D32] shrink-0" />
+                  <div className="pt-2 text-[11px] text-[#3E7D25] font-semibold flex items-center gap-1.5">
+                    <CheckCircle2 className="w-4 h-4 text-[#3E7D25] shrink-0" />
                     <span>Defensible evidence for auditor review</span>
                   </div>
                 </div>
@@ -236,7 +236,7 @@ export const ProcessPage: React.FC<ProcessPageProps> = ({ onOpenEnquiry }) => {
           <div className="md:col-span-7 space-y-3">
             <div className="flex items-center gap-2">
               <Logo variant="icon-only" size="sm" className="w-5 h-5" />
-              <span className="text-xs font-bold uppercase tracking-widest text-[#4ADE80]">
+              <span className="text-xs font-bold uppercase tracking-widest text-[#A4D65E]">
                 Flexible Engagement Model
               </span>
             </div>
@@ -249,7 +249,7 @@ export const ProcessPage: React.FC<ProcessPageProps> = ({ onOpenEnquiry }) => {
             <div className="pt-2">
               <button
                 onClick={() => onOpenEnquiry('Gap Assessment')}
-                className="inline-flex items-center gap-2 px-6 py-3.5 text-xs font-bold uppercase tracking-wider text-white bg-[#2E7D32] hover:bg-[#256629] active:scale-[0.98] rounded-xl transition-all shadow-md cursor-pointer"
+                className="inline-flex items-center gap-2 px-6 py-3.5 text-xs font-bold uppercase tracking-wider text-white bg-[#3E7D25] hover:bg-[#256629] active:scale-[0.98] rounded-xl transition-all shadow-md cursor-pointer"
               >
                 <span>Initiate Step 1: Gap Analysis</span>
                 <ArrowRight className="w-3.5 h-3.5" />

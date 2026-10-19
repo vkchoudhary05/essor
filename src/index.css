@@ -1,4 +1,4 @@
-@import "tailwindcss";
+﻿@import "tailwindcss";
 @import "lenis/dist/lenis.css";
 
 @layer base {
@@ -8,21 +8,21 @@
   }
 
   :root {
-    --brand-pine-deep: #041F16;
-    --brand-pine-primary: #062E21;
-    --brand-emerald-rich: #0D5C3A;
-    --brand-emerald-vibrant: #15803D;
-    --brand-emerald-glow: #22C55E;
-    --brand-mint-subtle: #ECFDF5;
-    --brand-mint-accent: #86EFAC;
+    --brand-pine-deep: #012542;
+    --brand-pine-primary: #012B53;
+    --brand-emerald-rich: #0C5A91;
+    --brand-emerald-vibrant: #4C8E20;
+    --brand-emerald-glow: #75B72B;
+    --brand-mint-subtle: #F3F8EC;
+    --brand-mint-accent: #B5DE7A;
     --brand-canvas: #F8FAFC;
     --brand-surface: #FFFFFF;
-    --brand-border: #D1E7D8;
+    --brand-border: #D8E8C7;
   }
 
   body {
     font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-    color: #0F241C;
+    color: #012B53;
     background-color: #F8FAFC;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -88,12 +88,12 @@ a {
 /* Metallic Satin Emerald Brand Utility Classes */
 .emerald-gradient-bg,
 .gold-gradient-bg {
-  background: linear-gradient(135deg, #062E21 0%, #0E5C3A 45%, #15803D 80%, #22C55E 100%);
+  background: linear-gradient(135deg, #012B53 0%, #0C5A91 45%, #4C8E20 80%, #75B72B 100%);
 }
 
 .emerald-gradient-text,
 .gold-gradient-text {
-  background: linear-gradient(135deg, #062E21 0%, #0D5C3A 35%, #16A34A 75%, #22C55E 100%);
+  background: linear-gradient(135deg, #012B53 0%, #0C5A91 35%, #4C8E20 75%, #75B72B 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -121,7 +121,7 @@ a {
 .animate-nav-ticker {
   display: flex;
   width: max-content;
-  animation: navTicker 38s linear infinite;
+  animation: navTicker 64s linear infinite;
   will-change: transform;
 }
 

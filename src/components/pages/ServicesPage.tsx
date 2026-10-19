@@ -61,13 +61,13 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({
       <section className="py-16 sm:py-20 bg-white border-b border-emerald-900/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl space-y-4 text-left">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-xs font-bold uppercase tracking-wider text-[#2E7D32]">
-              <Sparkles className="w-3.5 h-3.5 text-[#2E7D32]" />
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-xs font-bold uppercase tracking-wider text-[#3E7D25]">
+              <Sparkles className="w-3.5 h-3.5 text-[#3E7D25]" />
               <span>ESSOR Service Portfolio</span>
             </div>
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-neutral-900 tracking-tight leading-tight">
               Support For Every Stage Of Your{' '}
-              <span className="text-[#2E7D32]">
+              <span className="text-[#3E7D25]">
                 Compliance Journey.
               </span>
             </h1>
@@ -82,8 +82,8 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({
           {/* 3 Core Pillars from Page 4 of Brochure */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10 text-left">
             <div className="p-5 rounded-2xl bg-[#F8FAF9] border border-neutral-200 flex items-start gap-3.5 shadow-2xs">
-              <div className="w-10 h-10 rounded-xl bg-[#042A1D] text-white flex items-center justify-center shrink-0">
-                <Award className="w-5 h-5 text-[#4ADE80]" />
+              <div className="w-10 h-10 rounded-xl bg-[#012B53] text-white flex items-center justify-center shrink-0">
+                <Award className="w-5 h-5 text-[#A4D65E]" />
               </div>
               <div>
                 <h3 className="text-sm font-bold text-neutral-900">1. Food Safety Certifications</h3>
@@ -94,8 +94,8 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({
             </div>
 
             <div className="p-5 rounded-2xl bg-[#F8FAF9] border border-neutral-200 flex items-start gap-3.5 shadow-2xs">
-              <div className="w-10 h-10 rounded-xl bg-[#062E21] text-white flex items-center justify-center shrink-0">
-                <FileSearch className="w-5 h-5 text-[#4ADE80]" />
+              <div className="w-10 h-10 rounded-xl bg-[#012B53] text-white flex items-center justify-center shrink-0">
+                <FileSearch className="w-5 h-5 text-[#A4D65E]" />
               </div>
               <div>
                 <h3 className="text-sm font-bold text-neutral-900">2. Auditing Services</h3>
@@ -106,7 +106,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({
             </div>
 
             <div className="p-5 rounded-2xl bg-[#F8FAF9] border border-neutral-200 flex items-start gap-3.5 shadow-2xs">
-              <div className="w-10 h-10 rounded-xl bg-[#2E7D32] text-white flex items-center justify-center shrink-0">
+              <div className="w-10 h-10 rounded-xl bg-[#3E7D25] text-white flex items-center justify-center shrink-0">
                 <GraduationCap className="w-5 h-5 text-white" />
               </div>
               <div>
@@ -124,7 +124,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({
       <section className="py-4 bg-[#F8FAF9] border-b border-neutral-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-start gap-3.5 p-3.5 rounded-xl bg-white border border-neutral-200 text-xs text-neutral-700 shadow-2xs text-left">
-            <ShieldCheck className="w-5 h-5 text-[#2E7D32] shrink-0 mt-0.5" />
+            <ShieldCheck className="w-5 h-5 text-[#3E7D25] shrink-0 mt-0.5" />
             <div>
               <strong className="text-neutral-900 font-bold block mb-0.5">
                 Our Advisory Scope &amp; Professional Independence:
@@ -144,7 +144,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({
             return (
               <div
                 key={srv.id}
-                className="rounded-2xl bg-white border border-neutral-200 shadow-xs hover:border-[#2E7D32] hover:shadow-xl transition-all duration-300 grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch overflow-hidden group text-left"
+                className="rounded-2xl bg-white border border-neutral-200 shadow-xs hover:border-[#3E7D25] hover:shadow-xl transition-all duration-300 grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch overflow-hidden group text-left"
               >
                 {/* Visual Image Column */}
                 <div className="lg:col-span-4 relative h-64 lg:h-auto overflow-hidden bg-neutral-100">
@@ -154,7 +154,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                   <div className="absolute top-3 left-3 flex items-center gap-2">
-                    <span className="text-xs font-mono font-bold text-white px-2.5 py-0.5 rounded-md bg-[#042A1D]/90 backdrop-blur-xs">
+                    <span className="text-xs font-mono font-bold text-white px-2.5 py-0.5 rounded-md bg-[#012B53]/90 backdrop-blur-xs">
                       0{idx + 1}.
                     </span>
                     <span className="text-[10px] font-bold uppercase tracking-wider text-neutral-900 bg-white/95 px-2 py-0.5 rounded-md shadow-xs">
@@ -166,7 +166,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({
                 {/* Service Details Column */}
                 <div className="lg:col-span-8 p-6 sm:p-8 space-y-4 flex flex-col justify-between">
                   <div className="space-y-3">
-                    <h2 className="text-2xl font-bold text-neutral-900 group-hover:text-[#2E7D32] transition-colors">
+                    <h2 className="text-2xl font-bold text-neutral-900 group-hover:text-[#3E7D25] transition-colors">
                       {srv.title}
                     </h2>
 
@@ -191,13 +191,13 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({
 
                     <div className="space-y-2 pt-3 border-t border-neutral-100">
                       <span className="text-xs font-bold uppercase tracking-wider text-neutral-900 flex items-center gap-1.5">
-                        <Layers className="w-3.5 h-3.5 text-[#2E7D32]" />
+                        <Layers className="w-3.5 h-3.5 text-[#3E7D25]" />
                         <span>Core Deliverables:</span>
                       </span>
                       <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                         {srv.deliverables.slice(0, 4).map((item, dIdx) => (
                           <li key={dIdx} className="text-xs text-neutral-700 flex items-start gap-2">
-                            <CheckCircle2 className="w-3.5 h-3.5 text-[#2E7D32] shrink-0 mt-0.5" />
+                            <CheckCircle2 className="w-3.5 h-3.5 text-[#3E7D25] shrink-0 mt-0.5" />
                             <span>{item}</span>
                           </li>
                         ))}
@@ -212,15 +212,15 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({
                         else if (srv.slug === 'digital-compliance') onNavigate('/digital-compliance');
                         else onNavigate(`/services/${srv.slug}`);
                       }}
-                      className="inline-flex items-center gap-1.5 text-xs font-bold text-neutral-900 hover:text-[#2E7D32] transition-colors cursor-pointer group/btn"
+                      className="inline-flex items-center gap-1.5 text-xs font-bold text-neutral-900 hover:text-[#3E7D25] transition-colors cursor-pointer group/btn"
                     >
                       <span>Detailed Breakdown</span>
-                      <ChevronRight className="w-3.5 h-3.5 text-[#2E7D32] transition-transform group-hover/btn:translate-x-1" />
+                      <ChevronRight className="w-3.5 h-3.5 text-[#3E7D25] transition-transform group-hover/btn:translate-x-1" />
                     </button>
 
                     <button
                       onClick={() => onOpenEnquiry(srv.slug)}
-                      className="inline-flex items-center gap-1.5 px-4 py-2.5 text-xs font-bold uppercase tracking-wider text-white bg-[#042A1D] hover:bg-[#2E7D32] active:scale-[0.98] rounded-xl transition-all shadow-md cursor-pointer"
+                      className="inline-flex items-center gap-1.5 px-4 py-2.5 text-xs font-bold uppercase tracking-wider text-white bg-gradient-to-r from-[#012B53] via-[#0C5A91] to-[#4C8E20] hover:from-[#0C5A91] hover:via-[#012B53] hover:to-[#3E7D25] active:scale-[0.98] rounded-xl transition-all shadow-md cursor-pointer"
                     >
                       <span>Request Proposal</span>
                       <ArrowRight className="w-3 h-3" />
@@ -235,7 +235,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({
         {/* 5 Auditing Types from Page 11 of Brochure */}
         <div className="mt-16 p-8 rounded-2xl bg-white border border-neutral-200 shadow-md text-left">
           <div className="max-w-3xl mb-6">
-            <span className="text-[11px] font-bold uppercase tracking-wider text-[#2E7D32]">
+            <span className="text-[11px] font-bold uppercase tracking-wider text-[#3E7D25]">
               Audit Types &amp; Scope (From Brochure Page 11)
             </span>
             <h3 className="text-xl sm:text-2xl font-bold text-neutral-900 mt-1">
@@ -249,7 +249,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {auditTypes.map((at, aIdx) => (
               <div key={aIdx} className="p-4 rounded-xl bg-[#F8FAF9] border border-neutral-200 space-y-2">
-                <span className="text-xs font-mono font-bold text-[#2E7D32] px-2 py-0.5 rounded bg-white border border-neutral-200 inline-block">
+                <span className="text-xs font-mono font-bold text-[#3E7D25] px-2 py-0.5 rounded bg-white border border-neutral-200 inline-block">
                   Audit 0{aIdx + 1}
                 </span>
                 <h4 className="text-sm font-bold text-neutral-900">{at.name}</h4>
@@ -262,7 +262,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({
         {/* Callout */}
         <div className="mt-12 p-8 rounded-2xl bg-[#051F14] text-white border border-emerald-500/30 shadow-xl flex flex-col md:flex-row items-center justify-between gap-6 text-left">
           <div>
-            <span className="text-xs font-bold uppercase tracking-widest text-[#4ADE80]">
+            <span className="text-xs font-bold uppercase tracking-widest text-[#A4D65E]">
               Custom Audit Readiness Assignment
             </span>
             <h3 className="text-xl sm:text-2xl font-bold tracking-tight mt-1 text-white">
@@ -274,7 +274,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({
           </div>
           <button
             onClick={() => onOpenEnquiry()}
-            className="px-6 py-3.5 text-xs font-bold uppercase tracking-wider text-white bg-[#2E7D32] hover:bg-[#256629] active:scale-[0.98] rounded-xl transition-all shadow-md whitespace-nowrap shrink-0 cursor-pointer"
+            className="px-6 py-3.5 text-xs font-bold uppercase tracking-wider text-white bg-[#3E7D25] hover:bg-[#256629] active:scale-[0.98] rounded-xl transition-all shadow-md whitespace-nowrap shrink-0 cursor-pointer"
           >
             Speak to a Lead Specialist
           </button>

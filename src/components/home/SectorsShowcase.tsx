@@ -157,8 +157,8 @@ export const SectorsShowcase: React.FC<SectorsShowcaseProps> = ({
         
         {/* Section Heading */}
         <div ref={headerRef} className="max-w-3xl mb-10">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-xs font-bold uppercase tracking-wider text-[#2E7D32] mb-3">
-            <Building2 className="w-4 h-4 text-[#2E7D32]" />
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-xs font-bold uppercase tracking-wider text-[#3E7D25] mb-3">
+            <Building2 className="w-4 h-4 text-[#3E7D25]" />
             <span>Facility Scope &amp; Processing Environments</span>
           </div>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-neutral-900 tracking-tight leading-tight">
@@ -183,7 +183,7 @@ export const SectorsShowcase: React.FC<SectorsShowcaseProps> = ({
               <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent pointer-events-none" />
               
               <div className="absolute bottom-0 inset-x-0 p-6 text-white space-y-2">
-                <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded bg-[#042A1D]/90 border border-emerald-500/40 text-[10px] uppercase tracking-widest text-[#4ADE80] font-bold">
+                <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded bg-[#012B53]/90 border border-emerald-500/40 text-[10px] uppercase tracking-widest text-[#A4D65E] font-bold">
                   <Logo variant="icon-only" size="sm" className="w-4 h-4" />
                   <span>{selectedSector.category}</span>
                 </div>
@@ -203,7 +203,7 @@ export const SectorsShowcase: React.FC<SectorsShowcaseProps> = ({
                 <div className="text-[11px] text-neutral-600 font-medium">Audit Prep Record</div>
               </div>
               <div className="border-x border-neutral-200">
-                <div className="text-xl font-extrabold text-[#2E7D32]">16+</div>
+                <div className="text-xl font-extrabold text-[#3E7D25]">16+</div>
                 <div className="text-[11px] text-neutral-600 font-medium">Standards Schemes</div>
               </div>
               <div>
@@ -226,8 +226,8 @@ export const SectorsShowcase: React.FC<SectorsShowcaseProps> = ({
                     onClick={() => handleSelectSector(sector)}
                     className={`px-3.5 py-2 rounded-xl text-xs font-bold tracking-tight transition-all text-left cursor-pointer ${
                       isSelected
-                        ? 'bg-[#042A1D] text-white shadow-sm ring-1 ring-[#042A1D]'
-                        : 'bg-[#F8FAF9] text-neutral-700 border border-neutral-200 hover:border-[#2E7D32] hover:bg-white'
+                        ? 'bg-[#012B53] text-white shadow-sm ring-1 ring-[#012B53]'
+                        : 'bg-[#F8FAF9] text-neutral-700 border border-neutral-200 hover:border-[#3E7D25] hover:bg-white'
                     }`}
                   >
                     <span>{sector.name}</span>
@@ -242,7 +242,7 @@ export const SectorsShowcase: React.FC<SectorsShowcaseProps> = ({
               className="p-6 sm:p-8 rounded-2xl bg-[#F8FAF9] border border-neutral-200 shadow-sm space-y-5"
             >
               <div>
-                <span className="text-[10px] font-bold uppercase tracking-wider text-[#2E7D32] block">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-[#3E7D25] block">
                   Sector Specialization
                 </span>
                 <h3 className="text-xl font-bold text-neutral-900 mt-1">
@@ -256,13 +256,13 @@ export const SectorsShowcase: React.FC<SectorsShowcaseProps> = ({
               {/* Critical Hazards Managed */}
               <div className="space-y-2 pt-2 border-t border-neutral-200">
                 <span className="text-xs font-bold uppercase tracking-wider text-neutral-900 flex items-center gap-1.5">
-                  <ShieldCheck className="w-4 h-4 text-[#2E7D32]" />
+                  <ShieldCheck className="w-4 h-4 text-[#3E7D25]" />
                   <span>Key Hazards Addressed:</span>
                 </span>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                   {selectedSector.keyHazards.map((hazard, hIdx) => (
                     <div key={hIdx} className="flex items-start gap-2 text-xs text-neutral-700">
-                      <CheckCircle2 className="w-3.5 h-3.5 text-[#2E7D32] shrink-0 mt-0.5" />
+                      <CheckCircle2 className="w-3.5 h-3.5 text-[#3E7D25] shrink-0 mt-0.5" />
                       <span>{hazard}</span>
                     </div>
                   ))}
@@ -291,14 +291,14 @@ export const SectorsShowcase: React.FC<SectorsShowcaseProps> = ({
                 <button
                   type="button"
                   onClick={() => onOpenEnquiry(selectedSector.name)}
-                  className="px-5 py-2.5 rounded-xl bg-[#2E7D32] hover:bg-[#256629] text-white text-xs font-bold uppercase tracking-wider transition-all shadow-md active:scale-95 cursor-pointer"
+                  className="px-5 py-2.5 rounded-xl bg-[#3E7D25] hover:bg-[#256629] text-white text-xs font-bold uppercase tracking-wider transition-all shadow-md active:scale-95 cursor-pointer"
                 >
                   Request Facility Assessment
                 </button>
                 <button
                   type="button"
                   onClick={() => onNavigate('/services/audit-readiness')}
-                  className="text-xs font-bold text-neutral-900 hover:text-[#2E7D32] inline-flex items-center gap-1 cursor-pointer"
+                  className="text-xs font-bold text-neutral-900 hover:text-[#3E7D25] inline-flex items-center gap-1 cursor-pointer"
                 >
                   <span>Learn Audit Prep</span>
                   <ArrowRight className="w-3.5 h-3.5" />

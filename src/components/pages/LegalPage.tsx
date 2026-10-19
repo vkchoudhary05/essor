@@ -51,7 +51,7 @@ export const LegalPage: React.FC<LegalPageProps> = ({ type, cms, onNavigate }) =
               <Sparkles className="w-3.5 h-3.5 text-emerald-600" />
               <span>{current.tag}</span>
             </div>
-            <h1 className="text-3xl sm:text-4xl font-black text-[#062E21] tracking-tight">
+            <h1 className="text-3xl sm:text-4xl font-black text-[#012B53] tracking-tight">
               {current.title}
             </h1>
             <div className="flex items-center gap-2 text-xs text-neutral-400 font-medium">
@@ -64,25 +64,25 @@ export const LegalPage: React.FC<LegalPageProps> = ({ type, cms, onNavigate }) =
           </div>
 
           <div className="prose prose-sm max-w-none text-neutral-700 leading-relaxed space-y-4">
-            <p className="text-base font-semibold text-[#062E21]">
+            <p className="text-base font-semibold text-[#012B53]">
               {current.content}
             </p>
 
-            <h3 className="text-base font-bold text-[#062E21] pt-4">
+            <h3 className="text-base font-bold text-[#012B53] pt-4">
               1. Professional Scope & Independence
             </h3>
             <p className="text-xs text-neutral-600 leading-relaxed font-normal">
               {cms.disclaimer}
             </p>
 
-            <h3 className="text-base font-bold text-[#062E21] pt-2">
+            <h3 className="text-base font-bold text-[#012B53] pt-2">
               2. Data Protection and Confidentiality
             </h3>
             <p className="text-xs text-neutral-600 leading-relaxed font-normal">
               All documentation, recipe formulations, floor diagrams, and internal audit findings shared with ESSOR Compliance Solutions are held under strict non-disclosure obligations. Client information is never commercialized, shared with competing processors, or utilized for unauthorized automated model training.
             </p>
 
-            <h3 className="text-base font-bold text-[#062E21] pt-2">
+            <h3 className="text-base font-bold text-[#012B53] pt-2">
               3. Regulatory Changes & Updates
             </h3>
             <p className="text-xs text-neutral-600 leading-relaxed font-normal">

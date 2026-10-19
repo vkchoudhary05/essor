@@ -1,5 +1,5 @@
 import React from 'react';
-import logoImg from '../../assets/images/essor_logo.png';
+import logoImg from '../../assets/images/ECS Compliance Solutions Logo.png';
 
 interface LogoProps {
   className?: string;

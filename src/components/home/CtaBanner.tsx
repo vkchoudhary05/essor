@@ -73,7 +73,7 @@ export const CtaBanner: React.FC<CtaBannerProps> = ({
 
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-neutral-900 tracking-tight max-w-3xl mx-auto leading-tight">
           Let&apos;s Strengthen Your{' '}
-          <span className="text-[#2E7D32]">
+          <span className="text-[#3E7D25]">
             Food Safety &amp; Compliance Posture.
           </span>
         </h2>
@@ -85,9 +85,9 @@ export const CtaBanner: React.FC<CtaBannerProps> = ({
         <div ref={buttonsRef} className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3">
           <button
             onClick={() => onOpenEnquiry()}
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-3.5 text-xs sm:text-sm font-bold uppercase tracking-wider text-white bg-[#042A1D] hover:bg-[#2E7D32] active:scale-[0.98] rounded-xl transition-all shadow-md group cursor-pointer"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-3.5 text-xs sm:text-sm font-bold uppercase tracking-wider text-white bg-gradient-to-r from-[#012B53] via-[#0C5A91] to-[#4C8E20] hover:from-[#0C5A91] hover:via-[#012B53] hover:to-[#3E7D25] active:scale-[0.98] rounded-xl transition-all shadow-md group cursor-pointer"
           >
-            <Sparkles className="w-4 h-4 text-[#4ADE80]" />
+            <Sparkles className="w-4 h-4 text-[#A4D65E]" />
             <span>Discuss Plant Requirements</span>
             <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
           </button>
@@ -113,21 +113,21 @@ export const CtaBanner: React.FC<CtaBannerProps> = ({
         {/* Quick Contact Micro-strip */}
         <div className="pt-6 border-t border-neutral-200 flex flex-wrap items-center justify-center gap-6 text-xs text-neutral-700">
           <div className="flex items-center gap-2">
-            <Mail className="w-4 h-4 text-[#2E7D32]" />
-            <a href="mailto:business@essorcompliance.com" className="hover:text-[#2E7D32] transition-colors font-semibold text-neutral-900">
+            <Mail className="w-4 h-4 text-[#3E7D25]" />
+            <a href="mailto:business@essorcompliance.com" className="hover:text-[#3E7D25] transition-colors font-semibold text-neutral-900">
               business@essorcompliance.com
             </a>
           </div>
           <span className="hidden sm:inline text-neutral-300">|</span>
           <div className="flex items-center gap-2">
-            <Phone className="w-4 h-4 text-[#2E7D32]" />
-            <a href="tel:+916395843850" className="hover:text-[#2E7D32] transition-colors font-bold text-neutral-900">
+            <Phone className="w-4 h-4 text-[#3E7D25]" />
+            <a href="tel:+916395843850" className="hover:text-[#3E7D25] transition-colors font-bold text-neutral-900">
               +91 6395843850
             </a>
           </div>
           <span className="hidden sm:inline text-neutral-300">|</span>
           <div className="flex items-center gap-2">
-            <ShieldCheck className="w-4 h-4 text-[#2E7D32]" />
+            <ShieldCheck className="w-4 h-4 text-[#3E7D25]" />
             <span className="text-neutral-900 font-semibold">Doon IT Park, Dehradun</span>
           </div>
         </div>

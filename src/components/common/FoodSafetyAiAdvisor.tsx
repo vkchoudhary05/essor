@@ -233,7 +233,7 @@ export const FoodSafetyAiAdvisor: React.FC<FoodSafetyAiAdvisorProps> = ({
                 <div className="flex items-center justify-between gap-2 pb-2 border-b border-emerald-100">
                   <div className="flex items-center gap-1.5">
                     <Sparkles className="w-3.5 h-3.5 text-emerald-600" />
-                    <span className="text-xs font-bold text-[#062E21]">Priya · ESSOR AI Advisor</span>
+                    <span className="text-xs font-bold text-[#012B53]">Priya · ESSOR AI Advisor</span>
                   </div>
                   <button
                     onClick={(e) => {
@@ -255,7 +255,7 @@ export const FoodSafetyAiAdvisor: React.FC<FoodSafetyAiAdvisorProps> = ({
                   }}
                   className="pt-2 text-xs text-neutral-700 cursor-pointer hover:text-emerald-900 transition-colors"
                 >
-                  <p className="font-semibold text-[#062E21] leading-relaxed">
+                  <p className="font-semibold text-[#012B53] leading-relaxed">
                     Hello! How can I help you with audit readiness, FSSAI licensing, or food safety training today?
                   </p>
                   <div className="mt-2.5 flex items-center justify-between text-[11px] font-bold text-emerald-700">
@@ -278,11 +278,13 @@ export const FoodSafetyAiAdvisor: React.FC<FoodSafetyAiAdvisorProps> = ({
                 setIsOpen(true);
                 setShowProactiveBubble(false);
               }}
-              className="relative p-1 rounded-full bg-white border-2 border-emerald-700/40 shadow-xl hover:shadow-2xl hover:scale-105 active:scale-95 transition-all duration-300 cursor-pointer group"
+              className="relative p-1 rounded-full bg-white border-2 border-[#75B72B] shadow-xl shadow-[#012B53]/25 hover:shadow-2xl hover:scale-105 active:scale-95 transition-all duration-300 cursor-pointer group"
               aria-label="Open ESSOR AI Food Safety Assistant"
               title="Chat with Priya, Food Safety Advisor"
             >
-              <div className="relative w-14 h-14 rounded-full overflow-hidden border-2 border-emerald-700 shrink-0 bg-emerald-50 shadow-inner">
+              <span className="absolute -inset-2 rounded-full border border-[#75B72B]/70 animate-ping" aria-hidden="true" />
+              <span className="absolute -inset-1 rounded-full border border-[#0C5A91]/40 animate-pulse" aria-hidden="true" />
+              <div className="relative w-14 h-14 rounded-full overflow-hidden border-2 border-[#3E7D25] shrink-0 bg-[#F3F8EC] shadow-inner">
                 <img
                   src={youngWomanAvatar}
                   alt="Priya - ESSOR Food Safety Assistant"
@@ -307,7 +309,7 @@ export const FoodSafetyAiAdvisor: React.FC<FoodSafetyAiAdvisorProps> = ({
           className="fixed bottom-5 right-5 z-50 w-[94vw] sm:w-[420px] max-h-[85vh] h-[600px] bg-white rounded-2xl shadow-2xl shadow-emerald-950/30 border border-emerald-900/15 flex flex-col overflow-hidden animate-in fade-in slide-in-from-bottom-6 duration-300"
         >
           {/* Header */}
-          <div className="p-3.5 bg-gradient-to-r from-[#062E21] via-[#0E5C3A] to-[#062E21] text-white border-b border-emerald-800/40 flex items-center justify-between">
+          <div className="p-3.5 bg-gradient-to-r from-[#012B53] via-[#0C5A91] to-[#012B53] text-white border-b border-emerald-800/40 flex items-center justify-between">
             <div className="flex items-center gap-3">
               <div className="relative w-11 h-11 rounded-full overflow-hidden border-2 border-emerald-300 shrink-0 bg-[#F8FAFC]">
                 <img
@@ -316,7 +318,7 @@ export const FoodSafetyAiAdvisor: React.FC<FoodSafetyAiAdvisorProps> = ({
                   className="w-full h-full object-cover object-top"
                   referrerPolicy="no-referrer"
                 />
-                <span className="absolute bottom-0 right-0 w-3 h-3 rounded-full bg-emerald-400 border-2 border-[#062E21]" />
+                <span className="absolute bottom-0 right-0 w-3 h-3 rounded-full bg-emerald-400 border-2 border-[#012B53]" />
               </div>
 
               <div>
@@ -373,7 +375,7 @@ export const FoodSafetyAiAdvisor: React.FC<FoodSafetyAiAdvisorProps> = ({
                   <div
                     className={`p-3 rounded-2xl shadow-xs leading-relaxed ${
                       msg.sender === 'user'
-                        ? 'bg-gradient-to-r from-[#062E21] to-[#0E5C3A] text-white rounded-tr-none'
+                        ? 'bg-gradient-to-r from-[#012B53] to-[#0C5A91] text-white rounded-tr-none'
                         : 'bg-white text-neutral-800 border border-emerald-900/10 rounded-tl-none'
                     }`}
                   >
@@ -390,7 +392,7 @@ export const FoodSafetyAiAdvisor: React.FC<FoodSafetyAiAdvisorProps> = ({
                   {/* Inline Lead Capture Form in Chat */}
                   {msg.isLeadForm && !leadSavedSuccess && (
                     <div className="p-3.5 bg-white border-2 border-emerald-600/40 rounded-2xl shadow-md space-y-2.5 animate-in fade-in duration-300">
-                      <div className="flex items-center gap-1.5 text-xs font-bold text-[#062E21]">
+                      <div className="flex items-center gap-1.5 text-xs font-bold text-[#012B53]">
                         <ShieldCheck className="w-4 h-4 text-emerald-600" />
                         <span>Request Callback from Lead Auditor</span>
                       </div>
@@ -461,7 +463,7 @@ export const FoodSafetyAiAdvisor: React.FC<FoodSafetyAiAdvisorProps> = ({
                         <button
                           type="submit"
                           disabled={isSavingLead}
-                          className="w-full py-2 px-3 rounded-lg bg-[#062E21] hover:bg-emerald-900 text-white font-bold text-xs flex items-center justify-center gap-1.5 transition-all shadow-sm cursor-pointer disabled:opacity-50"
+                          className="w-full py-2 px-3 rounded-lg bg-gradient-to-r from-[#012B53] via-[#0C5A91] to-[#4C8E20] hover:from-[#0C5A91] hover:via-[#012B53] hover:to-[#3E7D25] text-white font-bold text-xs flex items-center justify-center gap-1.5 transition-all shadow-sm cursor-pointer disabled:opacity-50"
                         >
                           <Send className="w-3 h-3" />
                           <span>{isSavingLead ? 'Saving to Database...' : 'Save & Request Auditor Call'}</span>
@@ -520,7 +522,7 @@ export const FoodSafetyAiAdvisor: React.FC<FoodSafetyAiAdvisorProps> = ({
             <button
               onClick={() => handleSendQuery()}
               disabled={!inputQuery.trim() || isLoading}
-              className="p-2.5 rounded-xl bg-[#062E21] hover:bg-emerald-900 text-white disabled:opacity-40 transition-colors shadow-xs cursor-pointer"
+              className="p-2.5 rounded-xl bg-gradient-to-r from-[#012B53] via-[#0C5A91] to-[#4C8E20] hover:from-[#0C5A91] hover:via-[#012B53] hover:to-[#3E7D25] text-white disabled:opacity-40 transition-colors shadow-xs cursor-pointer"
               title="Send message"
             >
               <Send className="w-4 h-4" />

@@ -22,7 +22,7 @@ export class PDFGeneratorService {
     doc.rect(0, 0, pageWidth, pageHeight, 'F');
 
     // Outer Forest Pine border
-    doc.setDrawColor(6, 46, 33); // #062E21
+    doc.setDrawColor(6, 46, 33); // #012B53
     doc.setLineWidth(3);
     doc.rect(10, 10, pageWidth - 20, pageHeight - 20, 'D');
 
@@ -147,7 +147,7 @@ export class PDFGeneratorService {
         width: 120,
         margin: 1,
         color: {
-          dark: '#062E21',
+          dark: '#012B53',
           light: '#F8FAFC'
         }
       });
@@ -196,7 +196,7 @@ export class PDFGeneratorService {
     const pageHeight = 297;
 
     // Header banner
-    doc.setFillColor(6, 46, 33); // #062E21
+    doc.setFillColor(6, 46, 33); // #012B53
     doc.rect(0, 0, pageWidth, 28, 'F');
 
     doc.setTextColor(255, 255, 255);

@@ -95,14 +95,14 @@ export const WhyEssorSection: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           
           <div ref={leftColRef} className="lg:col-span-5 space-y-6">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-xs font-bold uppercase tracking-wider text-[#2E7D32]">
-              <Sparkles className="w-3.5 h-3.5 text-[#2E7D32]" />
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-xs font-bold uppercase tracking-wider text-[#3E7D25]">
+              <Sparkles className="w-3.5 h-3.5 text-[#3E7D25]" />
               <span>Why Food Processors Choose ESSOR</span>
             </div>
             
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-neutral-900 tracking-tight leading-tight">
               Designed for Practical,{' '}
-              <span className="text-[#2E7D32]">
+              <span className="text-[#3E7D25]">
                 Continuous Compliance
               </span>
             </h2>
@@ -117,12 +117,12 @@ export const WhyEssorSection: React.FC = () => {
                 alt="Food safety inspection on processing line"
                 className="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-105"
               />
-              <div className="p-4 bg-[#042A1D] text-white text-[11px] font-semibold flex items-center justify-between border-t border-emerald-700/30">
+              <div className="p-4 bg-[#012B53] text-white text-[11px] font-semibold flex items-center justify-between border-t border-emerald-700/30">
                 <div className="flex items-center gap-2">
                   <Logo variant="icon-only" size="sm" className="w-5 h-5" />
-                  <span className="text-[#4ADE80]">Direct factory floor coaching &amp; evidence verification</span>
+                  <span className="text-[#A4D65E]">Direct factory floor coaching &amp; evidence verification</span>
                 </div>
-                <Award className="w-4 h-4 text-[#4ADE80] shrink-0" />
+                <Award className="w-4 h-4 text-[#A4D65E] shrink-0" />
               </div>
             </div>
           </div>
@@ -131,10 +131,10 @@ export const WhyEssorSection: React.FC = () => {
             {WHY_ESSOR_BROCHURE_POINTS.map((item, idx) => (
               <div
                 key={idx}
-                className="p-5 rounded-2xl border border-neutral-200 bg-[#F8FAF9] hover:bg-white hover:border-[#2E7D32] hover:shadow-lg transition-all space-y-2.5 group hover:-translate-y-0.5"
+                className="p-5 rounded-2xl border border-neutral-200 bg-[#F8FAF9] hover:bg-white hover:border-[#3E7D25] hover:shadow-lg transition-all space-y-2.5 group hover:-translate-y-0.5"
               >
                 <div className="flex items-center gap-2.5">
-                  <div className="p-1.5 rounded-lg bg-emerald-50 text-[#2E7D32] group-hover:bg-[#2E7D32] group-hover:text-white transition-colors">
+                  <div className="p-1.5 rounded-lg bg-emerald-50 text-[#3E7D25] group-hover:bg-[#3E7D25] group-hover:text-white transition-colors">
                     <CheckCircle2 className="w-4 h-4" />
                   </div>
                   <h3 className="text-xs font-bold text-neutral-900 uppercase tracking-wide leading-snug">

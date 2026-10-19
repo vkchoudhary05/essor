@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import { Logo } from './Logo';
 import { 
   ArrowRight, 
   ShieldCheck, 
-  Lock, 
+  Lock,
   ChevronRight, 
   Sparkles,
   Phone,
@@ -77,12 +77,12 @@ export const Navbar: React.FC<NavbarProps> = ({
   }, [mobileMenuOpen]);
 
   const navLinks = [
-    { label: 'About', path: '/about', icon: Award },
     { label: 'Services', path: '/services', icon: Layers },
     { label: 'Training', path: '/training', icon: GraduationCap },
-    { label: 'Verify Credential', path: '/verify-certificate', icon: ShieldCheck, badge: 'Live' },
     { label: 'Our Process', path: '/our-process', icon: Compass },
     { label: 'Digital Tools', path: '/digital-compliance', icon: Cpu },
+    { label: 'Verify Certificate', path: '/verify-certificate', icon: ShieldCheck, badge: 'Live' },
+    { label: 'About', path: '/about', icon: Award },
     { label: 'Contact', path: '/contact', icon: PhoneCall }
   ];
 
@@ -104,7 +104,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         className="fixed top-0 left-0 right-0 h-[2.5px] z-50 pointer-events-none transition-all duration-75"
         style={{
           width: `${scrollProgress}%`,
-          background: 'linear-gradient(90deg, #062E21 0%, #0E5C3A 40%, #16A34A 80%, #4ADE80 100%)',
+          background: 'linear-gradient(90deg, #012B53 0%, #0C5A91 40%, #16A34A 80%, #A4D65E 100%)',
           boxShadow: '0 0 10px rgba(34, 197, 94, 0.45)'
         }}
         aria-hidden="true"
@@ -115,26 +115,26 @@ export const Navbar: React.FC<NavbarProps> = ({
       {/* 1. TOP MICRO-UTILITY STRIP (Smooth Right-to-Left Ticker Tape)             */}
       {/* ========================================================================= */}
       <div 
-        className="bg-[#041F16] text-emerald-50 text-[11px] py-1.5 border-b border-emerald-800/40 relative z-40 overflow-hidden select-none"
+        className="bg-[#012542] text-emerald-50 text-[11px] py-2 border-b border-[#75B72B]/30 relative z-40 overflow-hidden select-none"
         role="region"
         aria-label="Live Compliance Announcement and Contact Ticker"
       >
         <div className="max-w-[1440px] mx-auto px-2 sm:px-4 lg:px-8 flex items-center justify-between gap-2 sm:gap-3">
           
-          {/* Static Left Anchor: Live Practice Badge */}
-          {/* <div className="shrink-0 flex items-center gap-1.5 bg-[#062E21] px-2.5 py-1 rounded-full border border-emerald-700/50 shadow-xs z-10">
+          {/* Static industry context */}
+          <div className="hidden md:flex shrink-0 items-center gap-1.5 bg-white/10 px-2.5 py-1 rounded-full border border-white/15 shadow-xs z-10">
             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
             <span className="text-[10px] sm:text-[11px] font-bold text-white tracking-wide whitespace-nowrap">
-              LIVE PRACTICE
+              FOOD BUSINESS COMPLIANCE
             </span>
-          </div> */}
+          </div>
 
           {/* Marquee Viewport with Edge Fade Gradients */}
           <div className="relative flex-1 overflow-hidden min-w-0">
             {/* Left fade vignette */}
-            <div className="absolute left-0 top-0 bottom-0 w-6 sm:w-12 bg-gradient-to-r from-[#041F16] to-transparent z-10 pointer-events-none" />
+            <div className="absolute left-0 top-0 bottom-0 w-6 sm:w-12 bg-gradient-to-r from-[#012542] to-transparent z-10 pointer-events-none" />
             {/* Right fade vignette */}
-            <div className="absolute right-0 top-0 bottom-0 w-6 sm:w-12 bg-gradient-to-l from-[#041F16] to-transparent z-10 pointer-events-none" />
+            <div className="absolute right-0 top-0 bottom-0 w-6 sm:w-12 bg-gradient-to-l from-[#012542] to-transparent z-10 pointer-events-none" />
 
             {/* Seamless Infinite Moving Track (Right to Left) */}
             <div className="animate-nav-ticker flex items-center py-0.5 whitespace-nowrap">
@@ -147,7 +147,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                   title="Call or WhatsApp: +91 63958 43850"
                 >
                   <span className="px-1.5 py-0.5 rounded text-[9px] font-black uppercase tracking-wider bg-emerald-500/25 text-emerald-300 border border-emerald-500/40">
-                    Call / WhatsApp
+                    Speak to an Expert
                   </span>
                   <Phone className="w-3.5 h-3.5 text-emerald-400 group-hover/item:scale-110 transition-transform shrink-0" />
                   <span className="font-bold text-white tracking-wide underline decoration-emerald-500/40 underline-offset-2">
@@ -155,7 +155,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                   </span>
                 </a>
 
-                <span className="text-emerald-700/80">◆</span>
+                <span className="text-emerald-700/80">â—†</span>
 
                 {/* Business Email */}
                 <a
@@ -164,7 +164,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                   title="Business & Advisory: business@essorcompliance.com"
                 >
                   <span className="px-1.5 py-0.5 rounded text-[9px] font-black uppercase tracking-wider bg-white/15 text-white border border-white/30">
-                    Business Inquiries
+                    Audit &amp; Compliance
                   </span>
                   <Mail className="w-3.5 h-3.5 text-white group-hover/item:scale-110 transition-transform shrink-0" />
                   <span className="font-semibold text-white group-hover/item:underline underline-offset-2">
@@ -172,7 +172,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                   </span>
                 </a>
 
-                <span className="text-emerald-700/80">◆</span>
+                <span className="text-emerald-700/80">â—†</span>
 
                 {/* Training Email */}
                 <a
@@ -181,7 +181,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                   title="Training Programs: training@essorcompliance.com"
                 >
                   <span className="px-1.5 py-0.5 rounded text-[9px] font-black uppercase tracking-wider bg-emerald-500/25 text-emerald-300 border border-emerald-500/40">
-                    Training Academy
+                    Team Training
                   </span>
                   <GraduationCap className="w-3.5 h-3.5 text-emerald-300 group-hover/item:scale-110 transition-transform shrink-0" />
                   <span className="font-semibold text-emerald-100 group-hover/item:text-white underline decoration-emerald-500/40 underline-offset-2">
@@ -189,47 +189,47 @@ export const Navbar: React.FC<NavbarProps> = ({
                   </span>
                 </a>
 
-                <span className="text-emerald-700/80">◆</span>
+                <span className="text-emerald-700/80">â—†</span>
 
                 {/* Corporate Address */}
                 <span className="inline-flex items-center gap-2 text-emerald-100">
                   <span className="px-1.5 py-0.5 rounded text-[9px] font-black uppercase tracking-wider bg-emerald-900/70 text-emerald-200 border border-emerald-700/50">
-                    Headquarters
+                    Serving Food Businesses
                   </span>
                   <MapPin className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
                   <span className="font-normal text-emerald-200/90">
-                    IT Park Campus, Sahastradhara Road, Dehradun, Uttarakhand
+                    Manufacturers · Dairy · Spices · Bakery · Packaging
                   </span>
                 </span>
 
-                <span className="text-emerald-700/80">◆</span>
+                <span className="text-emerald-700/80">â—†</span>
 
                 {/* Standards text */}
                 <span className="inline-flex items-center gap-2 text-emerald-100">
                   <span className="px-1.5 py-0.5 rounded text-[9px] font-black uppercase tracking-wider bg-emerald-500/25 text-emerald-300 border border-emerald-500/40">
-                    Accredited Practice
+                    Food Safety Standards
                   </span>
                   <ShieldCheck className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-                  <span className="font-bold text-white">GFSI & BRCGS Audit Readiness</span>
-                  <span className="text-emerald-300/80">· ISO 22000 · FSSC 22000 · HACCP · US FDA FSMA</span>
+                  <span className="font-bold text-white">FSSAI, ISO 22000 & BRCGS Readiness</span>
+                  <span className="text-emerald-300/80">Â· ISO 22000 Â· FSSC 22000 Â· HACCP Â· US FDA FSMA</span>
                 </span>
 
-                <span className="text-emerald-700/80">◆</span>
+                <span className="text-emerald-700/80">â—†</span>
 
                 {/* Deliverables summary text */}
                 <span className="inline-flex items-center gap-2 text-emerald-100">
                   <Sparkles className="w-3.5 h-3.5 text-amber-300 shrink-0" />
                   <span className="font-medium text-emerald-100">
-                    Gap Assessments · Operational Mock Audits · NC / CAPA Permanent Closure
+                    Gap Assessment Â· Mock Audits Â· HACCP Systems & Team Training
                   </span>
                 </span>
 
-                <span className="text-emerald-700/80">◆</span>
+                <span className="text-emerald-700/80">â—†</span>
 
                 {/* Consultation prompt text */}
                 <span className="inline-flex items-center gap-2 text-emerald-200">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                  <span className="font-semibold text-white">24-Hour Technical Assessment Response</span>
+                  <span className="font-semibold text-white">48-Hour Preliminary Readiness Assessment</span>
                   <span className="text-emerald-300/80">for Food Processors, Packagers & Exporters</span>
                 </span>
               </div>
@@ -252,7 +252,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                   </span>
                 </a>
 
-                <span className="text-emerald-700/80">◆</span>
+                <span className="text-emerald-700/80">â—†</span>
 
                 {/* Business Email */}
                 <a
@@ -270,7 +270,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                   </span>
                 </a>
 
-                <span className="text-emerald-700/80">◆</span>
+                <span className="text-emerald-700/80">â—†</span>
 
                 {/* Training Email */}
                 <a
@@ -288,63 +288,63 @@ export const Navbar: React.FC<NavbarProps> = ({
                   </span>
                 </a>
 
-                <span className="text-emerald-700/80">◆</span>
+                <span className="text-emerald-700/80">â—†</span>
 
                 {/* Corporate Address */}
                 <span className="inline-flex items-center gap-2 text-emerald-100">
                   <span className="px-1.5 py-0.5 rounded text-[9px] font-black uppercase tracking-wider bg-emerald-900/70 text-emerald-200 border border-emerald-700/50">
-                    Headquarters
+                    Serving Food Businesses
                   </span>
                   <MapPin className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
                   <span className="font-normal text-emerald-200/90">
-                    IT Park Campus, Sahastradhara Road, Dehradun, Uttarakhand
+                    Manufacturers · Dairy · Spices · Bakery · Packaging
                   </span>
                 </span>
 
-                <span className="text-emerald-700/80">◆</span>
+                <span className="text-emerald-700/80">â—†</span>
 
                 {/* Standards text */}
                 <span className="inline-flex items-center gap-2 text-emerald-100">
                   <span className="px-1.5 py-0.5 rounded text-[9px] font-black uppercase tracking-wider bg-emerald-500/25 text-emerald-300 border border-emerald-500/40">
-                    Accredited Practice
+                    Food Safety Standards
                   </span>
                   <ShieldCheck className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-                  <span className="font-bold text-white">GFSI & BRCGS Audit Readiness</span>
-                  <span className="text-emerald-300/80">· ISO 22000 · FSSC 22000 · HACCP · US FDA FSMA</span>
+                  <span className="font-bold text-white">FSSAI, ISO 22000 & BRCGS Readiness</span>
+                  <span className="text-emerald-300/80">Â· ISO 22000 Â· FSSC 22000 Â· HACCP Â· US FDA FSMA</span>
                 </span>
 
-                <span className="text-emerald-700/80">◆</span>
+                <span className="text-emerald-700/80">â—†</span>
 
                 {/* Deliverables summary text */}
                 <span className="inline-flex items-center gap-2 text-emerald-100">
                   <Sparkles className="w-3.5 h-3.5 text-amber-300 shrink-0" />
                   <span className="font-medium text-emerald-100">
-                    Gap Assessments · Operational Mock Audits · NC / CAPA Permanent Closure
+                    Gap Assessment Â· Mock Audits Â· HACCP Systems & Team Training
                   </span>
                 </span>
 
-                <span className="text-emerald-700/80">◆</span>
+                <span className="text-emerald-700/80">â—†</span>
 
                 {/* Consultation prompt text */}
                 <span className="inline-flex items-center gap-2 text-emerald-200">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                  <span className="font-semibold text-white">24-Hour Technical Assessment Response</span>
+                  <span className="font-semibold text-white">48-Hour Preliminary Readiness Assessment</span>
                   <span className="text-emerald-300/80">for Food Processors, Packagers & Exporters</span>
                 </span>
               </div>
             </div>
           </div>
 
-          {/* Static Right Anchor: Portals Login */}
+          {/* Static business-focused contact action */}
           <div className="shrink-0 z-10 flex items-center">
             <button
-              onClick={() => handleLinkClick('/login')}
-              className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1 rounded-full bg-emerald-900/60 hover:bg-emerald-800 text-emerald-100 hover:text-white border border-emerald-700/50 text-[10px] sm:text-[11px] font-semibold transition-all cursor-pointer shadow-xs active:scale-95"
-              title="Sign in to Client, Consultant or Trainer Portals"
+              onClick={() => onOpenEnquiry('Audit & Certification Readiness')}
+              className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1 rounded-full bg-[#75B72B] hover:bg-[#A4D65E] text-[#012542] border border-[#B5DE7A] text-[10px] sm:text-[11px] font-bold transition-all cursor-pointer shadow-xs active:scale-95"
+              title="Request a plant-readiness consultation"
             >
-              <Lock className="w-3 h-3 text-emerald-400" />
-              <span className="hidden sm:inline">Portals</span>
-              <span>Login</span>
+              <PhoneCall className="w-3 h-3" />
+              <span className="hidden sm:inline">Business</span>
+              <span>Consultation</span>
             </button>
           </div>
 
@@ -391,8 +391,8 @@ export const Navbar: React.FC<NavbarProps> = ({
                     onClick={() => handleLinkClick(link.path)}
                     className={`relative flex items-center gap-1.5 px-2.5 2xl:px-3.5 py-1.5 rounded-full whitespace-nowrap transition-all duration-300 cursor-pointer ${
                       isActive 
-                        ? 'bg-[#062E21] text-white shadow-sm scale-100' 
-                        : 'text-neutral-700 hover:text-[#062E21] hover:bg-emerald-50/80 hover:scale-102'
+                        ? 'bg-[#012B53] text-white shadow-sm scale-100' 
+                        : 'text-neutral-700 hover:text-[#012B53] hover:bg-emerald-50/80 hover:scale-102'
                     }`}
                   >
                     {isVerify && (
@@ -414,20 +414,20 @@ export const Navbar: React.FC<NavbarProps> = ({
 
             {/* Desktop Quick Action Buttons */}
             <div className="hidden xl:flex items-center gap-2 shrink-0">
-              {/* Portals Login Pill */}
+              {/* Secure client, trainer and consultant workspace */}
               <button
                 onClick={() => handleLinkClick('/login')}
-                className="inline-flex items-center gap-1.5 px-3 py-2 rounded-full text-xs font-semibold text-[#062E21] hover:text-black bg-white hover:bg-emerald-50/80 border border-emerald-900/15 shadow-2xs transition-all duration-200 active:scale-95 cursor-pointer"
-                title="Access Auditor, Client, or Trainer Portal"
+                className="inline-flex items-center gap-1.5 px-3 py-2 rounded-full text-xs font-semibold text-[#012B53] hover:text-[#0C5A91] bg-white hover:bg-[#F3F8EC] border border-[#012B53]/15 shadow-2xs transition-all duration-200 active:scale-95 cursor-pointer"
+                title="Access the ESSOR client and team portal"
               >
-                <Lock className="w-3.5 h-3.5 text-emerald-700" />
-                <span>Portals</span>
+                <Lock className="w-3.5 h-3.5 text-[#3E7D25]" />
+                <span>Portal Login</span>
               </button>
 
               {/* Discuss Requirements CTA */}
               <button
                 onClick={() => onOpenEnquiry()}
-                className="group relative inline-flex items-center gap-2 whitespace-nowrap px-4 py-2 rounded-full text-xs font-bold text-white bg-gradient-to-r from-[#062E21] via-[#0E5C3A] to-[#15803D] hover:from-[#042419] hover:via-[#0B4A2F] hover:to-[#166534] active:scale-95 transition-all duration-300 shadow-md shadow-emerald-900/20 ring-1 ring-emerald-400/30 cursor-pointer"
+                className="group relative inline-flex items-center gap-2 whitespace-nowrap px-4 py-2 rounded-full text-xs font-bold text-white bg-gradient-to-r from-[#012B53] via-[#0C5A91] to-[#4C8E20] hover:from-[#0C5A91] hover:via-[#012B53] hover:to-[#3E7D25] active:scale-95 transition-all duration-300 shadow-md shadow-emerald-900/20 ring-1 ring-emerald-400/30 cursor-pointer"
               >
                 <span>Discuss requirements</span>
                 <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
@@ -505,7 +505,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         </div>
 
         {/* Accredited Trust Banner in Drawer */}
-        <div className="bg-[#062E21] px-5 py-2.5 flex items-center justify-between text-xs text-neutral-300 border-b border-emerald-700/40">
+        <div className="bg-[#012B53] px-5 py-2.5 flex items-center justify-between text-xs text-neutral-300 border-b border-emerald-700/40">
           <span className="flex items-center gap-1.5 text-emerald-300 font-semibold text-[11px]">
             <Sparkles className="w-3.5 h-3.5 text-emerald-400" />
             <span>Accredited GFSI Practice</span>
@@ -535,7 +535,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                   mobileMenuOpen ? 'translate-x-0 opacity-100' : 'translate-x-6 opacity-0'
                 } ${
                   isActive
-                    ? 'bg-[#062E21] text-white shadow-xs'
+                    ? 'bg-[#012B53] text-white shadow-xs'
                     : isVerify
                     ? 'bg-emerald-50 text-emerald-900 border border-emerald-300 hover:bg-emerald-100'
                     : 'text-neutral-800 hover:bg-white hover:shadow-xs'
@@ -566,7 +566,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             );
           })}
 
-          {/* Quick Access to Portals */}
+          {/* Secure portal access on mobile */}
           <div 
             style={{
               transitionDelay: mobileMenuOpen ? `${navLinks.length * 40 + 100}ms` : '0ms'
@@ -576,19 +576,19 @@ export const Navbar: React.FC<NavbarProps> = ({
             }`}
           >
             <div className="text-[10px] font-bold uppercase tracking-wider text-neutral-400 px-3 py-1">
-              Secure Portals
+              ESSOR Portal
             </div>
             <button
               onClick={() => handleLinkClick('/login')}
-              className="w-full flex items-center justify-between px-3.5 py-3 rounded-xl bg-white border border-neutral-200 text-sm font-semibold text-neutral-800 hover:border-emerald-600 transition-all cursor-pointer shadow-2xs"
+              className="w-full flex items-center justify-between px-3.5 py-3 rounded-xl bg-white border border-[#012B53]/15 text-sm font-semibold text-[#012B53] hover:border-[#3E7D25] transition-all cursor-pointer shadow-2xs"
             >
               <div className="flex items-center gap-3">
-                <div className="p-1.5 rounded-lg bg-emerald-50 text-emerald-800">
+                <div className="p-1.5 rounded-lg bg-[#F3F8EC] text-[#3E7D25]">
                   <Lock className="w-4 h-4" />
                 </div>
                 <div className="text-left">
-                  <div>Portals Sign In</div>
-                  <div className="text-[10px] text-neutral-500 font-normal">Auditor, Client, Trainer</div>
+                  <div>Portal Login</div>
+                  <div className="text-[10px] text-neutral-500 font-normal">For clients, consultants and trainers</div>
                 </div>
               </div>
               <ChevronRight className="w-4 h-4 text-neutral-400" />
@@ -611,7 +611,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               setMobileMenuOpen(false);
               onOpenEnquiry();
             }}
-            className="w-full inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl text-xs font-bold uppercase tracking-wider text-white bg-gradient-to-r from-[#062E21] via-[#0E5C3A] to-[#15803D] hover:from-[#042419] hover:via-[#0B4A2F] hover:to-[#166534] shadow-md shadow-emerald-950/20 active:scale-95 transition-all cursor-pointer"
+            className="w-full inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl text-xs font-bold uppercase tracking-wider text-white bg-gradient-to-r from-[#012B53] via-[#0C5A91] to-[#4C8E20] hover:from-[#0C5A91] hover:via-[#012B53] hover:to-[#3E7D25] shadow-md shadow-emerald-950/20 active:scale-95 transition-all cursor-pointer"
           >
             <span>Discuss Requirements</span>
             <ArrowRight className="w-4 h-4" />
@@ -644,7 +644,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 className="flex items-center justify-between px-3 py-2 rounded-lg text-xs font-medium text-neutral-700 bg-neutral-50 hover:bg-emerald-50 border border-neutral-200 transition-colors"
               >
                 <span className="flex items-center gap-2">
-                  <Mail className="w-3.5 h-3.5 text-[#062E21] shrink-0" />
+                  <Mail className="w-3.5 h-3.5 text-[#012B53] shrink-0" />
                   <span className="font-bold text-neutral-900">Training:</span>
                 </span>
                 <span className="text-[11px] text-neutral-600">training@essorcompliance.com</span>
@@ -659,7 +659,7 @@ export const Navbar: React.FC<NavbarProps> = ({
       {/* ========================================================================= */}
       <button
         onClick={scrollToTop}
-        className={`fixed bottom-6 right-6 z-40 p-3 rounded-full bg-[#062E21] text-emerald-300 border border-emerald-500/40 shadow-xl transition-all duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] cursor-pointer hover:bg-[#041F16] hover:scale-110 active:scale-90 ${
+        className={`fixed bottom-6 right-6 z-40 p-3 rounded-full bg-[#012B53] text-emerald-300 border border-emerald-500/40 shadow-xl transition-all duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] cursor-pointer hover:bg-[#012542] hover:scale-110 active:scale-90 ${
           showBackToTop ? 'translate-y-0 opacity-100 pointer-events-auto' : 'translate-y-8 opacity-0 pointer-events-none'
         }`}
         aria-label="Scroll back to top"

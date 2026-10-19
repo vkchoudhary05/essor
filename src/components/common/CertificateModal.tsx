@@ -1,6 +1,6 @@
 import React from 'react';
 import { X, ShieldCheck, Download, ExternalLink, CheckCircle2 } from 'lucide-react';
-import certSampleImage from '../../assets/images/training_certificate_sample_1792302193039.jpg';
+import { CertificatePreview } from './CertificatePreview';
 
 interface CertificateModalProps {
   isOpen: boolean;
@@ -29,7 +29,7 @@ export const CertificateModal: React.FC<CertificateModalProps> = ({
         onClick={(e) => e.stopPropagation()}
       >
         {/* Modal Top Bar */}
-        <div className="sticky top-0 z-20 flex items-center justify-between px-6 py-4 bg-gradient-to-r from-[#041F16] via-[#062E21] to-[#0A3828] text-white border-b border-emerald-500/30">
+        <div className="sticky top-0 z-20 flex items-center justify-between px-6 py-4 bg-gradient-to-r from-[#012542] via-[#012B53] to-[#013C63] text-white border-b border-emerald-500/30">
           <div className="flex items-center gap-2.5">
             <ShieldCheck className="w-5 h-5 text-emerald-400" />
             <div>
@@ -55,11 +55,7 @@ export const CertificateModal: React.FC<CertificateModalProps> = ({
           
           {/* Certificate Image Preview */}
           <div className="relative rounded-xl overflow-hidden border-2 border-emerald-900/20 shadow-md bg-stone-50">
-            <img 
-              src={certSampleImage} 
-              alt="Official Sample Training Certificate of Completion issued by ESSOR Compliance Solutions" 
-              className="w-full h-auto object-contain max-h-[580px] mx-auto select-none"
-            />
+            <CertificatePreview />
             
             {/* Live Verification Watermark Badge */}
             <div className="absolute top-4 right-4 bg-emerald-900/90 text-white backdrop-blur-md px-3.5 py-1.5 rounded-full border border-emerald-400/50 text-xs font-bold flex items-center gap-1.5 shadow-lg">
@@ -72,7 +68,7 @@ export const CertificateModal: React.FC<CertificateModalProps> = ({
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 bg-neutral-50 p-4 rounded-xl border border-neutral-200 text-xs">
             <div>
               <span className="text-neutral-500 block font-medium">Recipient Name:</span>
-              <span className="font-bold text-neutral-900 text-sm">Jessica Lee Chen</span>
+              <span className="font-bold text-neutral-900 text-sm">Aarav Sharma</span>
             </div>
             <div>
               <span className="text-neutral-500 block font-medium">Training Program:</span>
@@ -102,7 +98,7 @@ export const CertificateModal: React.FC<CertificateModalProps> = ({
                   onClose();
                   onNavigateToVerify(sampleCertNumber);
                 }}
-                className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider text-white bg-gradient-to-r from-[#062E21] via-[#0E5C3A] to-[#15803D] hover:from-[#042419] hover:via-[#0B4A2F] hover:to-[#166534] shadow-md shadow-emerald-950/20 active:scale-[0.98] transition-all cursor-pointer"
+                className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider text-white bg-gradient-to-r from-[#012B53] via-[#0C5A91] to-[#4C8E20] hover:from-[#0C5A91] hover:via-[#012B53] hover:to-[#3E7D25] shadow-md shadow-emerald-950/20 active:scale-[0.98] transition-all cursor-pointer"
               >
                 <ExternalLink className="w-3.5 h-3.5" />
                 <span>Test Online Verification</span>
@@ -115,7 +111,7 @@ export const CertificateModal: React.FC<CertificateModalProps> = ({
                     onClose();
                     onOpenEnquiry();
                   }}
-                  className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold tracking-wide text-[#062E21] bg-emerald-50 hover:bg-emerald-100 border border-emerald-300 transition-colors cursor-pointer"
+                  className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold tracking-wide text-[#012B53] bg-emerald-50 hover:bg-emerald-100 border border-emerald-300 transition-colors cursor-pointer"
                 >
                   <span>Enrol Your Staff</span>
                 </button>

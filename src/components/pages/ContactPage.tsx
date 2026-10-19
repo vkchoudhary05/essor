@@ -85,13 +85,13 @@ export const ContactPage: React.FC<ContactPageProps> = ({ services }) => {
       <section className="py-16 sm:py-20 bg-white border-b border-emerald-900/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-left">
           <div className="max-w-3xl space-y-4">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-xs font-bold uppercase tracking-wider text-[#2E7D32]">
-              <Sparkles className="w-3.5 h-3.5 text-[#2E7D32]" />
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-xs font-bold uppercase tracking-wider text-[#3E7D25]">
+              <Sparkles className="w-3.5 h-3.5 text-[#3E7D25]" />
               <span>Direct Communication Channel</span>
             </div>
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-neutral-900 tracking-tight leading-tight">
               Get in Touch with Our{' '}
-              <span className="text-[#2E7D32]">
+              <span className="text-[#3E7D25]">
                 Lead Food Safety Practice.
               </span>
             </h1>
@@ -122,7 +122,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ services }) => {
 
             {submittedRef ? (
               <div className="p-8 rounded-xl bg-emerald-50 border border-emerald-200 text-center space-y-4">
-                <div className="w-12 h-12 rounded-full bg-[#2E7D32] text-white flex items-center justify-center mx-auto shadow-md">
+                <div className="w-12 h-12 rounded-full bg-[#3E7D25] text-white flex items-center justify-center mx-auto shadow-md">
                   <CheckCircle className="w-6 h-6" />
                 </div>
                 <h3 className="text-lg font-bold text-neutral-900">
@@ -131,7 +131,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ services }) => {
                 <p className="text-xs text-neutral-600 max-w-md mx-auto leading-relaxed">
                   Your assessment submission has been routed to our Lead Technical Practice.
                 </p>
-                <div className="inline-block px-4 py-2 rounded-lg bg-white border border-emerald-300 font-mono text-xs font-bold text-[#2E7D32] shadow-2xs">
+                <div className="inline-block px-4 py-2 rounded-lg bg-white border border-emerald-300 font-mono text-xs font-bold text-[#3E7D25] shadow-2xs">
                   Reference ID: {submittedRef}
                 </div>
                 <div className="pt-2">
@@ -151,7 +151,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ services }) => {
                         privacyAcknowledged: false
                       });
                     }}
-                    className="text-xs font-bold text-[#2E7D32] hover:underline"
+                    className="text-xs font-bold text-[#3E7D25] hover:underline"
                   >
                     Submit another requirement
                   </button>
@@ -177,7 +177,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ services }) => {
                       value={formData.name}
                       onChange={e => setFormData({ ...formData, name: e.target.value })}
                       placeholder="e.g. Rajesh Kumar"
-                      className="w-full px-3.5 py-2.5 text-xs rounded-xl border border-neutral-300 focus:outline-none focus:ring-2 focus:ring-[#2E7D32]"
+                      className="w-full px-3.5 py-2.5 text-xs rounded-xl border border-neutral-300 focus:outline-none focus:ring-2 focus:ring-[#3E7D25]"
                     />
                   </div>
 
@@ -191,7 +191,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ services }) => {
                       value={formData.email}
                       onChange={e => setFormData({ ...formData, email: e.target.value })}
                       placeholder="e.g. rajesh@foodfactory.com"
-                      className="w-full px-3.5 py-2.5 text-xs rounded-xl border border-neutral-300 focus:outline-none focus:ring-2 focus:ring-[#2E7D32]"
+                      className="w-full px-3.5 py-2.5 text-xs rounded-xl border border-neutral-300 focus:outline-none focus:ring-2 focus:ring-[#3E7D25]"
                     />
                   </div>
                 </div>
@@ -206,7 +206,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ services }) => {
                       value={formData.phone}
                       onChange={e => setFormData({ ...formData, phone: e.target.value })}
                       placeholder="e.g. +91 98765 43210"
-                      className="w-full px-3.5 py-2.5 text-xs rounded-xl border border-neutral-300 focus:outline-none focus:ring-2 focus:ring-[#2E7D32]"
+                      className="w-full px-3.5 py-2.5 text-xs rounded-xl border border-neutral-300 focus:outline-none focus:ring-2 focus:ring-[#3E7D25]"
                     />
                   </div>
 
@@ -220,7 +220,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ services }) => {
                       value={formData.companyName}
                       onChange={e => setFormData({ ...formData, companyName: e.target.value })}
                       placeholder="e.g. Himalayan Agro Foods Ltd."
-                      className="w-full px-3.5 py-2.5 text-xs rounded-xl border border-neutral-300 focus:outline-none focus:ring-2 focus:ring-[#2E7D32]"
+                      className="w-full px-3.5 py-2.5 text-xs rounded-xl border border-neutral-300 focus:outline-none focus:ring-2 focus:ring-[#3E7D25]"
                     />
                   </div>
                 </div>
@@ -235,7 +235,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ services }) => {
                       value={formData.industry}
                       onChange={e => setFormData({ ...formData, industry: e.target.value })}
                       placeholder="e.g. Bakery, Dairy, RTE, Packaging"
-                      className="w-full px-3.5 py-2.5 text-xs rounded-xl border border-neutral-300 focus:outline-none focus:ring-2 focus:ring-[#2E7D32]"
+                      className="w-full px-3.5 py-2.5 text-xs rounded-xl border border-neutral-300 focus:outline-none focus:ring-2 focus:ring-[#3E7D25]"
                     />
                   </div>
 
@@ -246,7 +246,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ services }) => {
                     <select
                       value={formData.serviceId}
                       onChange={e => setFormData({ ...formData, serviceId: e.target.value })}
-                      className="w-full px-3.5 py-2.5 text-xs rounded-xl border border-neutral-300 bg-white focus:outline-none focus:ring-2 focus:ring-[#2E7D32]"
+                      className="w-full px-3.5 py-2.5 text-xs rounded-xl border border-neutral-300 bg-white focus:outline-none focus:ring-2 focus:ring-[#3E7D25]"
                     >
                       <option value="">Select Service...</option>
                       {services.map(s => (
@@ -265,7 +265,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ services }) => {
                     value={formData.auditStandard}
                     onChange={e => setFormData({ ...formData, auditStandard: e.target.value })}
                     placeholder="e.g. BRCGS Issue 9, FSSC 22000 v7, ISO 22000, HACCP, GMP"
-                    className="w-full px-3.5 py-2.5 text-xs rounded-xl border border-neutral-300 focus:outline-none focus:ring-2 focus:ring-[#2E7D32]"
+                    className="w-full px-3.5 py-2.5 text-xs rounded-xl border border-neutral-300 focus:outline-none focus:ring-2 focus:ring-[#3E7D25]"
                   />
                 </div>
 
@@ -278,7 +278,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ services }) => {
                     value={formData.message}
                     onChange={e => setFormData({ ...formData, message: e.target.value })}
                     placeholder="Provide details on plant locations, upcoming audit timelines, or specific customer requirements..."
-                    className="w-full px-3.5 py-2.5 text-xs rounded-xl border border-neutral-300 focus:outline-none focus:ring-2 focus:ring-[#2E7D32] resize-none"
+                    className="w-full px-3.5 py-2.5 text-xs rounded-xl border border-neutral-300 focus:outline-none focus:ring-2 focus:ring-[#3E7D25] resize-none"
                   />
                 </div>
 
@@ -290,7 +290,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ services }) => {
                       required
                       checked={formData.privacyAcknowledged}
                       onChange={e => setFormData({ ...formData, privacyAcknowledged: e.target.checked })}
-                      className="mt-0.5 rounded text-[#2E7D32] focus:ring-[#2E7D32]"
+                      className="mt-0.5 rounded text-[#3E7D25] focus:ring-[#3E7D25]"
                     />
                     <span className="text-xs text-neutral-500 leading-snug">
                       I acknowledge that ESSOR Compliance Solutions provides independent food safety consulting and audit preparation support.
@@ -302,7 +302,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ services }) => {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full inline-flex items-center justify-center gap-2 px-6 py-4 text-xs font-bold uppercase tracking-wider text-white bg-[#042A1D] hover:bg-[#2E7D32] active:scale-[0.98] rounded-xl transition-all shadow-md disabled:opacity-50 cursor-pointer"
+                    className="w-full inline-flex items-center justify-center gap-2 px-6 py-4 text-xs font-bold uppercase tracking-wider text-white bg-gradient-to-r from-[#012B53] via-[#0C5A91] to-[#4C8E20] hover:from-[#0C5A91] hover:via-[#012B53] hover:to-[#3E7D25] active:scale-[0.98] rounded-xl transition-all shadow-md disabled:opacity-50 cursor-pointer"
                   >
                     {isSubmitting ? (
                       <>
@@ -328,7 +328,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ services }) => {
             <div className="p-8 rounded-2xl bg-[#051F14] text-white border border-emerald-500/30 shadow-xl space-y-5">
               <div className="space-y-2">
                 <Logo size="md" theme="dark" />
-                <p className="text-xs text-[#4ADE80] font-black uppercase tracking-wider">
+                <p className="text-xs text-[#A4D65E] font-black uppercase tracking-wider">
                   Compliance For A Safer Tomorrow
                 </p>
               </div>
@@ -348,7 +348,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ services }) => {
 
               <div className="space-y-4 text-xs text-white/90 pt-3 border-t border-white/15">
                 <div className="flex items-start gap-3">
-                  <MapPin className="w-4 h-4 text-[#4ADE80] shrink-0 mt-0.5" />
+                  <MapPin className="w-4 h-4 text-[#A4D65E] shrink-0 mt-0.5" />
                   <div>
                     <span className="font-bold text-white block">Corporate Headquarters</span>
                     <span className="text-white/80 leading-relaxed block">
@@ -358,41 +358,41 @@ export const ContactPage: React.FC<ContactPageProps> = ({ services }) => {
                 </div>
 
                 <div className="flex items-start gap-3">
-                  <Phone className="w-4 h-4 text-[#4ADE80] shrink-0 mt-0.5" />
+                  <Phone className="w-4 h-4 text-[#A4D65E] shrink-0 mt-0.5" />
                   <div>
                     <span className="font-bold text-white block">Direct Telephone / Helpline</span>
-                    <a href="tel:+916395843850" className="text-white hover:text-[#4ADE80] font-bold text-sm block">
+                    <a href="tel:+916395843850" className="text-white hover:text-[#A4D65E] font-bold text-sm block">
                       +91 63958 43850
                     </a>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-3">
-                  <Mail className="w-4 h-4 text-[#4ADE80] shrink-0 mt-0.5" />
+                  <Mail className="w-4 h-4 text-[#A4D65E] shrink-0 mt-0.5" />
                   <div>
                     <span className="font-bold text-white block">Business Inquiries</span>
-                    <a href="mailto:business@essorcompliance.com" className="text-white hover:text-[#4ADE80] font-medium block">
+                    <a href="mailto:business@essorcompliance.com" className="text-white hover:text-[#A4D65E] font-medium block">
                       business@essorcompliance.com
                     </a>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-3">
-                  <Mail className="w-4 h-4 text-[#4ADE80] shrink-0 mt-0.5" />
+                  <Mail className="w-4 h-4 text-[#A4D65E] shrink-0 mt-0.5" />
                   <div>
                     <span className="font-bold text-white block">Training Academy</span>
-                    <a href="mailto:training@essorcompliance.com" className="text-white hover:text-[#4ADE80] font-medium block">
+                    <a href="mailto:training@essorcompliance.com" className="text-white hover:text-[#A4D65E] font-medium block">
                       training@essorcompliance.com
                     </a>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-3">
-                  <Clock className="w-4 h-4 text-[#4ADE80] shrink-0 mt-0.5" />
+                  <Clock className="w-4 h-4 text-[#A4D65E] shrink-0 mt-0.5" />
                   <div>
                     <span className="font-bold text-white block">Hours &amp; Emergency Support</span>
                     <span className="text-white/80 block">Monday – Friday: 09:00 – 18:00 IST</span>
-                    <span className="text-[#4ADE80] text-[11px] font-semibold">24/7 on call for pre-audit emergencies</span>
+                    <span className="text-[#A4D65E] text-[11px] font-semibold">24/7 on call for pre-audit emergencies</span>
                   </div>
                 </div>
               </div>
@@ -407,7 +407,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ services }) => {
               />
               <div className="p-3 bg-white text-xs text-neutral-700 flex items-center justify-between">
                 <span className="font-bold text-neutral-900">Plant &amp; Facility Visits Across India</span>
-                <span className="text-[#2E7D32] font-semibold">On-Site Advisory</span>
+                <span className="text-[#3E7D25] font-semibold">On-Site Advisory</span>
               </div>
             </div>
 

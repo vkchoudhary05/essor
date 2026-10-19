@@ -123,8 +123,8 @@ export const TrainingSection: React.FC<TrainingSectionProps> = ({
         {/* Header */}
         <div ref={headerRef} className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4 text-left">
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-xs font-bold uppercase tracking-wider text-[#2E7D32] mb-3">
-              <Sparkles className="w-3.5 h-3.5 text-[#2E7D32]" />
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-xs font-bold uppercase tracking-wider text-[#3E7D25] mb-3">
+              <Sparkles className="w-3.5 h-3.5 text-[#3E7D25]" />
               <span>Training &amp; Capability Academy</span>
             </div>
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-neutral-900 tracking-tight leading-tight">
@@ -137,7 +137,7 @@ export const TrainingSection: React.FC<TrainingSectionProps> = ({
 
           <button
             onClick={() => onNavigate('/training')}
-            className="inline-flex items-center gap-2 px-6 py-3 text-xs font-bold uppercase tracking-wider text-white bg-[#042A1D] hover:bg-[#2E7D32] active:scale-[0.98] rounded-xl transition-all shadow-md shrink-0 cursor-pointer group"
+            className="inline-flex items-center gap-2 px-6 py-3 text-xs font-bold uppercase tracking-wider text-white bg-gradient-to-r from-[#012B53] via-[#0C5A91] to-[#4C8E20] hover:from-[#0C5A91] hover:via-[#012B53] hover:to-[#3E7D25] active:scale-[0.98] rounded-xl transition-all shadow-md shrink-0 cursor-pointer group"
           >
             <span>View Full Academy Schedule</span>
             <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
@@ -153,15 +153,15 @@ export const TrainingSection: React.FC<TrainingSectionProps> = ({
               className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
             />
             <div className="absolute top-4 left-4">
-              <span className="px-3 py-1 rounded-full bg-[#042A1D]/90 text-white text-[11px] font-bold uppercase tracking-wider backdrop-blur-xs shadow-md">
+              <span className="px-3 py-1 rounded-full bg-[#012B53]/90 text-white text-[11px] font-bold uppercase tracking-wider backdrop-blur-xs shadow-md">
                 Interactive Factory &amp; Corporate Workshops
               </span>
             </div>
           </div>
 
           <div className="lg:col-span-5 p-6 sm:p-8 space-y-4 text-left">
-            <span className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#2E7D32]">
-              <Users className="w-4 h-4 text-[#2E7D32]" />
+            <span className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#3E7D25]">
+              <Users className="w-4 h-4 text-[#3E7D25]" />
               Workforce Competence Enhancement
             </span>
             <h3 className="text-xl sm:text-2xl font-bold text-neutral-900 tracking-tight">
@@ -173,15 +173,15 @@ export const TrainingSection: React.FC<TrainingSectionProps> = ({
 
             <div className="space-y-2 pt-1 text-xs text-neutral-700 font-medium">
               <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-[#2E7D32] shrink-0" />
+                <CheckCircle2 className="w-4 h-4 text-[#3E7D25] shrink-0" />
                 <span>Exhaustive curriculum simplified for plant realities</span>
               </div>
               <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-[#2E7D32] shrink-0" />
+                <CheckCircle2 className="w-4 h-4 text-[#3E7D25] shrink-0" />
                 <span>Hands-on mock audit scenarios &amp; case studies</span>
               </div>
               <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-[#2E7D32] shrink-0" />
+                <CheckCircle2 className="w-4 h-4 text-[#3E7D25] shrink-0" />
                 <span>QR-code verifiable certificates of completion</span>
               </div>
             </div>
@@ -189,15 +189,15 @@ export const TrainingSection: React.FC<TrainingSectionProps> = ({
             <div className="pt-3 flex flex-wrap gap-3 items-center">
               <button
                 onClick={() => onOpenEnquiry('Corporate Training')}
-                className="px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-white bg-[#2E7D32] hover:bg-[#256629] rounded-xl active:scale-[0.98] transition-all shadow-md cursor-pointer"
+                className="px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-white bg-[#3E7D25] hover:bg-[#256629] rounded-xl active:scale-[0.98] transition-all shadow-md cursor-pointer"
               >
                 Book Plant Training
               </button>
               <button
                 onClick={() => onNavigate('/verify-certificate')}
-                className="inline-flex items-center gap-1.5 text-xs font-bold text-neutral-900 hover:text-[#2E7D32] underline underline-offset-4 cursor-pointer"
+                className="inline-flex items-center gap-1.5 text-xs font-bold text-neutral-900 hover:text-[#3E7D25] underline underline-offset-4 cursor-pointer"
               >
-                <Award className="w-4 h-4 text-[#2E7D32]" />
+                <Award className="w-4 h-4 text-[#3E7D25]" />
                 <span>Verify A Certificate</span>
               </button>
             </div>
@@ -208,7 +208,7 @@ export const TrainingSection: React.FC<TrainingSectionProps> = ({
         <div className="mb-12 text-left">
           <div className="flex items-center justify-between mb-4">
             <h3 className="text-lg font-bold text-neutral-900 flex items-center gap-2">
-              <BookOpen className="w-5 h-5 text-[#2E7D32]" />
+              <BookOpen className="w-5 h-5 text-[#3E7D25]" />
               <span>16 Specialized Corporate Training Programs</span>
             </h3>
             <span className="text-xs text-neutral-500 font-medium hidden sm:inline">
@@ -221,12 +221,12 @@ export const TrainingSection: React.FC<TrainingSectionProps> = ({
               <div
                 key={mIdx}
                 onClick={() => onOpenEnquiry(moduleName)}
-                className="p-3.5 rounded-xl bg-white border border-neutral-200 hover:border-[#2E7D32] hover:shadow-md transition-all cursor-pointer flex items-center gap-2.5 group"
+                className="p-3.5 rounded-xl bg-white border border-neutral-200 hover:border-[#3E7D25] hover:shadow-md transition-all cursor-pointer flex items-center gap-2.5 group"
               >
-                <span className="w-6 h-6 rounded-lg bg-emerald-50 text-[#2E7D32] text-xs font-mono font-bold flex items-center justify-center shrink-0 group-hover:bg-[#2E7D32] group-hover:text-white transition-colors">
+                <span className="w-6 h-6 rounded-lg bg-emerald-50 text-[#3E7D25] text-xs font-mono font-bold flex items-center justify-center shrink-0 group-hover:bg-[#3E7D25] group-hover:text-white transition-colors">
                   {mIdx + 1}
                 </span>
-                <span className="text-xs font-bold text-neutral-800 group-hover:text-[#2E7D32] transition-colors leading-tight">
+                <span className="text-xs font-bold text-neutral-800 group-hover:text-[#3E7D25] transition-colors leading-tight">
                   {moduleName}
                 </span>
               </div>
@@ -237,8 +237,8 @@ export const TrainingSection: React.FC<TrainingSectionProps> = ({
         {/* High-Impact Visual Feature 2: Food Microbiology & Verification */}
         <div ref={labBannerRef} className="rounded-2xl overflow-hidden border border-emerald-900/15 shadow-xl bg-white grid grid-cols-1 lg:grid-cols-12 items-center">
           <div className="lg:col-span-6 p-6 sm:p-10 space-y-4 text-left">
-            <span className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#2E7D32]">
-              <Microscope className="w-4 h-4 text-[#2E7D32]" />
+            <span className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#3E7D25]">
+              <Microscope className="w-4 h-4 text-[#3E7D25]" />
               Practical Science &amp; Laboratory Execution
             </span>
             <h3 className="text-xl sm:text-2xl font-bold text-neutral-900 tracking-tight">
@@ -250,15 +250,15 @@ export const TrainingSection: React.FC<TrainingSectionProps> = ({
             <div className="pt-2 flex flex-wrap gap-4 items-center">
               <button
                 onClick={() => onNavigate('/training')}
-                className="px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-white bg-[#042A1D] hover:bg-[#2E7D32] rounded-xl active:scale-[0.98] transition-all shadow-md cursor-pointer"
+                className="px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-white bg-gradient-to-r from-[#012B53] via-[#0C5A91] to-[#4C8E20] hover:from-[#0C5A91] hover:via-[#012B53] hover:to-[#3E7D25] rounded-xl active:scale-[0.98] transition-all shadow-md cursor-pointer"
               >
                 Explore Science Curriculum
               </button>
               <button
                 onClick={() => onNavigate('/verify-certificate')}
-                className="inline-flex items-center gap-1.5 text-xs font-bold text-[#2E7D32] hover:text-neutral-900 underline underline-offset-4 cursor-pointer"
+                className="inline-flex items-center gap-1.5 text-xs font-bold text-[#3E7D25] hover:text-neutral-900 underline underline-offset-4 cursor-pointer"
               >
-                <Award className="w-4 h-4 text-[#2E7D32]" />
+                <Award className="w-4 h-4 text-[#3E7D25]" />
                 <span>Verify Issued Certificate</span>
               </button>
             </div>
@@ -281,11 +281,11 @@ export const TrainingSection: React.FC<TrainingSectionProps> = ({
           </div>
           <div className="flex flex-wrap items-center gap-3 font-semibold text-neutral-700">
             <span>On-Site Factory Floor</span>
-            <span aria-hidden="true" className="text-[#2E7D32]">·</span>
+            <span aria-hidden="true" className="text-[#3E7D25]">·</span>
             <span>Corporate Workshop Seminars</span>
-            <span aria-hidden="true" className="text-[#2E7D32]">·</span>
+            <span aria-hidden="true" className="text-[#3E7D25]">·</span>
             <span>Interactive Virtual Sessions</span>
-            <span aria-hidden="true" className="text-[#2E7D32]">·</span>
+            <span aria-hidden="true" className="text-[#3E7D25]">·</span>
             <span>Executive One-on-One Coaching</span>
           </div>
         </div>

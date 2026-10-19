@@ -21,16 +21,16 @@ export const TeamPage: React.FC<TeamPageProps> = ({ onOpenEnquiry }) => {
                 <Users className="w-4 h-4 text-emerald-600" />
                 <span>Our Team Expertise & Lead Assessors</span>
               </div>
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#062E21] tracking-tight leading-tight">
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#012B53] tracking-tight leading-tight">
                 Consulting experience that strengthens{' '}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#062E21] via-[#0E5C3A] to-[#16A34A]">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#012B53] via-[#0C5A91] to-[#16A34A]">
                   audit readiness.
                 </span>
               </h1>
               <p className="text-base sm:text-lg text-neutral-600 leading-relaxed font-normal">
                 Our team brings practical food-safety and compliance expertise to help clients prepare, respond and continuously improve across all processing sectors.
               </p>
-              <div className="pt-2 flex flex-wrap items-center gap-3 text-xs font-bold text-[#062E21]">
+              <div className="pt-2 flex flex-wrap items-center gap-3 text-xs font-bold text-[#012B53]">
                 <span className="flex items-center gap-1.5 bg-emerald-50 border border-emerald-200 px-3.5 py-1.5 rounded-xl shadow-2xs">
                   <ShieldCheck className="w-4 h-4 text-emerald-600" />
                   IRCA & Exemplar Global Certified
@@ -50,7 +50,7 @@ export const TeamPage: React.FC<TeamPageProps> = ({ onOpenEnquiry }) => {
                   referrerPolicy="no-referrer"
                   className="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-                <div className="p-3.5 bg-[#062E21] text-white text-[11px] text-center font-bold flex items-center justify-center gap-2 border-t border-emerald-700/30">
+                <div className="p-3.5 bg-[#012B53] text-white text-[11px] text-center font-bold flex items-center justify-center gap-2 border-t border-emerald-700/30">
                   <Logo variant="icon-only" size="sm" className="w-4 h-4" />
                   <span className="text-emerald-200">Multi-disciplinary technical audit review & HACCP validation team</span>
                 </div>
@@ -73,12 +73,12 @@ export const TeamPage: React.FC<TeamPageProps> = ({ onOpenEnquiry }) => {
                 <span className="text-xs font-mono font-bold text-emerald-800 px-2.5 py-0.5 rounded bg-emerald-50 border border-emerald-200">
                   CAPABILITY GROUP 0{idx + 1}
                 </span>
-                <span className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#062E21] to-[#0E5C3A] text-white border border-emerald-500/40 flex items-center justify-center font-bold text-xs shadow-md">
+                <span className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#012B53] to-[#0C5A91] text-white border border-emerald-500/40 flex items-center justify-center font-bold text-xs shadow-md">
                   ✓
                 </span>
               </div>
 
-              <h2 className="text-xl font-bold text-[#062E21] group-hover:text-emerald-700 transition-colors">
+              <h2 className="text-xl font-bold text-[#012B53] group-hover:text-emerald-700 transition-colors">
                 {cap.group}
               </h2>
 
@@ -100,7 +100,7 @@ export const TeamPage: React.FC<TeamPageProps> = ({ onOpenEnquiry }) => {
 
         {/* Advisory / Personnel Disclosure Policy */}
         <div className="mt-14 p-6 rounded-2xl bg-white border border-emerald-900/10 text-xs text-neutral-600 space-y-2 shadow-2xs">
-          <h4 className="font-bold uppercase tracking-wider text-[#062E21]">
+          <h4 className="font-bold uppercase tracking-wider text-[#012B53]">
             Advisory Team Deployment Policy:
           </h4>
           <p className="leading-relaxed font-normal">
@@ -109,7 +109,7 @@ export const TeamPage: React.FC<TeamPageProps> = ({ onOpenEnquiry }) => {
         </div>
 
         {/* CTA banner */}
-        <div className="mt-12 p-8 sm:p-10 rounded-2xl bg-gradient-to-br from-[#041F16] via-[#062E21] to-[#0A3828] text-white border border-emerald-500/30 shadow-xl shadow-emerald-950/20 flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="mt-12 p-8 sm:p-10 rounded-2xl bg-gradient-to-br from-[#012542] via-[#012B53] to-[#013C63] text-white border border-emerald-500/30 shadow-xl shadow-emerald-950/20 flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="space-y-1">
             <div className="flex items-center gap-2 mb-1">
               <Logo variant="icon-only" size="sm" className="w-4 h-4" />
@@ -124,7 +124,7 @@ export const TeamPage: React.FC<TeamPageProps> = ({ onOpenEnquiry }) => {
           </div>
           <button
             onClick={onOpenEnquiry}
-            className="inline-flex items-center gap-2 px-6 py-3.5 text-xs font-bold uppercase tracking-wider text-white bg-gradient-to-r from-[#062E21] via-[#0E5C3A] to-[#15803D] hover:from-[#042419] hover:via-[#0B4A2F] hover:to-[#166534] active:scale-[0.98] rounded-xl transition-all shadow-md shadow-emerald-950/40 ring-1 ring-emerald-400/40 shrink-0 cursor-pointer"
+            className="inline-flex items-center gap-2 px-6 py-3.5 text-xs font-bold uppercase tracking-wider text-white bg-gradient-to-r from-[#012B53] via-[#0C5A91] to-[#4C8E20] hover:from-[#0C5A91] hover:via-[#012B53] hover:to-[#3E7D25] active:scale-[0.98] rounded-xl transition-all shadow-md shadow-emerald-950/40 ring-1 ring-emerald-400/40 shrink-0 cursor-pointer"
           >
             <span>Request Specialist Consultation</span>
             <ArrowRight className="w-3.5 h-3.5" />

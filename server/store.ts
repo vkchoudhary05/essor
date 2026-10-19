@@ -248,12 +248,12 @@ const DEFAULT_SESSIONS: TrainingSession[] = [
 
 const DEFAULT_CERTIFICATES: Certificate[] = [
   {
-    id: 'cert-sample-jessica',
+    id: 'cert-sample-aarav',
     certificateNumber: 'ECSFSM-LA241116',
     verificationToken: 'vtf-la241116-fsm-iso22000',
-    participantId: 'usr-jessica',
-    participantName: 'Jessica Lee Chen',
-    participantEmail: 'jessica.chen@dairyprocessing.com',
+    participantId: 'usr-aarav',
+    participantName: 'Aarav Sharma',
+    participantEmail: 'aarav.sharma@dairyprocessing.in',
     organizationName: 'Global Dairy & Beverage Processing Ltd.',
     courseId: 'crs-3',
     courseTitle: 'Food Safety Management Systems Lead Auditor and HACCP Implementation',
@@ -262,8 +262,8 @@ const DEFAULT_CERTIFICATES: Certificate[] = [
     durationHours: 40,
     gradeScore: 96,
     issueDate: '2024-11-16T10:00:00Z',
-    issuedByName: 'Dr. Alistair Finch',
-    issuedByRole: 'Lead Instructor & Director of Training',
+    issuedByName: 'Vivek Baliyan',
+    issuedByRole: 'Principal Lead Auditor',
     status: 'ISSUED',
     verificationCount: 128,
     createdAt: '2024-11-16T10:00:00Z',

@@ -23,13 +23,13 @@ export const AboutPage: React.FC<AboutPageProps> = ({ cms, onNavigate, onOpenEnq
       <section className="py-16 sm:py-20 bg-white border-b border-emerald-900/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl space-y-4 text-left">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-xs font-bold uppercase tracking-wider text-[#2E7D32]">
-              <Sparkles className="w-3.5 h-3.5 text-[#2E7D32]" />
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-xs font-bold uppercase tracking-wider text-[#3E7D25]">
+              <Sparkles className="w-3.5 h-3.5 text-[#3E7D25]" />
               <span>About ESSOR Compliance Solutions</span>
             </div>
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-neutral-900 tracking-tight leading-tight">
               Built Around Practical,{' '}
-              <span className="text-[#2E7D32]">
+              <span className="text-[#3E7D25]">
                 Continuous Compliance.
               </span>
             </h1>
@@ -55,7 +55,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ cms, onNavigate, onOpenEnq
                 key={pIdx}
                 className="flex items-center gap-2 p-3 rounded-xl bg-[#F8FAF9] border border-neutral-200 text-xs font-bold text-neutral-900 shadow-2xs"
               >
-                <CheckCircle2 className="w-4 h-4 text-[#2E7D32] shrink-0" />
+                <CheckCircle2 className="w-4 h-4 text-[#3E7D25] shrink-0" />
                 <span className="leading-snug">{promise}</span>
               </div>
             ))}
@@ -76,7 +76,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ cms, onNavigate, onOpenEnq
                 />
               </div>
               <div className="p-4 bg-white text-left">
-                <span className="text-[10px] font-bold uppercase tracking-wider text-[#2E7D32]">Raw Ingredient Quality</span>
+                <span className="text-[10px] font-bold uppercase tracking-wider text-[#3E7D25]">Raw Ingredient Quality</span>
                 <h4 className="text-sm font-bold text-neutral-900 mt-0.5">Farm-to-Fork Receiving Checks</h4>
                 <p className="text-xs text-neutral-600 mt-1">Pesticide residues, freshness testing, and hygiene grading.</p>
               </div>
@@ -91,7 +91,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ cms, onNavigate, onOpenEnq
                 />
               </div>
               <div className="p-4 bg-white text-left">
-                <span className="text-[10px] font-bold uppercase tracking-wider text-[#2E7D32]">Factory Floor Audits</span>
+                <span className="text-[10px] font-bold uppercase tracking-wider text-[#3E7D25]">Factory Floor Audits</span>
                 <h4 className="text-sm font-bold text-neutral-900 mt-0.5">Sanitation &amp; CCP Monitoring</h4>
                 <p className="text-xs text-neutral-600 mt-1">Stainless steel machinery inspection and calibration registers.</p>
               </div>
@@ -106,7 +106,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ cms, onNavigate, onOpenEnq
                 />
               </div>
               <div className="p-4 bg-white text-left">
-                <span className="text-[10px] font-bold uppercase tracking-wider text-[#2E7D32]">Advisory &amp; Documentation</span>
+                <span className="text-[10px] font-bold uppercase tracking-wider text-[#3E7D25]">Advisory &amp; Documentation</span>
                 <h4 className="text-sm font-bold text-neutral-900 mt-0.5">Technical Defense &amp; CAPA</h4>
                 <p className="text-xs text-neutral-600 mt-1">Structured audit closure, root-cause analysis, and team coaching.</p>
               </div>
@@ -120,11 +120,11 @@ export const AboutPage: React.FC<AboutPageProps> = ({ cms, onNavigate, onOpenEnq
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 text-left">
           
           {/* OUR PURPOSE */}
-          <div className="p-8 rounded-2xl bg-white border border-neutral-200 shadow-xs space-y-4 hover:border-[#2E7D32] hover:shadow-lg transition-all group">
-            <div className="w-12 h-12 rounded-xl bg-[#042A1D] text-white flex items-center justify-center shadow-md">
-              <Compass className="w-6 h-6 text-[#4ADE80]" />
+          <div className="p-8 rounded-2xl bg-white border border-neutral-200 shadow-xs space-y-4 hover:border-[#3E7D25] hover:shadow-lg transition-all group">
+            <div className="w-12 h-12 rounded-xl bg-[#012B53] text-white flex items-center justify-center shadow-md">
+              <Compass className="w-6 h-6 text-[#A4D65E]" />
             </div>
-            <h2 className="text-xl font-bold text-neutral-900 group-hover:text-[#2E7D32] transition-colors">
+            <h2 className="text-xl font-bold text-neutral-900 group-hover:text-[#3E7D25] transition-colors">
               Our Purpose
             </h2>
             <p className="text-sm text-neutral-600 leading-relaxed font-normal">
@@ -133,11 +133,11 @@ export const AboutPage: React.FC<AboutPageProps> = ({ cms, onNavigate, onOpenEnq
           </div>
 
           {/* VISION */}
-          <div className="p-8 rounded-2xl bg-white border border-neutral-200 shadow-xs space-y-4 hover:border-[#2E7D32] hover:shadow-lg transition-all group">
-            <div className="w-12 h-12 rounded-xl bg-[#062E21] text-white flex items-center justify-center shadow-md">
-              <Eye className="w-6 h-6 text-[#4ADE80]" />
+          <div className="p-8 rounded-2xl bg-white border border-neutral-200 shadow-xs space-y-4 hover:border-[#3E7D25] hover:shadow-lg transition-all group">
+            <div className="w-12 h-12 rounded-xl bg-[#012B53] text-white flex items-center justify-center shadow-md">
+              <Eye className="w-6 h-6 text-[#A4D65E]" />
             </div>
-            <h2 className="text-xl font-bold text-neutral-900 group-hover:text-[#2E7D32] transition-colors">
+            <h2 className="text-xl font-bold text-neutral-900 group-hover:text-[#3E7D25] transition-colors">
               Vision
             </h2>
             <p className="text-sm text-neutral-600 leading-relaxed font-normal">
@@ -146,11 +146,11 @@ export const AboutPage: React.FC<AboutPageProps> = ({ cms, onNavigate, onOpenEnq
           </div>
 
           {/* MISSION */}
-          <div className="p-8 rounded-2xl bg-white border border-neutral-200 shadow-xs space-y-4 hover:border-[#2E7D32] hover:shadow-lg transition-all group">
-            <div className="w-12 h-12 rounded-xl bg-[#2E7D32] text-white flex items-center justify-center shadow-md">
+          <div className="p-8 rounded-2xl bg-white border border-neutral-200 shadow-xs space-y-4 hover:border-[#3E7D25] hover:shadow-lg transition-all group">
+            <div className="w-12 h-12 rounded-xl bg-[#3E7D25] text-white flex items-center justify-center shadow-md">
               <Target className="w-6 h-6 text-white" />
             </div>
-            <h2 className="text-xl font-bold text-neutral-900 group-hover:text-[#2E7D32] transition-colors">
+            <h2 className="text-xl font-bold text-neutral-900 group-hover:text-[#3E7D25] transition-colors">
               Mission
             </h2>
             <p className="text-sm text-neutral-600 leading-relaxed font-normal">
@@ -167,8 +167,8 @@ export const AboutPage: React.FC<AboutPageProps> = ({ cms, onNavigate, onOpenEnq
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center text-left">
             
             <div className="lg:col-span-7 space-y-6">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-xs font-bold uppercase tracking-wider text-[#2E7D32]">
-                <ShieldCheck className="w-3.5 h-3.5 text-[#2E7D32]" />
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-xs font-bold uppercase tracking-wider text-[#3E7D25]">
+                <ShieldCheck className="w-3.5 h-3.5 text-[#3E7D25]" />
                 <span>Why Food Processors Choose ESSOR</span>
               </div>
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-neutral-900 tracking-tight leading-tight">
@@ -180,19 +180,19 @@ export const AboutPage: React.FC<AboutPageProps> = ({ cms, onNavigate, onOpenEnq
 
               <div className="space-y-3 pt-2">
                 <div className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-[#2E7D32] shrink-0 mt-0.5" />
+                  <CheckCircle2 className="w-5 h-5 text-[#3E7D25] shrink-0 mt-0.5" />
                   <span className="text-sm text-neutral-700"><strong className="text-neutral-900">Highly competitive &amp; transparent pricing:</strong> Affordable plans suited to facility scale.</span>
                 </div>
                 <div className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-[#2E7D32] shrink-0 mt-0.5" />
+                  <CheckCircle2 className="w-5 h-5 text-[#3E7D25] shrink-0 mt-0.5" />
                   <span className="text-sm text-neutral-700"><strong className="text-neutral-900">Approachable, down-to-earth auditors:</strong> Practical floor-level advice with zero condescension.</span>
                 </div>
                 <div className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-[#2E7D32] shrink-0 mt-0.5" />
+                  <CheckCircle2 className="w-5 h-5 text-[#3E7D25] shrink-0 mt-0.5" />
                   <span className="text-sm text-neutral-700"><strong className="text-neutral-900">Better operational performance &amp; reduced costs:</strong> Prevent food waste, recalls, and customer penalties.</span>
                 </div>
                 <div className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-[#2E7D32] shrink-0 mt-0.5" />
+                  <CheckCircle2 className="w-5 h-5 text-[#3E7D25] shrink-0 mt-0.5" />
                   <span className="text-sm text-neutral-700"><strong className="text-neutral-900">Expanded market opportunities:</strong> Unlock export markets and tier-1 retail vendor approvals.</span>
                 </div>
               </div>
@@ -202,22 +202,22 @@ export const AboutPage: React.FC<AboutPageProps> = ({ cms, onNavigate, onOpenEnq
               <div className="rounded-2xl overflow-hidden border border-neutral-200 shadow-xl bg-[#051F14] text-white p-8 space-y-6">
                 <div>
                   <Logo size="md" theme="dark" />
-                  <p className="text-xs text-[#4ADE80] font-bold uppercase tracking-wider mt-3">
+                  <p className="text-xs text-[#A4D65E] font-bold uppercase tracking-wider mt-3">
                     Compliance For A Safer Tomorrow
                   </p>
                 </div>
 
                 <div className="space-y-3 text-xs text-white/90">
                   <div className="flex items-start gap-2.5">
-                    <MapPin className="w-4 h-4 text-[#4ADE80] shrink-0 mt-0.5" />
+                    <MapPin className="w-4 h-4 text-[#A4D65E] shrink-0 mt-0.5" />
                     <span>Doon IT Park, Sahastradhara Road, Dehradun, Uttarakhand, India</span>
                   </div>
                   <div className="flex items-center gap-2.5">
-                    <Phone className="w-4 h-4 text-[#4ADE80] shrink-0" />
+                    <Phone className="w-4 h-4 text-[#A4D65E] shrink-0" />
                     <span>+91 6395843850 (Direct / WhatsApp)</span>
                   </div>
                   <div className="flex items-center gap-2.5">
-                    <Mail className="w-4 h-4 text-[#4ADE80] shrink-0" />
+                    <Mail className="w-4 h-4 text-[#A4D65E] shrink-0" />
                     <span>business@essorcompliance.com</span>
                   </div>
                 </div>
@@ -240,8 +240,8 @@ export const AboutPage: React.FC<AboutPageProps> = ({ cms, onNavigate, onOpenEnq
       <section className="py-20 bg-[#F8FAF9]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mb-12 text-left">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-xs font-bold uppercase tracking-wider text-[#2E7D32] mb-3">
-              <Sparkles className="w-3.5 h-3.5 text-[#2E7D32]" />
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-xs font-bold uppercase tracking-wider text-[#3E7D25] mb-3">
+              <Sparkles className="w-3.5 h-3.5 text-[#3E7D25]" />
               <span>Multi-Disciplinary Expertise</span>
             </div>
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-neutral-900 tracking-tight">
@@ -256,18 +256,18 @@ export const AboutPage: React.FC<AboutPageProps> = ({ cms, onNavigate, onOpenEnq
             {TEAM_CAPABILITIES.map((member, idx) => (
               <div
                 key={idx}
-                className="p-6 rounded-2xl border border-neutral-200 bg-white hover:border-[#2E7D32] hover:shadow-lg transition-all space-y-3 group"
+                className="p-6 rounded-2xl border border-neutral-200 bg-white hover:border-[#3E7D25] hover:shadow-lg transition-all space-y-3 group"
               >
-                <div className="text-xs font-mono font-bold text-[#2E7D32] flex items-center gap-1.5">
-                  <span className="w-6 h-6 rounded-md bg-[#042A1D] text-white flex items-center justify-center text-[10px]">
+                <div className="text-xs font-mono font-bold text-[#3E7D25] flex items-center gap-1.5">
+                  <span className="w-6 h-6 rounded-md bg-[#012B53] text-white flex items-center justify-center text-[10px]">
                     0{idx + 1}
                   </span>
                   <span>CAPABILITY PILLAR</span>
                 </div>
-                <h3 className="text-base font-bold text-neutral-900 group-hover:text-[#2E7D32] transition-colors">
+                <h3 className="text-base font-bold text-neutral-900 group-hover:text-[#3E7D25] transition-colors">
                   {member.group}
                 </h3>
-                <p className="text-xs font-semibold text-[#2E7D32]">
+                <p className="text-xs font-semibold text-[#3E7D25]">
                   {member.subtitle}
                 </p>
                 <p className="text-xs text-neutral-600 leading-relaxed font-normal">

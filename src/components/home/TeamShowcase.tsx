@@ -81,7 +81,7 @@ export const TeamShowcase: React.FC<TeamShowcaseProps> = ({ onNavigate }) => {
             <Users className="w-4 h-4 text-emerald-600" />
             <span>Our Team & Lead Assessors</span>
           </div>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#062E21] tracking-tight leading-tight">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#012B53] tracking-tight leading-tight">
             Consulting experience that strengthens audit readiness
           </h2>
           <p className="text-base text-neutral-600 mt-2 font-normal">
@@ -100,7 +100,7 @@ export const TeamShowcase: React.FC<TeamShowcaseProps> = ({ onNavigate }) => {
   alt="ESSOR consulting team conducting technical review in facility conference room"
   className="w-full h-80 object-cover transition-transform duration-700 group-hover:scale-105"
 />
-              <div className="p-4 bg-[#062E21] text-white space-y-1 border-t border-emerald-700/30">
+              <div className="p-4 bg-[#012B53] text-white space-y-1 border-t border-emerald-700/30">
                 <div className="flex items-center gap-2">
                   <Logo variant="icon-only" size="sm" className="w-4 h-4" />
                   <span className="text-[11px] font-bold uppercase tracking-wider text-emerald-300">
@@ -122,7 +122,7 @@ export const TeamShowcase: React.FC<TeamShowcaseProps> = ({ onNavigate }) => {
                 className="p-5 rounded-2xl bg-white border border-emerald-900/10 shadow-xs space-y-2 hover:border-emerald-500 hover:shadow-md transition-all group hover:-translate-y-1"
               >
                 <div className="flex items-center justify-between">
-                  <div className="w-8 h-8 rounded-lg bg-[#062E21] text-emerald-300 border border-emerald-500/40 flex items-center justify-center font-bold text-xs shadow-xs">
+                  <div className="w-8 h-8 rounded-lg bg-[#012B53] text-emerald-300 border border-emerald-500/40 flex items-center justify-center font-bold text-xs shadow-xs">
                     0{idx + 1}
                   </div>
                   <span className="text-[10px] uppercase font-bold text-emerald-800 px-2 py-0.5 rounded bg-emerald-50 border border-emerald-200/80">
@@ -130,7 +130,7 @@ export const TeamShowcase: React.FC<TeamShowcaseProps> = ({ onNavigate }) => {
                   </span>
                 </div>
                 
-                <h3 className="text-sm font-bold text-[#062E21] group-hover:text-emerald-700 transition-colors">
+                <h3 className="text-sm font-bold text-[#012B53] group-hover:text-emerald-700 transition-colors">
                   {member.group}
                 </h3>
                 <p className="text-xs font-semibold text-emerald-800">
@@ -149,7 +149,7 @@ export const TeamShowcase: React.FC<TeamShowcaseProps> = ({ onNavigate }) => {
         <div className="text-center">
           <button
             onClick={() => onNavigate('/team')}
-            className="text-xs font-bold uppercase tracking-wider text-[#062E21] hover:text-emerald-700 inline-flex items-center gap-1.5 cursor-pointer group"
+            className="text-xs font-bold uppercase tracking-wider text-[#012B53] hover:text-emerald-700 inline-flex items-center gap-1.5 cursor-pointer group"
           >
             <span>Read Full Team Capability Profile & Advisory Standards</span>
             <ArrowRight className="w-3.5 h-3.5 text-emerald-600 transition-transform group-hover:translate-x-1" />

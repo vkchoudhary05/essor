@@ -19,11 +19,11 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({
   if (!service) {
     return (
       <div className="py-24 text-center space-y-4 max-w-md mx-auto px-4">
-        <h2 className="text-xl font-bold text-[#062E21]">Service Not Found</h2>
+        <h2 className="text-xl font-bold text-[#012B53]">Service Not Found</h2>
         <p className="text-xs text-neutral-600">The requested service category could not be located in our active service catalogue.</p>
         <button
           onClick={() => onNavigate('/services')}
-          className="px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-white bg-gradient-to-r from-[#062E21] via-[#0E5C3A] to-[#15803D] rounded-xl shadow-md cursor-pointer"
+          className="px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-white bg-gradient-to-r from-[#012B53] via-[#0C5A91] to-[#4C8E20] rounded-xl shadow-md cursor-pointer"
         >
           Return to Services
         </button>
@@ -50,7 +50,7 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({
               <Sparkles className="w-3.5 h-3.5 text-emerald-600" />
               <span>{service.category.replace('_', ' ')}</span>
             </div>
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#062E21] tracking-tight leading-tight">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#012B53] tracking-tight leading-tight">
               {service.title}
             </h1>
             <p className="text-base sm:text-lg text-neutral-600 leading-relaxed font-normal">
@@ -70,7 +70,7 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({
             <div className="p-8 rounded-2xl bg-white border border-emerald-900/10 shadow-xs space-y-6">
               <div className="flex items-center gap-2">
                 <Logo variant="icon-only" size="sm" className="w-5 h-5" />
-                <h2 className="text-xl font-bold text-[#062E21]">
+                <h2 className="text-xl font-bold text-[#012B53]">
                   Deliverables & Practical Outcomes
                 </h2>
               </div>
@@ -83,7 +83,7 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({
                   <div key={idx} className="flex items-start gap-3.5 p-4 rounded-xl bg-[#F8FAFC] border border-emerald-900/10 hover:border-emerald-500 transition-colors">
                     <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
                     <div>
-                      <span className="text-sm font-bold text-[#062E21] block">
+                      <span className="text-sm font-bold text-[#012B53] block">
                         {item}
                       </span>
                     </div>
@@ -95,7 +95,7 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({
             {/* Applicable Standards & Protocols */}
             {service.applicableStandards && service.applicableStandards.length > 0 && (
               <div className="p-8 rounded-2xl bg-white border border-emerald-900/10 shadow-xs space-y-4">
-                <h3 className="text-lg font-bold text-[#062E21]">
+                <h3 className="text-lg font-bold text-[#012B53]">
                   Covered Standards & Global Schemes
                 </h3>
                 <p className="text-xs text-neutral-600 font-normal">
@@ -103,7 +103,7 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({
                 </p>
                 <div className="flex flex-wrap gap-2 pt-2">
                   {service.applicableStandards.map(std => (
-                    <span key={std} className="px-3.5 py-1.5 rounded-xl bg-emerald-50 border border-emerald-200 text-xs font-bold text-[#062E21]">
+                    <span key={std} className="px-3.5 py-1.5 rounded-xl bg-emerald-50 border border-emerald-200 text-xs font-bold text-[#012B53]">
                       {std}
                     </span>
                   ))}
@@ -112,7 +112,7 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({
             )}
 
             {/* Advisory Boundary Reminder */}
-            <div className="p-6 rounded-2xl bg-emerald-50/70 border border-emerald-200 text-xs text-[#062E21] space-y-2">
+            <div className="p-6 rounded-2xl bg-emerald-50/70 border border-emerald-200 text-xs text-[#012B53] space-y-2">
               <div className="flex items-center gap-2">
                 <ShieldCheck className="w-4 h-4 text-emerald-700" />
                 <h4 className="font-bold uppercase tracking-wider text-emerald-900">
@@ -132,7 +132,7 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({
                 <Sparkles className="w-3 h-3 text-emerald-600" />
                 <span>Consulting Engagement</span>
               </div>
-              <h3 className="text-xl font-bold text-[#062E21]">
+              <h3 className="text-xl font-bold text-[#012B53]">
                 Request a Scoping Review
               </h3>
               <p className="text-xs text-neutral-600 leading-relaxed font-normal">
@@ -142,7 +142,7 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({
               <div className="space-y-3 pt-2">
                 <button
                   onClick={() => onOpenEnquiry(service.slug)}
-                  className="w-full inline-flex items-center justify-center gap-2 px-5 py-3.5 text-xs font-bold uppercase tracking-wider text-white bg-gradient-to-r from-[#062E21] via-[#0E5C3A] to-[#15803D] hover:from-[#042419] hover:via-[#0B4A2F] hover:to-[#166534] active:scale-[0.98] rounded-xl transition-all shadow-md shadow-emerald-950/20 ring-1 ring-emerald-400/30 cursor-pointer"
+                  className="w-full inline-flex items-center justify-center gap-2 px-5 py-3.5 text-xs font-bold uppercase tracking-wider text-white bg-gradient-to-r from-[#012B53] via-[#0C5A91] to-[#4C8E20] hover:from-[#0C5A91] hover:via-[#012B53] hover:to-[#3E7D25] active:scale-[0.98] rounded-xl transition-all shadow-md shadow-emerald-950/20 ring-1 ring-emerald-400/30 cursor-pointer"
                 >
                   <span>Discuss Your Requirements</span>
                   <ArrowRight className="w-3.5 h-3.5" />
@@ -150,7 +150,7 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({
 
                 <button
                   onClick={() => onNavigate('/our-process')}
-                  className="w-full py-3 text-xs font-bold uppercase tracking-wider text-[#062E21] hover:text-emerald-700 bg-emerald-50/50 hover:bg-emerald-50 border border-emerald-900/10 rounded-xl transition-all text-center cursor-pointer"
+                  className="w-full py-3 text-xs font-bold uppercase tracking-wider text-[#012B53] hover:text-emerald-700 bg-emerald-50/50 hover:bg-emerald-50 border border-emerald-900/10 rounded-xl transition-all text-center cursor-pointer"
                 >
                   View 6-Stage Process
                 </button>

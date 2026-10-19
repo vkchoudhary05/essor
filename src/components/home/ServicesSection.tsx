@@ -73,8 +73,8 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
         
         {/* Section Header */}
         <div className="max-w-3xl mb-10 text-left">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 text-xs font-bold uppercase tracking-wider text-[#2E7D32] border border-emerald-200 mb-3">
-            <Sparkles className="w-3.5 h-3.5 text-[#2E7D32]" />
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 text-xs font-bold uppercase tracking-wider text-[#3E7D25] border border-emerald-200 mb-3">
+            <Sparkles className="w-3.5 h-3.5 text-[#3E7D25]" />
             <span>Our Core Compliance Services</span>
           </div>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-neutral-900 tracking-tight leading-tight">
@@ -96,7 +96,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
             return (
               <div
                 key={srv.id}
-                className="rounded-2xl border border-neutral-200/90 bg-white hover:border-[#2E7D32] hover:shadow-xl transition-all duration-300 flex flex-col justify-between overflow-hidden group"
+                className="rounded-2xl border border-neutral-200/90 bg-white hover:border-[#3E7D25] hover:shadow-xl transition-all duration-300 flex flex-col justify-between overflow-hidden group"
               >
                 {/* Visual Thumbnail Image */}
                 <div className="relative h-44 overflow-hidden bg-neutral-100">
@@ -107,7 +107,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
                     loading="lazy"
                   />
                   <div className="absolute top-3 left-3 flex items-center gap-2">
-                    <span className="text-xs font-mono font-bold text-white px-2.5 py-0.5 rounded-md bg-[#042A1D]/90 backdrop-blur-xs shadow-xs">
+                    <span className="text-xs font-mono font-bold text-white px-2.5 py-0.5 rounded-md bg-[#012B53]/90 backdrop-blur-xs shadow-xs">
                       0{idx + 1}.
                     </span>
                     <span className="text-[10px] font-bold uppercase tracking-wider text-neutral-900 bg-white/95 px-2 py-0.5 rounded-md shadow-xs">
@@ -118,7 +118,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
 
                 <div className="p-6 space-y-4 flex-1 flex flex-col justify-between">
                   <div className="space-y-3">
-                    <h3 className="text-lg font-bold text-neutral-900 group-hover:text-[#2E7D32] transition-colors leading-snug">
+                    <h3 className="text-lg font-bold text-neutral-900 group-hover:text-[#3E7D25] transition-colors leading-snug">
                       {srv.title}
                     </h3>
 
@@ -132,7 +132,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
                       </span>
                       {srv.deliverables.slice(0, 3).map((item, dIdx) => (
                         <div key={dIdx} className="text-[12px] text-neutral-700 flex items-start gap-2">
-                          <CheckCircle2 className="w-3.5 h-3.5 text-[#2E7D32] shrink-0 mt-0.5" />
+                          <CheckCircle2 className="w-3.5 h-3.5 text-[#3E7D25] shrink-0 mt-0.5" />
                           <span>{item}</span>
                         </div>
                       ))}
@@ -143,16 +143,16 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
                     <button
                       type="button"
                       onClick={() => onNavigate(`/services/${srv.slug}`)}
-                      className="inline-flex items-center gap-1.5 text-xs font-bold text-neutral-900 hover:text-[#2E7D32] transition-colors cursor-pointer"
+                      className="inline-flex items-center gap-1.5 text-xs font-bold text-neutral-900 hover:text-[#3E7D25] transition-colors cursor-pointer"
                     >
                       <span>Learn Details</span>
-                      <ChevronRight className="w-3.5 h-3.5 text-[#2E7D32]" />
+                      <ChevronRight className="w-3.5 h-3.5 text-[#3E7D25]" />
                     </button>
 
                     <button
                       type="button"
                       onClick={() => onOpenEnquiry(srv.slug)}
-                      className="px-3.5 py-1.5 rounded-lg bg-emerald-50 hover:bg-[#2E7D32] hover:text-white text-xs font-bold text-[#2E7D32] border border-emerald-300 hover:border-[#2E7D32] transition-all cursor-pointer shadow-2xs active:scale-95"
+                      className="px-3.5 py-1.5 rounded-lg bg-emerald-50 hover:bg-[#3E7D25] hover:text-white text-xs font-bold text-[#3E7D25] border border-emerald-300 hover:border-[#3E7D25] transition-all cursor-pointer shadow-2xs active:scale-95"
                     >
                       Enquire Now
                     </button>
@@ -176,7 +176,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
           <button
             type="button"
             onClick={() => onOpenEnquiry()}
-            className="px-6 py-3 text-xs font-bold uppercase tracking-wider text-white bg-[#042A1D] hover:bg-[#2E7D32] active:scale-[0.98] rounded-xl transition-all shadow-md shrink-0 cursor-pointer"
+            className="px-6 py-3 text-xs font-bold uppercase tracking-wider text-white bg-gradient-to-r from-[#012B53] via-[#0C5A91] to-[#4C8E20] hover:from-[#0C5A91] hover:via-[#012B53] hover:to-[#3E7D25] active:scale-[0.98] rounded-xl transition-all shadow-md shrink-0 cursor-pointer"
           >
             Speak to a Lead Specialist
           </button>
