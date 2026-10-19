@@ -163,11 +163,11 @@ export const Navbar: React.FC<NavbarProps> = ({
                   className="inline-flex items-center gap-2 text-white hover:text-emerald-300 transition-colors group/item cursor-pointer"
                   title="Business & Advisory: business@essorcompliance.com"
                 >
-                  <span className="px-1.5 py-0.5 rounded text-[9px] font-black uppercase tracking-wider bg-teal-500/25 text-teal-300 border border-teal-500/40">
+                  <span className="px-1.5 py-0.5 rounded text-[9px] font-black uppercase tracking-wider bg-white/15 text-white border border-white/30">
                     Business Inquiries
                   </span>
-                  <Mail className="w-3.5 h-3.5 text-teal-300 group-hover/item:scale-110 transition-transform shrink-0" />
-                  <span className="font-semibold text-emerald-100 group-hover/item:text-white underline decoration-teal-500/40 underline-offset-2">
+                  <Mail className="w-3.5 h-3.5 text-white group-hover/item:scale-110 transition-transform shrink-0" />
+                  <span className="font-semibold text-white group-hover/item:underline underline-offset-2">
                     business@essorcompliance.com
                   </span>
                 </a>
@@ -261,11 +261,11 @@ export const Navbar: React.FC<NavbarProps> = ({
                   className="inline-flex items-center gap-2 text-white hover:text-emerald-300 transition-colors group/item cursor-pointer"
                   title="Business & Advisory: business@essorcompliance.com"
                 >
-                  <span className="px-1.5 py-0.5 rounded text-[9px] font-black uppercase tracking-wider bg-teal-500/25 text-teal-300 border border-teal-500/40">
+                  <span className="px-1.5 py-0.5 rounded text-[9px] font-black uppercase tracking-wider bg-white/15 text-white border border-white/30">
                     Business Inquiries
                   </span>
-                  <Mail className="w-3.5 h-3.5 text-teal-300 group-hover/item:scale-110 transition-transform shrink-0" />
-                  <span className="font-semibold text-emerald-100 group-hover/item:text-white underline decoration-teal-500/40 underline-offset-2">
+                  <Mail className="w-3.5 h-3.5 text-white group-hover/item:scale-110 transition-transform shrink-0" />
+                  <span className="font-semibold text-white group-hover/item:underline underline-offset-2">
                     business@essorcompliance.com
                   </span>
                 </a>
@@ -644,8 +644,8 @@ export const Navbar: React.FC<NavbarProps> = ({
                 className="flex items-center justify-between px-3 py-2 rounded-lg text-xs font-medium text-neutral-700 bg-neutral-50 hover:bg-emerald-50 border border-neutral-200 transition-colors"
               >
                 <span className="flex items-center gap-2">
-                  <Mail className="w-3.5 h-3.5 text-teal-700 shrink-0" />
-                  <span className="font-semibold text-teal-900">Training:</span>
+                  <Mail className="w-3.5 h-3.5 text-[#062E21] shrink-0" />
+                  <span className="font-bold text-neutral-900">Training:</span>
                 </span>
                 <span className="text-[11px] text-neutral-600">training@essorcompliance.com</span>
               </a>

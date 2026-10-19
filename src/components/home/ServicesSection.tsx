@@ -1,8 +1,16 @@
 import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { ChevronLeft, ChevronRight, Sparkles, CheckCircle2 } from 'lucide-react';
+import { ChevronRight, Sparkles, CheckCircle2, ArrowRight } from 'lucide-react';
 import { ServiceItem } from '../../types';
+
+// Direct image imports for reliable Vite bundling
+import auditImg from '../../assets/images/audit_readiness_inspection_1791962115904.jpg';
+import packagingImg from '../../assets/images/packaging_line_audit_1792395423537.jpg';
+import labImg from '../../assets/images/food_factory_lab_testing_1791965811882.jpg';
+import produceImg from '../../assets/images/fresh_produce_inspection_1792395403170.jpg';
+import trainingImg from '../../assets/images/corporate_training_seminar_1792395440966.jpg';
+import kitchenImg from '../../assets/images/kitchen_hygiene_audit_1792394924443.jpg';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -18,209 +26,159 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
   onOpenEnquiry
 }) => {
   const sectionRef = useRef<HTMLElement>(null);
-  const headerRef = useRef<HTMLDivElement>(null);
   const cardsGridRef = useRef<HTMLDivElement>(null);
-  const bannerRef = useRef<HTMLDivElement>(null);
-  const railTweenRef = useRef<gsap.core.Tween | null>(null);
 
-  const moveRail = (direction: -1 | 1) => {
-    const tween = railTweenRef.current;
-    if (!tween) return;
-    const step = 1 / Math.max(services.length * 2, 1);
-    tween.progress((tween.progress() + direction * step + 1) % 1);
+  // Map service index or slug to high quality contextual images
+  const serviceImages: Record<number, string> = {
+    0: auditImg,      // Audit readiness / FSSAI / ISO 22000
+    1: packagingImg,  // Managed compliance / packaging line
+    2: trainingImg,   // Training & capability
+    3: labImg,        // Laboratory & testing
+    4: produceImg,    // Quality systems & fresh produce
+    5: kitchenImg     // Kitchen & food service hygiene
   };
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Header animation
-      if (headerRef.current) {
-        gsap.from(headerRef.current, {
-          opacity: 0,
-          y: 30,
-          duration: 0.8,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: headerRef.current,
-            start: 'top 85%',
-            toggleActions: 'play none none none'
-          }
-        });
-      }
-
-      // Staggered service cards reveal
       if (cardsGridRef.current) {
-        gsap.from(cardsGridRef.current.children, {
-          opacity: 0,
-          y: 45,
-          duration: 0.85,
-          stagger: 0.1,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: cardsGridRef.current,
-            start: 'top 80%',
-            toggleActions: 'play none none none'
+        gsap.fromTo(
+          cardsGridRef.current.children,
+          { opacity: 0, y: 25 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.6,
+            stagger: 0.08,
+            ease: 'power2.out',
+            scrollTrigger: {
+              trigger: cardsGridRef.current,
+              start: 'top 90%',
+              toggleActions: 'play none none none'
+            }
           }
-        });
-
-        if (services.length > 1 && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-          const distance = cardsGridRef.current.scrollWidth / 2;
-          railTweenRef.current = gsap.to(cardsGridRef.current, {
-            x: -distance,
-            duration: 38,
-            ease: 'none',
-            repeat: -1
-          });
-        }
-      }
-
-      // Bottom banner reveal
-      if (bannerRef.current) {
-        gsap.from(bannerRef.current, {
-          opacity: 0,
-          y: 25,
-          duration: 0.8,
-          ease: 'power2.out',
-          scrollTrigger: {
-            trigger: bannerRef.current,
-            start: 'top 90%',
-            toggleActions: 'play none none none'
-          }
-        });
+        );
       }
     }, sectionRef);
 
     return () => ctx.revert();
-  }, [services]);
+  }, []);
 
   return (
     <section 
+      ref={sectionRef}
       id="services-section"
-      ref={sectionRef} 
-      className="py-16 sm:py-20 bg-white border-b border-emerald-900/10 relative overflow-hidden"
+      className="py-14 sm:py-20 bg-white border-b border-emerald-900/10 relative overflow-hidden"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        <div ref={headerRef} className="max-w-3xl mb-8">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-xs font-bold uppercase tracking-wider text-emerald-900 mb-3">
-            <Sparkles className="w-3.5 h-3.5 text-emerald-600" />
-            <span>Consulting & Managed Execution</span>
+        {/* Section Header */}
+        <div className="max-w-3xl mb-10 text-left">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 text-xs font-bold uppercase tracking-wider text-[#2E7D32] border border-emerald-200 mb-3">
+            <Sparkles className="w-3.5 h-3.5 text-[#2E7D32]" />
+            <span>Our Core Compliance Services</span>
           </div>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#062E21] tracking-tight leading-tight">
-            Support for every stage of your compliance journey
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-neutral-900 tracking-tight leading-tight">
+            Clear, Hands-On Food Safety Support for Your Plant
           </h2>
           <p className="text-base text-neutral-600 mt-2 font-normal">
-            Choose the support you need today—from a focused audit-readiness assignment to ongoing food-safety support and team development.
+            Choose exactly what you need today—from initial FSSAI licensing and audit readiness to daily factory floor hygiene checks, microbiology testing, and certified staff training.
           </p>
         </div>
 
-        {services.length > 1 && (
-          <div className="flex items-center justify-end gap-2 -mt-3 mb-3" aria-label="Service carousel controls">
-            <span className="mr-2 text-[11px] font-medium text-neutral-500 hidden sm:inline">Explore services</span>
-            <button
-              type="button"
-              onClick={() => moveRail(-1)}
-              aria-label="Show previous services"
-              className="w-9 h-9 inline-flex items-center justify-center rounded-full border border-emerald-200 bg-white text-emerald-800 shadow-sm transition hover:bg-emerald-50 hover:border-emerald-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600"
-            >
-              <ChevronLeft className="w-4 h-4" />
-            </button>
-            <button
-              type="button"
-              onClick={() => moveRail(1)}
-              aria-label="Show next services"
-              className="w-9 h-9 inline-flex items-center justify-center rounded-full border border-emerald-200 bg-white text-emerald-800 shadow-sm transition hover:bg-emerald-50 hover:border-emerald-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600"
-            >
-              <ChevronRight className="w-4 h-4" />
-            </button>
-          </div>
-        )}
+        {/* 3-Column Responsive Grid with High-Impact Imagery */}
+        <div 
+          ref={cardsGridRef}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+        >
+          {services.map((srv, idx) => {
+            const cardImg = serviceImages[idx] || auditImg;
 
-        <div className="overflow-hidden -mx-4 px-4 sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
-          <div
-            ref={cardsGridRef}
-            className="home-content-grid flex w-max gap-5 py-2"
-            onMouseEnter={() => railTweenRef.current?.pause()}
-            onMouseLeave={() => railTweenRef.current?.play()}
-          >
-          {services.length > 0 ? [...services, ...services].map((srv, idx) => (
-            <div
-              key={`${srv.id}-${idx}`}
-              className="group w-[290px] sm:w-[320px] shrink-0 p-6 rounded-2xl border border-emerald-900/10 bg-[#F8FAFC] hover:bg-white hover:border-emerald-500 hover:shadow-xl transition-all duration-300 flex flex-col justify-between hover:-translate-y-1"
-            >
-              <div className="space-y-3.5">
-                <div className="flex items-center justify-between">
-                  <span className="text-xs font-mono font-bold text-emerald-800 px-2.5 py-0.5 rounded-md bg-emerald-100/70 border border-emerald-200">
-                    0{(idx % services.length) + 1}.
-                  </span>
-                  <span className="text-[11px] font-bold uppercase tracking-wider text-neutral-500">
-                    {srv.category.replace('_', ' ')}
-                  </span>
+            return (
+              <div
+                key={srv.id}
+                className="rounded-2xl border border-neutral-200/90 bg-white hover:border-[#2E7D32] hover:shadow-xl transition-all duration-300 flex flex-col justify-between overflow-hidden group"
+              >
+                {/* Visual Thumbnail Image */}
+                <div className="relative h-44 overflow-hidden bg-neutral-100">
+                  <img
+                    src={cardImg}
+                    alt={srv.title}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                  <div className="absolute top-3 left-3 flex items-center gap-2">
+                    <span className="text-xs font-mono font-bold text-white px-2.5 py-0.5 rounded-md bg-[#042A1D]/90 backdrop-blur-xs shadow-xs">
+                      0{idx + 1}.
+                    </span>
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-neutral-900 bg-white/95 px-2 py-0.5 rounded-md shadow-xs">
+                      {srv.category.replace('_', ' ')}
+                    </span>
+                  </div>
                 </div>
 
-                <h3 className="text-lg font-bold text-[#062E21] group-hover:text-emerald-700 transition-colors">
-                  {srv.title}
-                </h3>
+                <div className="p-6 space-y-4 flex-1 flex flex-col justify-between">
+                  <div className="space-y-3">
+                    <h3 className="text-lg font-bold text-neutral-900 group-hover:text-[#2E7D32] transition-colors leading-snug">
+                      {srv.title}
+                    </h3>
 
-                <p className="text-xs leading-relaxed text-neutral-600">
-                  {srv.shortDescription}
-                </p>
+                    <p className="text-xs leading-relaxed text-neutral-600">
+                      {srv.shortDescription}
+                    </p>
 
-                <ul className="space-y-1.5 pt-2 border-t border-emerald-900/10">
-                  {srv.deliverables.slice(0, 3).map((item, dIdx) => (
-                    <li key={dIdx} className="text-[12px] text-neutral-700 flex items-start gap-2">
-                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" />
-                      <span className="line-clamp-1">{item}</span>
-                    </li>
-                  ))}
-                </ul>
+                    <div className="space-y-1.5 pt-3 border-t border-neutral-100">
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-neutral-500 block mb-1">
+                        Key Deliverables:
+                      </span>
+                      {srv.deliverables.slice(0, 3).map((item, dIdx) => (
+                        <div key={dIdx} className="text-[12px] text-neutral-700 flex items-start gap-2">
+                          <CheckCircle2 className="w-3.5 h-3.5 text-[#2E7D32] shrink-0 mt-0.5" />
+                          <span>{item}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="pt-4 mt-4 border-t border-neutral-100 flex items-center justify-between gap-3">
+                    <button
+                      type="button"
+                      onClick={() => onNavigate(`/services/${srv.slug}`)}
+                      className="inline-flex items-center gap-1.5 text-xs font-bold text-neutral-900 hover:text-[#2E7D32] transition-colors cursor-pointer"
+                    >
+                      <span>Learn Details</span>
+                      <ChevronRight className="w-3.5 h-3.5 text-[#2E7D32]" />
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={() => onOpenEnquiry(srv.slug)}
+                      className="px-3.5 py-1.5 rounded-lg bg-emerald-50 hover:bg-[#2E7D32] hover:text-white text-xs font-bold text-[#2E7D32] border border-emerald-300 hover:border-[#2E7D32] transition-all cursor-pointer shadow-2xs active:scale-95"
+                    >
+                      Enquire Now
+                    </button>
+                  </div>
+                </div>
               </div>
-
-              <div className="pt-5 mt-4 border-t border-emerald-900/10 flex items-center justify-between">
-                <button
-                  onClick={() => onNavigate(`/services/${srv.slug}`)}
-                  className="inline-flex items-center gap-1.5 text-xs font-bold text-[#062E21] hover:text-emerald-700 transition-colors cursor-pointer group/link"
-                >
-                  <span>View Service Scope</span>
-                  <ChevronRight className="w-3.5 h-3.5 text-emerald-600 transition-transform group-hover/link:translate-x-1" />
-                </button>
-
-                <button
-                  onClick={() => onOpenEnquiry(srv.slug)}
-                  className="text-xs font-bold text-emerald-700 hover:text-[#062E21] underline underline-offset-2 cursor-pointer"
-                >
-                  Enquire
-                </button>
-              </div>
-            </div>
-          )) : (
-            <div className="w-[320px] rounded-2xl border border-emerald-900/15 bg-[#F8FAFC] px-6 py-8 text-center">
-              <p className="text-sm font-semibold text-[#062E21]">Our service catalogue is loading.</p>
-              <p className="mt-1 text-xs text-neutral-600">You can still contact our food-safety team to discuss your requirements.</p>
-              <button
-                onClick={() => onOpenEnquiry()}
-                className="mt-4 text-xs font-bold text-emerald-700 underline underline-offset-4 cursor-pointer"
-              >
-                Discuss your requirements
-              </button>
-            </div>
-          )}
-          </div>
+            );
+          })}
         </div>
 
-        <div ref={bannerRef} className="mt-12 p-6 rounded-2xl bg-emerald-50/60 border border-emerald-200/80 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        {/* Bottom Banner with Brochure Promises */}
+        <div className="mt-12 p-6 rounded-2xl bg-gradient-to-r from-emerald-50 via-white to-emerald-50/60 border border-emerald-200/90 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <div>
-            <h4 className="text-sm font-bold text-[#062E21]">
-              Our Adaptive Scope Role
+            <h4 className="text-sm font-bold text-neutral-900">
+              Need a Custom Compliance Assessment for Your Facility?
             </h4>
             <p className="text-xs text-neutral-600 mt-1 max-w-2xl">
-              We adapt the scope to your current system, your people, and the requirement you need to meet—ensuring practical progress without disrupting commercial output.
+              We tailor our audit preparation and hygiene visits to your facility size, processing line, and target standard requirements (ISO 22000, FSSC 22000, BRCGS, HACCP, GMP).
             </p>
           </div>
           <button
-            onClick={() => onNavigate('/services')}
-            className="px-6 py-3 text-xs font-bold uppercase tracking-wider text-white bg-gradient-to-r from-[#062E21] via-[#0E5C3A] to-[#15803D] hover:from-[#042419] hover:via-[#0B4A2F] hover:to-[#166534] active:scale-[0.98] rounded-xl transition-all shadow-md shadow-emerald-950/20 ring-1 ring-emerald-400/30 shrink-0 cursor-pointer"
+            type="button"
+            onClick={() => onOpenEnquiry()}
+            className="px-6 py-3 text-xs font-bold uppercase tracking-wider text-white bg-[#042A1D] hover:bg-[#2E7D32] active:scale-[0.98] rounded-xl transition-all shadow-md shrink-0 cursor-pointer"
           >
-            Browse All Services
+            Speak to a Lead Specialist
           </button>
         </div>
 

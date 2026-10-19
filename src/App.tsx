@@ -343,7 +343,7 @@ export default function App() {
     );
   } else if (currentPath === '/verify-certificate' || currentPath.startsWith('/verify')) {
     const params = new URLSearchParams(window.location.search);
-    const initialCert = params.get('cert') || '';
+    const initialCert = params.get('cert') || params.get('id') || '';
     pageContent = (
       <CertificateVerifyPage
         initialCertNumber={initialCert}

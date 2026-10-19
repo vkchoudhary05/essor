@@ -40,60 +40,22 @@
   }
 }
 
-/* Base surface rhythm and clean enterprise cards */
+/* Base surface rhythm and clean enterprise styling */
 #top {
-  background: #F4F9F6;
+  background: #F8FAFC;
 }
 
-#top > section:not(#cta-section) {
-  border-color: #D1E7D8 !important;
+/* Accessible typography defaults */
+h1, h2, h3, h4, h5, h6 {
+  color: #0F172A;
 }
 
-#top > section:nth-of-type(odd) {
-  background-color: #FFFFFF !important;
+p {
+  color: #334155;
 }
 
-#top > section:nth-of-type(even) {
-  background-color: #F4F9F6 !important;
-}
-
-#top h1,
-#top h2,
-#top h3,
-#top h4 {
-  color: #062E21;
-}
-
-/* Deep satin forest green & emerald enterprise cards */
-#top [class*="bg-[#0A1310]"],
-#top [class*="bg-[#0B1713]"],
-#top [class*="bg-[#10241D]"],
-#top [class*="bg-[#14532D]"] {
-  background-color: #062E21 !important;
-}
-
-#top [class*="text-[#0A1310]"],
-#top [class*="text-[#0B1713]"] {
-  color: #062E21 !important;
-}
-
-#top p {
-  color: #374151;
-}
-
-/* Signature Brand Action Buttons: Metallic Satin Emerald Gradient */
-#top button[class*="bg-gradient-to-r"],
-.btn-emerald-primary {
-  background-image: linear-gradient(135deg, #062E21 0%, #0E5C3A 50%, #15803D 100%) !important;
-  background-color: #0E5C3A;
-  color: #FFFFFF !important;
-  box-shadow: 0 8px 20px rgba(6, 46, 33, 0.22);
-}
-
-#top button[class*="bg-gradient-to-r"]:hover,
-.btn-emerald-primary:hover {
-  background-image: linear-gradient(135deg, #042419 0%, #0B4A2F 50%, #16A34A 100%) !important;
-  box-shadow: 0 12px 24px rgba(6, 46, 33, 0.28);
+a {
+  color: inherit;
 }
 
 /* Content cards: maintain full visibility & clean hairline borders */
@@ -111,18 +73,6 @@
 
 #services-section .home-content-grid {
   will-change: transform;
-}
-
-#cta-section {
-  background: linear-gradient(135deg, #041F16 0%, #062E21 40%, #0E5C3A 75%, #15803D 100%) !important;
-  border-color: #86EFAC !important;
-}
-
-#cta-section h2,
-#cta-section h3,
-#cta-section h4,
-#cta-section p {
-  color: inherit;
 }
 
 /* Accessibility: respect reduced motion preferences */

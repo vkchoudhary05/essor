@@ -1,18 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ServiceItem, TrainingCourse, CMSContent } from '../../types';
 
 // Modular Home Components
 import { HeroSection } from '../home/HeroSection';
 import { StandardsMarquee } from '../home/StandardsMarquee';
-import { SectorsShowcase } from '../home/SectorsShowcase';
 import { ServicesSection } from '../home/ServicesSection';
-import { ProcessSection } from '../home/ProcessSection';
-import { WhyEssorSection } from '../home/WhyEssorSection';
+import { CertificateSampleSection } from '../home/CertificateSampleSection';
 import { TrainingSection } from '../home/TrainingSection';
-import { DigitalComplianceSection } from '../home/DigitalComplianceSection';
-import { TeamShowcase } from '../home/TeamShowcase';
+import { ProcessSection } from '../home/ProcessSection';
+import { SectorsShowcase } from '../home/SectorsShowcase';
+import { WhyEssorSection } from '../home/WhyEssorSection';
 import { CtaBanner } from '../home/CtaBanner';
-import { BusinessScrollNavigator } from '../common/BusinessScrollNavigator';
+import { CertificateModal } from '../common/CertificateModal';
 
 interface HomePageProps {
   cms: CMSContent;
@@ -29,64 +28,69 @@ export const HomePage: React.FC<HomePageProps> = ({
   onNavigate,
   onOpenEnquiry
 }) => {
+  const [isCertModalOpen, setIsCertModalOpen] = useState(false);
+
   return (
     <div id="top" className="w-full bg-[#fafbf9] relative">
-      {/* 1. Hero Section with Real Lead Auditor Photography & Trust Badges */}
+      {/* 1. Simple, User-Friendly Hero Section with Visual Pillars & Instant Certificate Sample Access */}
       <HeroSection 
         cms={cms} 
         onNavigate={onNavigate} 
         onOpenEnquiry={onOpenEnquiry} 
+        onOpenCertModal={() => setIsCertModalOpen(true)}
       />
 
-      {/* 2. Standards & Audit Protocols Supported Marquee */}
+      {/* 2. Recognized Standards & Regulatory Codes (FSSAI, ISO 22000, HACCP, BRCGS) */}
       <StandardsMarquee />
 
-      {/* 3. Facility Sectors & Processing Environments (Stainless Steel Plant Showcase) */}
-      <SectorsShowcase 
-        onNavigate={onNavigate} 
-        onOpenEnquiry={onOpenEnquiry} 
-      />
-
-      {/* 4. Core Services & Deliverables */}
+      {/* 3. Core Food Safety & Compliance Services (Clean, Non-Duplicating Grid) */}
       <ServicesSection 
         services={services} 
         onNavigate={onNavigate} 
         onOpenEnquiry={onOpenEnquiry} 
       />
 
-      {/* 5. 6-Stage Journey from Gap Assessment to Continuous Compliance */}
+      {/* 4. Official Training Certificate Sample & Instant Verification Showcase */}
+      <CertificateSampleSection 
+        onNavigate={onNavigate}
+        onOpenEnquiry={onOpenEnquiry}
+        onOpenCertModal={() => setIsCertModalOpen(true)}
+      />
+
+      {/* 5. Food Safety Academy Courses & Microbiology Capability */}
+      <TrainingSection 
+        courses={courses}
+        onNavigate={onNavigate}
+        onOpenEnquiry={onOpenEnquiry}
+      />
+
+      {/* 6. Practical 4-Step Working Methodology */}
       <ProcessSection 
         onNavigate={onNavigate} 
       />
 
-      {/* 6. Why ESSOR & Physical Floor Inspection Photography */}
-      <WhyEssorSection />
-
-      {/* 7. Training & Microbiology Laboratory Diagnostics Showcase */}
-      <TrainingSection 
-        courses={courses} 
+      {/* 7. Food Industry Processing Environments We Support */}
+      <SectorsShowcase 
         onNavigate={onNavigate} 
         onOpenEnquiry={onOpenEnquiry} 
       />
 
-      {/* 8. Digital Compliance Tools & Tablet Dashboard Preview */}
-      <DigitalComplianceSection 
-        onNavigate={onNavigate} 
-      />
+      {/* 8. Why Food Plants Choose ESSOR (Factory-Floor Focus & Fast CAPA Closure) */}
+      <WhyEssorSection />
 
-      {/* 9. Advisory Team & Technical Review Photography */}
-      <TeamShowcase 
-        onNavigate={onNavigate} 
-      />
-
-      {/* 10. High-Conversion Technical Discussion CTA */}
+      {/* 9. Direct Discussion & Immediate Consultation Callout */}
       <CtaBanner 
         onNavigate={onNavigate} 
         onOpenEnquiry={onOpenEnquiry} 
       />
 
-      {/* 11. Floating Business Scroll Navigator & Journey Guide */}
-      <BusinessScrollNavigator onOpenEnquiry={onOpenEnquiry} />
+      {/* Interactive Full-Screen Certificate Sample Modal */}
+      <CertificateModal 
+        isOpen={isCertModalOpen}
+        onClose={() => setIsCertModalOpen(false)}
+        onNavigateToVerify={(certNumber) => onNavigate(`/verify-certificate?cert=${certNumber}`)}
+        onOpenEnquiry={() => onOpenEnquiry('Training & Capability')}
+      />
     </div>
   );
 };

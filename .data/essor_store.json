@@ -289,6 +289,28 @@
   ],
   "certificates": [
     {
+      "id": "cert-sample-jessica",
+      "certificateNumber": "ECSFSM-LA241116",
+      "verificationToken": "vtf-la241116-fsm-iso22000",
+      "participantId": "usr-jessica",
+      "participantName": "Jessica Lee Chen",
+      "participantEmail": "jessica.chen@dairyprocessing.com",
+      "organizationName": "Global Dairy & Beverage Processing Ltd.",
+      "courseId": "crs-3",
+      "courseTitle": "Food Safety Management Systems Lead Auditor and HACCP Implementation",
+      "sessionId": "sess-101",
+      "completionDate": "2024-11-16T17:00:00Z",
+      "durationHours": 40,
+      "gradeScore": 96,
+      "issueDate": "2024-11-16T10:00:00Z",
+      "issuedByName": "Dr. Alistair Finch",
+      "issuedByRole": "Lead Instructor & Director of Training",
+      "status": "ISSUED",
+      "verificationCount": 130,
+      "createdAt": "2024-11-16T10:00:00Z",
+      "updatedAt": "2026-10-19T07:53:54.798Z"
+    },
+    {
       "id": "cert-1",
       "certificateNumber": "ECS-CERT-2026-0089",
       "verificationToken": "vtf-89a3f2b1-2026",
@@ -348,6 +370,37 @@
     }
   ],
   "enquiries": [
+    {
+      "id": "enq-1792303737737",
+      "referenceNumber": "ECS-2026-0049",
+      "name": "Sunita Patil",
+      "email": "sunita@gourmetbakes.com",
+      "phone": "9876543210",
+      "companyName": "Gourmet Bakes LLP",
+      "industry": "Food & Beverage Processing",
+      "serviceTitle": "General Compliance Advisory",
+      "auditStandard": "FSSC 22000 / BRCGS",
+      "preferredContactMethod": "PHONE",
+      "message": "Lead captured via AI Advisor (Priya)",
+      "sourcePage": "/contact",
+      "privacyAcknowledged": true,
+      "status": "NEW",
+      "notes": [],
+      "statusHistory": [
+        {
+          "id": "hist-1792303737737",
+          "enquiryId": "enq-1792303737737",
+          "previousStatus": "NEW",
+          "newStatus": "NEW",
+          "changedByName": "Backend API Intake",
+          "changedByEmail": "api@essorcompliance.com",
+          "reason": "Inbound submission received via REST API",
+          "createdAt": "2026-10-18T06:08:57.737Z"
+        }
+      ],
+      "createdAt": "2026-10-18T06:08:57.737Z",
+      "updatedAt": "2026-10-18T06:08:57.737Z"
+    },
     {
       "id": "enq-101",
       "referenceNumber": "ECS-2026-0041",

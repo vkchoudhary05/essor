@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
-import { Mail, Phone, MapPin, CheckCircle, AlertCircle, ArrowRight, Loader2, Clock, ShieldCheck, Sparkles } from 'lucide-react';
+import { Mail, Phone, MapPin, CheckCircle, AlertCircle, ArrowRight, Loader2, Clock, ShieldCheck, Sparkles, MessageCircle } from 'lucide-react';
 import { CMSContent, ServiceItem } from '../../types';
 import { BackendApiService } from '../../services/api';
 import { Logo } from '../common/Logo';
+
+// Direct imports for reliable Vite bundling
+import auditImage from '../../assets/images/audit_readiness_inspection_1791962115904.jpg';
+import kitchenImage from '../../assets/images/kitchen_hygiene_audit_1792394924443.jpg';
 
 interface ContactPageProps {
   cms: CMSContent;
@@ -10,7 +14,7 @@ interface ContactPageProps {
   onOpenEnquiryModal: () => void;
 }
 
-export const ContactPage: React.FC<ContactPageProps> = ({ cms, services }) => {
+export const ContactPage: React.FC<ContactPageProps> = ({ services }) => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -67,80 +71,70 @@ export const ContactPage: React.FC<ContactPageProps> = ({ cms, services }) => {
       });
 
       setSubmittedRef(referenceNumber);
-    } catch (err: any) {
-      setErrorMsg(err?.message || 'Failed to submit enquiry. Please try again.');
+    } catch {
+      setErrorMsg('An unexpected error occurred while transmitting your request. Please call +91 6395843850 directly.');
     } finally {
       setIsSubmitting(false);
     }
   };
 
   return (
-    <div className="w-full bg-[#F8FAFC]">
+    <div className="w-full bg-[#F8FAF9]">
       
       {/* Header Banner */}
       <section className="py-16 sm:py-20 bg-white border-b border-emerald-900/10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-left">
           <div className="max-w-3xl space-y-4">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-xs font-bold uppercase tracking-wider text-emerald-900">
-              <Sparkles className="w-3.5 h-3.5 text-emerald-600" />
-              <span>Contact & Lead Consultation</span>
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-xs font-bold uppercase tracking-wider text-[#2E7D32]">
+              <Sparkles className="w-3.5 h-3.5 text-[#2E7D32]" />
+              <span>Direct Communication Channel</span>
             </div>
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#062E21] tracking-tight leading-tight">
-              Let's strengthen your{' '}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#062E21] via-[#0E5C3A] to-[#16A34A]">
-                compliance journey.
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-neutral-900 tracking-tight leading-tight">
+              Get in Touch with Our{' '}
+              <span className="text-[#2E7D32]">
+                Lead Food Safety Practice.
               </span>
             </h1>
+            <p className="text-xs font-black tracking-widest uppercase text-neutral-900">
+              SIMPLIFYING COMPLIANCE. STRENGTHENING FOOD SAFETY. BUILDING TRUST.
+            </p>
             <p className="text-base sm:text-lg text-neutral-600 leading-relaxed font-normal">
-              Share your current requirement, upcoming audit or food-safety challenge with us. We can help identify the practical next step for your manufacturing operation.
+              Whether you need preliminary guidance on an upcoming FSSAI or GFSI audit, want to schedule an on-site factory hygiene inspection, or require customized staff training, we are here to assist.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Main Form and Direct Contact Split */}
-      <section className="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Main Grid: Form + Visual Facility Showcase & Contact Directory */}
+      <section className="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-left">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           
-          {/* Left Column: Structured Form */}
-          <div className="lg:col-span-7 bg-white p-8 sm:p-10 rounded-2xl border border-emerald-900/10 shadow-xl">
-            <div className="pb-6 border-b border-emerald-900/10 flex items-center justify-between">
-              <div>
-                <h2 className="text-xl font-bold text-[#062E21]">
-                  Structured Enquiry Form
-                </h2>
-                <p className="text-xs text-neutral-500 mt-1 font-normal">
-                  All submissions receive a formal trackable reference code and response within 24 business hours.
-                </p>
-              </div>
-              <Logo variant="icon-only" size="sm" className="w-6 h-6 hidden sm:block" />
+          {/* Left Column: Comprehensive Enquiry Form */}
+          <div className="lg:col-span-7 bg-white p-8 sm:p-10 rounded-2xl border border-neutral-200 shadow-md space-y-6">
+            <div>
+              <h2 className="text-xl font-bold text-neutral-900">
+                Submit Audit or Training Requirements
+              </h2>
+              <p className="text-xs text-neutral-600 mt-1">
+                Please complete the details below. Our technical specialists review inquiries within 24 hours.
+              </p>
             </div>
 
             {submittedRef ? (
-              <div className="py-12 text-center space-y-5">
-                <div className="w-16 h-16 mx-auto rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center">
-                  <CheckCircle className="w-10 h-10" />
+              <div className="p-8 rounded-xl bg-emerald-50 border border-emerald-200 text-center space-y-4">
+                <div className="w-12 h-12 rounded-full bg-[#2E7D32] text-white flex items-center justify-center mx-auto shadow-md">
+                  <CheckCircle className="w-6 h-6" />
                 </div>
-                <h3 className="text-2xl font-bold text-[#062E21]">
-                  Enquiry Successfully Registered
+                <h3 className="text-lg font-bold text-neutral-900">
+                  Requirement Received Successfully
                 </h3>
-                <p className="text-sm text-neutral-600 max-w-md mx-auto font-normal">
-                  Our food-safety consulting team has registered your submission. A technical manager will review your plant context and respond promptly.
+                <p className="text-xs text-neutral-600 max-w-md mx-auto leading-relaxed">
+                  Your assessment submission has been routed to our Lead Technical Practice.
                 </p>
-
-                <div className="p-4 rounded-xl bg-emerald-50 border border-emerald-200 max-w-sm mx-auto text-center space-y-1">
-                  <span className="text-[11px] font-bold uppercase tracking-wider text-emerald-800">
-                    Official Reference Number
-                  </span>
-                  <div className="text-xl font-mono font-bold text-[#062E21] select-all">
-                    {submittedRef}
-                  </div>
-                  <p className="text-[11px] text-neutral-500 font-normal">
-                    Quote this code in all client correspondences.
-                  </p>
+                <div className="inline-block px-4 py-2 rounded-lg bg-white border border-emerald-300 font-mono text-xs font-bold text-[#2E7D32] shadow-2xs">
+                  Reference ID: {submittedRef}
                 </div>
-
-                <div className="pt-4">
+                <div className="pt-2">
                   <button
                     onClick={() => {
                       setSubmittedRef(null);
@@ -157,17 +151,17 @@ export const ContactPage: React.FC<ContactPageProps> = ({ cms, services }) => {
                         privacyAcknowledged: false
                       });
                     }}
-                    className="px-6 py-2.5 text-xs font-bold uppercase tracking-wider text-[#062E21] bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 rounded-xl transition-colors cursor-pointer"
+                    className="text-xs font-bold text-[#2E7D32] hover:underline"
                   >
-                    Submit Another Requirement
+                    Submit another requirement
                   </button>
                 </div>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-5 pt-6">
+              <form onSubmit={handleSubmit} className="space-y-4">
                 {errorMsg && (
-                  <div className="p-3.5 rounded-xl bg-red-50 border border-red-200 text-red-700 text-xs flex items-center gap-2">
-                    <AlertCircle className="w-4 h-4 shrink-0" />
+                  <div className="p-4 rounded-xl bg-red-50 border border-red-200 text-xs text-red-700 flex items-start gap-2.5">
+                    <AlertCircle className="w-4 h-4 shrink-0 mt-0.5 text-red-600" />
                     <span>{errorMsg}</span>
                   </div>
                 )}
@@ -175,29 +169,29 @@ export const ContactPage: React.FC<ContactPageProps> = ({ cms, services }) => {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-xs font-bold text-neutral-700 mb-1">
-                      Full Name <span className="text-rose-500">*</span>
+                      Full Name <span className="text-red-500">*</span>
                     </label>
                     <input
                       type="text"
                       required
                       value={formData.name}
                       onChange={e => setFormData({ ...formData, name: e.target.value })}
-                      placeholder="e.g. Sunil Mehta"
-                      className="w-full px-3.5 py-2.5 text-sm rounded-xl border border-neutral-300 focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:border-emerald-600"
+                      placeholder="e.g. Rajesh Kumar"
+                      className="w-full px-3.5 py-2.5 text-xs rounded-xl border border-neutral-300 focus:outline-none focus:ring-2 focus:ring-[#2E7D32]"
                     />
                   </div>
 
                   <div>
                     <label className="block text-xs font-bold text-neutral-700 mb-1">
-                      Work Email <span className="text-rose-500">*</span>
+                      Work Email <span className="text-red-500">*</span>
                     </label>
                     <input
                       type="email"
                       required
                       value={formData.email}
                       onChange={e => setFormData({ ...formData, email: e.target.value })}
-                      placeholder="name@company.com"
-                      className="w-full px-3.5 py-2.5 text-sm rounded-xl border border-neutral-300 focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:border-emerald-600"
+                      placeholder="e.g. rajesh@foodfactory.com"
+                      className="w-full px-3.5 py-2.5 text-xs rounded-xl border border-neutral-300 focus:outline-none focus:ring-2 focus:ring-[#2E7D32]"
                     />
                   </div>
                 </div>
@@ -205,28 +199,28 @@ export const ContactPage: React.FC<ContactPageProps> = ({ cms, services }) => {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-xs font-bold text-neutral-700 mb-1">
-                      Company Name <span className="text-rose-500">*</span>
+                      Telephone / WhatsApp <span className="text-neutral-400 font-normal">(Recommended)</span>
+                    </label>
+                    <input
+                      type="tel"
+                      value={formData.phone}
+                      onChange={e => setFormData({ ...formData, phone: e.target.value })}
+                      placeholder="e.g. +91 98765 43210"
+                      className="w-full px-3.5 py-2.5 text-xs rounded-xl border border-neutral-300 focus:outline-none focus:ring-2 focus:ring-[#2E7D32]"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-bold text-neutral-700 mb-1">
+                      Enterprise / Company Name <span className="text-red-500">*</span>
                     </label>
                     <input
                       type="text"
                       required
                       value={formData.companyName}
                       onChange={e => setFormData({ ...formData, companyName: e.target.value })}
-                      placeholder="e.g. Oceanic Frozen Foods Ltd."
-                      className="w-full px-3.5 py-2.5 text-sm rounded-xl border border-neutral-300 focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:border-emerald-600"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-xs font-bold text-neutral-700 mb-1">
-                      Phone Number <span className="text-neutral-400 font-normal">(Optional)</span>
-                    </label>
-                    <input
-                      type="tel"
-                      value={formData.phone}
-                      onChange={e => setFormData({ ...formData, phone: e.target.value })}
-                      placeholder="+91 98200 00000"
-                      className="w-full px-3.5 py-2.5 text-sm rounded-xl border border-neutral-300 focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:border-emerald-600"
+                      placeholder="e.g. Himalayan Agro Foods Ltd."
+                      className="w-full px-3.5 py-2.5 text-xs rounded-xl border border-neutral-300 focus:outline-none focus:ring-2 focus:ring-[#2E7D32]"
                     />
                   </div>
                 </div>
@@ -234,14 +228,14 @@ export const ContactPage: React.FC<ContactPageProps> = ({ cms, services }) => {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-xs font-bold text-neutral-700 mb-1">
-                      Industry / Sector
+                      Facility / Industry Type
                     </label>
                     <input
                       type="text"
                       value={formData.industry}
                       onChange={e => setFormData({ ...formData, industry: e.target.value })}
-                      placeholder="e.g. Bakery, Dairy, Spices, Meat, RTE"
-                      className="w-full px-3.5 py-2.5 text-sm rounded-xl border border-neutral-300 focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:border-emerald-600"
+                      placeholder="e.g. Bakery, Dairy, RTE, Packaging"
+                      className="w-full px-3.5 py-2.5 text-xs rounded-xl border border-neutral-300 focus:outline-none focus:ring-2 focus:ring-[#2E7D32]"
                     />
                   </div>
 
@@ -252,7 +246,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ cms, services }) => {
                     <select
                       value={formData.serviceId}
                       onChange={e => setFormData({ ...formData, serviceId: e.target.value })}
-                      className="w-full px-3.5 py-2.5 text-sm rounded-xl border border-neutral-300 bg-white focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:border-emerald-600"
+                      className="w-full px-3.5 py-2.5 text-xs rounded-xl border border-neutral-300 bg-white focus:outline-none focus:ring-2 focus:ring-[#2E7D32]"
                     >
                       <option value="">Select Service...</option>
                       {services.map(s => (
@@ -270,57 +264,22 @@ export const ContactPage: React.FC<ContactPageProps> = ({ cms, services }) => {
                     type="text"
                     value={formData.auditStandard}
                     onChange={e => setFormData({ ...formData, auditStandard: e.target.value })}
-                    placeholder="e.g. BRCGS, FSSC 22000, ISO 22000, HACCP, FSSAI"
-                    className="w-full px-3.5 py-2.5 text-sm rounded-xl border border-neutral-300 focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:border-emerald-600"
+                    placeholder="e.g. BRCGS Issue 9, FSSC 22000 v7, ISO 22000, HACCP, GMP"
+                    className="w-full px-3.5 py-2.5 text-xs rounded-xl border border-neutral-300 focus:outline-none focus:ring-2 focus:ring-[#2E7D32]"
                   />
                 </div>
 
                 <div>
                   <label className="block text-xs font-bold text-neutral-700 mb-1">
-                    Facility Details & Scope Message
+                    Facility Details &amp; Message
                   </label>
                   <textarea
-                    rows={4}
+                    rows={3}
                     value={formData.message}
                     onChange={e => setFormData({ ...formData, message: e.target.value })}
-                    placeholder="Provide details on plant locations, upcoming audit timelines, specific customer requirements, or open non-conformities..."
-                    className="w-full px-3.5 py-2.5 text-sm rounded-xl border border-neutral-300 focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:border-emerald-600 resize-none"
+                    placeholder="Provide details on plant locations, upcoming audit timelines, or specific customer requirements..."
+                    className="w-full px-3.5 py-2.5 text-xs rounded-xl border border-neutral-300 focus:outline-none focus:ring-2 focus:ring-[#2E7D32] resize-none"
                   />
-                </div>
-
-                {/* Preferred Contact Method */}
-                <div className="flex items-center gap-6 pt-1 text-xs">
-                  <span className="font-bold text-neutral-700">Preferred Response:</span>
-                  <label className="inline-flex items-center gap-1.5 cursor-pointer">
-                    <input
-                      type="radio"
-                      name="contactPref"
-                      checked={formData.preferredContactMethod === 'EMAIL'}
-                      onChange={() => setFormData({ ...formData, preferredContactMethod: 'EMAIL' })}
-                      className="text-[#062E21] focus:ring-emerald-600"
-                    />
-                    <span>Email</span>
-                  </label>
-                  <label className="inline-flex items-center gap-1.5 cursor-pointer">
-                    <input
-                      type="radio"
-                      name="contactPref"
-                      checked={formData.preferredContactMethod === 'PHONE'}
-                      onChange={() => setFormData({ ...formData, preferredContactMethod: 'PHONE' })}
-                      className="text-[#062E21] focus:ring-emerald-600"
-                    />
-                    <span>Phone</span>
-                  </label>
-                  <label className="inline-flex items-center gap-1.5 cursor-pointer">
-                    <input
-                      type="radio"
-                      name="contactPref"
-                      checked={formData.preferredContactMethod === 'EITHER'}
-                      onChange={() => setFormData({ ...formData, preferredContactMethod: 'EITHER' })}
-                      className="text-[#062E21] focus:ring-emerald-600"
-                    />
-                    <span>Either</span>
-                  </label>
                 </div>
 
                 {/* Privacy Acknowledgement */}
@@ -331,10 +290,10 @@ export const ContactPage: React.FC<ContactPageProps> = ({ cms, services }) => {
                       required
                       checked={formData.privacyAcknowledged}
                       onChange={e => setFormData({ ...formData, privacyAcknowledged: e.target.checked })}
-                      className="mt-0.5 rounded text-[#062E21] focus:ring-emerald-600"
+                      className="mt-0.5 rounded text-[#2E7D32] focus:ring-[#2E7D32]"
                     />
                     <span className="text-xs text-neutral-500 leading-snug">
-                      I acknowledge that ESSOR Compliance Solutions provides independent food safety consulting and audit preparation support, and I consent to the processing of this business enquiry.
+                      I acknowledge that ESSOR Compliance Solutions provides independent food safety consulting and audit preparation support.
                     </span>
                   </label>
                 </div>
@@ -343,12 +302,12 @@ export const ContactPage: React.FC<ContactPageProps> = ({ cms, services }) => {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full inline-flex items-center justify-center gap-2 px-6 py-4 text-xs font-bold uppercase tracking-wider text-white bg-gradient-to-r from-[#062E21] via-[#0E5C3A] to-[#15803D] hover:from-[#042419] hover:via-[#0B4A2F] hover:to-[#166534] active:scale-[0.98] rounded-xl transition-all shadow-md shadow-emerald-950/20 ring-1 ring-emerald-400/30 disabled:opacity-50 cursor-pointer"
+                    className="w-full inline-flex items-center justify-center gap-2 px-6 py-4 text-xs font-bold uppercase tracking-wider text-white bg-[#042A1D] hover:bg-[#2E7D32] active:scale-[0.98] rounded-xl transition-all shadow-md disabled:opacity-50 cursor-pointer"
                   >
                     {isSubmitting ? (
                       <>
                         <Loader2 className="w-4 h-4 animate-spin" />
-                        <span>Submitting to Lead Assessment Queue...</span>
+                        <span>Submitting to Technical Practice...</span>
                       </>
                     ) : (
                       <>
@@ -362,75 +321,96 @@ export const ContactPage: React.FC<ContactPageProps> = ({ cms, services }) => {
             )}
           </div>
 
-          {/* Right Column: Contact Details & Operating Hours */}
+          {/* Right Column: Contact Details, WhatsApp Button & Photos */}
           <div className="lg:col-span-5 space-y-6">
-            <div className="p-8 rounded-2xl bg-white border border-emerald-900/10 shadow-xl space-y-6">
-              <h3 className="text-base font-bold text-[#062E21] uppercase tracking-wider flex items-center gap-2">
-                <Logo variant="icon-only" size="sm" className="w-4 h-4" />
-                <span>Corporate Contact Directory</span>
-              </h3>
+            
+            {/* Direct Official Brochure Contact Box */}
+            <div className="p-8 rounded-2xl bg-[#051F14] text-white border border-emerald-500/30 shadow-xl space-y-5">
+              <div className="space-y-2">
+                <Logo size="md" theme="dark" />
+                <p className="text-xs text-[#4ADE80] font-black uppercase tracking-wider">
+                  Compliance For A Safer Tomorrow
+                </p>
+              </div>
 
-              <div className="space-y-4 text-xs text-neutral-600">
+              {/* Direct WhatsApp Action */}
+              <div className="pt-1">
+                <a
+                  href="https://wa.me/916395843850?text=Hi%20ESSOR%20Team%2C%20I%20would%20like%20to%20consult%20regarding%20Food%20Safety%20%26%20Audit%20Services."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full inline-flex items-center justify-center gap-2.5 px-4 py-3 rounded-xl bg-[#25D366] hover:bg-[#20ba59] text-white text-xs font-bold tracking-wide transition-all shadow-md active:scale-95"
+                >
+                  <MessageCircle className="w-4 h-4 text-white" />
+                  <span>Chat on WhatsApp: +91 6395843850</span>
+                </a>
+              </div>
+
+              <div className="space-y-4 text-xs text-white/90 pt-3 border-t border-white/15">
                 <div className="flex items-start gap-3">
-                  <Mail className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
+                  <MapPin className="w-4 h-4 text-[#4ADE80] shrink-0 mt-0.5" />
                   <div>
-                    <span className="font-bold text-[#062E21] block">Business & Consulting Enquiries</span>
-                    <a href="mailto:business@essorcompliance.com" className="text-emerald-800 hover:text-emerald-950 font-medium underline mt-0.5 block">
-                      business@essorcompliance.com
-                    </a>
+                    <span className="font-bold text-white block">Corporate Headquarters</span>
+                    <span className="text-white/80 leading-relaxed block">
+                      Doon IT Park, Sahastradhara Road, Dehradun, Uttarakhand, India
+                    </span>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-3">
-                  <Mail className="w-5 h-5 text-teal-600 shrink-0 mt-0.5" />
+                  <Phone className="w-4 h-4 text-[#4ADE80] shrink-0 mt-0.5" />
                   <div>
-                    <span className="font-bold text-[#062E21] block">Training Academy & Enrolment</span>
-                    <a href="mailto:training@essorcompliance.com" className="text-teal-800 hover:text-teal-950 font-medium underline mt-0.5 block">
-                      training@essorcompliance.com
-                    </a>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-3">
-                  <Phone className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
-                  <div>
-                    <span className="font-bold text-[#062E21] block">Client Helpline & WhatsApp</span>
-                    <a href="tel:+916395843850" className="text-emerald-900 font-bold hover:underline mt-0.5 block text-sm">
+                    <span className="font-bold text-white block">Direct Telephone / Helpline</span>
+                    <a href="tel:+916395843850" className="text-white hover:text-[#4ADE80] font-bold text-sm block">
                       +91 63958 43850
                     </a>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-3">
-                  <MapPin className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
+                  <Mail className="w-4 h-4 text-[#4ADE80] shrink-0 mt-0.5" />
                   <div>
-                    <span className="font-bold text-[#062E21] block">Registered Tech & Support Hub</span>
-                    <span className="text-neutral-700 mt-0.5 block leading-relaxed">
-                      IT Park, Sahastradhara Road, Dehradun, Uttarakhand 248013, India
-                    </span>
+                    <span className="font-bold text-white block">Business Inquiries</span>
+                    <a href="mailto:business@essorcompliance.com" className="text-white hover:text-[#4ADE80] font-medium block">
+                      business@essorcompliance.com
+                    </a>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-3">
-                  <Clock className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
+                  <Mail className="w-4 h-4 text-[#4ADE80] shrink-0 mt-0.5" />
                   <div>
-                    <span className="font-bold text-[#062E21] block">Business Working Hours</span>
-                    <span className="text-neutral-700 mt-0.5 block">Monday – Friday: 09:00 – 18:00 IST</span>
-                    <span className="text-neutral-500 text-[11px]">Audit and emergency recall response: On call</span>
+                    <span className="font-bold text-white block">Training Academy</span>
+                    <a href="mailto:training@essorcompliance.com" className="text-white hover:text-[#4ADE80] font-medium block">
+                      training@essorcompliance.com
+                    </a>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3">
+                  <Clock className="w-4 h-4 text-[#4ADE80] shrink-0 mt-0.5" />
+                  <div>
+                    <span className="font-bold text-white block">Hours &amp; Emergency Support</span>
+                    <span className="text-white/80 block">Monday – Friday: 09:00 – 18:00 IST</span>
+                    <span className="text-[#4ADE80] text-[11px] font-semibold">24/7 on call for pre-audit emergencies</span>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Configurable Details Notice */}
-            <div className="p-6 rounded-2xl bg-[#F8FAFC] border border-emerald-900/10 text-xs text-neutral-600 space-y-2">
-              <h4 className="font-bold uppercase tracking-wider text-[#062E21]">
-                Data Verification Note
-              </h4>
-              <p className="leading-relaxed font-normal">
-                All contact channels, telephone numbers, and hub addresses are dynamically managed through the ESSOR administrative console to prevent outdated communication pathways.
-              </p>
+            {/* Visual Photo Card */}
+            <div className="rounded-2xl overflow-hidden border border-neutral-200 shadow-md group">
+              <img
+                src={kitchenImage}
+                alt="Commercial kitchen and food processing sanitation check"
+                className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+              <div className="p-3 bg-white text-xs text-neutral-700 flex items-center justify-between">
+                <span className="font-bold text-neutral-900">Plant &amp; Facility Visits Across India</span>
+                <span className="text-[#2E7D32] font-semibold">On-Site Advisory</span>
+              </div>
             </div>
+
           </div>
 
         </div>

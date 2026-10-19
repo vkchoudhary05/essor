@@ -306,6 +306,28 @@ const SEED_SESSIONS: TrainingSession[] = [
 
 const SEED_CERTIFICATES: Certificate[] = [
   {
+    id: 'cert-sample-jessica',
+    certificateNumber: 'ECSFSM-LA241116',
+    verificationToken: 'vtf-la241116-fsm-iso22000',
+    participantId: 'usr-jessica',
+    participantName: 'Jessica Lee Chen',
+    participantEmail: 'jessica.chen@dairyprocessing.com',
+    organizationName: 'Global Dairy & Beverage Processing Ltd.',
+    courseId: 'crs-3',
+    courseTitle: 'Food Safety Management Systems Lead Auditor and HACCP Implementation',
+    sessionId: 'sess-101',
+    completionDate: '2024-11-16T17:00:00Z',
+    durationHours: 40,
+    gradeScore: 96,
+    issueDate: '2024-11-16T10:00:00Z',
+    issuedByName: 'Dr. Alistair Finch',
+    issuedByRole: 'Lead Instructor & Director of Training',
+    status: 'ISSUED',
+    verificationCount: 128,
+    createdAt: '2024-11-16T10:00:00Z',
+    updatedAt: '2024-11-16T10:00:00Z'
+  },
+  {
     id: 'cert-1',
     certificateNumber: 'ECS-CERT-2026-0089',
     verificationToken: 'vtf-88a91c49-2026-fssc',
@@ -704,7 +726,13 @@ export class StorageService {
 
   static verifyCertificate(certNumber: string): Certificate | undefined {
     const list = this.getCertificates();
-    const target = list.find(c => c.certificateNumber.toLowerCase() === certNumber.trim().toLowerCase());
+    let target = list.find(c => c.certificateNumber.toLowerCase() === certNumber.trim().toLowerCase());
+    if (!target) {
+      target = SEED_CERTIFICATES.find(c => c.certificateNumber.toLowerCase() === certNumber.trim().toLowerCase());
+      if (target) {
+        list.unshift(target);
+      }
+    }
     if (target) {
       target.verificationCount = (target.verificationCount || 0) + 1;
       target.updatedAt = new Date().toISOString();

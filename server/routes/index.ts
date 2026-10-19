@@ -14,6 +14,7 @@ import { serviceRouter, courseRouter } from './catalog.routes';
 import { cmsRouter } from './cms.routes';
 import { auditLogRouter } from './auditLog.routes';
 import { aiRouter } from './ai.routes';
+import { dbRouter } from './db.routes';
 
 export const apiRouter = Router();
 
@@ -46,6 +47,7 @@ apiRouter.use('/courses', courseRouter);
 apiRouter.use('/cms', cmsRouter);
 apiRouter.use('/audit-logs', auditLogRouter);
 apiRouter.use('/ai', aiRouter);
+apiRouter.use('/db', dbRouter);
 
 // 3. OpenAPI 3.0 Documentation Specification
 apiRouter.get('/openapi.json', (_req: Request, res: Response) => {

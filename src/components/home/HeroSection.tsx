@@ -1,534 +1,710 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { 
   ArrowRight, 
   ShieldCheck, 
-  ChevronRight,
-  Sparkles,
-  Building,
-  Check,
-  ChevronDown
+  Phone, 
+  Mail, 
+  MapPin, 
+  CheckCircle2, 
+  Send,
+  MessageCircle,
+  Award,
+  Maximize2,
+  Microscope,
+  Factory,
+  Apple,
+  Boxes,
+  GraduationCap
 } from 'lucide-react';
 import { CMSContent } from '../../types';
-import { Logo } from '../common/Logo';
-import { scrollToElement } from '../../hooks/useSmoothScroll';
-import heroImage from '../../assets/images/hero_food_safety_facility_1791962115935.jpg';
-import auditImage from '../../assets/images/audit_readiness_inspection_1791962115904.jpg';
-import labImage from '../../assets/images/food_factory_lab_testing_1791965811882.jpg';
-import dashboardImage from '../../assets/images/digital_compliance_dashboard_preview_1791962116109.jpg';
+import { BackendApiService } from '../../services/api';
+
+// Realistic Visual Assets directly imported for Vite Live bundling
+import certSampleImage from '../../assets/images/training_certificate_sample_1792302193039.jpg';
+import freshProduceImage from '../../assets/images/fresh_produce_inspection_1792395403170.jpg';
+import packagingLineImage from '../../assets/images/packaging_line_audit_1792395423537.jpg';
+import corporateSeminarImage from '../../assets/images/corporate_training_seminar_1792395440966.jpg';
+import auditInspectionImage from '../../assets/images/audit_readiness_inspection_1791962115904.jpg';
+import labTestingImage from '../../assets/images/food_factory_lab_testing_1791965811882.jpg';
+import essorLogo from '../../assets/images/essor_logo.png';
+
 interface HeroSectionProps {
   cms: CMSContent;
   onNavigate: (path: string) => void;
   onOpenEnquiry: (initialService?: string) => void;
+  onOpenCertModal?: () => void;
 }
 
 export const HeroSection: React.FC<HeroSectionProps> = ({
-  cms,
   onNavigate,
-  onOpenEnquiry
+  onOpenEnquiry,
+  onOpenCertModal
 }) => {
-  const containerRef = useRef<HTMLElement>(null);
-  const badgeRef = useRef<HTMLDivElement>(null);
-  const headlineWordsRef = useRef<HTMLHeadingElement>(null);
+  // Visual tab state
+  const [activeVisualTab, setActiveVisualTab] = useState<'CERTIFICATE' | 'PRODUCE' | 'PACKAGING' | 'AUDIT' | 'LAB' | 'TRAINING'>('CERTIFICATE');
+
+  // Callback Form State
+  const [showCallbackForm, setShowCallbackForm] = useState(false);
+  const [cbName, setCbName] = useState('');
+  const [cbPhone, setCbPhone] = useState('');
+  const [cbService, setCbService] = useState('FSSAI & Regulatory Licensing');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitSuccess, setSubmitSuccess] = useState(false);
+  const [submitError, setSubmitError] = useState('');
+
+  // GSAP Animation Refs
+  const trustBadgeRef = useRef<HTMLDivElement>(null);
+  const titleRef = useRef<HTMLHeadingElement>(null);
   const descRef = useRef<HTMLParagraphElement>(null);
+  const benefitsRef = useRef<HTMLDivElement>(null);
   const ctaGroupRef = useRef<HTMLDivElement>(null);
-  const metricsRef = useRef<HTMLDivElement>(null);
-  const visualRef = useRef<HTMLDivElement>(null);
-  const pillarsSectionRef = useRef<HTMLDivElement>(null);
-  const pillarCardsRef = useRef<(HTMLDivElement | null)[]>([]);
+  const visualCardRef = useRef<HTMLDivElement>(null);
+  const statsRef = useRef<HTMLDivElement>(null);
 
-  // Typewriter / rotating ticker text for compliance execution
-  const dynamicWords = [
-    'practical execution',
-    'zero-defect audits',
-    'BRCGS & FSSC standards',
-    'measurable compliance'
-  ];
-  const [wordIndex, setWordIndex] = useState(0);
-  // Start with meaningful copy instead of an empty typewriter slot. This keeps
-  // the hero message readable on the first frame and for reduced-motion users.
-  const [displayedText, setDisplayedText] = useState('practical execution');
-  const [isDeleting, setIsDeleting] = useState(false);
-
-  // Smooth Typewriter effect for headline dynamic text
-  useEffect(() => {
-    const currentWord = dynamicWords[wordIndex];
-    let typingSpeed = isDeleting ? 45 : 90;
-
-    if (!isDeleting && displayedText === currentWord) {
-      typingSpeed = 2200; // Pause at end of word
-    } else if (isDeleting && displayedText === '') {
-      setIsDeleting(false);
-      setWordIndex((prev) => (prev + 1) % dynamicWords.length);
-      typingSpeed = 400;
-    }
-
-    const timer = setTimeout(() => {
-      if (!isDeleting) {
-        if (displayedText.length < currentWord.length) {
-          setDisplayedText(currentWord.slice(0, displayedText.length + 1));
-        } else {
-          setIsDeleting(true);
-        }
-      } else {
-        setDisplayedText(currentWord.slice(0, displayedText.length - 1));
-      }
-    }, typingSpeed);
-
-    return () => clearTimeout(timer);
-  }, [displayedText, isDeleting, wordIndex]);
-
-  // GSAP Animations on Mount
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // 1. Badge slide in with spring
-      if (badgeRef.current) {
-        gsap.from(badgeRef.current, {
-          y: -20,
-          opacity: 0,
-          duration: 0.8,
-          ease: 'power3.out'
-        });
+      const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+
+      if (trustBadgeRef.current) {
+        tl.fromTo(
+          trustBadgeRef.current,
+          { opacity: 0, y: -12 },
+          { opacity: 1, y: 0, duration: 0.5 }
+        );
       }
 
-      // 2. Headline subtle reveal
-      if (headlineWordsRef.current) {
-        gsap.from(headlineWordsRef.current, {
-          y: 28,
-          opacity: 0,
-          duration: 1.1,
-          ease: 'power3.out',
-          delay: 0.15
-        });
+      if (titleRef.current) {
+        tl.fromTo(
+          titleRef.current,
+          { opacity: 0, y: 20 },
+          { opacity: 1, y: 0, duration: 0.7 },
+          '-=0.3'
+        );
       }
 
-      // 3. Description slide & fade
       if (descRef.current) {
-        gsap.from(descRef.current, {
-          y: 20,
-          opacity: 0,
-          duration: 0.9,
-          ease: 'power2.out',
-          delay: 0.35
-        });
+        tl.fromTo(
+          descRef.current,
+          { opacity: 0, y: 15 },
+          { opacity: 1, y: 0, duration: 0.6 },
+          '-=0.4'
+        );
       }
 
-      // 4. CTA buttons stagger
+      if (benefitsRef.current && benefitsRef.current.children.length > 0) {
+        tl.fromTo(
+          benefitsRef.current.children,
+          { opacity: 0, y: 12 },
+          { opacity: 1, y: 0, duration: 0.5, stagger: 0.08 },
+          '-=0.3'
+        );
+      }
+
       if (ctaGroupRef.current) {
-        const buttons = ctaGroupRef.current.children;
-        gsap.from(buttons, {
-          y: 18,
-          opacity: 0,
-          duration: 0.7,
-          stagger: 0.1,
-          ease: 'back.out(1.4)',
-          delay: 0.5
-        });
+        tl.fromTo(
+          ctaGroupRef.current,
+          { opacity: 0, y: 15 },
+          { opacity: 1, y: 0, duration: 0.5 },
+          '-=0.2'
+        );
       }
 
-      // 5. Metrics count-up & stagger
-      if (metricsRef.current) {
-        const metricItems = metricsRef.current.children;
-        gsap.from(metricItems, {
-          y: 20,
-          opacity: 0,
-          duration: 0.8,
-          stagger: 0.12,
-          ease: 'power2.out',
-          delay: 0.7
-        });
+      if (visualCardRef.current) {
+        tl.fromTo(
+          visualCardRef.current,
+          { opacity: 0, y: 20, scale: 0.98 },
+          { opacity: 1, y: 0, scale: 1, duration: 0.7 },
+          '-=0.5'
+        );
       }
 
-      // 6. Right visual card scale & shine
-      if (visualRef.current) {
-        gsap.from(visualRef.current, {
-          scale: 0.95,
-          opacity: 0,
-          duration: 1.2,
-          ease: 'power3.out',
-          delay: 0.4
-        });
+      if (statsRef.current && statsRef.current.children.length > 0) {
+        tl.fromTo(
+          statsRef.current.children,
+          { opacity: 0, y: 14 },
+          { opacity: 1, y: 0, duration: 0.5, stagger: 0.08 },
+          '-=0.3'
+        );
       }
-
-      // 7. ScrollTrigger for Three Pillars Cards
-      if (pillarsSectionRef.current) {
-        gsap.from(pillarCardsRef.current, {
-          y: 28,
-          opacity: 0,
-          duration: 0.8,
-          stagger: 0.14,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: pillarsSectionRef.current,
-            start: 'top 85%',
-            toggleActions: 'play none none none'
-          }
-        });
-      }
-    }, containerRef);
+    });
 
     return () => ctx.revert();
   }, []);
 
-  const scrollToPillars = () => {
-    scrollToElement('#operational-pillars', -70);
+  const handleQuickCallback = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!cbName.trim() || !cbPhone.trim()) {
+      setSubmitError('Please enter your name and phone number.');
+      return;
+    }
+
+    try {
+      setIsSubmitting(true);
+      setSubmitError('');
+      await BackendApiService.createEnquiry({
+        name: cbName.trim(),
+        email: `${cbPhone.replace(/\D/g, '')}@lead.callback`,
+        phone: cbPhone.trim(),
+        company: 'Requested Quick Phone Callback',
+        serviceRequested: cbService,
+        facilityType: 'Food Processing / Manufacturing',
+        message: `Quick Callback requested for ${cbService}. Contact telephone: ${cbPhone}`
+      });
+      setSubmitSuccess(true);
+      setCbName('');
+      setCbPhone('');
+      setTimeout(() => {
+        setShowCallbackForm(false);
+        setSubmitSuccess(false);
+      }, 3500);
+    } catch {
+      setSubmitError('Unable to submit request. Please call +91 6395843850 directly.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
-  const pillars = [
-    {
-      id: 'pillar-1',
-      number: 'Pillar 01',
-      title: 'Consult',
-      tagline: 'Audit readiness & SOP implementation',
-      description: 'End-to-end audit readiness, deep gap analysis, and tailored SOP architecture engineered for GFSI, BRCGS, FSSC 22000, and ISO standards.',
-      image: auditImage,
-      alt: 'Senior Lead Auditor inspecting food processing facility compliance and SOP implementation',
-      highlights: [
-        'GFSI, BRCGS & FSSC 22000 gap assessments',
-        'Custom SOP, HACCP & food safety plan drafting',
-        'Mock audit drills with rapid non-conformance closure'
-      ],
-      linkText: 'Explore Consulting',
-      action: () => onNavigate('/services')
-    },
-    {
-      id: 'pillar-2',
-      number: 'Pillar 02',
-      title: 'Managed',
-      tagline: 'Continuous hygiene & CAPA cycles',
-      description: 'Ongoing technical oversight, routine sanitation audits, microbiological sampling, and systematic Corrective & Preventive Action (CAPA) tracking.',
-      image: labImage,
-      alt: 'Food science specialist conducting laboratory microbial culture testing',
-      highlights: [
-        'Scheduled on-site plant verification visits',
-        'Swab & environmental microbial monitoring',
-        'Root-cause analysis and verified corrective actions'
-      ],
-      linkText: 'View Managed Programs',
-      action: () => onNavigate('/our-process')
-    },
-    {
-      id: 'pillar-3',
-      number: 'Pillar 03',
-      title: 'Digital Platform',
-      tagline: 'Automated workflows & instant registry',
-      description: 'Secure centralized software for audit scheduling, evidence vaulting, and instant public QR-code certificate verification.',
-      image: dashboardImage,
-      alt: 'Digital compliance tablet dashboard showing audit records and certificate registry',
-      highlights: [
-        'Instant QR-verifiable certificate registry',
-        'Multi-facility audit logs & evidence repository',
-        'Role-based auditor, client, and executive portals'
-      ],
-      linkText: 'Open Digital Platform',
-      action: () => onNavigate('/digital-compliance')
-    }
-  ];
-
   return (
-    <section ref={containerRef} className="relative bg-[#F8FAFC] border-b border-neutral-200/80 overflow-hidden">
+    <section className="relative w-full overflow-hidden bg-gradient-to-b from-[#F4F8F5] via-white to-[#F8FAF9] pt-6 pb-16 sm:pt-10 sm:pb-24 border-b border-emerald-900/10">
       
-      {/* Background Decorative Gradient Aura */}
-      <div 
-        className="absolute top-0 right-1/4 w-[600px] h-[600px] bg-gradient-to-br from-emerald-500/10 to-transparent rounded-full blur-3xl pointer-events-none -z-0"
-        aria-hidden="true"
-      />
+      {/* Background Decorative Rings */}
+      <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-emerald-100/40 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute -bottom-20 -left-20 w-[400px] h-[400px] bg-emerald-50 rounded-full blur-2xl pointer-events-none" />
 
-      {/* ========================================================================= */}
-      {/* 1. TOP HERO: CLEAN, POWERFUL BUSINESS PROPOSITION WITH GSAP ANIMATIONS    */}
-      {/* ========================================================================= */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-12 lg:pt-12 lg:pb-14 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        {/* Main Grid: Left Value Proposition & Right Interactive Business Showcase */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           
-          {/* Left Column: Business Focus & CTAs */}
-          <div className="lg:col-span-7 space-y-6">
+          {/* Left Column: Direct, Simple, Understandable Headline & Actions */}
+          <div className="lg:col-span-7 space-y-6 text-left">
             
-            {/* Business Categorization Label */}
+            {/* Brochure Tagline Badge */}
             <div 
-              ref={badgeRef}
-              className="inline-flex flex-wrap items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#062E21] text-emerald-100 text-[10px] sm:text-xs font-semibold tracking-wide border border-emerald-500/30 shadow-xs"
+              ref={trustBadgeRef}
+              className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white border border-emerald-300 shadow-xs"
             >
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-              <span>Food Safety Consulting</span>
-              <span className="text-emerald-400">·</span>
-              <span className="text-white">Managed Compliance</span>
-              <span className="text-emerald-400">·</span>
-              <span className="text-emerald-200">Verified Certification</span>
+              <img src={essorLogo} alt="ECS Emblem" className="w-5 h-5 object-contain" />
+              <span className="text-[11px] font-black uppercase tracking-wider text-neutral-900">
+                SIMPLIFYING COMPLIANCE · STRENGTHENING FOOD SAFETY
+              </span>
             </div>
 
-            {/* Clear, Strong Headline with Dynamic Typewriter & GSAP Stagger */}
+            {/* Clear, High-Contrast Main Headline */}
             <h1 
-              ref={headlineWordsRef}
-              className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#062E21] tracking-tight leading-[1.14]"
+              ref={titleRef}
+              className="text-3xl sm:text-4xl md:text-5xl font-black text-neutral-900 tracking-tight leading-[1.12]"
             >
-              Built around{' '}
-              <span className="inline-block relative">
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#062E21] via-[#0E5C3A] to-[#16A34A]">
-                  {displayedText}
-                </span>
-                <span className="inline-block w-[3px] h-[0.9em] ml-1 bg-emerald-600 align-middle animate-pulse" />
-              </span>
-              <br className="hidden sm:inline" />
-              {' '}in everyday operations.
+              Food Safety Audits, Plant Hygiene &amp;{' '}
+              <span className="text-[#2E7D32] font-black">
+                Certified Training
+              </span>{' '}
+              — Made Simple.
             </h1>
 
-            {/* Clear Business Description */}
+            {/* Business Subheading in Simple Non-Jargon Language */}
             <p 
               ref={descRef}
-              className="text-base sm:text-lg text-neutral-600 leading-relaxed max-w-2xl font-normal"
+              className="text-base sm:text-lg text-neutral-700 leading-relaxed font-normal max-w-2xl"
             >
-              We help organizations strengthen food-safety systems, prepare for audits, develop people and maintain compliance in everyday operations.
+              We guide food processors, packaging facilities, commercial kitchens, and dairy plants to pass audits effortlessly. From on-site <strong className="text-neutral-900 font-bold">FSSAI licensing</strong> and <strong className="text-neutral-900 font-bold">ISO 22000 / HACCP / BRCGS certification readiness</strong> to <strong className="text-neutral-900 font-bold">accredited workforce training</strong> with verifiable certificates.
             </p>
 
-            {/* Bring the hero image directly after the intro on phones. */}
-            <div className="lg:hidden relative rounded-2xl overflow-hidden border border-emerald-100 shadow-lg bg-emerald-50">
-              <div className="aspect-[16/10] relative overflow-hidden">
-           
-<img
-  src={heroImage}
-  alt="Food safety auditor reviewing a clean food production facility"
-  className="w-full h-full object-cover object-center"
-  loading="eager"
-  fetchPriority="high"
-/>
-
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent" />
-                <div className="absolute bottom-3 left-3 right-3 text-white">
-                  <p className="text-[10px] font-semibold text-emerald-300 uppercase tracking-wider">On-site plant inspection</p>
-                  <p className="text-xs font-bold mt-0.5">BRCGS · FSSC 22000 · ISO 22000 · HACCP</p>
-                </div>
+            {/* 6 Brochure Highlights from Page 2 */}
+            <div 
+              ref={benefitsRef}
+              className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 pt-1"
+            >
+              <div className="flex items-center gap-2 p-2.5 rounded-xl bg-white border border-emerald-900/10 shadow-xs">
+                <CheckCircle2 className="w-4 h-4 text-[#2E7D32] shrink-0" />
+                <span className="text-xs font-bold text-neutral-900">Simple &amp; Hassle-Free</span>
               </div>
-              <div className="bg-[#062E21] px-3.5 py-2 flex items-center gap-2 text-[10px] font-medium text-emerald-100">
-                <Building className="w-3.5 h-3.5 text-emerald-300 shrink-0" />
-                <span>Manufacturing, packaging & cold chains</span>
+              <div className="flex items-center gap-2 p-2.5 rounded-xl bg-white border border-emerald-900/10 shadow-xs">
+                <CheckCircle2 className="w-4 h-4 text-[#2E7D32] shrink-0" />
+                <span className="text-xs font-bold text-neutral-900">Fast Turnaround</span>
+              </div>
+              <div className="flex items-center gap-2 p-2.5 rounded-xl bg-white border border-emerald-900/10 shadow-xs">
+                <CheckCircle2 className="w-4 h-4 text-[#2E7D32] shrink-0" />
+                <span className="text-xs font-bold text-neutral-900">Guaranteed Results</span>
+              </div>
+              <div className="flex items-center gap-2 p-2.5 rounded-xl bg-white border border-emerald-900/10 shadow-xs">
+                <CheckCircle2 className="w-4 h-4 text-[#2E7D32] shrink-0" />
+                <span className="text-xs font-bold text-neutral-900">Well Documented</span>
+              </div>
+              <div className="flex items-center gap-2 p-2.5 rounded-xl bg-white border border-emerald-900/10 shadow-xs">
+                <CheckCircle2 className="w-4 h-4 text-[#2E7D32] shrink-0" />
+                <span className="text-xs font-bold text-neutral-900">Affordable Pricing</span>
+              </div>
+              <div className="flex items-center gap-2 p-2.5 rounded-xl bg-white border border-emerald-900/10 shadow-xs">
+                <CheckCircle2 className="w-4 h-4 text-[#2E7D32] shrink-0" />
+                <span className="text-xs font-bold text-neutral-900">QR Verifiable Certs</span>
               </div>
             </div>
 
-            {/* CTAs: 3 Explicit Actions with Staggered Entrance */}
+            {/* Action Buttons */}
             <div 
               ref={ctaGroupRef}
               className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-2"
             >
-              {/* Primary Action */}
               <button
+                type="button"
                 onClick={() => onOpenEnquiry()}
-                className="group relative inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl text-sm font-bold tracking-wide text-white bg-gradient-to-r from-[#062E21] via-[#0E5C3A] to-[#15803D] hover:from-[#042419] hover:via-[#0B4A2F] hover:to-[#166534] active:scale-[0.98] transition-all duration-200 shadow-md shadow-emerald-950/20 ring-1 ring-emerald-400/30 cursor-pointer hover:scale-[1.02]"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl text-sm font-bold tracking-wide text-white bg-gradient-to-r from-[#042A1D] via-[#062E21] to-[#2E7D32] hover:opacity-95 shadow-md active:scale-[0.98] transition-all cursor-pointer"
               >
-                <span>Discuss Your Requirements</span>
-                <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />
+                <span>Request Free Audit Guidance</span>
+                <ArrowRight className="w-4 h-4" />
               </button>
 
-              {/* Secondary Action */}
+              {/* View Sample Certificate Button */}
               <button
-                onClick={() => onNavigate('/services')}
-                className="inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl text-sm font-bold tracking-wide text-[#062E21] bg-white hover:bg-emerald-50/80 transition-all duration-200 border border-emerald-900/15 shadow-xs cursor-pointer hover:scale-[1.02] active:scale-[0.98]"
-              >
-                <span>Explore Our Services</span>
-                <ChevronRight className="w-4 h-4 text-emerald-700" />
-              </button>
-
-              {/* Tertiary Action: Direct Credential Verification */}
-              <button
-                onClick={() => onNavigate('/verify-certificate')}
-                className="inline-flex items-center justify-center gap-2 px-4 py-3.5 rounded-xl text-sm font-semibold tracking-wide text-neutral-700 hover:text-[#062E21] hover:bg-emerald-50/70 transition-colors cursor-pointer"
-                title="Search and verify official certificates"
-              >
-                <ShieldCheck className="w-4 h-4 text-emerald-700" />
-                <span>Verify Credential</span>
-              </button>
-            </div>
-
-            {/* Business Metrics Bar with GSAP Entrance */}
-            <div 
-              ref={metricsRef}
-              className="pt-6 border-t border-neutral-200 grid grid-cols-3 gap-6 max-w-xl"
-            >
-              <div className="group">
-                <div className="text-2xl sm:text-3xl font-black text-[#062E21] transition-colors group-hover:text-emerald-700">
-                  99.4%
-                </div>
-                <div className="text-xs text-neutral-500 font-medium mt-0.5">First-Time Audit Pass</div>
-              </div>
-              <div className="group">
-                <div className="text-2xl sm:text-3xl font-black text-[#062E21] transition-colors group-hover:text-emerald-700">
-                  1,850+
-                </div>
-                <div className="text-xs text-neutral-500 font-medium mt-0.5">Audits Prepared</div>
-              </div>
-              <div className="group">
-                <div className="text-2xl sm:text-3xl font-black text-[#062E21] transition-colors group-hover:text-emerald-700">
-                  GFSI
-                </div>
-                <div className="text-xs text-neutral-500 font-medium mt-0.5">Global Benchmark Alignment</div>
-              </div>
-            </div>
-
-          </div>
-
-          {/* Right Column: High-Impact Real Photography (Clean & Authoritative) */}
-          <div className="hidden lg:block lg:col-span-5">
-            <div 
-              ref={visualRef}
-              className="relative rounded-2xl overflow-hidden shadow-xl border border-emerald-900/15 bg-white group"
-            >
-              <div className="aspect-[4/3] sm:aspect-[16/11] relative overflow-hidden bg-emerald-50/40">
-               <img
-  src={heroImage}
-  alt="Food safety auditor reviewing a clean food production facility"
-  className="w-full h-full object-cover object-center"
-/>
-                <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-black/20" />
-
-                {/* Clean Top Monogram Seal */}
-                <div className="absolute top-4 right-4 inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[#062E21]/90 backdrop-blur-sm border border-emerald-500/40 text-white shadow-md">
-                  <Logo variant="icon-only" size="sm" className="w-5 h-5" />
-                  <span className="text-[11px] font-bold tracking-wider uppercase text-emerald-300">
-                    ESSOR Accredited
-                  </span>
-                </div>
-
-                {/* Clean Bottom Caption */}
-                <div className="absolute bottom-4 left-4 right-4 text-white">
-                  <p className="text-xs font-semibold text-emerald-300 uppercase tracking-wider">
-                    On-Site Plant Inspection
-                  </p>
-                  <p className="text-sm font-bold text-white mt-0.5">
-                    BRCGS · FSSC 22000 · ISO 22000 · HACCP Execution
-                  </p>
-                </div>
-              </div>
-
-              {/* Status bar */}
-              <div className="bg-[#062E21] px-4 py-2.5 flex items-center justify-between text-xs text-neutral-300 border-t border-emerald-700/30">
-                <span className="flex items-center gap-1.5">
-                  <Building className="w-3.5 h-3.5 text-emerald-400" />
-                  <span className="text-emerald-100">Manufacturing, Packaging & Cold Chains</span>
-                </span>
-                <span className="text-emerald-300 font-semibold text-[11px]">Commercial Ready</span>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-        {/* Smooth Scroll Cue to Operational Pillars */}
-        <div className="flex justify-center pt-8">
-          <button
-            onClick={scrollToPillars}
-            className="group inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/90 border border-emerald-900/10 shadow-2xs text-xs font-semibold text-neutral-700 hover:text-[#062E21] hover:border-emerald-500 transition-all cursor-pointer backdrop-blur-xs hover:scale-105"
-            aria-label="Scroll smoothly to Three Pillars"
-          >
-            <span>Explore The 3 Operational Pillars</span>
-            <ChevronDown className="w-3.5 h-3.5 text-emerald-700 transition-transform duration-300 group-hover:translate-y-0.5 animate-bounce" />
-          </button>
-        </div>
-
-      </div>
-
-      {/* ========================================================================= */}
-      {/* 2. THE THREE PILLARS: CLEAN, EDITORIAL, PHOTOGRAPHIC (NOT SIMPLE TEXT)    */}
-      {/* ========================================================================= */}
-      <div 
-        ref={pillarsSectionRef} 
-        id="operational-pillars" 
-        className="bg-white border-t border-neutral-200/80 py-10 sm:py-12 lg:py-14 scroll-mt-20"
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-7">
-          
-          {/* Header of the Pillars Section */}
-          <div className="max-w-3xl space-y-2">
-            <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-emerald-800">
-              <Sparkles className="w-3.5 h-3.5 text-emerald-600" />
-              <span>Core Operational Architecture</span>
-            </div>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-[#062E21] tracking-tight">
-              Three Pillars of Food Safety Delivery
-            </h2>
-            <p className="text-sm sm:text-base text-neutral-600">
-              A comprehensive system connecting strategic preparation, day-to-day hygiene controls, and instant digital credentialing.
-            </p>
-          </div>
-
-          {/* The 3 Cards Grid with GSAP Scroll Trigger Entrance */}
-          <div className="home-content-grid grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
-            {pillars.map((pillar, idx) => (
-              <div
-                key={pillar.id}
-                ref={(el) => {
-                  pillarCardsRef.current[idx] = el;
+                type="button"
+                onClick={() => {
+                  if (onOpenCertModal) {
+                    onOpenCertModal();
+                  } else {
+                    const certElem = document.getElementById('certificate-sample-section');
+                    if (certElem) certElem.scrollIntoView({ behavior: 'smooth' });
+                  }
                 }}
-                className="group flex flex-col rounded-xl bg-[#F8FAFC] border border-neutral-200 overflow-hidden shadow-xs hover:shadow-xl hover:border-emerald-500 transition-all duration-300"
+                className="inline-flex items-center justify-center gap-2 px-4 py-3.5 rounded-xl text-sm font-bold tracking-wide text-neutral-900 bg-amber-50 hover:bg-amber-100 border-2 border-amber-500/40 shadow-xs transition-all active:scale-[0.98] cursor-pointer"
               >
-                {/* Real Photographic Card Header */}
-                <div className="relative aspect-[16/10] overflow-hidden bg-emerald-50/40">
-         
-<img
-                    src={pillar.image}
-                    alt={pillar.alt}
-                    loading="lazy"
-                    className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
+                <Award className="w-4 h-4 text-amber-700" />
+                <span>View Sample Certificate</span>
+              </button>
+
+              {/* Instant Call / WhatsApp */}
+              <div className="flex items-center gap-2">
+                <a
+                  href="tel:+916395843850"
+                  className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-4 py-3.5 rounded-xl text-sm font-bold text-neutral-900 bg-white hover:bg-emerald-50 border border-emerald-600/30 shadow-xs transition-all active:scale-[0.98]"
+                >
+                  <Phone className="w-4 h-4 text-[#2E7D32]" />
+                  <span>Call: 6395843850</span>
+                </a>
+
+                <a
+                  href="https://wa.me/916395843850?text=Hi%20ESSOR%20Team%2C%20I%20would%20like%20to%20consult%20regarding%20Food%20Safety%20%26%20Audit%20Services."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 px-3.5 py-3.5 rounded-xl text-sm font-bold text-white bg-[#25D366] hover:bg-[#20ba59] transition-all active:scale-[0.98]"
+                  title="Chat on WhatsApp"
+                >
+                  <MessageCircle className="w-4 h-4 text-white" />
+                  <span className="hidden sm:inline">WhatsApp</span>
+                </a>
+              </div>
+            </div>
+
+            {/* Direct Contact Bar */}
+            <div className="pt-3 border-t border-neutral-200 text-xs text-neutral-700 flex flex-wrap items-center gap-y-2 gap-x-5">
+              <div className="flex items-center gap-1.5">
+                <Phone className="w-3.5 h-3.5 text-[#2E7D32]" />
+                <span className="font-bold text-neutral-900">+91 6395843850</span>
+              </div>
+              <div className="flex items-center gap-1.5">
+                <Mail className="w-3.5 h-3.5 text-[#2E7D32]" />
+                <a href="mailto:business@essorcompliance.com" className="hover:text-emerald-700 font-semibold text-neutral-800 transition-colors">
+                  business@essorcompliance.com
+                </a>
+              </div>
+              <div className="flex items-center gap-1.5">
+                <MapPin className="w-3.5 h-3.5 text-[#2E7D32]" />
+                <span className="font-medium text-neutral-800">Doon IT Park, Dehradun</span>
+              </div>
+            </div>
+
+          </div>
+
+          {/* Right Column: Visual Showcase with Interactive Tabs */}
+          <div ref={visualCardRef} className="lg:col-span-5 space-y-4">
+            
+            {/* Visual Card with Tabs */}
+            <div className="rounded-2xl overflow-hidden border border-emerald-900/15 shadow-xl bg-white">
+              
+              {/* Tab Selector Header (Scrollable tabs so users see every aspect of the business) */}
+              <div className="p-2 bg-[#042A1D] text-white flex items-center gap-1 overflow-x-auto text-xs font-bold no-scrollbar">
+                <button
+                  type="button"
+                  onClick={() => setActiveVisualTab('CERTIFICATE')}
+                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg transition-colors cursor-pointer shrink-0 ${
+                    activeVisualTab === 'CERTIFICATE' 
+                      ? 'bg-[#2E7D32] text-white font-extrabold shadow-xs' 
+                      : 'text-neutral-300 hover:text-white hover:bg-white/10'
+                  }`}
+                >
+                  <Award className="w-3.5 h-3.5" />
+                  <span>Certificate Sample</span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => setActiveVisualTab('PRODUCE')}
+                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg transition-colors cursor-pointer shrink-0 ${
+                    activeVisualTab === 'PRODUCE' 
+                      ? 'bg-[#2E7D32] text-white font-extrabold shadow-xs' 
+                      : 'text-neutral-300 hover:text-white hover:bg-white/10'
+                  }`}
+                >
+                  <Apple className="w-3.5 h-3.5" />
+                  <span>Produce Quality</span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => setActiveVisualTab('PACKAGING')}
+                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg transition-colors cursor-pointer shrink-0 ${
+                    activeVisualTab === 'PACKAGING' 
+                      ? 'bg-[#2E7D32] text-white font-extrabold shadow-xs' 
+                      : 'text-neutral-300 hover:text-white hover:bg-white/10'
+                  }`}
+                >
+                  <Boxes className="w-3.5 h-3.5" />
+                  <span>Packaging Line</span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => setActiveVisualTab('AUDIT')}
+                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg transition-colors cursor-pointer shrink-0 ${
+                    activeVisualTab === 'AUDIT' 
+                      ? 'bg-[#2E7D32] text-white font-extrabold shadow-xs' 
+                      : 'text-neutral-300 hover:text-white hover:bg-white/10'
+                  }`}
+                >
+                  <Factory className="w-3.5 h-3.5" />
+                  <span>Plant Floor</span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => setActiveVisualTab('LAB')}
+                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg transition-colors cursor-pointer shrink-0 ${
+                    activeVisualTab === 'LAB' 
+                      ? 'bg-[#2E7D32] text-white font-extrabold shadow-xs' 
+                      : 'text-neutral-300 hover:text-white hover:bg-white/10'
+                  }`}
+                >
+                  <Microscope className="w-3.5 h-3.5" />
+                  <span>Microbiology Lab</span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => setActiveVisualTab('TRAINING')}
+                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg transition-colors cursor-pointer shrink-0 ${
+                    activeVisualTab === 'TRAINING' 
+                      ? 'bg-[#2E7D32] text-white font-extrabold shadow-xs' 
+                      : 'text-neutral-300 hover:text-white hover:bg-white/10'
+                  }`}
+                >
+                  <GraduationCap className="w-3.5 h-3.5" />
+                  <span>Training Class</span>
+                </button>
+              </div>
+
+              {/* Tab 1: Certificate Sample Preview */}
+              {activeVisualTab === 'CERTIFICATE' && (
+                <div className="relative group bg-neutral-900 cursor-pointer" onClick={() => onOpenCertModal?.()}>
+                  <img
+                    src={certSampleImage}
+                    alt="Official ESSOR Training Certificate Sample"
+                    className="w-full h-72 sm:h-80 object-cover object-top transition-transform duration-500 group-hover:scale-105"
                   />
-
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none" />
-                  
-                  {/* Pillar Number Tag */}
-                  <div className="absolute top-3 left-3 px-2.5 py-1 rounded bg-[#062E21]/90 backdrop-blur-xs text-emerald-300 text-[10px] font-bold tracking-wider uppercase border border-emerald-500/40 shadow-xs">
-                    {pillar.number}
-                  </div>
-
-                  {/* Title & Tagline overlay */}
-                  <div className="absolute bottom-3 left-3 right-3 text-white">
-                    <h3 className="text-xl font-bold tracking-tight text-white group-hover:text-emerald-300 transition-colors">
-                      {pillar.title}
-                    </h3>
-                    <p className="text-xs text-emerald-300 font-medium mt-0.5">
-                      {pillar.tagline}
-                    </p>
-                  </div>
-                </div>
-
-                {/* Card Content */}
-                <div className="p-5 flex-1 flex flex-col justify-between space-y-5">
-                  <div className="space-y-4">
-                    <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed">
-                      {pillar.description}
-                    </p>
-
-                    {/* Highlights */}
-                    <div className="space-y-2 pt-2 border-t border-neutral-200">
-                      <div className="text-[11px] font-bold text-emerald-900 uppercase tracking-wide">
-                        What We Deliver:
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-4">
+                    <div className="flex items-center justify-between text-white">
+                      <div>
+                        <div className="flex items-center gap-2">
+                          <span className="px-2 py-0.5 rounded text-[10px] font-black uppercase tracking-wider bg-amber-400 text-black">
+                            Sample Credential
+                          </span>
+                          <span className="text-xs font-mono font-bold text-amber-200">
+                            ECSFSM-LA241116
+                          </span>
+                        </div>
+                        <p className="text-xs text-white/90 mt-1 font-semibold">
+                          Jessica Lee Chen · Lead Food Safety Auditor (ISO 22000)
+                        </p>
                       </div>
-                      <ul className="space-y-1.5">
-                        {pillar.highlights.map((item, hIdx) => (
-                          <li key={hIdx} className="flex items-start gap-2 text-xs text-neutral-700">
-                            <Check className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" />
-                            <span>{item}</span>
-                          </li>
-                        ))}
-                      </ul>
+                      <span className="px-3 py-1.5 rounded-lg bg-white/20 hover:bg-white/30 backdrop-blur-xs text-xs font-bold text-white flex items-center gap-1.5 border border-white/30">
+                        <Maximize2 className="w-3.5 h-3.5" />
+                        <span>Inspect</span>
+                      </span>
                     </div>
                   </div>
+                </div>
+              )}
 
-                  {/* Card Action Link */}
-                  <div className="pt-2">
-                    <button
-                      onClick={pillar.action}
-                      className="w-full inline-flex items-center justify-between px-3.5 py-2.5 rounded-lg bg-white hover:bg-[#062E21] hover:text-white border border-neutral-300 hover:border-[#062E21] text-xs font-bold text-[#062E21] transition-all duration-200 cursor-pointer group/btn shadow-2xs"
-                    >
-                      <span>{pillar.linkText}</span>
-                      <ArrowRight className="w-3.5 h-3.5 text-neutral-500 group-hover/btn:translate-x-1 group-hover/btn:text-white transition-all" />
-                    </button>
+              {/* Tab 2: Fresh Produce Quality Inspection */}
+              {activeVisualTab === 'PRODUCE' && (
+                <div className="relative group bg-neutral-900">
+                  <img
+                    src={freshProduceImage}
+                    alt="Fresh produce harvest and vegetable quality safety inspection"
+                    className="w-full h-72 sm:h-80 object-cover object-center transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-4">
+                    <div className="flex items-center justify-between text-white">
+                      <div>
+                        <span className="px-2 py-0.5 rounded text-[10px] font-black uppercase tracking-wider bg-emerald-500 text-white">
+                          Harvest &amp; Produce Quality
+                        </span>
+                        <p className="text-xs text-white/90 mt-1 font-semibold">
+                          Raw material inspection, pesticide residues, and freshness sorting
+                        </p>
+                      </div>
+                      <button
+                        type="button"
+                        onClick={() => onNavigate('/services/audit-readiness')}
+                        className="px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-xs font-bold text-white shadow-xs cursor-pointer"
+                      >
+                        Explore Audit
+                      </button>
+                    </div>
                   </div>
                 </div>
+              )}
 
+              {/* Tab 3: Packaging & Processing Line */}
+              {activeVisualTab === 'PACKAGING' && (
+                <div className="relative group bg-neutral-900">
+                  <img
+                    src={packagingLineImage}
+                    alt="Automated packaging conveyor line food safety audit"
+                    className="w-full h-72 sm:h-80 object-cover object-center transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-4">
+                    <div className="flex items-center justify-between text-white">
+                      <div>
+                        <span className="px-2 py-0.5 rounded text-[10px] font-black uppercase tracking-wider bg-emerald-600 text-white">
+                          Packaging Line Audit
+                        </span>
+                        <p className="text-xs text-white/90 mt-1 font-semibold">
+                          Automated conveyors, seal integrity, and foreign body control
+                        </p>
+                      </div>
+                      <button
+                        type="button"
+                        onClick={() => onNavigate('/services/managed-support')}
+                        className="px-3 py-1.5 rounded-lg bg-[#2E7D32] hover:bg-[#256629] text-xs font-bold text-white shadow-xs cursor-pointer"
+                      >
+                        Details
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* Tab 4: On-Site Plant Floor Audit */}
+              {activeVisualTab === 'AUDIT' && (
+                <div className="relative group bg-neutral-900">
+                  <img
+                    src={auditInspectionImage}
+                    alt="ESSOR Auditor inspecting stainless steel food equipment"
+                    className="w-full h-72 sm:h-80 object-cover object-center transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-4">
+                    <div className="flex items-center justify-between text-white">
+                      <div>
+                        <span className="px-2 py-0.5 rounded text-[10px] font-black uppercase tracking-wider bg-emerald-500 text-white">
+                          On-Site Factory Hygiene
+                        </span>
+                        <p className="text-xs text-white/90 mt-1 font-semibold">
+                          Sanitation verification, machinery inspection, and physical PRP gap closure
+                        </p>
+                      </div>
+                      <button
+                        type="button"
+                        onClick={() => onNavigate('/services/audit-readiness')}
+                        className="px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-xs font-bold text-white shadow-xs cursor-pointer"
+                      >
+                        Explore
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* Tab 5: Microbial Lab Verification */}
+              {activeVisualTab === 'LAB' && (
+                <div className="relative group bg-neutral-900">
+                  <img
+                    src={labTestingImage}
+                    alt="Microbiology laboratory test for food pathogens"
+                    className="w-full h-72 sm:h-80 object-cover object-center transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-4">
+                    <div className="flex items-center justify-between text-white">
+                      <div>
+                        <span className="px-2 py-0.5 rounded text-[10px] font-black uppercase tracking-wider bg-teal-500 text-white">
+                          Microbiology Testing
+                        </span>
+                        <p className="text-xs text-white/90 mt-1 font-semibold">
+                          Pathogen swab screening, shelf-life studies, and water potability testing
+                        </p>
+                      </div>
+                      <button
+                        type="button"
+                        onClick={() => onOpenEnquiry('Microbiology Testing')}
+                        className="px-3 py-1.5 rounded-lg bg-teal-600 hover:bg-teal-500 text-xs font-bold text-white shadow-xs cursor-pointer"
+                      >
+                        Book Lab Test
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* Tab 6: Corporate Training Seminar */}
+              {activeVisualTab === 'TRAINING' && (
+                <div className="relative group bg-neutral-900">
+                  <img
+                    src={corporateSeminarImage}
+                    alt="Corporate Food Safety Training Workshop"
+                    className="w-full h-72 sm:h-80 object-cover object-center transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-4">
+                    <div className="flex items-center justify-between text-white">
+                      <div>
+                        <span className="px-2 py-0.5 rounded text-[10px] font-black uppercase tracking-wider bg-purple-500 text-white">
+                          Workforce Training
+                        </span>
+                        <p className="text-xs text-white/90 mt-1 font-semibold">
+                          HACCP &amp; ISO 22000 interactive workshops with verifiable certifications
+                        </p>
+                      </div>
+                      <button
+                        type="button"
+                        onClick={() => onNavigate('/training')}
+                        className="px-3 py-1.5 rounded-lg bg-purple-600 hover:bg-purple-500 text-xs font-bold text-white shadow-xs cursor-pointer"
+                      >
+                        Browse Courses
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* Visual Card Footer: Verification Link */}
+              <div className="p-3 bg-neutral-50 border-t border-neutral-200 flex items-center justify-between text-xs">
+                <span className="text-neutral-700 font-medium">
+                  Official Registry ID: <strong className="text-neutral-900 font-bold">ECSFSM-LA241116</strong>
+                </span>
+                <button
+                  type="button"
+                  onClick={() => onNavigate('/verify-certificate?cert=ECSFSM-LA241116')}
+                  className="text-[#2E7D32] hover:text-neutral-900 font-bold inline-flex items-center gap-1 cursor-pointer"
+                >
+                  <span>Test Live QR Verification</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </button>
               </div>
-            ))}
+
+            </div>
+
+            {/* Quick Callback Drawer Trigger */}
+            <div className="p-3.5 rounded-xl bg-white border border-emerald-900/10 shadow-xs flex items-center justify-between gap-3">
+              <div>
+                <span className="text-xs font-bold text-neutral-900 block">Need an immediate audit consultation?</span>
+                <span className="text-[11px] text-neutral-600">Our food safety specialists respond within 24 hours.</span>
+              </div>
+              <button
+                type="button"
+                onClick={() => setShowCallbackForm(!showCallbackForm)}
+                className="px-3 py-1.5 rounded-lg bg-emerald-50 hover:bg-[#2E7D32] hover:text-white text-xs font-bold text-[#2E7D32] border border-emerald-300 transition-all cursor-pointer shrink-0"
+              >
+                {showCallbackForm ? 'Close Form' : 'Request Callback'}
+              </button>
+            </div>
+
+            {/* Quick Callback Inline Form */}
+            {showCallbackForm && (
+              <form onSubmit={handleQuickCallback} className="p-4 rounded-xl bg-white border-2 border-[#2E7D32] shadow-md space-y-3">
+                <h4 className="text-xs font-bold text-neutral-900 uppercase tracking-wider">
+                  Request 15-Minute Audit Callback
+                </h4>
+                
+                {submitSuccess ? (
+                  <div className="p-3 rounded-lg bg-emerald-50 text-emerald-800 text-xs font-medium flex items-center gap-2">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                    <span>Callback requested! Our lead specialist will call you shortly.</span>
+                  </div>
+                ) : (
+                  <>
+                    {submitError && (
+                      <p className="text-xs text-red-600">{submitError}</p>
+                    )}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                      <input
+                        type="text"
+                        placeholder="Your Name *"
+                        value={cbName}
+                        onChange={(e) => setCbName(e.target.value)}
+                        required
+                        className="px-3 py-2 text-xs rounded-lg border border-neutral-300 focus:outline-none focus:ring-1 focus:ring-[#2E7D32]"
+                      />
+                      <input
+                        type="tel"
+                        placeholder="Phone Number *"
+                        value={cbPhone}
+                        onChange={(e) => setCbPhone(e.target.value)}
+                        required
+                        className="px-3 py-2 text-xs rounded-lg border border-neutral-300 focus:outline-none focus:ring-1 focus:ring-[#2E7D32]"
+                      />
+                    </div>
+                    <select
+                      value={cbService}
+                      onChange={(e) => setCbService(e.target.value)}
+                      className="w-full px-3 py-2 text-xs rounded-lg border border-neutral-300 focus:outline-none focus:ring-1 focus:ring-[#2E7D32] bg-white"
+                    >
+                      <option value="FSSAI & Regulatory Licensing">FSSAI &amp; Regulatory Licensing</option>
+                      <option value="ISO 22000 / FSSC 22000 Readiness">ISO 22000 / FSSC 22000 Readiness</option>
+                      <option value="BRCGS Food Safety Issue 9">BRCGS Food Safety Issue 9</option>
+                      <option value="HACCP & GMP Plant Audit">HACCP &amp; GMP Plant Audit</option>
+                      <option value="Microbiology Lab Swab Testing">Microbiology Lab Swab Testing</option>
+                      <option value="Workforce Certified Training">Workforce Certified Training</option>
+                    </select>
+                    <button
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="w-full py-2.5 rounded-lg bg-[#2E7D32] hover:bg-[#256629] text-white text-xs font-bold uppercase tracking-wider transition-all disabled:opacity-50 flex items-center justify-center gap-2 cursor-pointer"
+                    >
+                      <Send className="w-3.5 h-3.5" />
+                      <span>{isSubmitting ? 'Sending...' : 'Confirm Callback Request'}</span>
+                    </button>
+                  </>
+                )}
+              </form>
+            )}
+
           </div>
 
         </div>
-      </div>
 
+        {/* Bottom Trust Metric Badges */}
+        <div 
+          ref={statsRef}
+          className="mt-14 pt-8 border-t border-emerald-900/10 grid grid-cols-2 md:grid-cols-4 gap-4"
+        >
+          <div className="p-4 rounded-xl bg-white border border-emerald-900/10 shadow-2xs">
+            <span className="text-2xl sm:text-3xl font-black text-neutral-900 block">1,850+</span>
+            <span className="text-xs text-neutral-600 font-medium">Audits &amp; Assessments Prepared</span>
+          </div>
+          <div className="p-4 rounded-xl bg-white border border-emerald-900/10 shadow-2xs">
+            <span className="text-2xl sm:text-3xl font-black text-[#2E7D32] block">99.4%</span>
+            <span className="text-xs text-neutral-600 font-medium">First-Time Audit Pass Rate</span>
+          </div>
+          <div className="p-4 rounded-xl bg-white border border-emerald-900/10 shadow-2xs">
+            <span className="text-2xl sm:text-3xl font-black text-neutral-900 block">16+</span>
+            <span className="text-xs text-neutral-600 font-medium">Accredited Training Modules</span>
+          </div>
+          <div className="p-4 rounded-xl bg-white border border-emerald-900/10 shadow-2xs">
+            <span className="text-2xl sm:text-3xl font-black text-[#2E7D32] block">&lt;24 Hrs</span>
+            <span className="text-xs text-neutral-600 font-medium">Emergency Audit Support Response</span>
+          </div>
+        </div>
+
+      </div>
     </section>
   );
 };

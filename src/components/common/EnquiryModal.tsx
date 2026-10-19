@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { X, CheckCircle, Shield, AlertCircle, ArrowRight, Loader2 } from 'lucide-react';
+import { X, CheckCircle, AlertCircle, ArrowRight, Loader2, ShieldCheck } from 'lucide-react';
 import { StorageService } from '../../services/storage';
 import { BackendApiService } from '../../services/api';
 import { ServiceItem } from '../../types';
@@ -101,21 +101,26 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
+    <div 
+      className="fixed inset-0 z-50 flex items-center justify-center p-2.5 sm:p-4 bg-black/75 backdrop-blur-sm overflow-hidden animate-in fade-in duration-200"
+      onClick={onClose}
+    >
       <div 
-        className="relative bg-white w-full max-w-2xl rounded-xl shadow-2xl border border-neutral-200 overflow-hidden"
+        className="relative bg-white w-full max-w-2xl max-h-[92vh] sm:max-h-[88vh] rounded-2xl shadow-2xl border border-neutral-200 flex flex-col overflow-hidden text-neutral-900"
         role="dialog"
         aria-modal="true"
         aria-labelledby="enquiry-modal-title"
+        onClick={e => e.stopPropagation()}
       >
-        {/* Header bar */}
-        <div className="flex items-center justify-between px-6 py-4 bg-[#062E21] text-white border-b border-emerald-800/40">
+        {/* Fixed Header bar */}
+        <div className="shrink-0 flex items-center justify-between px-5 py-3.5 sm:px-6 sm:py-4 bg-[#062E21] text-white border-b border-emerald-800/40">
           <div>
-            <h3 id="enquiry-modal-title" className="text-lg font-bold">
-              Discuss Your Requirements
+            <h3 id="enquiry-modal-title" className="text-base sm:text-lg font-bold flex items-center gap-2">
+              <ShieldCheck className="w-5 h-5 text-emerald-400" />
+              <span>Discuss Your Requirements</span>
             </h3>
-            <p className="text-xs text-emerald-200">
-              Direct consultation with our food-safety and audit-readiness specialists
+            <p className="text-[11px] sm:text-xs text-emerald-200 mt-0.5">
+              Direct consultation with our food-safety and plant audit specialists
             </p>
           </div>
           <button
@@ -127,52 +132,58 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
           </button>
         </div>
 
-        <div className="p-6">
-          {submittedRef ? (
-            <div className="py-8 text-center space-y-4">
-              <div className="w-16 h-16 mx-auto rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center">
-                <CheckCircle className="w-10 h-10" />
-              </div>
-              <h4 className="text-2xl font-bold text-neutral-900">
-                Enquiry Successfully Registered
-              </h4>
-              <p className="text-sm text-neutral-600 max-w-md mx-auto">
-                Thank you for reaching out to ESSOR Compliance Solutions. Our technical team has received your enquiry and will review your facility requirements.
-              </p>
-              
-              <div className="p-4 rounded-lg bg-emerald-50/60 border border-emerald-200 max-w-sm mx-auto text-center space-y-1">
-                <span className="text-xs uppercase tracking-wider text-emerald-800 font-bold">
-                  Your Reference Number
-                </span>
-                <div className="text-xl font-mono font-bold text-[#062E21] select-all">
-                  {submittedRef}
-                </div>
-                <p className="text-[11px] text-neutral-500">
-                  Please keep this reference for follow-up communications.
-                </p>
-              </div>
-
-              <div className="pt-4">
-                <button
-                  onClick={onClose}
-                  className="px-6 py-2.5 text-xs font-bold uppercase tracking-wider text-white bg-[#062E21] hover:bg-[#041F16] rounded-xl transition-colors cursor-pointer shadow-sm"
-                >
-                  Return to Website
-                </button>
-              </div>
+        {/* Scrollable Modal Content */}
+        {submittedRef ? (
+          <div className="p-6 sm:p-8 text-center space-y-4 overflow-y-auto">
+            <div className="w-14 h-14 mx-auto rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center">
+              <CheckCircle className="w-9 h-9" />
             </div>
-          ) : (
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <h4 className="text-xl sm:text-2xl font-bold text-neutral-900">
+              Enquiry Successfully Registered
+            </h4>
+            <p className="text-xs sm:text-sm text-neutral-600 max-w-md mx-auto leading-relaxed">
+              Thank you for reaching out to ESSOR Compliance Solutions. Our lead auditor has received your submission and will review your facility requirements.
+            </p>
+            
+            <div className="p-4 rounded-xl bg-emerald-50/80 border border-emerald-200 max-w-sm mx-auto text-center space-y-1">
+              <span className="text-[10px] uppercase tracking-wider text-emerald-800 font-bold block">
+                Official Reference Number
+              </span>
+              <div className="text-xl font-mono font-black text-[#062E21] select-all">
+                {submittedRef}
+              </div>
+              <p className="text-[11px] text-neutral-500">
+                Please save this reference for direct follow-up communication.
+              </p>
+            </div>
+
+            <div className="pt-3">
+              <button
+                type="button"
+                onClick={onClose}
+                className="px-6 py-2.5 text-xs font-bold uppercase tracking-wider text-white bg-[#062E21] hover:bg-[#041F16] rounded-xl transition-colors cursor-pointer shadow-sm"
+              >
+                Return to Website
+              </button>
+            </div>
+          </div>
+        ) : (
+          <form onSubmit={handleSubmit} className="flex-1 flex flex-col overflow-hidden">
+            
+            {/* Scrollable Form Fields */}
+            <div className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-3.5 sm:space-y-4 overscroll-contain">
+              
               {errorMsg && (
-                <div className="p-3 rounded-lg bg-red-50 border border-red-200 text-red-700 text-xs flex items-center gap-2">
+                <div className="p-3 rounded-xl bg-red-50 border border-red-200 text-red-700 text-xs flex items-center gap-2">
                   <AlertCircle className="w-4 h-4 shrink-0" />
                   <span>{errorMsg}</span>
                 </div>
               )}
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {/* Name & Work Email */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                 <div>
-                  <label className="block text-xs font-semibold text-neutral-700 mb-1">
+                  <label className="block text-xs font-bold text-neutral-800 mb-1">
                     Full Name <span className="text-red-500">*</span>
                   </label>
                   <input
@@ -181,12 +192,12 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
                     value={formData.name}
                     onChange={e => setFormData({ ...formData, name: e.target.value })}
                     placeholder="e.g. Sunil Mehta"
-                    className="w-full px-3 py-2 text-sm rounded-lg border border-neutral-300 focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:border-emerald-600"
+                    className="w-full px-3 py-2 text-xs sm:text-sm rounded-lg border border-neutral-300 focus:outline-none focus:ring-2 focus:ring-emerald-600 bg-neutral-50/60"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-neutral-700 mb-1">
+                  <label className="block text-xs font-bold text-neutral-800 mb-1">
                     Work Email <span className="text-red-500">*</span>
                   </label>
                   <input
@@ -195,49 +206,51 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
                     value={formData.email}
                     onChange={e => setFormData({ ...formData, email: e.target.value })}
                     placeholder="name@company.com"
-                    className="w-full px-3 py-2 text-sm rounded-lg border border-neutral-300 focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:border-emerald-600"
+                    className="w-full px-3 py-2 text-xs sm:text-sm rounded-lg border border-neutral-300 focus:outline-none focus:ring-2 focus:ring-emerald-600 bg-neutral-50/60"
                   />
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {/* Company & Phone */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                 <div>
-                  <label className="block text-xs font-semibold text-neutral-700 mb-1">
-                    Company Name <span className="text-red-500">*</span>
+                  <label className="block text-xs font-bold text-neutral-800 mb-1">
+                    Company / Plant Name <span className="text-red-500">*</span>
                   </label>
                   <input
                     type="text"
                     required
                     value={formData.companyName}
                     onChange={e => setFormData({ ...formData, companyName: e.target.value })}
-                    placeholder="e.g. AgroNutri Global Exports"
-                    className="w-full px-3 py-2 text-sm rounded-lg border border-neutral-300 focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:border-emerald-600"
+                    placeholder="e.g. Apex Dairy / Shahi Foods"
+                    className="w-full px-3 py-2 text-xs sm:text-sm rounded-lg border border-neutral-300 focus:outline-none focus:ring-2 focus:ring-emerald-600 bg-neutral-50/60"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-neutral-700 mb-1">
-                    Phone Number <span className="text-neutral-400 font-normal">(Optional)</span>
+                  <label className="block text-xs font-bold text-neutral-800 mb-1">
+                    Phone / Mobile <span className="text-neutral-400 font-normal">(Direct callback)</span>
                   </label>
                   <input
                     type="tel"
                     value={formData.phone}
                     onChange={e => setFormData({ ...formData, phone: e.target.value })}
                     placeholder="+91 98200 00000"
-                    className="w-full px-3 py-2 text-sm rounded-lg border border-neutral-300 focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:border-emerald-600"
+                    className="w-full px-3 py-2 text-xs sm:text-sm rounded-lg border border-neutral-300 focus:outline-none focus:ring-2 focus:ring-emerald-600 bg-neutral-50/60"
                   />
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {/* Service & Target Standard */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                 <div>
-                  <label className="block text-xs font-semibold text-neutral-700 mb-1">
-                    Service of Interest
+                  <label className="block text-xs font-bold text-neutral-800 mb-1">
+                    Primary Service Requirement
                   </label>
                   <select
                     value={formData.serviceId}
                     onChange={e => setFormData({ ...formData, serviceId: e.target.value })}
-                    className="w-full px-3 py-2 text-sm rounded-lg border border-neutral-300 bg-white focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:border-emerald-600"
+                    className="w-full px-3 py-2 text-xs sm:text-sm rounded-lg border border-neutral-300 bg-white focus:outline-none focus:ring-2 focus:ring-emerald-600 cursor-pointer"
                   >
                     <option value="">Select a service category...</option>
                     {services.map(s => (
@@ -249,35 +262,36 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-neutral-700 mb-1">
-                    Target Standard / Protocol <span className="text-neutral-400 font-normal">(Optional)</span>
+                  <label className="block text-xs font-bold text-neutral-800 mb-1">
+                    Target Standard <span className="text-neutral-400 font-normal">(Optional)</span>
                   </label>
                   <input
                     type="text"
                     value={formData.auditStandard}
                     onChange={e => setFormData({ ...formData, auditStandard: e.target.value })}
-                    placeholder="e.g. BRCGS, FSSC 22000, HACCP, FSSAI"
-                    className="w-full px-3 py-2 text-sm rounded-lg border border-neutral-300 focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:border-emerald-600"
+                    placeholder="e.g. FSSAI, ISO 22000, BRCGS, HACCP"
+                    className="w-full px-3 py-2 text-xs sm:text-sm rounded-lg border border-neutral-300 focus:outline-none focus:ring-2 focus:ring-emerald-600 bg-neutral-50/60"
                   />
                 </div>
               </div>
 
+              {/* Message / Scope */}
               <div>
-                <label className="block text-xs font-semibold text-neutral-700 mb-1">
-                  Facility Context & Key Requirements
+                <label className="block text-xs font-bold text-neutral-800 mb-1">
+                  Facility Context &amp; Key Requirements
                 </label>
                 <textarea
-                  rows={3}
+                  rows={2}
                   value={formData.message}
                   onChange={e => setFormData({ ...formData, message: e.target.value })}
-                  placeholder="Tell us about your processing lines, upcoming audit schedule, or specific compliance gaps..."
-                  className="w-full px-3 py-2 text-sm rounded-lg border border-neutral-300 focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:border-emerald-600 resize-none"
+                  placeholder="Describe your processing line, upcoming audit schedule, or specific compliance gaps..."
+                  className="w-full px-3 py-2 text-xs sm:text-sm rounded-lg border border-neutral-300 focus:outline-none focus:ring-2 focus:ring-emerald-600 bg-neutral-50/60 resize-none"
                 />
               </div>
 
               {/* Preferred Contact Method */}
-              <div className="flex items-center gap-6 pt-1 text-xs">
-                <span className="font-semibold text-neutral-700">Preferred Response:</span>
+              <div className="flex flex-wrap items-center gap-4 text-xs pt-0.5">
+                <span className="font-bold text-neutral-800">Preferred Response:</span>
                 <label className="inline-flex items-center gap-1.5 cursor-pointer">
                   <input
                     type="radio"
@@ -311,7 +325,7 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
               </div>
 
               {/* Privacy Notice Checkbox */}
-              <div className="pt-2">
+              <div className="pt-1">
                 <label className="flex items-start gap-2.5 cursor-pointer">
                   <input
                     type="checkbox"
@@ -320,43 +334,45 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
                     onChange={e => setFormData({ ...formData, privacyAcknowledged: e.target.checked })}
                     className="mt-0.5 rounded text-[#062E21] focus:ring-emerald-600"
                   />
-                  <span className="text-xs text-neutral-500 leading-snug">
-                    I acknowledge that ESSOR Compliance Solutions provides independent food-safety consulting and audit preparation support, and I agree to have my business enquiry processed in accordance with the privacy policy.
+                  <span className="text-[11px] text-neutral-600 leading-snug">
+                    I acknowledge that ESSOR Compliance Solutions provides independent food safety consulting and audit preparation, and I agree to have my business enquiry processed in accordance with the privacy policy.
                   </span>
                 </label>
               </div>
 
-              {/* Action buttons */}
-              <div className="pt-3 flex items-center justify-end gap-3 border-t border-neutral-100">
-                <button
-                  type="button"
-                  onClick={onClose}
-                  className="px-4 py-2 text-xs font-semibold uppercase tracking-wider text-neutral-600 hover:text-neutral-900 transition-colors cursor-pointer"
-                >
-                  Cancel
-                </button>
+            </div>
 
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="inline-flex items-center gap-2 px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-white bg-gradient-to-r from-[#062E21] via-[#0E5C3A] to-[#15803D] hover:from-[#042419] hover:via-[#0B4A2F] hover:to-[#166534] active:scale-[0.98] rounded-xl transition-all shadow-md shadow-emerald-950/20 ring-1 ring-emerald-400/30 disabled:opacity-50 cursor-pointer"
-                >
-                  {isSubmitting ? (
-                    <>
-                      <Loader2 className="w-4 h-4 animate-spin" />
-                      <span>Registering...</span>
-                    </>
-                  ) : (
-                    <>
-                      <span>Submit Requirement</span>
-                      <ArrowRight className="w-3.5 h-3.5" />
-                    </>
-                  )}
-                </button>
-              </div>
-            </form>
-          )}
-        </div>
+            {/* Sticky Action Footer - Always visible on screen */}
+            <div className="shrink-0 px-4 py-3 sm:px-6 sm:py-3.5 bg-neutral-50/95 border-t border-neutral-200 flex items-center justify-end gap-2.5 sm:gap-3">
+              <button
+                type="button"
+                onClick={onClose}
+                className="px-4 py-2 text-xs font-bold uppercase tracking-wider text-neutral-600 hover:text-neutral-900 transition-colors cursor-pointer"
+              >
+                Cancel
+              </button>
+
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="inline-flex items-center gap-2 px-5 py-2.5 text-xs sm:text-sm font-bold uppercase tracking-wider text-white bg-gradient-to-r from-[#062E21] via-[#0E5C3A] to-[#15803D] hover:from-[#042419] hover:via-[#0B4A2F] hover:to-[#166534] active:scale-[0.98] rounded-xl transition-all shadow-md shadow-emerald-950/20 ring-1 ring-emerald-400/30 disabled:opacity-50 cursor-pointer"
+              >
+                {isSubmitting ? (
+                  <>
+                    <Loader2 className="w-4 h-4 animate-spin" />
+                    <span>Registering...</span>
+                  </>
+                ) : (
+                  <>
+                    <span>Submit Requirement</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </>
+                )}
+              </button>
+            </div>
+
+          </form>
+        )}
       </div>
     </div>
   );

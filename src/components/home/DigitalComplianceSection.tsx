@@ -154,12 +154,15 @@ export const DigitalComplianceSection: React.FC<DigitalComplianceSectionProps> =
           </div>
 
           <div ref={tabletImageRef} className="lg:col-span-6">
-            <div className="rounded-2xl overflow-hidden border border-emerald-900/15 shadow-2xl bg-white group ring-1 ring-emerald-500/20 hover:ring-emerald-500/60 transition-all duration-500">
-        <img
-  src={dashboardImage}
-  alt="Digital food safety compliance dashboard on tablet"
-  className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
-/>
+            <div className="rounded-2xl overflow-hidden border border-emerald-900/15 shadow-2xl bg-[#062E21] group ring-1 ring-emerald-500/20 hover:ring-emerald-500/60 transition-all duration-500">
+              <div className="aspect-[16/10] relative overflow-hidden bg-emerald-950/40">
+                <img
+                  src={dashboardImage}
+                  alt="Digital food safety compliance dashboard on tablet"
+                  className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                  loading="lazy"
+                />
+              </div>
             </div>
           </div>
 

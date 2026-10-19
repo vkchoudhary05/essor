@@ -1,7 +1,12 @@
 import React, { useState, useMemo } from 'react';
-import { Search, BookOpen, Clock, Users, ArrowRight, CheckCircle2, ChevronRight, X, Sparkles, Microscope } from 'lucide-react';
+import { Search, BookOpen, Clock, Users, ArrowRight, CheckCircle2, ChevronRight, X, Sparkles, Microscope, Award, ExternalLink } from 'lucide-react';
 import { TrainingCourse } from '../../types';
 import { Logo } from '../common/Logo';
+
+// Direct imports for reliable Vite live bundling
+import seminarImage from '../../assets/images/corporate_training_seminar_1792395440966.jpg';
+import labImage from '../../assets/images/food_factory_lab_testing_1791965811882.jpg';
+import certSampleImage from '../../assets/images/training_certificate_sample_1792302193039.jpg';
 
 interface TrainingPageProps {
   courses: TrainingCourse[];
@@ -37,47 +42,64 @@ export const TrainingPage: React.FC<TrainingPageProps> = ({
   }, [courses, searchTerm, selectedCategory]);
 
   return (
-    <div className="w-full bg-[#F8FAFC]">
+    <div className="w-full bg-[#F8FAF9]">
       
       {/* Header Banner */}
       <section className="py-16 sm:py-20 bg-white border-b border-emerald-900/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl space-y-4">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-xs font-bold uppercase tracking-wider text-emerald-900">
-              <Sparkles className="w-3.5 h-3.5 text-emerald-600" />
-              <span>Training & Capability Academy</span>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center text-left">
+            <div className="lg:col-span-7 space-y-4">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-xs font-bold uppercase tracking-wider text-[#2E7D32]">
+                <Sparkles className="w-3.5 h-3.5 text-[#2E7D32]" />
+                <span>ESSOR Capability Academy</span>
+              </div>
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-neutral-900 tracking-tight leading-tight">
+                Build Competence Across Your{' '}
+                <span className="text-[#2E7D32]">
+                  Food Processing Team.
+                </span>
+              </h1>
+              <p className="text-xs font-black tracking-widest uppercase text-neutral-900">
+                SIMPLIFYING COMPLIANCE. STRENGTHENING FOOD SAFETY. BUILDING TRUST.
+              </p>
+              <p className="text-base sm:text-lg text-neutral-600 leading-relaxed font-normal">
+                Our training programs are designed specially to handle organizational personnel development and job-oriented competence enhancement. 100% customized to your plant needs, delivered with interactive presentations, mock audits, assignments, and examinations.
+              </p>
             </div>
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#062E21] tracking-tight leading-tight">
-              Build capability across your{' '}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#062E21] via-[#0E5C3A] to-[#16A34A]">
-                food processing team.
-              </span>
-            </h1>
-            <p className="text-base sm:text-lg text-neutral-600 leading-relaxed font-normal">
-              Practical programs designed to strengthen awareness, technical knowledge and day-to-day food-safety capability across manufacturing, operations, and quality management personnel.
-            </p>
+
+            {/* Seminar Image Preview */}
+            <div className="lg:col-span-5 rounded-2xl overflow-hidden shadow-xl border border-neutral-200 group">
+              <img
+                src={seminarImage}
+                alt="Food safety compliance corporate training workshop seminar in professional classroom"
+                className="w-full h-72 sm:h-80 object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+              <div className="p-3 bg-[#042A1D] text-white flex items-center justify-between text-xs">
+                <span className="font-bold">Accredited Corporate Seminars &amp; Floor Workshops</span>
+                <span className="text-[#4ADE80] font-mono">16+ Modules</span>
+              </div>
+            </div>
           </div>
 
           {/* Delivery Modes Strip */}
-          <div className="mt-8 p-4 rounded-xl bg-[#F8FAFC] border border-emerald-900/10 flex flex-wrap items-center justify-between gap-4 text-xs">
-            <div className="flex items-center gap-2 font-bold text-[#062E21] uppercase tracking-wider">
+          <div className="mt-8 p-4 rounded-xl bg-[#F8FAF9] border border-neutral-200 flex flex-wrap items-center justify-between gap-4 text-xs">
+            <div className="flex items-center gap-2 font-bold text-neutral-900 uppercase tracking-wider">
               <Logo variant="icon-only" size="sm" className="w-4 h-4" />
-              <span>Training Delivery Modes:</span>
+              <span>Training Delivery Formats:</span>
             </div>
             <div className="flex flex-wrap items-center gap-2 sm:gap-3 text-neutral-700 font-semibold">
-              <span className="px-3 py-1 rounded-lg bg-white border border-emerald-900/10 shadow-2xs">Open-enrolment</span>
-              <span className="px-3 py-1 rounded-lg bg-white border border-emerald-900/10 shadow-2xs">College & Student programs</span>
-              <span className="px-3 py-1 rounded-lg bg-white border border-emerald-900/10 shadow-2xs">On-site Corporate</span>
-              <span className="px-3 py-1 rounded-lg bg-white border border-emerald-900/10 shadow-2xs">Virtual Interactive</span>
-              <span className="px-3 py-1 rounded-lg bg-white border border-emerald-900/10 shadow-2xs">Customized Client Curriculum</span>
+              <span className="px-3 py-1 rounded-lg bg-white border border-neutral-200 shadow-2xs">On-Site Factory Floor</span>
+              <span className="px-3 py-1 rounded-lg bg-white border border-neutral-200 shadow-2xs">Corporate Meeting Room</span>
+              <span className="px-3 py-1 rounded-lg bg-white border border-neutral-200 shadow-2xs">Live Virtual Interactive</span>
+              <span className="px-3 py-1 rounded-lg bg-white border border-neutral-200 shadow-2xs">Open-Enrolment Batches</span>
             </div>
           </div>
         </div>
       </section>
 
       {/* Filter and Search Bar */}
-      <section className="py-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4 pb-6 border-b border-emerald-900/10">
+      <section className="py-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-left">
+        <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4 pb-6 border-b border-neutral-200">
           
           {/* Search Input */}
           <div className="relative w-full md:w-80">
@@ -87,7 +109,7 @@ export const TrainingPage: React.FC<TrainingPageProps> = ({
               value={searchTerm}
               onChange={e => setSearchTerm(e.target.value)}
               placeholder="Search training subjects or keywords..."
-              className="w-full pl-10 pr-4 py-2.5 text-xs rounded-xl border border-neutral-300 bg-white focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:border-emerald-600 shadow-2xs"
+              className="w-full pl-10 pr-4 py-2.5 text-xs rounded-xl border border-neutral-300 bg-white focus:outline-none focus:ring-2 focus:ring-[#2E7D32] shadow-2xs"
             />
           </div>
 
@@ -99,8 +121,8 @@ export const TrainingPage: React.FC<TrainingPageProps> = ({
                 onClick={() => setSelectedCategory(cat)}
                 className={`px-3 py-1.5 text-xs font-bold rounded-lg transition-all cursor-pointer whitespace-nowrap shrink-0 ${
                   selectedCategory === cat
-                    ? 'bg-[#062E21] text-white shadow-xs'
-                    : 'text-neutral-600 hover:text-[#062E21]'
+                    ? 'bg-[#042A1D] text-white shadow-xs'
+                    : 'text-neutral-600 hover:text-neutral-900'
                 }`}
               >
                 {cat === 'ALL' ? 'All Subjects' : cat}
@@ -112,7 +134,7 @@ export const TrainingPage: React.FC<TrainingPageProps> = ({
 
         {/* Results Count */}
         <div className="pt-4 text-xs text-neutral-500 font-medium">
-          Showing <span className="font-mono font-bold text-emerald-800">{filteredCourses.length}</span> programs matching criteria
+          Showing <span className="font-mono font-bold text-[#2E7D32]">{filteredCourses.length}</span> programs matching criteria
         </div>
 
         {/* Catalogue Grid */}
@@ -120,11 +142,11 @@ export const TrainingPage: React.FC<TrainingPageProps> = ({
           {filteredCourses.map((course) => (
             <div
               key={course.id}
-              className="p-6 rounded-2xl bg-white border border-emerald-900/10 shadow-xs hover:border-emerald-500 hover:shadow-xl transition-all duration-300 flex flex-col justify-between group hover:-translate-y-1"
+              className="p-6 rounded-2xl bg-white border border-neutral-200 shadow-xs hover:border-[#2E7D32] hover:shadow-xl transition-all duration-300 flex flex-col justify-between group hover:-translate-y-1"
             >
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
-                  <span className="text-[11px] font-bold uppercase tracking-wider text-emerald-800 px-2 py-0.5 rounded bg-emerald-50 border border-emerald-200">
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-[#2E7D32] px-2 py-0.5 rounded bg-emerald-50 border border-emerald-200">
                     {course.category}
                   </span>
                   {course.duration && (
@@ -134,138 +156,145 @@ export const TrainingPage: React.FC<TrainingPageProps> = ({
                   )}
                 </div>
 
-                <h3 className="text-base font-bold text-[#062E21] group-hover:text-emerald-700 transition-colors">
+                <h3 className="text-base font-bold text-neutral-900 group-hover:text-[#2E7D32] transition-colors leading-snug">
                   {course.title}
                 </h3>
 
-                <p className="text-xs text-neutral-600 leading-relaxed font-normal">
+                <p className="text-xs text-neutral-600 line-clamp-2 leading-relaxed">
                   {course.summary}
                 </p>
 
+                {/* Key Topics Tags */}
                 <div className="pt-2">
-                  <span className="text-[11px] font-bold uppercase tracking-wider text-neutral-700 block mb-1">
-                    Key Topics Covered:
+                  <span className="text-[10px] uppercase font-bold text-neutral-500 block mb-1">
+                    Core Modules Covered:
                   </span>
-                  <ul className="space-y-1">
+                  <div className="flex flex-wrap gap-1">
                     {course.keyTopics.slice(0, 3).map((topic, tIdx) => (
-                      <li key={tIdx} className="text-[11px] text-neutral-600 flex items-start gap-1.5 font-normal">
-                        <span className="text-emerald-600 font-bold">·</span>
-                        <span className="line-clamp-1">{topic}</span>
-                      </li>
+                      <span key={tIdx} className="px-2 py-0.5 text-[11px] rounded bg-neutral-100 text-neutral-700">
+                        {topic}
+                      </span>
                     ))}
-                  </ul>
+                    {course.keyTopics.length > 3 && (
+                      <span className="px-1.5 py-0.5 text-[10px] text-neutral-500 font-medium">
+                        +{course.keyTopics.length - 3} more
+                      </span>
+                    )}
+                  </div>
                 </div>
               </div>
 
-              <div className="pt-5 mt-4 border-t border-emerald-900/10 flex items-center justify-between">
+              <div className="pt-4 mt-4 border-t border-neutral-100 flex items-center justify-between gap-2">
                 <button
                   onClick={() => setSelectedCourseModal(course)}
-                  className="text-xs font-bold text-[#062E21] hover:text-emerald-700 transition-colors cursor-pointer"
+                  className="inline-flex items-center gap-1 text-xs font-bold text-neutral-900 hover:text-[#2E7D32] transition-colors cursor-pointer"
                 >
-                  Full Syllabus
+                  <span>Syllabus</span>
+                  <ChevronRight className="w-3.5 h-3.5 text-[#2E7D32]" />
                 </button>
 
                 <button
-                  onClick={() => onOpenEnquiry(`Training: ${course.title}`)}
-                  className="px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider text-white bg-gradient-to-r from-[#062E21] via-[#0E5C3A] to-[#15803D] hover:from-[#042419] hover:via-[#0B4A2F] hover:to-[#166534] active:scale-[0.98] rounded-xl transition-all shadow-md shadow-emerald-950/20 ring-1 ring-emerald-400/30 cursor-pointer"
+                  onClick={() => onOpenEnquiry(course.title)}
+                  className="px-3.5 py-1.5 rounded-lg bg-[#2E7D32] hover:bg-[#256629] text-xs font-bold text-white transition-all cursor-pointer shadow-2xs active:scale-95"
                 >
-                  Request Quote
+                  Enrol Team
                 </button>
               </div>
             </div>
           ))}
         </div>
 
-        {filteredCourses.length === 0 && (
-          <div className="py-16 text-center space-y-3">
-            <p className="text-sm font-semibold text-neutral-700">No training courses matched your filter.</p>
-            <button
-              onClick={() => { setSearchTerm(''); setSelectedCategory('ALL'); }}
-              className="text-xs font-bold text-emerald-700 underline cursor-pointer"
-            >
-              Reset filters
-            </button>
+        {/* Verifiable Certificate Banner with Sample Image */}
+        <div className="mt-16 rounded-2xl overflow-hidden border border-neutral-200 bg-white shadow-xl grid grid-cols-1 lg:grid-cols-12 items-center">
+          <div className="lg:col-span-5 p-4 sm:p-6 bg-neutral-900 flex items-center justify-center">
+            <img
+              src={certSampleImage}
+              alt="Verifiable Training Certificate Sample"
+              className="w-full h-auto max-h-72 object-contain rounded-lg shadow-md"
+            />
           </div>
-        )}
+          <div className="lg:col-span-7 p-6 sm:p-8 space-y-3">
+            <span className="text-xs font-bold uppercase tracking-wider text-[#2E7D32] flex items-center gap-1.5">
+              <Award className="w-4 h-4 text-[#2E7D32]" />
+              <span>Official Verifiable Credentials</span>
+            </span>
+            <h3 className="text-xl sm:text-2xl font-bold text-neutral-900">
+              Every Participant Receives an Anti-Tamper QR Certificate
+            </h3>
+            <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed">
+              Auditors and regulatory inspectors can instantly verify certificates online by scanning the QR code or searching our public registry.
+            </p>
+            <div className="pt-2 flex flex-wrap gap-3">
+              <button
+                type="button"
+                onClick={() => onNavigate('/verify-certificate?cert=ECSFSM-LA241116')}
+                className="px-5 py-2.5 rounded-xl bg-[#042A1D] hover:bg-[#2E7D32] text-white text-xs font-bold uppercase tracking-wider transition-all cursor-pointer shadow-sm"
+              >
+                Test Verification (Sample)
+              </button>
+              <button
+                type="button"
+                onClick={() => onOpenEnquiry('Corporate Training')}
+                className="px-5 py-2.5 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-[#2E7D32] text-xs font-bold uppercase tracking-wider border border-emerald-300 transition-all cursor-pointer"
+              >
+                Request Custom Batch
+              </button>
+            </div>
+          </div>
+        </div>
+
       </section>
 
-      {/* Detailed Course Syllabus Modal */}
+      {/* Course Modal */}
       {selectedCourseModal && (
-        <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="bg-white max-w-xl w-full rounded-2xl shadow-2xl border border-emerald-900/15 overflow-hidden animate-in fade-in zoom-in-95 duration-200">
-            <div className="p-6 bg-[#062E21] text-white flex items-start justify-between border-b border-emerald-800/40">
+        <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-center justify-center p-4">
+          <div className="bg-white rounded-2xl max-w-lg w-full p-6 space-y-4 max-h-[90vh] overflow-y-auto text-left">
+            <div className="flex items-start justify-between">
               <div>
-                <span className="text-[11px] font-bold uppercase tracking-wider text-emerald-300">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-[#2E7D32]">
                   {selectedCourseModal.category}
                 </span>
-                <h3 className="text-xl font-bold text-white mt-1">
+                <h3 className="text-lg font-bold text-neutral-900 mt-1">
                   {selectedCourseModal.title}
                 </h3>
               </div>
               <button
                 onClick={() => setSelectedCourseModal(null)}
-                className="text-emerald-300 hover:text-white p-1 rounded-lg hover:bg-white/10 transition-colors cursor-pointer"
-                aria-label="Close"
+                className="p-1 rounded-lg hover:bg-neutral-100 text-neutral-400 hover:text-neutral-700 cursor-pointer"
               >
                 <X className="w-5 h-5" />
               </button>
             </div>
 
-            <div className="p-6 space-y-4 max-h-[70vh] overflow-y-auto">
-              <div>
-                <h4 className="text-xs font-bold uppercase tracking-wider text-neutral-500 mb-1">
-                  Target Audience
-                </h4>
-                <p className="text-xs text-neutral-800 leading-relaxed font-normal">
-                  {selectedCourseModal.targetAudience}
-                </p>
-              </div>
+            <p className="text-xs text-neutral-600 leading-relaxed">
+              {selectedCourseModal.summary}
+            </p>
 
-              <div>
-                <h4 className="text-xs font-bold uppercase tracking-wider text-neutral-500 mb-2">
-                  Complete Curriculum Highlights
-                </h4>
-                <div className="space-y-2">
-                  {selectedCourseModal.keyTopics.map((topic, i) => (
-                    <div key={i} className="flex items-start gap-2 text-xs text-neutral-700 p-2.5 rounded-xl bg-[#F8FAFC] border border-emerald-900/10">
-                      <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
-                      <span>{topic}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <div>
-                <h4 className="text-xs font-bold uppercase tracking-wider text-neutral-500 mb-2">
-                  Supported Delivery Modes
-                </h4>
-                <div className="flex flex-wrap gap-1.5">
-                  {selectedCourseModal.deliveryModes.map((mode, i) => (
-                    <span key={i} className="px-2.5 py-1 text-[11px] font-bold bg-emerald-50 text-emerald-900 border border-emerald-200 rounded-lg">
-                      {mode}
-                    </span>
-                  ))}
-                </div>
-              </div>
+            <div className="space-y-2 pt-2 border-t border-neutral-100">
+              <span className="text-xs font-bold uppercase text-neutral-900">Topics Covered:</span>
+              <ul className="space-y-1.5">
+                {selectedCourseModal.keyTopics.map((top, idx) => (
+                  <li key={idx} className="text-xs text-neutral-700 flex items-start gap-2">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-[#2E7D32] shrink-0 mt-0.5" />
+                    <span>{top}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
 
-            <div className="p-4 bg-[#F8FAFC] border-t border-emerald-900/10 flex items-center justify-between">
-              <button
-                onClick={() => setSelectedCourseModal(null)}
-                className="text-xs font-bold text-neutral-600 hover:text-neutral-900 cursor-pointer"
-              >
-                Close
-              </button>
-
+            <div className="pt-4 border-t border-neutral-100 flex items-center justify-between gap-3">
+              <span className="text-xs font-mono text-neutral-500 font-bold">
+                Duration: {selectedCourseModal.duration}
+              </span>
               <button
                 onClick={() => {
                   const title = selectedCourseModal.title;
                   setSelectedCourseModal(null);
-                  onOpenEnquiry(`Training: ${title}`);
+                  onOpenEnquiry(title);
                 }}
-                className="px-4 py-2 text-xs font-bold uppercase tracking-wider text-white bg-gradient-to-r from-[#062E21] via-[#0E5C3A] to-[#15803D] hover:from-[#042419] hover:via-[#0B4A2F] hover:to-[#166534] active:scale-[0.98] rounded-xl transition-all shadow-md shadow-emerald-950/20 ring-1 ring-emerald-400/30 cursor-pointer"
+                className="px-5 py-2.5 rounded-xl bg-[#2E7D32] hover:bg-[#256629] text-white text-xs font-bold uppercase tracking-wider cursor-pointer shadow-sm"
               >
-                Request Quotation for Team
+                Enquire For My Facility
               </button>
             </div>
           </div>

@@ -62,12 +62,18 @@ export function useSmoothScroll() {
     gsap.ticker.add(tickerCallback);
     gsap.ticker.lagSmoothing(0);
 
-    // Refresh ScrollTrigger calculations after initial layout rendering
-    const timer = setTimeout(() => {
+    // Refresh ScrollTrigger calculations after initial layout and image loading
+    const timer1 = setTimeout(() => {
       ScrollTrigger.refresh();
-    }, 250);
+    }, 200);
+
+    const timer2 = setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 700);
 
     return () => {
+      clearTimeout(timer1);
+      clearTimeout(timer2);
       gsap.ticker.remove(tickerCallback);
       lenis.destroy();
       globalLenisInstance = null;
