@@ -4,28 +4,40 @@ import { Award, ShieldCheck } from 'lucide-react';
 
 export const StandardsMarquee: React.FC = () => {
   return (
-    <section className="py-8 bg-[#F8FAF9] border-b border-emerald-900/10 relative overflow-hidden">
+    <section className="py-12 sm:py-16 bg-[#F8FAF9] border-b border-emerald-900/10 relative overflow-hidden">
+      <div className="absolute -right-20 -top-24 w-72 h-72 rounded-full bg-emerald-200/25 blur-3xl pointer-events-none" />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-5 border-b border-neutral-200 pb-3">
-          <div className="flex items-center gap-2">
+        <div className="relative mx-auto max-w-3xl text-center mb-8">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-emerald-200 shadow-2xs">
             <Award className="w-4 h-4 text-[#3E7D25]" />
-            <span className="text-xs font-black tracking-widest uppercase text-neutral-900">
-              Audit Standards &amp; Certifications Supported (From Brochure Page 2)
+            <span className="text-[11px] font-black tracking-widest uppercase text-[#3E7D25]">
+              Standards We Support
             </span>
           </div>
-          <span className="text-[11px] font-semibold text-neutral-500">
+          <h2 className="mt-3 text-2xl sm:text-3xl font-extrabold tracking-tight text-neutral-900">
+            Audit Standards &amp; Certifications Supported
+          </h2>
+          <p className="mt-2 text-sm font-semibold text-neutral-500">
             GFSI Benchmarked · ISO Schemes · Halal &amp; Kosher · US FDA FSMA
-          </span>
+          </p>
         </div>
 
-        <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 xl:grid-cols-7 gap-3 relative">
           {STANDARDS_BADGES.map((std) => (
             <div
               key={std.name}
-              className="px-3.5 py-1.5 rounded-xl bg-white border border-neutral-200 text-xs font-bold text-neutral-900 shadow-2xs hover:border-[#3E7D25] hover:bg-emerald-50/50 transition-all flex items-center gap-2"
+              className="group min-h-28 p-3.5 rounded-2xl bg-white border border-neutral-200 text-xs font-bold text-neutral-900 shadow-2xs hover:-translate-y-1 hover:border-[#3E7D25] hover:shadow-lg transition-all flex flex-col justify-between"
             >
-              <div className="w-2 h-2 rounded-full bg-[#3E7D25]" />
-              <span>{std.name}</span>
+              <div className="flex items-start justify-between gap-2">
+                <div className="w-9 h-9 rounded-xl bg-emerald-100 text-[#3E7D25] flex items-center justify-center text-[10px] font-black tracking-tighter">
+                  {std.name.replace(/[^A-Z0-9]/g, '').slice(0, 4)}
+                </div>
+                <ShieldCheck className="w-4 h-4 text-neutral-200 group-hover:text-[#3E7D25] transition-colors" />
+              </div>
+              <div className="pt-3">
+                <span className="block leading-tight">{std.name}</span>
+                <span className="mt-1 block text-[9px] font-bold uppercase tracking-wider text-neutral-400">{std.category}</span>
+              </div>
             </div>
           ))}
         </div>

@@ -54,16 +54,16 @@ export const TrainingPage: React.FC<TrainingPageProps> = ({
                 <span>ESSOR Capability Academy</span>
               </div>
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-neutral-900 tracking-tight leading-tight">
-                Build Competence Across Your{' '}
+                Build Food Safety Skills for{' '}
                 <span className="text-[#3E7D25]">
-                  Food Processing Team.
+                  Teams &amp; Future Professionals.
                 </span>
               </h1>
               <p className="text-xs font-black tracking-widest uppercase text-neutral-900">
                 SIMPLIFYING COMPLIANCE. STRENGTHENING FOOD SAFETY. BUILDING TRUST.
               </p>
               <p className="text-base sm:text-lg text-neutral-600 leading-relaxed font-normal">
-                Our training programs are designed specially to handle organizational personnel development and job-oriented competence enhancement. 100% customized to your plant needs, delivered with interactive presentations, mock audits, assignments, and examinations.
+                Practical learning for food-industry teams, students, graduates, and early-career professionals. Choose a job-oriented open batch or a program customized to your plant, with interactive presentations, mock audits, assignments, and examinations.
               </p>
             </div>
 
@@ -75,7 +75,7 @@ export const TrainingPage: React.FC<TrainingPageProps> = ({
                 className="w-full h-72 sm:h-80 object-cover transition-transform duration-500 group-hover:scale-105"
               />
               <div className="p-3 bg-[#012B53] text-white flex items-center justify-between text-xs">
-                <span className="font-bold">Accredited Corporate Seminars &amp; Floor Workshops</span>
+                <span className="font-bold">Corporate, Student &amp; Professional Learning Batches</span>
                 <span className="text-[#A4D65E] font-mono">16+ Modules</span>
               </div>
             </div>
@@ -92,6 +92,7 @@ export const TrainingPage: React.FC<TrainingPageProps> = ({
               <span className="px-3 py-1 rounded-lg bg-white border border-neutral-200 shadow-2xs">Corporate Meeting Room</span>
               <span className="px-3 py-1 rounded-lg bg-white border border-neutral-200 shadow-2xs">Live Virtual Interactive</span>
               <span className="px-3 py-1 rounded-lg bg-white border border-neutral-200 shadow-2xs">Open-Enrolment Batches</span>
+              <span className="px-3 py-1 rounded-lg bg-white border border-neutral-200 shadow-2xs">Student &amp; Graduate Batches</span>
             </div>
           </div>
         </div>
@@ -197,7 +198,7 @@ export const TrainingPage: React.FC<TrainingPageProps> = ({
                   onClick={() => onOpenEnquiry(course.title)}
                   className="px-3.5 py-1.5 rounded-lg bg-[#3E7D25] hover:bg-[#256629] text-xs font-bold text-white transition-all cursor-pointer shadow-2xs active:scale-95"
                 >
-                  Enrol Team
+                  Enrol Now
                 </button>
               </div>
             </div>

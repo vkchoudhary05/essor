@@ -65,7 +65,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenEnquiry }) => 
                 SIMPLIFYING COMPLIANCE. STRENGTHENING FOOD SAFETY. BUILDING TRUST.
               </p>
               <p className="text-white text-sm leading-relaxed font-normal">
-                Your trusted partner in food safety consulting, certification readiness, mock audits, and certified capability development across factory floor operations.
+                Food safety consulting, audit readiness, and career-focused learning for food businesses, staff, students, and professionals across India.
               </p>
             </div>
 
@@ -74,7 +74,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenEnquiry }) => 
                 <ShieldCheck className="w-4 h-4 text-[#A4D65E]" />
                 <span>Compliance For A Safer Tomorrow</span>
               </div>
-              <p className="text-[12px] text-white/80 leading-normal">
+              <p className="text-[12px] text-white/95 leading-normal">
                 FSSC 22000 · ISO 22000 · BRCGS · HACCP · GMP · ISO 9001 · Halal · Kosher · Non-GMO
               </p>
             </div>
@@ -162,7 +162,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenEnquiry }) => 
             <h4 className="text-xs font-black tracking-widest uppercase text-white border-b border-white/15 pb-2">
               Audits &amp; Schemes
             </h4>
-            <ul className="space-y-2 text-xs text-white/90 font-medium">
+            <ul className="space-y-2 text-xs text-white font-medium">
               <li>• ISO 22000 Food Safety</li>
               <li>• FSSC 22000 Version 7</li>
               <li>• BRCGS Food Safety Issue 9</li>
@@ -187,7 +187,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenEnquiry }) => 
                 <MapPin className="w-4 h-4 text-[#A4D65E] shrink-0 mt-0.5" />
                 <div>
                   <span className="font-bold text-white block">ESSOR Compliance Solutions</span>
-                  <span className="text-white/90 leading-relaxed block font-medium">
+                  <span className="text-white leading-relaxed block font-medium">
                     Doon IT Park, Sahastradhara Road, Dehradun, Uttarakhand, India
                   </span>
                 </div>
@@ -197,7 +197,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenEnquiry }) => 
                 <div className="flex items-center gap-2.5">
                   <Phone className="w-4 h-4 text-[#A4D65E] shrink-0" />
                   <div>
-                    <span className="text-[10px] uppercase font-bold text-white/70 block">Direct Telephone:</span>
+                    <span className="text-[10px] uppercase font-bold text-white/90 block">Direct Telephone:</span>
                     <a 
                       href="tel:+916395843850" 
                       className="text-white font-black hover:text-[#A4D65E] transition-colors text-sm"
@@ -210,7 +210,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenEnquiry }) => 
                 <div className="flex items-start gap-2.5 pt-1">
                   <Mail className="w-4 h-4 text-[#A4D65E] shrink-0 mt-0.5" />
                   <div>
-                    <span className="text-[10px] uppercase font-bold text-white/70 block">Official Business Email:</span>
+                    <span className="text-[10px] uppercase font-bold text-white/90 block">Official Business Email:</span>
                     <a 
                       href="mailto:business@essorcompliance.com" 
                       className="text-white hover:text-[#A4D65E] transition-colors font-bold break-all"
@@ -223,7 +223,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenEnquiry }) => 
                 <div className="flex items-center gap-2.5 pt-1">
                   <ExternalLink className="w-4 h-4 text-[#A4D65E] shrink-0" />
                   <div>
-                    <span className="text-[10px] uppercase font-bold text-white/70 block">Official Website:</span>
+                    <span className="text-[10px] uppercase font-bold text-white/90 block">Official Website:</span>
                     <span className="text-white font-medium">
                       www.essorcompliance.com
                     </span>

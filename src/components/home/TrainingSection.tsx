@@ -128,10 +128,10 @@ export const TrainingSection: React.FC<TrainingSectionProps> = ({
               <span>Training &amp; Capability Academy</span>
             </div>
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-neutral-900 tracking-tight leading-tight">
-              Build Food Safety Capability Across Your Plant
+              Build Food Safety Skills for Teams &amp; Students
             </h2>
             <p className="text-base text-neutral-600 mt-2 font-normal max-w-2xl">
-              100% customized programs delivered with class presentations, mock audits, practical floor exercises, role play, and examinations with verifiable certificates.
+              Practical, job-oriented learning for plant teams, students, graduates, and early-career food professionals—delivered through class presentations, mock audits, floor exercises, role play, and examinations.
             </p>
           </div>
 
@@ -154,7 +154,7 @@ export const TrainingSection: React.FC<TrainingSectionProps> = ({
             />
             <div className="absolute top-4 left-4">
               <span className="px-3 py-1 rounded-full bg-[#012B53]/90 text-white text-[11px] font-bold uppercase tracking-wider backdrop-blur-xs shadow-md">
-                Interactive Factory &amp; Corporate Workshops
+                Corporate, Student &amp; Professional Workshops
               </span>
             </div>
           </div>
@@ -162,13 +162,13 @@ export const TrainingSection: React.FC<TrainingSectionProps> = ({
           <div className="lg:col-span-5 p-6 sm:p-8 space-y-4 text-left">
             <span className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#3E7D25]">
               <Users className="w-4 h-4 text-[#3E7D25]" />
-              Workforce Competence Enhancement
+              Workforce &amp; Student Learning
             </span>
             <h3 className="text-xl sm:text-2xl font-bold text-neutral-900 tracking-tight">
-              Practical Training Delivered On Your Schedule
+              Practical Training for Teams, Students &amp; Future Professionals
             </h3>
             <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed font-normal">
-              From machine operators to quality managers, our lead tutors equip your personnel with practical skills to spot hazards, enforce CCP limits, conduct internal audits, and maintain spotless hygiene records.
+              From machine operators and quality managers to students and recent graduates, our lead tutors build practical skills to spot hazards, understand CCP limits, conduct internal audits, and maintain hygiene records.
             </p>
 
             <div className="space-y-2 pt-1 text-xs text-neutral-700 font-medium">
@@ -191,7 +191,7 @@ export const TrainingSection: React.FC<TrainingSectionProps> = ({
                 onClick={() => onOpenEnquiry('Corporate Training')}
                 className="px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-white bg-[#3E7D25] hover:bg-[#256629] rounded-xl active:scale-[0.98] transition-all shadow-md cursor-pointer"
               >
-                Book Plant Training
+                Explore Training
               </button>
               <button
                 onClick={() => onNavigate('/verify-certificate')}
@@ -286,7 +286,7 @@ export const TrainingSection: React.FC<TrainingSectionProps> = ({
             <span aria-hidden="true" className="text-[#3E7D25]">·</span>
             <span>Interactive Virtual Sessions</span>
             <span aria-hidden="true" className="text-[#3E7D25]">·</span>
-            <span>Executive One-on-One Coaching</span>
+              <span>Student &amp; Graduate Batches</span>
           </div>
         </div>
 

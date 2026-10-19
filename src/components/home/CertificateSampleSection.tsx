@@ -83,7 +83,7 @@ export const CertificateSampleSection: React.FC<CertificateSampleSectionProps> =
             Accredited Training Certificate &amp; Instant Verification
           </h2>
           <p className="mt-3 text-sm sm:text-base text-neutral-600 leading-relaxed font-normal">
-            Every candidate completing an ESSOR training program receives an official, tamper-proof Certificate of Completion equipped with an instant QR-code verification engine for auditors and employers.
+            Every staff member, student, and early-career professional completing an ESSOR program receives an official Certificate of Completion with instant QR verification for employers and auditors.
           </p>
         </div>
 
@@ -151,14 +151,20 @@ export const CertificateSampleSection: React.FC<CertificateSampleSectionProps> =
             
             <div className="space-y-2">
               <span className="text-xs font-bold text-[#3E7D25] tracking-wide uppercase">
-                Enterprise Credentialing
+                Career &amp; Workforce Credentialing
               </span>
               <h3 className="text-xl sm:text-2xl font-black text-neutral-900 tracking-tight">
-                Recognized by Auditors, Retailers &amp; Regulatory Bodies
+                Built for Staff, Students &amp; Food Safety Careers
               </h3>
               <p className="text-sm text-neutral-600 leading-relaxed font-normal">
-                When third-party auditors (BRCGS, FSSC, FSSAI) inspect your facility, having verifiable qualifications for your food safety team is mandatory.
+                Give your workforce proof of competence, or help students build a credible food-safety profile. Every issued record can be checked online by employers, auditors, and recruiters.
               </p>
+            </div>
+
+            <div className="grid grid-cols-3 gap-2 text-center text-[10px] font-bold text-neutral-700">
+              <div className="rounded-xl border border-emerald-100 bg-emerald-50 p-2.5">Staff<br />Development</div>
+              <div className="rounded-xl border border-sky-100 bg-sky-50 p-2.5">Student<br />Career Batches</div>
+              <div className="rounded-xl border border-amber-100 bg-amber-50 p-2.5">QR<br />Verification</div>
             </div>
 
             {/* Feature Bullets */}
@@ -218,7 +224,7 @@ export const CertificateSampleSection: React.FC<CertificateSampleSectionProps> =
                 onClick={() => onOpenEnquiry('Training & Capability')}
                 className="inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl text-xs font-bold tracking-wide text-neutral-900 bg-white hover:bg-emerald-50 border border-neutral-300 shadow-xs transition-colors cursor-pointer"
               >
-                <span>Enrol Your Staff</span>
+                <span>Enrol Staff or Students</span>
               </button>
             </div>
 

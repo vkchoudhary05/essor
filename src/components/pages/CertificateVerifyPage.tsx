@@ -93,7 +93,7 @@ export const CertificateVerifyPage: React.FC<CertificateVerifyPageProps> = ({
               Confirm a Training Certificate
             </h1>
             <p className="text-xs sm:text-sm text-white/85 mt-2 max-w-2xl leading-relaxed font-normal">
-              Enter the certificate number printed on the ESSOR training certificate. We will show the official course and completion details.
+              Enter the number printed on an ESSOR staff or student training certificate. We will show the official course and completion details for employers, auditors, and recruiters across India.
             </p>
 
             {/* Search Input Box */}
@@ -119,7 +119,7 @@ export const CertificateVerifyPage: React.FC<CertificateVerifyPageProps> = ({
 
             {/* Quick Demo Shortcuts */}
             <div className="mt-3 flex items-center gap-2 text-[11px] text-white/75 font-medium">
-              <span>Try sample record:</span>
+              <span>Try a sample record:</span>
               <button
                 onClick={() => {
                   setCertQuery('ECS-CERT-2026-0089');

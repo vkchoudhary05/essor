@@ -4,8 +4,8 @@
 -- Compatible with MySQL 5.7+, MySQL 8.0+, and MariaDB 10.3+
 -- ============================================================================
 
-CREATE DATABASE IF NOT EXISTS `essor_compliance` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-USE `essor_compliance`;
+-- CREATE DATABASE IF NOT EXISTS `essor_compliance` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+-- USE `essor_compliance`;
 
 SET FOREIGN_KEY_CHECKS = 0;
 

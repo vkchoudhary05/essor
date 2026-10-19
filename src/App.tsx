@@ -45,6 +45,25 @@ import { BackendApiService } from './services/api';
 import { ServiceItem, TrainingCourse, Enquiry, CMSContent, AdminUser, UserRole } from './types';
 import { useSmoothScroll, scrollToElement } from './hooks/useSmoothScroll';
 
+const INDIA_SEO: Record<string, { title: string; description: string }> = {
+  '/': {
+    title: 'ESSOR Compliance Solutions India | Food Safety Consulting, Training & Audit Readiness',
+    description: 'Food safety consulting, FSSAI support, ISO 22000, HACCP, BRCGS audit readiness and training for food businesses, staff and students across India.'
+  },
+  '/training': {
+    title: 'Food Safety Training for Staff & Students in India | ESSOR',
+    description: 'Job-oriented food safety training for staff, students and graduates in India. Learn HACCP, GMP, ISO 22000, FSSC 22000 and food hygiene.'
+  },
+  '/verify-certificate': {
+    title: 'Verify Food Safety Training Certificate | ESSOR India',
+    description: 'Verify ESSOR food safety training certificates issued to staff, students and professionals in India.'
+  },
+  '/services': {
+    title: 'Food Safety Consulting & Audit Readiness Services in India | ESSOR',
+    description: 'Independent FSSAI, HACCP, ISO 22000, FSSC 22000 and BRCGS consulting and audit readiness support for food businesses across India.'
+  }
+};
+
 export default function App() {
   useSmoothScroll();
 
@@ -74,6 +93,30 @@ export default function App() {
     window.addEventListener('popstate', handlePopState);
     return () => window.removeEventListener('popstate', handlePopState);
   }, []);
+
+  useEffect(() => {
+    const seo = INDIA_SEO[currentPath] ?? (currentPath.startsWith('/services/')
+      ? {
+          title: 'Food Safety Audit & Compliance Service in India | ESSOR',
+          description: 'Independent food safety consulting, gap assessment and audit readiness support for food businesses across India.'
+        }
+      : currentPath === '/contact'
+        ? {
+            title: 'Contact ESSOR Compliance Solutions India | Food Safety Support',
+            description: 'Contact ESSOR Compliance Solutions for food safety consulting, audit readiness and training support across India.'
+          }
+        : currentPath === '/about'
+          ? {
+              title: 'About ESSOR Compliance Solutions | Food Safety Experts in India',
+              description: 'Learn about ESSOR Compliance Solutions and our food safety consulting, audit readiness and training work across India.'
+            }
+          : INDIA_SEO['/']);
+    document.title = seo.title;
+    const description = document.querySelector('meta[name="description"]');
+    if (description) description.setAttribute('content', seo.description);
+    const ogDescription = document.querySelector('meta[property="og:description"]');
+    if (ogDescription) ogDescription.setAttribute('content', seo.description);
+  }, [currentPath]);
 
   const navigateTo = (path: string) => {
     scrollToElement('body', 0);

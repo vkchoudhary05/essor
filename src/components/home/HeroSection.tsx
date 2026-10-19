@@ -22,6 +22,7 @@ import { BackendApiService } from '../../services/api';
 
 // Realistic Visual Assets directly imported for Vite Live bundling
 import { CertificatePreview } from '../common/CertificatePreview';
+import heroFoodSafetyFacility from '../../assets/images/hero_food_safety_facility_1791962115935.jpg';
 import freshProduceImage from '../../assets/images/fresh_produce_inspection_1792395403170.jpg';
 import packagingLineImage from '../../assets/images/packaging_line_audit_1792395423537.jpg';
 import corporateSeminarImage from '../../assets/images/corporate_training_seminar_1792395440966.jpg';
@@ -165,19 +166,28 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   };
 
   return (
-    <section className="relative w-full overflow-hidden bg-gradient-to-b from-[#F4F8F5] via-white to-[#F8FAF9] pt-6 pb-16 sm:pt-10 sm:pb-24 border-b border-emerald-900/10">
+    <section className="relative w-full overflow-hidden bg-[#F4F8F5] pt-6 pb-16 sm:pt-10 sm:pb-24 border-b border-[#012B53]/10">
+      {/* Full-width food-manufacturing backdrop, tuned to remain visible behind copy at every viewport size. */}
+      <img
+        src={heroFoodSafetyFacility}
+        alt="Modern food manufacturing facility maintained for safety and quality"
+        className="absolute inset-0 h-full w-full object-cover object-[68%_center] sm:object-center"
+      />
+      {/* A lighter vertical wash on phones keeps the visual present; desktop shifts the light area to the copy column. */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#F8FAFC]/88 via-[#F8FAFC]/68 via-55% to-[#F8FAFC]/60 md:bg-gradient-to-r md:from-[#F8FAFC]/88 md:via-[#F8FAFC]/58 md:via-55% md:to-[#012B53]/28" />
+      <div className="absolute inset-0 bg-gradient-to-b from-white/10 via-transparent to-[#F8FAFC]/35" />
       
       {/* Background Decorative Rings */}
-      <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-emerald-100/40 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute -bottom-20 -left-20 w-[400px] h-[400px] bg-emerald-50 rounded-full blur-2xl pointer-events-none" />
+      <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-[#75B72B]/15 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute -bottom-20 -left-20 w-[400px] h-[400px] bg-white/70 rounded-full blur-2xl pointer-events-none" />
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Main Grid: Left Value Proposition & Right Interactive Business Showcase */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+        {/* Text-first hero: the facility image stays visible behind the complete message. */}
+        <div className="grid min-h-[calc(100svh-1rem)] grid-cols-1 content-center items-center">
           
           {/* Left Column: Direct, Simple, Understandable Headline & Actions */}
-          <div className="lg:col-span-7 space-y-6 text-left">
+          <div className="max-w-3xl space-y-6 text-left">
             
             {/* Brochure Tagline Badge */}
             <div 
@@ -205,9 +215,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             {/* Business Subheading in Simple Non-Jargon Language */}
             <p 
               ref={descRef}
-              className="text-base sm:text-lg text-neutral-700 leading-relaxed font-normal max-w-2xl"
+              className="relative z-20 block max-w-2xl rounded-xl border border-white/90 bg-white px-4 py-3 text-base font-medium leading-relaxed text-neutral-900 shadow-xl shadow-[#012B53]/25 sm:px-5 sm:py-4 sm:text-lg"
             >
-              We guide food processors, packaging facilities, commercial kitchens, and dairy plants to pass audits effortlessly. From on-site <strong className="text-neutral-900 font-bold">FSSAI licensing</strong> and <strong className="text-neutral-900 font-bold">ISO 22000 / HACCP / BRCGS certification readiness</strong> to <strong className="text-neutral-900 font-bold">accredited workforce training</strong> with verifiable certificates.
+              We guide food processors, packaging facilities, commercial kitchens, and dairy plants to pass audits effortlessly. From on-site <strong className="font-bold text-[#3E7D25]">FSSAI licensing</strong> and <strong className="font-bold text-[#3E7D25]">ISO 22000 / HACCP / BRCGS certification readiness</strong> to <strong className="font-bold text-[#3E7D25]">accredited workforce training</strong> with verifiable certificates.
             </p>
 
             {/* 6 Brochure Highlights from Page 2 */}
@@ -255,23 +265,6 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 <ArrowRight className="w-4 h-4" />
               </button>
 
-              {/* View Sample Certificate Button */}
-              <button
-                type="button"
-                onClick={() => {
-                  if (onOpenCertModal) {
-                    onOpenCertModal();
-                  } else {
-                    const certElem = document.getElementById('certificate-sample-section');
-                    if (certElem) certElem.scrollIntoView({ behavior: 'smooth' });
-                  }
-                }}
-                className="inline-flex items-center justify-center gap-2 px-4 py-3.5 rounded-xl text-sm font-bold tracking-wide text-neutral-900 bg-amber-50 hover:bg-amber-100 border-2 border-amber-500/40 shadow-xs transition-all active:scale-[0.98] cursor-pointer"
-              >
-                <Award className="w-4 h-4 text-amber-700" />
-                <span>View Sample Certificate</span>
-              </button>
-
               {/* Instant Call / WhatsApp */}
               <div className="flex items-center gap-2">
                 <a
@@ -315,11 +308,57 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 
           </div>
 
-          {/* Right Column: Visual Showcase with Interactive Tabs */}
-          <div ref={visualCardRef} className="lg:col-span-5 space-y-4">
+          {/* Detailed service choices live in the dedicated Services section below the hero. */}
+          <div ref={visualCardRef} className="hidden">
+
+            {/* Simple service overview replaces the certificate preview for a faster, less cluttered first impression. */}
+            <div className="overflow-hidden rounded-2xl border border-emerald-900/15 bg-white shadow-xl">
+              <div className="relative h-48 sm:h-56">
+                <img
+                  src={auditInspectionImage}
+                  alt="Food safety professional reviewing hygiene standards on a production floor"
+                  className="h-full w-full object-cover object-center"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#012B53]/95 via-[#012B53]/30 to-transparent" />
+                <div className="absolute inset-x-0 bottom-0 p-5 text-white">
+                  <span className="text-[10px] font-black uppercase tracking-[0.16em] text-emerald-200">How we help</span>
+                  <h2 className="mt-1 text-xl font-black leading-tight">Clear support for safer food operations.</h2>
+                </div>
+              </div>
+
+              <div className="grid divide-y divide-emerald-900/10">
+                <button
+                  type="button"
+                  onClick={() => onNavigate('/services/audit-readiness')}
+                  className="group flex items-center gap-3 px-5 py-3.5 text-left transition-colors hover:bg-emerald-50 cursor-pointer"
+                >
+                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-emerald-100 text-[#3E7D25]"><ShieldCheck className="h-5 w-5" /></span>
+                  <span className="min-w-0 flex-1"><span className="block text-sm font-bold text-neutral-900">Audit readiness</span><span className="block text-xs text-neutral-600">Identify gaps and prepare with confidence.</span></span>
+                  <ArrowRight className="h-4 w-4 shrink-0 text-[#3E7D25] transition-transform group-hover:translate-x-0.5" />
+                </button>
+                <button
+                  type="button"
+                  onClick={() => onOpenEnquiry('Plant Hygiene & Food Safety')}
+                  className="group flex items-center gap-3 px-5 py-3.5 text-left transition-colors hover:bg-emerald-50 cursor-pointer"
+                >
+                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-sky-100 text-[#012B53]"><Factory className="h-5 w-5" /></span>
+                  <span className="min-w-0 flex-1"><span className="block text-sm font-bold text-neutral-900">Plant hygiene</span><span className="block text-xs text-neutral-600">Practical on-site systems that work.</span></span>
+                  <ArrowRight className="h-4 w-4 shrink-0 text-[#3E7D25] transition-transform group-hover:translate-x-0.5" />
+                </button>
+                <button
+                  type="button"
+                  onClick={() => onNavigate('/training')}
+                  className="group flex items-center gap-3 px-5 py-3.5 text-left transition-colors hover:bg-emerald-50 cursor-pointer"
+                >
+                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-amber-100 text-amber-700"><GraduationCap className="h-5 w-5" /></span>
+                  <span className="min-w-0 flex-1"><span className="block text-sm font-bold text-neutral-900">Team training</span><span className="block text-xs text-neutral-600">Build capability across every shift.</span></span>
+                  <ArrowRight className="h-4 w-4 shrink-0 text-[#3E7D25] transition-transform group-hover:translate-x-0.5" />
+                </button>
+              </div>
+            </div>
             
             {/* Visual Card with Tabs */}
-            <div className="rounded-2xl overflow-hidden border border-emerald-900/15 shadow-xl bg-white">
+            <div className="hidden">
               
               {/* Tab Selector Header (Scrollable tabs so users see every aspect of the business) */}
               <div className="p-2 bg-[#012B53] text-white flex items-center gap-1 overflow-x-auto text-xs font-bold no-scrollbar">
