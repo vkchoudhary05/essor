@@ -166,12 +166,12 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   };
 
   return (
-    <section className="relative w-full overflow-hidden bg-[#F4F8F5] pt-5 pb-12 sm:pt-10 sm:pb-24 border-b border-[#012B53]/10">
+    <section className="relative w-full overflow-hidden bg-[#F4F8F5] pt-3 pb-7 sm:pt-10 sm:pb-24 border-b border-[#012B53]/10">
       {/* Full-width food-manufacturing backdrop, balanced to remain crisp and recognizable on mobile and desktop without zoom distortion */}
       <img
         src={heroFoodSafetyFacility}
         alt="Modern food manufacturing facility maintained for safety and quality"
-        className="absolute inset-0 h-full w-full object-cover object-center pointer-events-none select-none"
+        className="absolute inset-0 h-full w-full object-cover object-[62%_center] sm:object-center pointer-events-none select-none"
       />
       {/* Soft gradient wash: ensures text legibility while keeping the real facility background visible */}
       <div className="absolute inset-0 bg-gradient-to-b from-[#F8FAFC]/92 via-[#F8FAFC]/80 to-[#F8FAFC]/90 md:bg-gradient-to-r md:from-[#F8FAFC]/90 md:via-[#F8FAFC]/65 md:to-[#012B53]/25" />
@@ -184,10 +184,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Responsive hero container: natural height on mobile without forced zoom stretch */}
-        <div className="grid grid-cols-1 content-center items-center py-4 sm:py-8 lg:min-h-[calc(100svh-3rem)]">
+        <div className="grid grid-cols-1 content-center items-center py-2.5 sm:py-8 lg:min-h-[calc(100svh-3rem)]">
           
           {/* Left Column: Direct, Simple, Understandable Headline & Actions */}
-          <div className="max-w-3xl space-y-3 sm:space-y-6 text-left">
+          <div className="max-w-3xl space-y-2.5 sm:space-y-6 text-left">
             
             {/* Brochure Tagline Badge */}
             <div 
@@ -205,11 +205,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               ref={titleRef}
               className="text-2xl sm:text-4xl md:text-5xl font-black text-neutral-900 tracking-tight leading-[1.15]"
             >
-              Food Safety Audits, Plant Hygiene &amp;{' '}
+              Prepare for Every Food Safety Audit with{' '}
               <span className="text-[#3E7D25] font-black">
-                Certified Training
+                Confidence.
               </span>{' '}
-              — Made Simple.
             </h1>
 
             {/* Business Subheading in Simple Non-Jargon Language */}
@@ -217,7 +216,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               ref={descRef}
               className="relative z-20 block max-w-2xl rounded-xl border border-white/90 bg-white/95 px-3 py-2.5 text-xs sm:text-base font-medium leading-relaxed text-neutral-800 shadow-md sm:px-5 sm:py-4 sm:text-lg"
             >
-              We guide food processors, packaging units, and commercial kitchens to pass audits effortlessly. From on-site <strong className="font-bold text-[#3E7D25]">FSSAI licensing</strong> and <strong className="font-bold text-[#3E7D25]">ISO 22000 / HACCP / BRCGS</strong> readiness to <strong className="font-bold text-[#3E7D25]">accredited workforce training</strong>.
+              ESSOR helps food businesses build audit-ready systems for <strong className="font-bold text-[#3E7D25]">FSSAI, HACCP, ISO 22000 and BRCGS</strong>. Get practical guidance, organised documentation and on-site support your team can use with confidence.
             </p>
 
             {/* Highlights: compact on mobile to keep hero viewport-friendly */}
@@ -227,19 +226,19 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             >
               <div className="flex items-center gap-1.5 sm:gap-2 p-1.5 sm:p-2.5 rounded-xl bg-white border border-emerald-900/10 shadow-xs">
                 <CheckCircle2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#3E7D25] shrink-0" />
-                <span className="text-[11px] sm:text-xs font-bold text-neutral-900">Simple &amp; Hassle-Free</span>
+                <span className="text-[11px] sm:text-xs font-bold text-neutral-900">Practical On-Site Support</span>
               </div>
               <div className="flex items-center gap-1.5 sm:gap-2 p-1.5 sm:p-2.5 rounded-xl bg-white border border-emerald-900/10 shadow-xs">
                 <CheckCircle2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#3E7D25] shrink-0" />
-                <span className="text-[11px] sm:text-xs font-bold text-neutral-900">Fast Turnaround</span>
+                <span className="text-[11px] sm:text-xs font-bold text-neutral-900">Clear Audit Roadmap</span>
               </div>
               <div className="flex items-center gap-1.5 sm:gap-2 p-1.5 sm:p-2.5 rounded-xl bg-white border border-emerald-900/10 shadow-xs">
                 <CheckCircle2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#3E7D25] shrink-0" />
-                <span className="text-[11px] sm:text-xs font-bold text-neutral-900">Guaranteed Results</span>
+                <span className="text-[11px] sm:text-xs font-bold text-neutral-900">Documented Systems</span>
               </div>
               <div className="flex items-center gap-1.5 sm:gap-2 p-1.5 sm:p-2.5 rounded-xl bg-white border border-emerald-900/10 shadow-xs">
                 <CheckCircle2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#3E7D25] shrink-0" />
-                <span className="text-[11px] sm:text-xs font-bold text-neutral-900">100% Documented</span>
+                <span className="text-[11px] sm:text-xs font-bold text-neutral-900">Confident, Trained Teams</span>
               </div>
               <div className="hidden sm:flex items-center gap-2 p-2.5 rounded-xl bg-white border border-emerald-900/10 shadow-xs">
                 <CheckCircle2 className="w-4 h-4 text-[#3E7D25] shrink-0" />
@@ -261,7 +260,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 onClick={() => onOpenEnquiry()}
                 className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl text-xs sm:text-sm font-bold tracking-wide text-white bg-gradient-to-r from-[#012B53] via-[#012B53] to-[#3E7D25] hover:opacity-95 shadow-md active:scale-[0.98] transition-all cursor-pointer"
               >
-                <span>Request Free Audit Guidance</span>
+                <span>Get Your Audit Readiness Plan</span>
                 <ArrowRight className="w-4 h-4" />
               </button>
 
@@ -289,7 +288,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             </div>
 
             {/* Direct Contact Bar */}
-            <div className="pt-2 sm:pt-3 border-t border-neutral-200 text-[11px] sm:text-xs text-neutral-700 flex flex-wrap items-center gap-y-1.5 gap-x-4">
+            <div className="hidden sm:flex pt-2 sm:pt-3 border-t border-neutral-200 text-[11px] sm:text-xs text-neutral-700 flex-wrap items-center gap-y-1.5 gap-x-4">
               <div className="flex items-center gap-1.5">
                 <Phone className="w-3.5 h-3.5 text-[#3E7D25]" />
                 <span className="font-bold text-neutral-900">+91 6395843850</span>
@@ -718,23 +717,23 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
         {/* Bottom Trust Metric Badges */}
         <div 
           ref={statsRef}
-          className="mt-14 pt-8 border-t border-emerald-900/10 grid grid-cols-2 md:grid-cols-4 gap-4"
+          className="mt-6 pt-5 sm:mt-14 sm:pt-8 border-t border-emerald-900/10 grid grid-cols-2 md:grid-cols-4 gap-2.5 sm:gap-4"
         >
-          <div className="p-4 rounded-xl bg-white border border-emerald-900/10 shadow-2xs">
-            <span className="text-2xl sm:text-3xl font-black text-neutral-900 block">1,850+</span>
-            <span className="text-xs text-neutral-600 font-medium">Audits &amp; Assessments Prepared</span>
+          <div className="p-2.5 sm:p-4 rounded-xl bg-white border border-emerald-900/10 shadow-2xs">
+            <span className="text-xl sm:text-3xl font-black text-neutral-900 block">1,850+</span>
+            <span className="text-[10px] sm:text-xs text-neutral-600 font-medium">Audits &amp; Assessments Prepared</span>
           </div>
-          <div className="p-4 rounded-xl bg-white border border-emerald-900/10 shadow-2xs">
-            <span className="text-2xl sm:text-3xl font-black text-[#3E7D25] block">99.4%</span>
-            <span className="text-xs text-neutral-600 font-medium">First-Time Audit Pass Rate</span>
+          <div className="p-2.5 sm:p-4 rounded-xl bg-white border border-emerald-900/10 shadow-2xs">
+            <span className="text-xl sm:text-3xl font-black text-[#3E7D25] block">99.4%</span>
+            <span className="text-[10px] sm:text-xs text-neutral-600 font-medium">First-Time Audit Pass Rate</span>
           </div>
-          <div className="p-4 rounded-xl bg-white border border-emerald-900/10 shadow-2xs">
-            <span className="text-2xl sm:text-3xl font-black text-neutral-900 block">16+</span>
-            <span className="text-xs text-neutral-600 font-medium">Accredited Training Modules</span>
+          <div className="p-2.5 sm:p-4 rounded-xl bg-white border border-emerald-900/10 shadow-2xs">
+            <span className="text-xl sm:text-3xl font-black text-neutral-900 block">16+</span>
+            <span className="text-[10px] sm:text-xs text-neutral-600 font-medium">Accredited Training Modules</span>
           </div>
-          <div className="p-4 rounded-xl bg-white border border-emerald-900/10 shadow-2xs">
-            <span className="text-2xl sm:text-3xl font-black text-[#3E7D25] block">&lt;24 Hrs</span>
-            <span className="text-xs text-neutral-600 font-medium">Emergency Audit Support Response</span>
+          <div className="p-2.5 sm:p-4 rounded-xl bg-white border border-emerald-900/10 shadow-2xs">
+            <span className="text-xl sm:text-3xl font-black text-[#3E7D25] block">&lt;24 Hrs</span>
+            <span className="text-[10px] sm:text-xs text-neutral-600 font-medium">Emergency Audit Support Response</span>
           </div>
         </div>
 

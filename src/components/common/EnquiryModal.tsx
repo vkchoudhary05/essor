@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { X, CheckCircle, AlertCircle, ArrowRight, Loader2, ShieldCheck } from 'lucide-react';
+import { X, CheckCircle, AlertCircle, ArrowRight, Loader2, ShieldCheck, ClipboardCheck, PhoneCall, Sparkles } from 'lucide-react';
 import { StorageService } from '../../services/storage';
 import { BackendApiService } from '../../services/api';
 import { ServiceItem } from '../../types';
+import { getLenis } from '../../hooks/useSmoothScroll';
 
 interface EnquiryModalProps {
   isOpen: boolean;
@@ -51,7 +52,40 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
     }
   }, [isOpen, preselectedService]);
 
+  // The site-wide smooth scroll must pause while this modal owns scrolling.
+  useEffect(() => {
+    if (!isOpen) return;
+    const scrollY = window.scrollY;
+    const previousBody = {
+      overflow: document.body.style.overflow,
+      position: document.body.style.position,
+      top: document.body.style.top,
+      width: document.body.style.width
+    };
+    const previousHtmlOverflow = document.documentElement.style.overflow;
+
+    getLenis()?.stop();
+    document.documentElement.style.overflow = 'hidden';
+    document.body.style.overflow = 'hidden';
+    document.body.style.position = 'fixed';
+    document.body.style.top = `-${scrollY}px`;
+    document.body.style.width = '100%';
+
+    return () => {
+      document.documentElement.style.overflow = previousHtmlOverflow;
+      document.body.style.overflow = previousBody.overflow;
+      document.body.style.position = previousBody.position;
+      document.body.style.top = previousBody.top;
+      document.body.style.width = previousBody.width;
+      window.scrollTo(0, scrollY);
+      getLenis()?.start();
+    };
+  }, [isOpen]);
+
   if (!isOpen) return null;
+
+  const completedEssentials = [formData.name, formData.email, formData.companyName].filter(value => value.trim()).length;
+  const progressPercent = Math.round((completedEssentials / 3) * 100);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -100,13 +134,21 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
     }
   };
 
+  const handleFormWheel = (e: React.WheelEvent<HTMLDivElement>) => {
+    const scrollArea = e.currentTarget;
+    if (scrollArea.scrollHeight <= scrollArea.clientHeight) return;
+    e.preventDefault();
+    e.stopPropagation();
+    scrollArea.scrollTop += e.deltaY;
+  };
+
   return (
     <div 
       className="fixed inset-0 z-50 flex items-center justify-center p-2.5 sm:p-4 bg-black/75 backdrop-blur-sm overflow-hidden animate-in fade-in duration-200"
       onClick={onClose}
     >
       <div 
-        className="relative bg-white w-full max-w-2xl max-h-[92vh] sm:max-h-[88vh] rounded-2xl shadow-2xl border border-neutral-200 flex flex-col overflow-hidden text-neutral-900"
+        className="relative bg-white w-full max-w-3xl max-h-[92vh] sm:max-h-[88vh] rounded-3xl shadow-2xl border border-white/70 flex flex-col overflow-hidden text-neutral-900"
         role="dialog"
         aria-modal="true"
         aria-labelledby="enquiry-modal-title"
@@ -120,7 +162,7 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
               <span>Discuss Your Requirements</span>
             </h3>
             <p className="text-[11px] sm:text-xs text-white/85 mt-0.5">
-              Tell us about your plant. A food-safety specialist will respond within one working day.
+              Share a few details—our specialist will return a clear next-step plan within one working day.
             </p>
           </div>
           <button
@@ -171,10 +213,26 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
           <form onSubmit={handleSubmit} className="flex-1 flex flex-col overflow-hidden">
             
             {/* Scrollable Form Fields */}
-            <div className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-4 overscroll-contain bg-[#F8FAFC]">
-              <div className="rounded-xl border border-[#75B72B]/35 bg-[#F3F8EC] px-3.5 py-2.5 text-xs text-[#012B53] flex items-center gap-2">
-                <ShieldCheck className="w-4 h-4 text-[#3E7D25] shrink-0" />
-                <span><strong>Simple start:</strong> share the essentials now; we will shape the right scope together.</span>
+            <div
+              className="min-h-0 flex-1 overflow-y-auto p-4 sm:p-6 space-y-4 overscroll-contain bg-gradient-to-b from-[#F7FAF8] to-[#F8FAFC]"
+              onWheel={handleFormWheel}
+            >
+              <div className="rounded-2xl border border-emerald-200/80 bg-white p-3.5 shadow-sm">
+                <div className="flex items-center justify-between gap-3">
+                  <div className="flex items-center gap-2 text-xs font-extrabold text-[#012B53]">
+                    <Sparkles className="w-4 h-4 text-[#3E7D25]" />
+                    <span>Your readiness conversation</span>
+                  </div>
+                  <span className="text-[10px] font-bold text-emerald-800">{completedEssentials}/3 essentials</span>
+                </div>
+                <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-emerald-100">
+                  <div className="h-full rounded-full bg-gradient-to-r from-[#012B53] via-[#0C5A91] to-[#75B72B] transition-all duration-300" style={{ width: `${progressPercent}%` }} />
+                </div>
+                <div className="mt-3 grid grid-cols-3 gap-2 text-center">
+                  <div className="rounded-xl bg-[#F3F8EC] px-1.5 py-1.5 text-[10px] font-semibold text-emerald-900"><ClipboardCheck className="mx-auto mb-0.5 h-3.5 w-3.5 text-[#3E7D25]" />Share context</div>
+                  <div className="rounded-xl bg-blue-50 px-1.5 py-1.5 text-[10px] font-semibold text-[#012B53]"><ShieldCheck className="mx-auto mb-0.5 h-3.5 w-3.5 text-[#0C5A91]" />Get a clear plan</div>
+                  <div className="rounded-xl bg-amber-50 px-1.5 py-1.5 text-[10px] font-semibold text-amber-900"><PhoneCall className="mx-auto mb-0.5 h-3.5 w-3.5 text-amber-600" />Speak to an expert</div>
+                </div>
               </div>
               
               {errorMsg && (
@@ -294,9 +352,10 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
               </div>
 
               {/* Preferred Contact Method */}
-              <div className="flex flex-wrap items-center gap-4 text-xs pt-0.5">
-                <span className="font-bold text-neutral-800">Preferred Response:</span>
-                <label className="inline-flex items-center gap-1.5 cursor-pointer">
+              <div className="text-xs pt-0.5">
+                <span className="mb-2 block font-bold text-neutral-800">How should we respond?</span>
+                <div className="grid grid-cols-3 gap-2">
+                <label className={`inline-flex items-center justify-center gap-1.5 cursor-pointer rounded-xl border px-2 py-2 font-bold transition-all ${formData.preferredContactMethod === 'EMAIL' ? 'border-[#0C5A91] bg-blue-50 text-[#012B53] shadow-sm' : 'border-neutral-200 bg-white text-neutral-600 hover:border-blue-200'}`}>
                   <input
                     type="radio"
                     name="preferredMethod"
@@ -306,7 +365,7 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
                   />
                   <span>Email</span>
                 </label>
-                <label className="inline-flex items-center gap-1.5 cursor-pointer">
+                <label className={`inline-flex items-center justify-center gap-1.5 cursor-pointer rounded-xl border px-2 py-2 font-bold transition-all ${formData.preferredContactMethod === 'PHONE' ? 'border-[#3E7D25] bg-emerald-50 text-emerald-900 shadow-sm' : 'border-neutral-200 bg-white text-neutral-600 hover:border-emerald-200'}`}>
                   <input
                     type="radio"
                     name="preferredMethod"
@@ -316,7 +375,7 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
                   />
                   <span>Phone</span>
                 </label>
-                <label className="inline-flex items-center gap-1.5 cursor-pointer">
+                <label className={`inline-flex items-center justify-center gap-1.5 cursor-pointer rounded-xl border px-2 py-2 font-bold transition-all ${formData.preferredContactMethod === 'EITHER' ? 'border-[#75B72B] bg-[#F3F8EC] text-emerald-900 shadow-sm' : 'border-neutral-200 bg-white text-neutral-600 hover:border-emerald-200'}`}>
                   <input
                     type="radio"
                     name="preferredMethod"
@@ -326,6 +385,7 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
                   />
                   <span>Either</span>
                 </label>
+                </div>
               </div>
 
               {/* Privacy Notice Checkbox */}
@@ -347,7 +407,9 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
             </div>
 
             {/* Sticky Action Footer - Always visible on screen */}
-            <div className="shrink-0 px-4 py-3 sm:px-6 sm:py-3.5 bg-neutral-50/95 border-t border-neutral-200 flex items-center justify-end gap-2.5 sm:gap-3">
+            <div className="shrink-0 px-4 py-3 sm:px-6 sm:py-3.5 bg-white/95 border-t border-emerald-900/10 flex items-center justify-between gap-2.5 sm:gap-3">
+              <span className="hidden sm:flex items-center gap-1.5 text-[11px] font-medium text-neutral-500"><ShieldCheck className="h-3.5 w-3.5 text-[#3E7D25]" />Your details stay confidential.</span>
+              <div className="flex items-center gap-2.5 sm:gap-3 ml-auto">
               <button
                 type="button"
                 onClick={onClose}
@@ -373,6 +435,7 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
                   </>
                 )}
               </button>
+              </div>
             </div>
 
           </form>

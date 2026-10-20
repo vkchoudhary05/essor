@@ -21,6 +21,7 @@ import {
   SlidersHorizontal
 } from 'lucide-react';
 import { BackendApiService } from '../../services/api';
+import { getLenis } from '../../hooks/useSmoothScroll';
 import youngWomanAvatar from '../../assets/images/young_woman_advisor_1792303487989.jpg';
 
 interface ChatMessage {
@@ -56,6 +57,15 @@ export const FoodSafetyAiAdvisor: React.FC<FoodSafetyAiAdvisorProps> = ({
   const [isLoading, setIsLoading] = useState(false);
   const [bufferingStep, setBufferingStep] = useState(0);
   const [copiedMessageId, setCopiedMessageId] = useState<string | null>(null);
+  const [visitorName, setVisitorName] = useState('');
+  const [conversationId] = useState(() => {
+    const storageKey = 'essor-ai-conversation-id';
+    const savedId = sessionStorage.getItem(storageKey);
+    if (savedId) return savedId;
+    const newId = crypto.randomUUID();
+    sessionStorage.setItem(storageKey, newId);
+    return newId;
+  });
 
   // Lead Callback State
   const [leadName, setLeadName] = useState('');
@@ -71,15 +81,9 @@ export const FoodSafetyAiAdvisor: React.FC<FoodSafetyAiAdvisorProps> = ({
       id: 'welcome',
       sender: 'advisor',
       text: `### Welcome to ESSOR Compliance AI
-Hello! I am **Dr. Priya Sharma**, your Lead Food Safety Specialist.
+Hello, I’m **Dr. Priya**. I can help with FSSAI, food-safety audits, plant hygiene, and training.
 
-I can guide you on:
-• **FSSAI Licensing & Schedule 4 Hygiene**
-• **ISO 22000, HACCP, FSSC 22000 & BRCGS Issue 9**
-• **Hygiene Swabs, Pathogen EMP & Lab Tests**
-• **Mandatory FoSTaC & Lead Auditor Training**
-
-Ask me anything below, or select a topic to get an instant verified answer!`,
+What is your name?`,
       timestamp: 'Just now'
     }
   ]);
@@ -103,6 +107,38 @@ Ask me anything below, or select a topic to get an instant verified answer!`,
     }, 900);
     return () => clearInterval(interval);
   }, [isLoading]);
+
+  // Keep the website fixed while the assistant is open; only the drawer content scrolls.
+  useEffect(() => {
+    if (!isOpen) return;
+    const scrollY = window.scrollY;
+    const previousBody = {
+      overflow: document.body.style.overflow,
+      position: document.body.style.position,
+      top: document.body.style.top,
+      width: document.body.style.width
+    };
+    const previousHtmlOverflow = document.documentElement.style.overflow;
+
+    // Lenis listens to wheel events at document level. Pause it so the native
+    // scroll area inside the assistant receives the gesture instead.
+    getLenis()?.stop();
+    document.documentElement.style.overflow = 'hidden';
+    document.body.style.overflow = 'hidden';
+    document.body.style.position = 'fixed';
+    document.body.style.top = `-${scrollY}px`;
+    document.body.style.width = '100%';
+
+    return () => {
+      document.documentElement.style.overflow = previousHtmlOverflow;
+      document.body.style.overflow = previousBody.overflow;
+      document.body.style.position = previousBody.position;
+      document.body.style.top = previousBody.top;
+      document.body.style.width = previousBody.width;
+      window.scrollTo(0, scrollY);
+      getLenis()?.start();
+    };
+  }, [isOpen]);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -132,10 +168,16 @@ Ask me anything below, or select a topic to get an instant verified answer!`,
     setBufferingStep(0);
 
     try {
+      const isNameStep = !visitorName;
       const response = await fetch('/api/ai/query', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ query: textToSend })
+        body: JSON.stringify({
+          query: textToSend,
+          conversationId,
+          visitorName: isNameStep ? textToSend : visitorName,
+          intent: isNameStep ? 'name' : 'question'
+        })
       });
 
       let answer = '';
@@ -144,26 +186,13 @@ Ask me anything below, or select a topic to get an instant verified answer!`,
         answer = data.answer || '';
       }
 
+      if (isNameStep) setVisitorName(textToSend);
+
       if (!answer) {
         // High quality contextual fallback answer based on query
-        if (textToSend.toLowerCase().includes('fssai')) {
-          answer = `### FSSAI Licensing & Statutory Guidelines
-For FSSAI statutory approvals in India:
-• **State vs Central**: Production > 2 MT/day or > ₹20 Crore turnover requires Central FSSAI License.
-• **Schedule 4 Compliance**: Mandatory medical fitness certificates for all food handlers, IS 10500 water testing, and pest management logs.
-• **Turnaround**: ESSOR handles FoSCoS documentation and mock inspection with average license issuance in 15-20 days.`;
-        } else if (textToSend.toLowerCase().includes('iso') || textToSend.toLowerCase().includes('haccp')) {
-          answer = `### ISO 22000 vs HACCP
-• **HACCP**: Codex Alimentarius hazard identification focusing on factory floor CCPs and critical limits.
-• **ISO 22000**: High-level management standard incorporating full HACCP plus PRPs (ISO/TS 22002), oPRPs, management review, and supply chain traceability.
-• **Recommendation**: Essential for export and Tier-1 FMCG supply chains. ESSOR guarantees 100% first-time pass readiness.`;
-        } else {
-          answer = `### Compliance Advisory Overview
-Regarding **"${textToSend}"**:
-• **Prerequisite Programs**: Verify GMP sanitary zoning, potable water quality, and pest control trending.
-• **Critical Limits**: Ensure all monitoring logs (temperatures, metal detection, allergen segregation) are verified daily.
-• **Auditor Consultation**: You can connect directly with our technical audit desk via WhatsApp or request an on-site facility gap assessment.`;
-        }
+        answer = isNameStep
+          ? `Thanks, ${textToSend}. What would you like help with today—FSSAI licensing, an audit standard, training, or plant hygiene?`
+          : `I can help with that. Please share your facility type and the audit or food-safety requirement you are working on.`;
       }
 
       const advisorMessage: ChatMessage = {
@@ -179,12 +208,7 @@ Regarding **"${textToSend}"**:
       const fallbackAnswer: ChatMessage = {
         id: `advisor-${Date.now()}`,
         sender: 'advisor',
-        text: `### Facility Compliance Recommendation
-Thank you for reaching out regarding "${textToSend}".
-
-Continuous food safety compliance requires aligning Prerequisite Programs (PRPs), scientifically validated CCP limits, and verifiable audit records.
-
-Would you like our lead auditor to review your specific plant requirements? Connect directly with us on WhatsApp or submit a callback request.`,
+        text: `I’m sorry, I could not reach the advisor service just now. Please tell me your facility type and requirement, and I’ll help with the next step.`,
         timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
         topic: textToSend
       };
@@ -248,13 +272,25 @@ Our lead auditor will contact you shortly at **${leadPhone}** to discuss your fa
     }
   };
 
+  // Explicitly claim wheel input for the drawer. This avoids requiring a click
+  // inside the conversation before a mouse wheel or trackpad can scroll it.
+  const handleDrawerWheel = (e: React.WheelEvent<HTMLDivElement>) => {
+    const scrollArea = e.currentTarget;
+    if (scrollArea.scrollHeight <= scrollArea.clientHeight) return;
+
+    e.preventDefault();
+    e.stopPropagation();
+    scrollArea.scrollTop += e.deltaY;
+  };
+
   const handleResetChat = () => {
+    setVisitorName('');
     setMessages([
       {
         id: 'welcome-reset',
         sender: 'advisor',
-        text: `### Chat Cleared
-Hello again! Feel free to ask any question regarding **FSSAI statutory licenses**, **ISO 22000 / BRCGS audits**, **hygiene swab testing**, or **accredited staff training**.`,
+        text: `### New conversation
+Hello, I’m **Dr. Priya**. What is your name?`,
         timestamp: 'Just now'
       }
     ]);
@@ -339,9 +375,9 @@ Hello again! Feel free to ask any question regarding **FSSAI statutory licenses*
   return (
     <>
       {/* ========================================================================= */}
-      {/* FLOATING ACTION CLUSTER (AI AT TOP, THEN WHATSAPP, THEN GMAIL)             */}
+      {/* FLOATING AI ADVISOR */}
       {/* ========================================================================= */}
-      <div className="fixed bottom-5 right-4 sm:right-6 z-40 flex flex-col items-end gap-2.5 select-none pointer-events-auto">
+      <div className="fixed bottom-5 right-4 sm:right-6 z-40 flex flex-col items-end select-none pointer-events-auto">
         
         {/* 1. TOP: AI Assistant Button ("ai in uper of that") */}
         <div className="relative flex items-center">
@@ -403,72 +439,26 @@ Hello again! Feel free to ask any question regarding **FSSAI statutory licenses*
               setIsOpen(true);
               setShowProactiveBubble(false);
             }}
-            className="group relative flex items-center gap-2 pl-3 pr-1.5 py-1.5 rounded-full bg-white/95 backdrop-blur-md border-2 border-[#75B72B] shadow-xl shadow-[#012B53]/20 hover:shadow-2xl hover:scale-105 active:scale-95 transition-all duration-300 cursor-pointer"
+            className="group relative h-16 w-16 overflow-visible rounded-[1.35rem] border-2 border-white/90 bg-[#012B53] p-1 shadow-xl shadow-[#012B53]/35 ring-1 ring-emerald-400/70 hover:-translate-y-1 hover:rotate-[2deg] hover:shadow-2xl hover:shadow-emerald-900/40 active:scale-95 transition-all duration-300 cursor-pointer"
             aria-label="Open Food Safety AI Advisor"
             title="Chat with Dr. Priya Sharma, Food Safety Compliance AI"
           >
-            {/* Pulsating ring indicator */}
-            <span className="absolute -inset-1 rounded-full border border-[#75B72B]/60 animate-pulse pointer-events-none" />
-
-            {/* AI Sparkle Label */}
-            <div className="flex items-center gap-1.5 text-xs font-black text-[#012B53] pr-1 hidden xs:flex">
-              <Sparkles className="w-3.5 h-3.5 text-[#3E7D25] animate-spin [animation-duration:8s]" />
-              <span>Ask AI</span>
-            </div>
-
-            {/* Dr. Priya Avatar */}
-            <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-[#3E7D25] shrink-0 bg-[#F3F8EC] shadow-sm">
-              <img
-                src={youngWomanAvatar}
-                alt="Dr. Priya Sharma - ESSOR Food Safety AI"
-                className="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-300"
-                referrerPolicy="no-referrer"
-              />
-              {/* Online Green Beacon */}
-              <span className="absolute bottom-0 right-0 w-3.5 h-3.5 rounded-full bg-emerald-500 border-2 border-white ring-1 ring-emerald-600/40" />
-            </div>
+            <span className="absolute -inset-1 rounded-[1.6rem] border border-[#75B72B]/60 animate-pulse pointer-events-none" />
+            <img
+              src={youngWomanAvatar}
+              alt="Dr. Priya Sharma, ESSOR AI advisor"
+              className="h-full w-full rounded-[1rem] object-cover object-top transition-transform duration-300 group-hover:scale-105"
+              referrerPolicy="no-referrer"
+            />
+            <span className="absolute -bottom-1 -right-1 grid h-6 w-6 place-items-center rounded-full border-2 border-white bg-gradient-to-br from-[#75B72B] to-[#3E7D25] text-white shadow-md">
+              <Sparkles className="h-3 w-3" strokeWidth={3} />
+            </span>
+            <span className="absolute right-[calc(100%+1rem)] top-1/2 -translate-y-1/2 whitespace-nowrap rounded-2xl border border-white/30 bg-[#012542]/95 px-3 py-2 text-left text-white opacity-0 shadow-xl backdrop-blur-md translate-x-1 pointer-events-none group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-200">
+              <span className="block text-[11px] font-extrabold">Ask Dr. Priya</span>
+              <span className="mt-0.5 flex items-center gap-1 text-[9px] font-medium text-emerald-200"><span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />AI advisor online</span>
+            </span>
           </button>
         </div>
-
-        {/* 2. MIDDLE: WhatsApp Quick Button */}
-        <a
-          href="https://wa.me/916395843850?text=Hi%20ESSOR%20Compliance%20Team%2C%20I%20would%20like%20to%20consult%20regarding%20Food%20Safety%20%26%20Audit%20Services."
-          target="_blank"
-          rel="noopener noreferrer"
-          className="group relative flex items-center gap-2 pl-3.5 pr-2 py-2 rounded-full bg-[#25D366] hover:bg-[#20ba59] text-white shadow-lg shadow-emerald-950/20 hover:shadow-xl hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer"
-          aria-label="Chat on WhatsApp (+91 6395843850)"
-          title="Direct WhatsApp with Lead Auditor (+91 6395843850)"
-        >
-          <span className="text-[11px] font-extrabold tracking-wide hidden xs:inline drop-shadow-2xs">
-            WhatsApp
-          </span>
-          <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center shrink-0">
-            {/* Official WhatsApp SVG emblem */}
-            <svg className="w-5 h-5 fill-white" viewBox="0 0 24 24">
-              <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2ZM12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.59 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19.01L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.3C4.24 14.99 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67ZM8.83 7.35C8.65 7.35 8.35 7.42 8.1 7.69C7.85 7.96 7.15 8.62 7.15 9.96C7.15 11.3 8.13 12.6 8.27 12.78C8.41 12.96 10.19 15.71 12.92 16.89C13.57 17.17 14.08 17.34 14.47 17.47C15.12 17.67 15.72 17.64 16.19 17.57C16.71 17.49 17.79 16.92 18.02 16.27C18.25 15.62 18.25 15.07 18.18 14.95C18.11 14.83 17.93 14.76 17.66 14.62C17.39 14.48 16.07 13.83 15.82 13.74C15.57 13.65 15.39 13.61 15.21 13.88C15.03 14.15 14.51 14.76 14.35 14.95C14.19 15.14 14.03 15.16 13.76 15.02C13.49 14.88 12.61 14.6 11.58 13.68C10.77 12.96 10.23 12.07 10.07 11.8C9.91 11.53 10.05 11.38 10.19 11.24C10.31 11.12 10.46 10.92 10.6 10.76C10.74 10.6 10.78 10.49 10.87 10.31C10.96 10.13 10.92 9.97 10.85 9.83C10.78 9.69 10.26 8.41 10.04 7.89C9.83 7.38 9.61 7.45 9.45 7.44C9.3 7.43 9.12 7.35 8.83 7.35Z"/>
-            </svg>
-          </div>
-        </a>
-
-        {/* 3. BOTTOM: Gmail Quick Button */}
-        <a
-          href="https://mail.google.com/mail/?view=cm&fs=1&to=business@essorcompliance.com&su=Food%20Safety%20%26%20Audit%20Consultation%20Inquiry"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="group relative flex items-center gap-2 pl-3.5 pr-2 py-2 rounded-full bg-white hover:bg-neutral-50 text-neutral-800 border border-neutral-300 shadow-md shadow-neutral-900/10 hover:shadow-lg hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer"
-          aria-label="Send Email via Gmail (business@essorcompliance.com)"
-          title="Email Compliance Team (business@essorcompliance.com)"
-        >
-          <span className="text-[11px] font-extrabold text-neutral-800 tracking-wide hidden xs:inline">
-            Gmail
-          </span>
-          <div className="w-8 h-8 rounded-full bg-red-50 border border-red-200 flex items-center justify-center shrink-0">
-            {/* Crisp Gmail M emblem */}
-            <svg className="w-4 h-4" viewBox="0 0 24 24">
-              <path fill="#EA4335" d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L12 9.491l8.073-5.998C21.69 2.28 24 3.434 24 5.457z"/>
-            </svg>
-          </div>
-        </a>
 
       </div>
 
@@ -479,7 +469,7 @@ Hello again! Feel free to ask any question regarding **FSSAI statutory licenses*
         <aside
           role="dialog"
           aria-label="Food Safety AI Compliance Assistant"
-          className="fixed bottom-4 right-3 sm:bottom-6 sm:right-6 z-50 w-[96vw] max-w-[450px] max-h-[88vh] h-[650px] bg-white rounded-3xl shadow-2xl shadow-emerald-950/30 border border-emerald-900/15 flex flex-col overflow-hidden animate-in fade-in slide-in-from-bottom-5 duration-300"
+          className="fixed bottom-4 right-3 sm:bottom-6 sm:right-6 z-50 w-[96vw] max-w-[450px] max-h-[88vh] h-[650px] bg-white rounded-3xl shadow-2xl shadow-emerald-950/30 border border-emerald-900/15 flex flex-col overflow-hidden overscroll-contain animate-in fade-in slide-in-from-bottom-5 duration-300"
         >
           {/* Header */}
           <div className="p-3.5 sm:p-4 bg-gradient-to-r from-[#012B53] via-[#042A1D] to-[#012B53] text-white border-b border-emerald-800/40 shrink-0">
@@ -597,7 +587,10 @@ Hello again! Feel free to ask any question regarding **FSSAI statutory licenses*
           {activeTab === 'CHAT' ? (
             <>
               {/* Message Stream */}
-              <div className="flex-1 p-3.5 sm:p-4 overflow-y-auto space-y-3.5 bg-[#FAFBF9]">
+              <div
+                className="min-h-0 flex-1 overflow-y-auto overscroll-contain p-3.5 sm:p-4 space-y-3.5 bg-[#FAFBF9]"
+                onWheel={handleDrawerWheel}
+              >
                 {messages.map((msg) => (
                   <div
                     key={msg.id}
@@ -741,7 +734,7 @@ Hello again! Feel free to ask any question regarding **FSSAI statutory licenses*
 
               {/* Quick Suggestion Pills */}
               <div className="px-3 py-2 bg-white border-t border-neutral-200/90 overflow-x-auto whitespace-nowrap flex gap-1.5 scrollbar-none shrink-0">
-                {QUICK_TOPICS.map((topic, i) => (
+                {visitorName ? QUICK_TOPICS.map((topic, i) => (
                   <button
                     key={i}
                     type="button"
@@ -750,7 +743,9 @@ Hello again! Feel free to ask any question regarding **FSSAI statutory licenses*
                   >
                     <span>{topic.label}</span>
                   </button>
-                ))}
+                )) : (
+                  <span className="px-1 text-[11px] font-medium text-neutral-500">Start by sharing your name to see suggested topics.</span>
+                )}
               </div>
 
               {/* Input Area */}
@@ -768,7 +763,7 @@ Hello again! Feel free to ask any question regarding **FSSAI statutory licenses*
                     value={inputQuery}
                     onChange={(e) => setInputQuery(e.target.value)}
                     onKeyDown={handleKeyDown}
-                    placeholder="Ask about FSSAI, ISO 22000, BRCGS, hygiene..."
+                    placeholder={visitorName ? 'Ask about FSSAI, ISO 22000, BRCGS, hygiene...' : 'Enter your name to begin...'}
                     className="flex-1 px-3.5 py-2.5 rounded-xl border border-neutral-300 text-xs focus:outline-none focus:ring-2 focus:ring-[#3E7D25] focus:border-[#3E7D25] bg-neutral-50/60 text-neutral-900 placeholder:text-neutral-400 font-medium"
                   />
                   <button
@@ -808,7 +803,10 @@ Hello again! Feel free to ask any question regarding **FSSAI statutory licenses*
             /* ===================================================================== */
             /* TAB 2: DIRECT AUDITOR CALLBACK FORM                                    */
             /* ===================================================================== */
-            <div className="flex-1 p-4 sm:p-5 overflow-y-auto bg-[#FAFBF9]">
+            <div
+              className="min-h-0 flex-1 overflow-y-auto overscroll-contain p-4 sm:p-5 bg-[#FAFBF9]"
+              onWheel={handleDrawerWheel}
+            >
               <div className="max-w-md mx-auto space-y-4">
                 <div className="p-3 bg-emerald-50 border border-emerald-200 rounded-2xl">
                   <div className="flex items-center gap-2 text-xs font-black text-[#012B53]">

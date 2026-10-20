@@ -162,14 +162,14 @@ Resolving audit non-conformances requires demonstrating verified root causes rat
   Our platform tracks non-conformances with automated due-date reminders, evidence photo uploads, and auditor sign-off.`
 };
 
-export async function askFoodSafetyAdvisor(query: string): Promise<string> {
+export async function askFoodSafetyAdvisor(query: string, visitorName?: string): Promise<string> {
   const normalized = query.trim().toLowerCase();
 
   // If Gemini client is active, query model with strict 3.5s timeout to guarantee zero user delay
   if (aiClient) {
     try {
       const geminiPromise = aiClient.models.generateContent({
-        model: 'gemini-3.8-flash',
+        model: process.env.GEMINI_MODEL || 'gemini-2.5-flash',
         contents: query,
         config: {
           systemInstruction: `You are Dr. Priya Sharma, Lead Food Safety Specialist & Auditor at ESSOR Compliance Solutions.
@@ -182,7 +182,8 @@ You provide authoritative, clear, and reassuring guidance on global food safety 
 - Halal, Kosher, SQF, and Hygiene Swabbing (ATP, EMP, Listeria)
 - FoSTaC Training & Workforce Certification
 
-Format your answer with clean Markdown headers, bullet points, and actionable takeaways. Keep it scannable, practical, and under 3 short paragraphs. Include ESSOR's helpline (+91 6395843850) and email (business@essorcompliance.com) for facility audits where appropriate.`,
+${visitorName ? `The visitor's name is ${visitorName}.` : ''}
+Give a concise, warm answer in under 80 words. Use at most 3 bullets, avoid unsupported guarantees, and ask one helpful follow-up question when useful.`,
         }
       });
 

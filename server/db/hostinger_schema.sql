@@ -237,6 +237,20 @@ CREATE TABLE `audit_logs` (
   INDEX `idx_logs_actor` (`actor_email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+-- ----------------------------------------------------------------------------
+-- Table: ai_chat_messages (Public website AI advisor conversation history)
+-- ----------------------------------------------------------------------------
+CREATE TABLE `ai_chat_messages` (
+  `id` VARCHAR(64) NOT NULL,
+  `conversation_id` VARCHAR(64) NOT NULL,
+  `visitor_name` VARCHAR(128) DEFAULT NULL,
+  `role` ENUM('visitor', 'advisor') NOT NULL,
+  `content` TEXT NOT NULL,
+  `created_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  INDEX `idx_ai_chat_conversation` (`conversation_id`, `created_at`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 SET FOREIGN_KEY_CHECKS = 1;
 
 -- ----------------------------------------------------------------------------

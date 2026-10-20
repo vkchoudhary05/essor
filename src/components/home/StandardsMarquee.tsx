@@ -6,10 +6,6 @@ import {
   Award,
   ShieldCheck,
   ArrowRight,
-  ChevronLeft,
-  ChevronRight,
-  Play,
-  Pause,
   Layers,
   Globe,
   FileCheck2
@@ -23,8 +19,6 @@ interface StandardsMarqueeProps {
 export const StandardsMarquee: React.FC<StandardsMarqueeProps> = ({ onNavigate, onOpenEnquiry }) => {
   const [selectedStandard, setSelectedStandard] = useState<AuditStandard | null>(null);
   const [activeCategory, setActiveCategory] = useState<'ALL' | 'GFSI' | 'ISO' | 'HYGIENE' | 'SPECIALIZED'>('ALL');
-  const [isAutoScrolling, setIsAutoScrolling] = useState(true);
-  const [isHovered, setIsHovered] = useState(false);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
 
@@ -76,39 +70,6 @@ export const StandardsMarquee: React.FC<StandardsMarqueeProps> = ({ onNavigate, 
     }
   }, [activeCategory]);
 
-  // Automatic gentle carousel slide (left to right) when not paused or hovered
-  useEffect(() => {
-    if (!isAutoScrolling || isHovered) return;
-
-    const timer = setInterval(() => {
-      const el = trackRef.current;
-      if (!el) return;
-
-      const cardWidth = window.innerWidth < 640 ? 175 : 275;
-      const maxScroll = el.scrollWidth - el.clientWidth;
-
-      if (el.scrollLeft >= maxScroll - 20) {
-        el.scrollTo({ left: 0, behavior: 'smooth' });
-      } else {
-        el.scrollBy({ left: cardWidth, behavior: 'smooth' });
-      }
-    }, 3800);
-
-    return () => clearInterval(timer);
-  }, [isAutoScrolling, isHovered, filteredStandards]);
-
-  // Step left / right controls
-  const handleScrollStep = (direction: 'left' | 'right') => {
-    const el = trackRef.current;
-    if (!el) return;
-
-    const scrollAmount = el.clientWidth * 0.75;
-    el.scrollBy({
-      left: direction === 'left' ? -scrollAmount : scrollAmount,
-      behavior: 'smooth'
-    });
-  };
-
   // Mouse drag-to-scroll handlers
   const handleMouseDown = (e: React.MouseEvent) => {
     const el = trackRef.current;
@@ -145,9 +106,7 @@ export const StandardsMarquee: React.FC<StandardsMarqueeProps> = ({ onNavigate, 
       id="audit-standards" 
       className="py-10 sm:py-16 bg-gradient-to-b from-[#F8FAF9] via-white to-[#F8FAF9] border-b border-emerald-900/10 relative overflow-hidden"
       aria-label="Audit Standards and Certifications Supported"
-      onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => {
-        setIsHovered(false);
         handleMouseUpOrLeave();
       }}
     >
@@ -172,11 +131,11 @@ export const StandardsMarquee: React.FC<StandardsMarqueeProps> = ({ onNavigate, 
 
             <p className="mt-0.5 text-xs sm:text-sm text-neutral-600 font-medium max-w-2xl">
               GFSI Benchmarked · ISO Schemes · Halal &amp; Kosher · US FDA FSMA · FSSAI Statutory.
-              <span className="text-neutral-500 hidden sm:inline ml-1">Swipe left to right to explore all 16 schemes.</span>
+              <span className="text-neutral-500 hidden sm:inline ml-1">Swipe to explore all 16 schemes.</span>
             </p>
           </div>
 
-          {/* Carousel controls & Directory Link */}
+          {/* Directory Link */}
           <div className="flex items-center gap-2 shrink-0 self-start md:self-auto">
             {onNavigate && (
               <button
@@ -189,47 +148,6 @@ export const StandardsMarquee: React.FC<StandardsMarqueeProps> = ({ onNavigate, 
               </button>
             )}
 
-            {/* Play/Pause Auto-Slide Toggle */}
-            <button
-              type="button"
-              onClick={() => setIsAutoScrolling(!isAutoScrolling)}
-              title={isAutoScrolling ? 'Pause auto-slide' : 'Resume auto-slide'}
-              aria-label={isAutoScrolling ? 'Pause auto-slide' : 'Resume auto-slide'}
-              className="p-1.5 sm:p-2 rounded-xl bg-white hover:bg-neutral-100 border border-neutral-200 text-neutral-600 transition-colors cursor-pointer shadow-2xs"
-            >
-              {isAutoScrolling ? <Pause className="w-3.5 h-3.5 sm:w-4 sm:h-4" /> : <Play className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-700" />}
-            </button>
-
-            {/* Prev / Next Arrows */}
-            <div className="flex items-center gap-1 bg-white p-1 rounded-xl border border-neutral-200 shadow-2xs">
-              <button
-                type="button"
-                onClick={() => handleScrollStep('left')}
-                disabled={!canScrollLeft}
-                aria-label="Previous standard"
-                className={`p-1.5 sm:p-2 rounded-lg transition-all cursor-pointer ${
-                  canScrollLeft
-                    ? 'hover:bg-[#042A1D] hover:text-white text-neutral-700'
-                    : 'text-neutral-300 cursor-not-allowed'
-                }`}
-              >
-                <ChevronLeft className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-              </button>
-
-              <button
-                type="button"
-                onClick={() => handleScrollStep('right')}
-                disabled={!canScrollRight}
-                aria-label="Next standard"
-                className={`p-1.5 sm:p-2 rounded-lg transition-all cursor-pointer ${
-                  canScrollRight
-                    ? 'hover:bg-[#042A1D] hover:text-white text-neutral-700'
-                    : 'text-neutral-300 cursor-not-allowed'
-                }`}
-              >
-                <ChevronRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-              </button>
-            </div>
           </div>
         </div>
 

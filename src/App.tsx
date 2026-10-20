@@ -186,6 +186,17 @@ export default function App() {
     setMeta('meta[name="twitter:title"]', 'content', seo.title);
     setMeta('meta[name="twitter:description"]', 'content', seo.description);
     setMeta('link[rel="canonical"]', 'href', canonicalUrl);
+
+    // Keep authenticated workspaces out of search results even if a crawler
+    // discovers a direct URL. Public marketing and certificate pages remain indexable.
+    const isPrivateRoute = /^(\/admin|\/login|\/client|\/consultant|\/trainer|\/participant)(\/|$)/.test(currentPath);
+    setMeta(
+      'meta[name="robots"]',
+      'content',
+      isPrivateRoute
+        ? 'noindex, nofollow, noarchive'
+        : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'
+    );
   }, [currentPath, services]);
 
   const navigateTo = (path: string) => {

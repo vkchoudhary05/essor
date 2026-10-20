@@ -388,7 +388,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
             {/* Desktop Navigation: Trending Floating Island Pill Menu */}
             <nav 
-              className="hidden xl:flex min-w-0 items-center p-2 rounded-full bg-white/95 border border-emerald-900/10 shadow-xs backdrop-blur-md text-sm font-semibold transition-all duration-300"
+              className="hidden lg:flex min-w-0 items-center p-1.5 2xl:p-2 rounded-full bg-white/95 border border-emerald-900/10 shadow-xs backdrop-blur-md text-[13px] 2xl:text-sm font-semibold transition-all duration-300"
               aria-label="Primary Navigation"
             >
               {navLinks.map((link) => {
@@ -399,7 +399,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                   <button
                     key={link.path}
                     onClick={() => handleLinkClick(link.path)}
-                    className={`relative flex items-center gap-1.5 px-2.5 2xl:px-3.5 py-1.5 rounded-full whitespace-nowrap transition-all duration-300 cursor-pointer ${
+                    className={`relative flex items-center gap-1 px-2 xl:px-2.5 2xl:px-3.5 py-1.5 rounded-full whitespace-nowrap transition-all duration-300 cursor-pointer ${
                       isActive 
                         ? 'bg-[#012B53] text-white shadow-sm scale-100' 
                         : 'text-neutral-700 hover:text-[#012B53] hover:bg-emerald-50/80 hover:scale-102'
@@ -437,7 +437,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               {/* Discuss Requirements CTA */}
               <button
                 onClick={() => onOpenEnquiry()}
-                className="group relative inline-flex items-center gap-2 whitespace-nowrap px-4 py-2 rounded-full text-xs font-bold text-white bg-gradient-to-r from-[#012B53] via-[#0C5A91] to-[#4C8E20] hover:from-[#0C5A91] hover:via-[#012B53] hover:to-[#3E7D25] active:scale-95 transition-all duration-300 shadow-md shadow-emerald-900/20 ring-1 ring-emerald-400/30 cursor-pointer"
+                className="group relative hidden 2xl:inline-flex items-center gap-2 whitespace-nowrap px-4 py-2 rounded-full text-xs font-bold text-white bg-gradient-to-r from-[#012B53] via-[#0C5A91] to-[#4C8E20] hover:from-[#0C5A91] hover:via-[#012B53] hover:to-[#3E7D25] active:scale-95 transition-all duration-300 shadow-md shadow-emerald-900/20 ring-1 ring-emerald-400/30 cursor-pointer"
               >
                 <span>Discuss requirements</span>
                 <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
@@ -445,7 +445,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             </div>
 
             {/* Mobile Animated Hamburger Button */}
-            <div className="flex items-center gap-2 xl:hidden">
+            <div className="flex items-center gap-2 lg:hidden">
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                 className="relative inline-flex items-center justify-center p-2.5 rounded-xl bg-white hover:bg-neutral-100 text-[#0B1713] border border-neutral-300 shadow-xs transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D4AF37] cursor-pointer"

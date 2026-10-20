@@ -130,6 +130,20 @@ class MySQLManager {
         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
       `);
 
+      // 4. Public AI advisor conversations
+      await this.pool.execute(`
+        CREATE TABLE IF NOT EXISTS \`ai_chat_messages\` (
+          \`id\` VARCHAR(64) NOT NULL,
+          \`conversation_id\` VARCHAR(64) NOT NULL,
+          \`visitor_name\` VARCHAR(128) DEFAULT NULL,
+          \`role\` ENUM('visitor', 'advisor') NOT NULL,
+          \`content\` TEXT NOT NULL,
+          \`created_at\` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+          PRIMARY KEY (\`id\`),
+          INDEX \`idx_ai_chat_conversation\` (\`conversation_id\`, \`created_at\`)
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+      `);
+
       console.log('[Hostinger MySQL] Essential tables verified and synced.');
     } catch (err) {
       console.error('[Hostinger MySQL] Error ensuring tables exist:', err);
