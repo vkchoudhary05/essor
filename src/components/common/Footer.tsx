@@ -163,16 +163,38 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenEnquiry }) => 
               Audits &amp; Schemes
             </h4>
             <ul className="space-y-2 text-xs text-white font-medium">
-              <li>• ISO 22000 Food Safety</li>
-              <li>• FSSC 22000 Version 7</li>
-              <li>• BRCGS Food Safety Issue 9</li>
-              <li>• HACCP Principles &amp; CCP</li>
-              <li>• Good Manufacturing Practice (GMP)</li>
-              <li>• ISO 9001 Quality System</li>
-              <li>• Halal &amp; Kosher Certification</li>
-              <li>• Non-GMO Verification</li>
-              <li>• ISO 14001 &amp; ISO 45001 (IMS)</li>
-              <li>• Supplier &amp; Vendor Audits</li>
+              {[
+                { name: 'FSSC 22000 Version 6', slug: 'fssc-22000' },
+                { name: 'ISO 22000 Food Safety', slug: 'iso-22000' },
+                { name: 'BRCGS Food Safety Issue 9', slug: 'brcgs' },
+                { name: 'HACCP Principles & CCP', slug: 'haccp' },
+                { name: 'GMP & GHP Hygiene Code', slug: 'gmp-ghp' },
+                { name: 'SQF Food Safety Code', slug: 'sqf' },
+                { name: 'US FDA FSMA & PCQI', slug: 'us-fda-fsma' },
+                { name: 'Halal Certification', slug: 'halal' },
+                { name: 'Kosher Certification', slug: 'kosher' },
+                { name: 'FSSAI Licensing & FoSTaC', slug: 'fssai' }
+              ].map((scheme) => (
+                <li key={scheme.slug}>
+                  <button
+                    type="button"
+                    onClick={() => onNavigate(`/standards/${scheme.slug}`)}
+                    className="hover:text-[#A4D65E] transition-colors cursor-pointer text-left flex items-center gap-1.5"
+                  >
+                    <span className="text-[#A4D65E]">•</span>
+                    <span>{scheme.name}</span>
+                  </button>
+                </li>
+              ))}
+              <li className="pt-1">
+                <button
+                  type="button"
+                  onClick={() => onNavigate('/standards')}
+                  className="text-[11px] font-black text-[#A4D65E] hover:underline flex items-center gap-1 cursor-pointer"
+                >
+                  <span>View All 16 Standards →</span>
+                </button>
+              </li>
             </ul>
           </div>
 

@@ -17,6 +17,9 @@ import { ContactPage } from './components/pages/ContactPage';
 import { LegalPage } from './components/pages/LegalPage';
 import { LoginPage } from './components/pages/LoginPage';
 import { CertificateVerifyPage } from './components/pages/CertificateVerifyPage';
+import { StandardDetailPage } from './components/pages/StandardDetailPage';
+import { StandardsDirectoryPage } from './components/pages/StandardsDirectoryPage';
+import { getStandardBySlug } from './data/standardsData';
 
 // Portals
 import { ClientPortal } from './components/portals/ClientPortal';
@@ -45,22 +48,56 @@ import { BackendApiService } from './services/api';
 import { ServiceItem, TrainingCourse, Enquiry, CMSContent, AdminUser, UserRole } from './types';
 import { useSmoothScroll, scrollToElement } from './hooks/useSmoothScroll';
 
-const INDIA_SEO: Record<string, { title: string; description: string }> = {
+const INDIA_SEO: Record<string, { title: string; description: string; keywords?: string }> = {
   '/': {
-    title: 'ESSOR Compliance Solutions India | Food Safety Consulting, Training & Audit Readiness',
-    description: 'Food safety consulting, FSSAI support, ISO 22000, HACCP, BRCGS audit readiness and training for food businesses, staff and students across India.'
-  },
-  '/training': {
-    title: 'Food Safety Training for Staff & Students in India | ESSOR',
-    description: 'Job-oriented food safety training for staff, students and graduates in India. Learn HACCP, GMP, ISO 22000, FSSC 22000 and food hygiene.'
-  },
-  '/verify-certificate': {
-    title: 'Verify Food Safety Training Certificate | ESSOR India',
-    description: 'Verify ESSOR food safety training certificates issued to staff, students and professionals in India.'
+    title: 'ESSOR Compliance Solutions India | Food Safety Consulting, FSSC 22000, ISO 22000, BRCGS & Training',
+    description: 'Premier food safety consulting in India. Audit readiness for FSSC 22000, ISO 22000, BRCGS, HACCP, GMP, Halal, Kosher & FSSAI with professional staff training.',
+    keywords: 'food safety consultant India, FSSC 22000 audit readiness, ISO 22000 training, HACCP implementation, BRCGS food safety, GMP GHP audits, Halal kosher food audit, FSSAI FoSTaC'
   },
   '/services': {
     title: 'Food Safety Consulting & Audit Readiness Services in India | ESSOR',
-    description: 'Independent FSSAI, HACCP, ISO 22000, FSSC 22000 and BRCGS consulting and audit readiness support for food businesses across India.'
+    description: 'Independent FSSAI, HACCP, ISO 22000, FSSC 22000, and BRCGS consulting, gap assessments, and audit readiness support for food businesses across India.',
+    keywords: 'food safety services, FSSC 22000 consulting India, ISO 22000 audit support, HACCP plan validation, GMP inspection food plant'
+  },
+  '/training': {
+    title: 'Food Safety Academy & FoSTaC Certification Courses in India | ESSOR',
+    description: 'Job-oriented food safety certification courses for industry professionals, plant supervisors, and students. FoSTaC, HACCP, GMP, and ISO 22000 training.',
+    keywords: 'food safety training India, FoSTaC course, HACCP training certification, ISO 22000 lead auditor training, student food hygiene course'
+  },
+  '/our-process': {
+    title: '4-Phase Food Safety Audit Readiness Methodology | ESSOR India',
+    description: 'Explore ESSOR’s proven 4-phase audit readiness roadmap: Diagnostic Gap Assessment, Documentation Overhaul, Shopfloor Mock Audits, and CB Certification Support.',
+    keywords: 'audit readiness roadmap, food safety gap assessment, mock audit food plant, CAPA closure food safety'
+  },
+  '/digital-compliance': {
+    title: 'Digital Food Safety Tools & Digital Compliance System | ESSOR',
+    description: 'Cloud-based food safety management, digital CAPA tracking, hygiene audit checklists, and real-time compliance monitoring for food manufacturing facilities.',
+    keywords: 'digital food safety software, digital CAPA tracker, food compliance system India, digital hygiene checklist'
+  },
+  '/verify-certificate': {
+    title: 'Verify Food Safety Training Certificate Online | ESSOR India',
+    description: 'Verify official ESSOR food safety training certificates issued to industry professionals, QA personnel, and students across India with instant verification.',
+    keywords: 'verify food safety certificate, ESSOR certificate verification, FoSTaC certificate check India'
+  },
+  '/about': {
+    title: 'About ESSOR Compliance Solutions | Expert Food Safety Auditors in India',
+    description: 'Learn about ESSOR Compliance Solutions, our veteran food safety lead auditors, factory-floor philosophy, and track record across hundreds of food facilities.',
+    keywords: 'about ESSOR compliance, food safety consulting team India, lead food auditors Dehradun, food safety specialists'
+  },
+  '/contact': {
+    title: 'Contact Food Safety Lead Auditors & Consultants | ESSOR India',
+    description: 'Connect with ESSOR Compliance Solutions for immediate gap assessments, on-site audit readiness, and customized corporate food safety training across India.',
+    keywords: 'contact food safety consultant India, book food safety audit, Dehradun food consultant contact'
+  },
+  '/legal': {
+    title: 'Legal, Privacy Policy & Terms of Service | ESSOR Compliance Solutions',
+    description: 'Read the official privacy policy, data protection standards, terms of service, and consulting disclosures for ESSOR Compliance Solutions India.',
+    keywords: 'ESSOR privacy policy, terms of service food consulting'
+  },
+  '/standards': {
+    title: 'Food Safety Audit Standards & Certification Directory India | ESSOR',
+    description: 'Explore all 16 supported food safety audit schemes: FSSC 22000, ISO 22000, BRCGS, HACCP, GMP, SQF, Halal, Kosher, and US FDA FSMA with full audit roadmaps.',
+    keywords: 'food safety audit standards, FSSC 22000 India, ISO 22000, BRCGS certification, GFSI benchmarked schemes India, food compliance certification'
   }
 };
 
@@ -95,28 +132,61 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    const seo = INDIA_SEO[currentPath] ?? (currentPath.startsWith('/services/')
-      ? {
-          title: 'Food Safety Audit & Compliance Service in India | ESSOR',
-          description: 'Independent food safety consulting, gap assessment and audit readiness support for food businesses across India.'
-        }
-      : currentPath === '/contact'
-        ? {
-            title: 'Contact ESSOR Compliance Solutions India | Food Safety Support',
-            description: 'Contact ESSOR Compliance Solutions for food safety consulting, audit readiness and training support across India.'
-          }
-        : currentPath === '/about'
-          ? {
-              title: 'About ESSOR Compliance Solutions | Food Safety Experts in India',
-              description: 'Learn about ESSOR Compliance Solutions and our food safety consulting, audit readiness and training work across India.'
-            }
-          : INDIA_SEO['/']);
+    const defaultSeo = INDIA_SEO['/'];
+    let seo = INDIA_SEO[currentPath];
+    if (!seo) {
+      if (currentPath.startsWith('/services/')) {
+        const slug = currentPath.replace('/services/', '');
+        const matchingSrv = services.find((s) => s.slug === slug || s.id === slug);
+        seo = {
+          title: matchingSrv ? `${matchingSrv.title} | Food Safety Consulting India | ESSOR` : 'Food Safety Audit & Compliance Service in India | ESSOR',
+          description: matchingSrv ? matchingSrv.shortDescription : 'Independent food safety consulting, gap assessment and audit readiness support across India.',
+          keywords: matchingSrv ? `${matchingSrv.title}, food safety audit India, ${matchingSrv.applicableStandards?.join(', ') || 'compliance'}` : defaultSeo.keywords
+        };
+      } else if (currentPath.startsWith('/standards/') || currentPath.startsWith('/certifications/')) {
+        const slug = currentPath.replace(/^\/(standards|certifications)\//, '');
+        const matchingStd = getStandardBySlug(slug);
+        seo = {
+          title: matchingStd ? `${matchingStd.name} Certification & Audit Consulting India | ESSOR` : 'Audit Standard & Certification Guide | ESSOR India',
+          description: matchingStd ? `${matchingStd.shortDescription} ESSOR provides complete gap assessment, HACCP/PRP documentation overhaul, and mock audit simulations for ${matchingStd.code} in India.` : 'Independent food safety audit readiness and certification consulting in India.',
+          keywords: matchingStd ? `${matchingStd.code}, ${matchingStd.name}, food safety audit India, ${matchingStd.categoryLabel}, certification consultant India, ${matchingStd.targetIndustries.slice(0, 3).join(', ')}` : defaultSeo.keywords
+        };
+      } else {
+        seo = defaultSeo;
+      }
+    }
+
     document.title = seo.title;
-    const description = document.querySelector('meta[name="description"]');
-    if (description) description.setAttribute('content', seo.description);
-    const ogDescription = document.querySelector('meta[property="og:description"]');
-    if (ogDescription) ogDescription.setAttribute('content', seo.description);
-  }, [currentPath]);
+
+    const setMeta = (selector: string, attr: string, value: string) => {
+      let el = document.querySelector(selector);
+      if (!el) {
+        el = document.createElement(selector.startsWith('meta') ? 'meta' : 'link');
+        if (selector.includes('property="')) {
+          const prop = selector.match(/property="([^"]+)"/)?.[1];
+          if (prop) el.setAttribute('property', prop);
+        } else if (selector.includes('name="')) {
+          const name = selector.match(/name="([^"]+)"/)?.[1];
+          if (name) el.setAttribute('name', name);
+        } else if (selector.includes('rel="')) {
+          const rel = selector.match(/rel="([^"]+)"/)?.[1];
+          if (rel) el.setAttribute('rel', rel);
+        }
+        document.head.appendChild(el);
+      }
+      el.setAttribute(attr, value);
+    };
+
+    setMeta('meta[name="description"]', 'content', seo.description);
+    if (seo.keywords) setMeta('meta[name="keywords"]', 'content', seo.keywords);
+    setMeta('meta[property="og:title"]', 'content', seo.title);
+    setMeta('meta[property="og:description"]', 'content', seo.description);
+    const canonicalUrl = `https://www.essorcompliance.com${currentPath === '/' ? '' : currentPath}`;
+    setMeta('meta[property="og:url"]', 'content', canonicalUrl);
+    setMeta('meta[name="twitter:title"]', 'content', seo.title);
+    setMeta('meta[name="twitter:description"]', 'content', seo.description);
+    setMeta('link[rel="canonical"]', 'href', canonicalUrl);
+  }, [currentPath, services]);
 
   const navigateTo = (path: string) => {
     scrollToElement('body', 0);
@@ -317,6 +387,31 @@ export default function App() {
       <ServiceDetailPage
         slug={slug}
         service={matchedService}
+        onNavigate={navigateTo}
+        onOpenEnquiry={handleOpenEnquiryModal}
+      />
+    );
+  } else if (currentPath === '/standards' || currentPath === '/certifications') {
+    pageContent = (
+      <StandardsDirectoryPage
+        onNavigate={navigateTo}
+        onOpenEnquiry={handleOpenEnquiryModal}
+      />
+    );
+  } else if (currentPath.startsWith('/standards/')) {
+    const slug = currentPath.replace('/standards/', '');
+    pageContent = (
+      <StandardDetailPage
+        slug={slug}
+        onNavigate={navigateTo}
+        onOpenEnquiry={handleOpenEnquiryModal}
+      />
+    );
+  } else if (currentPath.startsWith('/certifications/')) {
+    const slug = currentPath.replace('/certifications/', '');
+    pageContent = (
+      <StandardDetailPage
+        slug={slug}
         onNavigate={navigateTo}
         onOpenEnquiry={handleOpenEnquiryModal}
       />

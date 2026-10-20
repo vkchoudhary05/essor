@@ -41,7 +41,7 @@ export const HomePage: React.FC<HomePageProps> = ({
       />
 
       {/* 2. Recognized Standards & Regulatory Codes (FSSAI, ISO 22000, HACCP, BRCGS) */}
-      <StandardsMarquee />
+      <StandardsMarquee onNavigate={onNavigate} onOpenEnquiry={onOpenEnquiry} />
 
       {/* 3. Core Food Safety & Compliance Services (Clean, Non-Duplicating Grid) */}
       <ServicesSection 

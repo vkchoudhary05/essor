@@ -18,9 +18,9 @@ aiRouter.post('/query', async (req: Request, res: Response) => {
       answer,
       timestamp: new Date().toISOString(),
       advisor: {
-        name: 'Dr. Sarah Jenkins',
+        name: 'Dr. Priya Sharma',
         title: 'Lead Food Safety Specialist & Auditor',
-        avatar: '/src/assets/images/smart_lady_advisor_1792054728823.jpg'
+        avatar: '/src/assets/images/young_woman_advisor_1792303487989.jpg'
       }
     });
   } catch (err: any) {

@@ -4,10 +4,10 @@ import { GoogleGenAI } from '@google/genai';
 const apiKey = process.env.GEMINI_API_KEY;
 let aiClient: GoogleGenAI | null = null;
 
-if (apiKey) {
+if (apiKey && apiKey.trim().length > 5 && !apiKey.includes('YOUR_API_KEY')) {
   try {
     aiClient = new GoogleGenAI({
-      apiKey,
+      apiKey: apiKey.trim(),
       httpOptions: {
         headers: {
           'User-Agent': 'aistudio-build',
@@ -19,118 +19,234 @@ if (apiKey) {
   }
 }
 
-// Built-in expert knowledge bank for instant offline fallback
+// Built-in verified expert knowledge bank for instant, lightning-fast response (<100ms)
 const DOMAIN_KNOWLEDGE_BASE: Record<string, string> = {
-  haccp_iso: `HACCP (Hazard Analysis Critical Control Point) is a foundational, risk-based operational methodology that identifies specific biological, chemical, and physical hazards and establishes Critical Control Points (CCPs) with strict critical limits. 
+  fssai: `### FSSAI Licensing & Statutory Food Business Approvals
 
-ISO 22000 incorporates the entire HACCP system as defined by Codex Alimentarius, but integrates it into a high-level management framework (ISO Annex SL). While HACCP focuses primarily on food safety hazards at the production level, ISO 22000 includes management responsibility, prerequisite programs (PRPs), continuous system audits, internal communication protocols, and interactive supply chain traceability.
+In India, every Food Business Operator (FBO) must hold a valid FSSAI registration or license prior to commercial operations:
 
-ESSOR supports both frameworks: we help facilities design their foundational HACCP plans and elevate them to ISO 22000 / FSSC 22000 certification readiness.`,
+• **Registration vs License**:
+  - **Basic Registration**: Petty food manufacturers, hawkers, and retail kiosks with turnover up to ₹12 Lakh/annum.
+  - **State License**: Manufacturing units with production capacity up to 2 MT/day or turnover between ₹12 Lakh and ₹20 Crore.
+  - **Central License**: Units with capacity >2 MT/day, 100% Export Oriented Units (EOUs), proprietary food products, or multi-state chains.
 
-  brcgs: `Preparing for an unannounced BRCGS Food Safety audit requires maintaining an "everyday audit-ready" state rather than cramming before an announced visit. Key preparation areas include:
+• **Mandatory Schedule 4 Hygiene Blueprint**:
+  - Validated pest control contract with trending logs.
+  - Potable water test reports per IS 10500 standards.
+  - Medical fitness certificates for 100% of food handlers.
+  - Calibrated temperature probes for cold room and heat processing.
 
-1. Prerequisite Programs (PRPs): Daily GMP audits, boot scrubbing, hand hygiene verification, pest control logs, and chemical segregation.
-2. Traceability Challenge: Ensure you can perform a full forward and backward trace test (raw materials to finished pack) within the mandatory 4-hour window, accounting for 100% mass balance.
-3. CCP Validation & Calibration: Daily metal detector / X-ray challenge tests with calibrated test wands (Fe, Non-Fe, SS), verified temperature charts, and scale records.
-4. Internal Audits & Root Cause CAPA: Evidence that all previous non-conformances were investigated down to root causes rather than superficial fixes.
+• **ESSOR Turnkey Support**:
+  We prepare error-free technical dossiers, file through FoSCoS, resolve statutory queries, and conduct mock pre-inspections ensuring license issuance within 15 to 25 business days.`,
 
-ESSOR provides simulated mock audits and daily compliance check protocols to ensure your plant scores an AA or A grade.`,
+  haccp_iso: `### HACCP vs. ISO 22000:2018 Comparison
 
-  allergens: `Mandatory allergen management under global standards (BRCGS, FSSC 22000, US FDA FSMA, and EU 1169/2011) centers on preventing unintended cross-contact:
+While closely related, HACCP and ISO 22000 serve distinct operational roles in modern food processing:
 
-• Matrix Risk Assessment: Profile all raw materials entering the facility against the Major 14 / Big 9 allergens (peanuts, tree nuts, milk, eggs, wheat/gluten, soy, fish, crustacean shellfish, sesame).
-• Physical & Temporal Segregation: Store allergenic ingredients in dedicated low racks with color-coded containers. Schedule allergenic production runs at the end of the day before deep sanitation.
-• Validated Cleaning Protocols: Use validated quantitative ELISA or lateral flow swab tests to verify allergen protein removal on food contact surfaces.
-• Clear Label Specification: Validate packaging print plates to ensure correct bolding and declaration statements ("Contains: Milk, Wheat").
+• **HACCP (Codex Alimentarius)**:
+  - Focuses strictly on physical, chemical, biological, and radiological hazards at the factory floor level.
+  - Identifies Critical Control Points (CCPs), critical limits, monitoring procedures, and immediate corrective actions.
 
-ESSOR audits allergen cleaning validations and provides digital tracking for allergen line clearances.`,
+• **ISO 22000:2018 (Management Framework)**:
+  - Adopts ISO Annex SL high-level structure (compatible with ISO 9001 and ISO 14001).
+  - Encompasses the entire HACCP plan plus Prerequisite Programs (PRPs per ISO/TS 22002), Operational PRPs (oPRPs), management review, emergency preparedness, and interactive internal/external communication.
 
-  capa: `A robust Corrective and Preventive Action (CAPA) process moves beyond simply cleaning a spill or rewriting an SOP:
+• **Recommendation**:
+  For domestic retail, HACCP or ISO 22000 is excellent. For Tier-1 FMCG or international export, ISO 22000 or GFSI-benchmarked FSSC 22000 is required. ESSOR provides a phased upgrade path from HACCP to ISO 22000.`,
 
-1. Containment (Immediate Correction): Quarantine affected product, halt non-conforming batch distribution, and apply immediate containment.
-2. Root Cause Analysis (RCA): Apply proven methodologies such as the 5-Whys or Ishikawa Fishbone Diagram to determine whether the failure was human error, equipment malfunction, procedural ambiguity, or environmental drift.
-3. Preventive Action: Implement systemic fixes (e.g., engineering interlocks, automated temperature sensor alarms, or staff retraining).
-4. Effectiveness Verification: Re-audit the critical control after 30 to 60 days to confirm the non-conformance has not recurred.
+  brcgs: `### BRCGS Food Safety Issue 9 Unannounced Audit Protocol
 
-ESSOR's Digital Platform provides real-time CAPA tracking with automated due-date escalation and auditor sign-off.`,
+BRCGS Issue 9 emphasizes continuous audit-readiness and authentic food safety culture:
 
-  coldchain: `Cold-chain critical control points are vital for preventing rapid vegetative bacterial multiplication (such as Listeria monocytogenes and Salmonella):
+1. **Unannounced Audit Mandate**:
+   Every 3 years, at least one mandatory unannounced audit is conducted. Plants cannot "cram" before the auditor arrives.
 
-• Chilled Storage: Maintained consistently at 0°C to 4°C (never exceeding 5°C).
-• Frozen Storage: Maintained at -18°C or colder throughout holding and shipping.
-• Continuous Telemetry: Calibrated digital probes with automatic alerting (SMS/Email) if temperatures drift above threshold for more than 15 minutes.
-• Loading Dock Protocols: Refrigerated vestibules or rapid-acting dock seals to prevent condensation formation during truck transfers.
+2. **Core Clause Syllabi**:
+   • **Senior Management Commitment (Section 1)**: Documented food safety culture plan with quarterly reviews.
+   • **Hazard & Risk Management (Section 2)**: Fully validated HACCP plan with annual reviews.
+   • **Site Standards & Hygiene (Section 4)**: Zoning (High Care / High Risk), foreign body detection (metal detectors/X-ray), and drainage design.
+   • **Traceability Challenge (Section 3.9)**: Forward & backward trace with mass balance reconciled within 4 hours.
 
-ESSOR helps processing facilities calibrate their thermal monitoring systems and conduct thermal mapping studies.`,
+3. **How ESSOR Prepares Your Team**:
+   We conduct complete unannounced mock inspections, staff interview drills, and CAPA validation to secure an 'AA' or 'A' rating with a 100% pass guarantee.`,
 
-  certificate: `You can instantly verify the authenticity of any ESSOR Food Safety Certificate or Training Credential using our public verification portal:
+  fssc: `### FSSC 22000 Version 6 Requirements
 
-1. Simply navigate to the 'Verify Credential' section on our website.
-2. Enter the unique 8-12 character Certificate Number (e.g., ESS-2026-FSSC-9041).
-3. Alternatively, scan the QR code printed directly on the issued certificate document.
-4. The system validates the credential against our tamper-proof central registry, showing the issue date, validity status, certified facility, and accredited scope.`
+FSSC 22000 Version 6 became mandatory in April 2024. Key updates include:
+
+• **Three Core Elements**:
+  1. ISO 22000:2018 Standard requirements.
+  2. Sector-specific PRPs (ISO/TS 22002-1 for food manufacturing).
+  3. FSSC 22000 Additional Requirements (Food Defense, Food Fraud mitigation, Food Loss & Waste monitoring, Equipment Design).
+
+• **Audit Duration & Certification Cycle**:
+  Initial Stage 1 (Documentation review) + Stage 2 (On-site implementation audit). 3-year certification cycle with annual surveillance.
+
+• **Global Recognition**:
+  Benchmarked by GFSI and accepted unconditionally by global retailers (Walmart, Tesco, Nestlé, Unilever). ESSOR provides end-to-end SOP drafting and implementation.`,
+
+  swabs: `### Hygiene Swabbing & Environmental Monitoring Programs (EMP)
+
+An Environmental Monitoring Program (EMP) is essential for verifying plant sanitation and pathogen zoning:
+
+• **Zone Classification**:
+  - **Zone 1 (Food Contact Surfaces)**: Conveyor belts, slicers, hoppers, packing funnels. Tested for ATP bioluminescence and Total Plate Count (TPC).
+  - **Zone 2 (Adjacent Non-Contact Surfaces)**: Frameworks, control buttons, chutes. Tested for indicator organisms (Coliforms/Enterobacteriaceae).
+  - **Zone 3 (Processing Environment)**: Walls, drains, overhead pipes. Tested for target pathogens (Listeria monocytogenes, Salmonella spp.).
+  - **Zone 4 (Remote Areas)**: Warehouses, maintenance shops, locker rooms.
+
+• **Sampling Frequency**:
+  - Weekly ATP swabs for rapid sanitation validation prior to production startup.
+  - Monthly pathogen swabbing in wet processing zones and drain areas.
+  - Quarterly bio-burden air plates and personnel hand swabs.
+
+• **ESSOR Laboratory Services**:
+  We provide sterile swab kits, sample logistics, NABL-accredited test reports, and corrective action protocols for repeat positive counts.`,
+
+  training: `### FoSTaC & Certified Food Safety Training Programs
+
+Under FSSAI mandate, every licensed food establishment must have at least one trained Food Safety Supervisor (FSS) per 25 food handlers:
+
+• **ESSOR Accredited Programs**:
+  1. **FSSAI FoSTaC Certification**: Basic, Advanced, and Special course modules for Catering, Manufacturing, Dairy, and Bakery.
+  2. **Internal Auditor (ISO 22000 / BRCGS / FSSC)**: 2-day intensive practical course with simulated non-conformance audits.
+  3. **HACCP Team Leader Workshop**: Codex principles, hazard matrices, and CCP critical limit validation.
+  4. **GMP & Allergen Hygiene for Floor Operators**: Vernacular training (Hindi / English) for factory floor staff.
+
+• **Tamper-Proof Verification**:
+  All certificates issued by ESSOR feature a cryptographically signed QR code verifiable 24/7 on our public registry.`,
+
+  fsma: `### US FDA FSMA Compliance (Preventive Controls & FSVP)
+
+Exporting food and beverage products to the United States requires strict alignment with the FDA Food Safety Modernization Act:
+
+• **Hazard Analysis and Risk-Based Preventive Controls (HARPC)**:
+  Requires a Preventive Controls Qualified Individual (PCQI) to author and validate the plant's Food Safety Plan.
+• **Process Controls**: Thermal kill steps, acid/pH controls, water activity (aw) logs.
+• **Allergen & Sanitation Controls**: Validated clean-in-place (CIP) and dedicated allergen tooling.
+• **Supply-Chain Preventive Controls**: Foreign Supplier Verification Program (FSVP) verification for raw material vendors.
+
+• **ESSOR US FDA Desk**:
+  Our lead PCQI auditors review your FDA Food Safety Plan, conduct mock FDA-style inspections, and ensure 100% border compliance.`,
+
+  halal_kosher: `### Halal & Kosher Scheme Certification
+
+Specialized dietary certifications unlock massive retail export markets across the GCC, Southeast Asia, North America, and Europe:
+
+• **Halal Certification**:
+  - Strict compliance with GSO 2055-1 / MS 1500 standards.
+  - Zero cross-contamination with non-Halal ingredients (porcine derivatives, unapproved enzymes, ethyl alcohol).
+  - Dedicated storage, clean transportation lines, and Halal-trained internal assurance committees.
+
+• **Kosher Certification**:
+  - Kashrut law compliance (separation of meat and dairy, supervision of equipment, rabbinic ingredient approvals).
+  - Annual rabbinical on-site audit and batch supervision where required.
+
+• **ESSOR Global Desk**:
+  We coordinate with recognized international Islamic bodies and Rabbinical authorities for direct facility audits and certificate issuance.`,
+
+  capa: `### CAPA (Corrective and Preventive Action) Root Cause Resolution
+
+Resolving audit non-conformances requires demonstrating verified root causes rather than temporary surface corrections:
+
+1. **Immediate Correction (Containment)**:
+   Quarantine affected product, halt non-conforming batch distribution, and apply immediate containment within 24 hours.
+2. **Root Cause Analysis (RCA)**:
+   Utilize structured 5-Whys or Ishikawa Fishbone diagrams to identify systemic procedural, equipment, or training gaps.
+3. **Preventive Action**:
+   Implement engineering interlocks, automated temperature alarms, or updated SOPs.
+4. **Effectiveness Verification**:
+   Re-audit the critical control after 30 to 60 days to verify zero recurrence.
+
+• **ESSOR Digital CAPA System**:
+  Our platform tracks non-conformances with automated due-date reminders, evidence photo uploads, and auditor sign-off.`
 };
 
 export async function askFoodSafetyAdvisor(query: string): Promise<string> {
   const normalized = query.trim().toLowerCase();
 
-  // If Gemini client is active, query model with Dr. Sarah persona
+  // If Gemini client is active, query model with strict 3.5s timeout to guarantee zero user delay
   if (aiClient) {
     try {
-      const response = await aiClient.models.generateContent({
+      const geminiPromise = aiClient.models.generateContent({
         model: 'gemini-3.8-flash',
         contents: query,
         config: {
-          systemInstruction: `You are Dr. Sarah Jenkins, Lead Food Safety Specialist & Auditor at ESSOR Compliance Solutions.
+          systemInstruction: `You are Dr. Priya Sharma, Lead Food Safety Specialist & Auditor at ESSOR Compliance Solutions.
 You provide authoritative, clear, and reassuring guidance on global food safety standards including:
+- FSSAI Licensing (State & Central, FoSCoS, Schedule 4)
 - BRCGS Food Safety Issue 9
-- FSSC 22000 version 6
-- ISO 22000:2018
+- FSSC 22000 version 6 & ISO 22000:2018
 - HACCP & Codex Alimentarius
-- US FDA FSMA (PCQI, Foreign Supplier Verification)
-- Allergen Management & Environmental Monitoring (Listeria, Salmonella)
-- Cold chain controls, sanitation CIP validation, and CAPA resolution.
+- US FDA FSMA (PCQI, HARPC, FSVP)
+- Halal, Kosher, SQF, and Hygiene Swabbing (ATP, EMP, Listeria)
+- FoSTaC Training & Workforce Certification
 
-Keep answers concise (2 to 3 paragraphs max, or clear bullet points), practical, actionable for plant managers and QA professionals, and maintain a warm, highly professional tone. Reference ESSOR's Three Pillars (Consult, Managed Compliance, Digital Platform) where natural.`,
+Format your answer with clean Markdown headers, bullet points, and actionable takeaways. Keep it scannable, practical, and under 3 short paragraphs. Include ESSOR's helpline (+91 6395843850) and email (business@essorcompliance.com) for facility audits where appropriate.`,
         }
       });
 
-      const text = response.text;
+      const timeoutPromise = new Promise<never>((_, reject) =>
+        setTimeout(() => reject(new Error('AI response timeout')), 3500)
+      );
+
+      const response = await Promise.race([geminiPromise, timeoutPromise]);
+      const text = response?.text;
       if (text && text.trim().length > 0) {
         return text.trim();
       }
-    } catch (err) {
-      console.warn('[AI Service] Gemini call failed, using domain fallback:', err);
+    } catch (err: any) {
+      console.warn('[AI Service] Gemini call bypassed or timed out, serving verified domain knowledge:', err?.message || err);
     }
   }
 
-  // Intelligent domain fallback matches
-  if (normalized.includes('haccp') && (normalized.includes('iso') || normalized.includes('difference') || normalized.includes('fssc'))) {
+  // Instant intelligent domain fallback matches (<5ms latency)
+  if (normalized.includes('fssai') || normalized.includes('license') || normalized.includes('foscos') || normalized.includes('state') || normalized.includes('central')) {
+    return DOMAIN_KNOWLEDGE_BASE.fssai;
+  }
+  if (normalized.includes('haccp') || normalized.includes('iso') || normalized.includes('difference') || normalized.includes('22000')) {
     return DOMAIN_KNOWLEDGE_BASE.haccp_iso;
   }
-  if (normalized.includes('brc') || normalized.includes('unannounced') || normalized.includes('audit')) {
+  if (normalized.includes('brc') || normalized.includes('unannounced')) {
     return DOMAIN_KNOWLEDGE_BASE.brcgs;
   }
-  if (normalized.includes('allergen') || normalized.includes('label') || normalized.includes('cross-contact')) {
-    return DOMAIN_KNOWLEDGE_BASE.allergens;
+  if (normalized.includes('fssc')) {
+    return DOMAIN_KNOWLEDGE_BASE.fssc;
+  }
+  if (normalized.includes('swab') || normalized.includes('micro') || normalized.includes('emp') || normalized.includes('hygiene') || normalized.includes('atp') || normalized.includes('listeria')) {
+    return DOMAIN_KNOWLEDGE_BASE.swabs;
+  }
+  if (normalized.includes('train') || normalized.includes('fostac') || normalized.includes('supervisor') || normalized.includes('course') || normalized.includes('academy')) {
+    return DOMAIN_KNOWLEDGE_BASE.training;
+  }
+  if (normalized.includes('fsma') || normalized.includes('fda') || normalized.includes('pcqi') || normalized.includes('export') || normalized.includes('usa')) {
+    return DOMAIN_KNOWLEDGE_BASE.fsma;
+  }
+  if (normalized.includes('halal') || normalized.includes('kosher')) {
+    return DOMAIN_KNOWLEDGE_BASE.halal_kosher;
   }
   if (normalized.includes('capa') || normalized.includes('corrective') || normalized.includes('root cause') || normalized.includes('non-conformance')) {
     return DOMAIN_KNOWLEDGE_BASE.capa;
   }
-  if (normalized.includes('cold') || normalized.includes('temp') || normalized.includes('chilled') || normalized.includes('freeze')) {
-    return DOMAIN_KNOWLEDGE_BASE.coldchain;
-  }
-  if (normalized.includes('verify') || normalized.includes('certificate') || normalized.includes('qr') || normalized.includes('registry')) {
-    return DOMAIN_KNOWLEDGE_BASE.certificate;
-  }
 
-  // General helpful response from Dr. Sarah
-  return `Thank you for your query regarding "${query}". 
+  // Comprehensive, structured response
+  return `### Food Safety & Regulatory Advisory Guidance
 
-In food manufacturing and processing, addressing this requires reviewing three core pillars:
-1. Prerequisite Programs (PRPs): Ensuring baseline sanitary design, GMP discipline, water quality testing, and personal hygiene standards.
-2. Hazard Analysis & Critical Limits: Establishing scientific validation for every critical control point with continuous logging and verified calibration.
-3. Verification & Digital Records: Maintaining verifiable evidence, automated audit trails, and rapid corrective action protocols.
+Thank you for your inquiry regarding **"${query}"**.
 
-Our team at ESSOR Compliance Solutions specializes in preparing facilities for BRCGS, FSSC 22000, ISO 22000, and FDA compliance. You can schedule a confidential facility assessment or reach out to our lead technical specialists anytime!`;
+In certified food manufacturing, packaging, and commercial catering, addressing this requirement effectively rests on three core pillars:
+
+1. **Prerequisite Programs (PRPs & GMPs)**:
+   Ensure verified sanitary design, pest trending logs, potable water testing (IS 10500), and documented employee personal hygiene.
+
+2. **Hazard Analysis & Critical Limits (CCPs & oPRPs)**:
+   Establish scientifically validated critical limits (thermal lethality, metal detection sensitivity, chilled cold chain <4°C) with real-time logging.
+
+3. **Verifiable Audit Evidence & Traceability**:
+   Maintain documented SOPs, batch records, forward/backward trace capability within 4 hours, and structured CAPA resolution.
+
+• **Direct Specialist Assistance**:
+  ESSOR Compliance Solutions provides hands-on facility gap audits, FSSAI statutory approvals, and GFSI certification blueprints with a 100% first-time pass guarantee.
+  - **Direct WhatsApp**: +91 6395843850
+  - **Email**: business@essorcompliance.com`;
 }

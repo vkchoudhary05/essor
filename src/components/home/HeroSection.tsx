@@ -166,16 +166,16 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   };
 
   return (
-    <section className="relative w-full overflow-hidden bg-[#F4F8F5] pt-6 pb-16 sm:pt-10 sm:pb-24 border-b border-[#012B53]/10">
-      {/* Full-width food-manufacturing backdrop, tuned to remain visible behind copy at every viewport size. */}
+    <section className="relative w-full overflow-hidden bg-[#F4F8F5] pt-5 pb-12 sm:pt-10 sm:pb-24 border-b border-[#012B53]/10">
+      {/* Full-width food-manufacturing backdrop, balanced to remain crisp and recognizable on mobile and desktop without zoom distortion */}
       <img
         src={heroFoodSafetyFacility}
         alt="Modern food manufacturing facility maintained for safety and quality"
-        className="absolute inset-0 h-full w-full object-cover object-[68%_center] sm:object-center"
+        className="absolute inset-0 h-full w-full object-cover object-center pointer-events-none select-none"
       />
-      {/* A lighter vertical wash on phones keeps the visual present; desktop shifts the light area to the copy column. */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#F8FAFC]/88 via-[#F8FAFC]/68 via-55% to-[#F8FAFC]/60 md:bg-gradient-to-r md:from-[#F8FAFC]/88 md:via-[#F8FAFC]/58 md:via-55% md:to-[#012B53]/28" />
-      <div className="absolute inset-0 bg-gradient-to-b from-white/10 via-transparent to-[#F8FAFC]/35" />
+      {/* Soft gradient wash: ensures text legibility while keeping the real facility background visible */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#F8FAFC]/92 via-[#F8FAFC]/80 to-[#F8FAFC]/90 md:bg-gradient-to-r md:from-[#F8FAFC]/90 md:via-[#F8FAFC]/65 md:to-[#012B53]/25" />
+      <div className="absolute inset-0 bg-gradient-to-b from-white/10 via-transparent to-[#F8FAFC]/30" />
       
       {/* Background Decorative Rings */}
       <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-[#75B72B]/15 rounded-full blur-3xl pointer-events-none" />
@@ -183,19 +183,19 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Text-first hero: the facility image stays visible behind the complete message. */}
-        <div className="grid min-h-[calc(100svh-1rem)] grid-cols-1 content-center items-center">
+        {/* Responsive hero container: natural height on mobile without forced zoom stretch */}
+        <div className="grid grid-cols-1 content-center items-center py-4 sm:py-8 lg:min-h-[calc(100svh-3rem)]">
           
           {/* Left Column: Direct, Simple, Understandable Headline & Actions */}
-          <div className="max-w-3xl space-y-6 text-left">
+          <div className="max-w-3xl space-y-3 sm:space-y-6 text-left">
             
             {/* Brochure Tagline Badge */}
             <div 
               ref={trustBadgeRef}
-              className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white border border-emerald-300 shadow-xs"
+              className="inline-flex items-center gap-2 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-white border border-emerald-300 shadow-xs"
             >
-              <ShieldCheck className="w-5 h-5 text-[#75B72B]" aria-hidden="true" />
-              <span className="text-[11px] font-black uppercase tracking-wider text-neutral-900">
+              <ShieldCheck className="w-4 h-4 sm:w-5 sm:h-5 text-[#75B72B]" aria-hidden="true" />
+              <span className="text-[9.5px] sm:text-[11px] font-black uppercase tracking-wider text-neutral-900">
                 SIMPLIFYING COMPLIANCE · STRENGTHENING FOOD SAFETY
               </span>
             </div>
@@ -203,7 +203,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             {/* Clear, High-Contrast Main Headline */}
             <h1 
               ref={titleRef}
-              className="text-3xl sm:text-4xl md:text-5xl font-black text-neutral-900 tracking-tight leading-[1.12]"
+              className="text-2xl sm:text-4xl md:text-5xl font-black text-neutral-900 tracking-tight leading-[1.15]"
             >
               Food Safety Audits, Plant Hygiene &amp;{' '}
               <span className="text-[#3E7D25] font-black">
@@ -215,37 +215,37 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             {/* Business Subheading in Simple Non-Jargon Language */}
             <p 
               ref={descRef}
-              className="relative z-20 block max-w-2xl rounded-xl border border-white/90 bg-white px-4 py-3 text-base font-medium leading-relaxed text-neutral-900 shadow-xl shadow-[#012B53]/25 sm:px-5 sm:py-4 sm:text-lg"
+              className="relative z-20 block max-w-2xl rounded-xl border border-white/90 bg-white/95 px-3 py-2.5 text-xs sm:text-base font-medium leading-relaxed text-neutral-800 shadow-md sm:px-5 sm:py-4 sm:text-lg"
             >
-              We guide food processors, packaging facilities, commercial kitchens, and dairy plants to pass audits effortlessly. From on-site <strong className="font-bold text-[#3E7D25]">FSSAI licensing</strong> and <strong className="font-bold text-[#3E7D25]">ISO 22000 / HACCP / BRCGS certification readiness</strong> to <strong className="font-bold text-[#3E7D25]">accredited workforce training</strong> with verifiable certificates.
+              We guide food processors, packaging units, and commercial kitchens to pass audits effortlessly. From on-site <strong className="font-bold text-[#3E7D25]">FSSAI licensing</strong> and <strong className="font-bold text-[#3E7D25]">ISO 22000 / HACCP / BRCGS</strong> readiness to <strong className="font-bold text-[#3E7D25]">accredited workforce training</strong>.
             </p>
 
-            {/* 6 Brochure Highlights from Page 2 */}
+            {/* Highlights: compact on mobile to keep hero viewport-friendly */}
             <div 
               ref={benefitsRef}
-              className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 pt-1"
+              className="grid grid-cols-2 sm:grid-cols-3 gap-1.5 sm:gap-2.5 pt-0.5 sm:pt-1"
             >
-              <div className="flex items-center gap-2 p-2.5 rounded-xl bg-white border border-emerald-900/10 shadow-xs">
-                <CheckCircle2 className="w-4 h-4 text-[#3E7D25] shrink-0" />
-                <span className="text-xs font-bold text-neutral-900">Simple &amp; Hassle-Free</span>
+              <div className="flex items-center gap-1.5 sm:gap-2 p-1.5 sm:p-2.5 rounded-xl bg-white border border-emerald-900/10 shadow-xs">
+                <CheckCircle2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#3E7D25] shrink-0" />
+                <span className="text-[11px] sm:text-xs font-bold text-neutral-900">Simple &amp; Hassle-Free</span>
               </div>
-              <div className="flex items-center gap-2 p-2.5 rounded-xl bg-white border border-emerald-900/10 shadow-xs">
-                <CheckCircle2 className="w-4 h-4 text-[#3E7D25] shrink-0" />
-                <span className="text-xs font-bold text-neutral-900">Fast Turnaround</span>
+              <div className="flex items-center gap-1.5 sm:gap-2 p-1.5 sm:p-2.5 rounded-xl bg-white border border-emerald-900/10 shadow-xs">
+                <CheckCircle2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#3E7D25] shrink-0" />
+                <span className="text-[11px] sm:text-xs font-bold text-neutral-900">Fast Turnaround</span>
               </div>
-              <div className="flex items-center gap-2 p-2.5 rounded-xl bg-white border border-emerald-900/10 shadow-xs">
-                <CheckCircle2 className="w-4 h-4 text-[#3E7D25] shrink-0" />
-                <span className="text-xs font-bold text-neutral-900">Guaranteed Results</span>
+              <div className="flex items-center gap-1.5 sm:gap-2 p-1.5 sm:p-2.5 rounded-xl bg-white border border-emerald-900/10 shadow-xs">
+                <CheckCircle2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#3E7D25] shrink-0" />
+                <span className="text-[11px] sm:text-xs font-bold text-neutral-900">Guaranteed Results</span>
               </div>
-              <div className="flex items-center gap-2 p-2.5 rounded-xl bg-white border border-emerald-900/10 shadow-xs">
-                <CheckCircle2 className="w-4 h-4 text-[#3E7D25] shrink-0" />
-                <span className="text-xs font-bold text-neutral-900">Well Documented</span>
+              <div className="flex items-center gap-1.5 sm:gap-2 p-1.5 sm:p-2.5 rounded-xl bg-white border border-emerald-900/10 shadow-xs">
+                <CheckCircle2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#3E7D25] shrink-0" />
+                <span className="text-[11px] sm:text-xs font-bold text-neutral-900">100% Documented</span>
               </div>
-              <div className="flex items-center gap-2 p-2.5 rounded-xl bg-white border border-emerald-900/10 shadow-xs">
+              <div className="hidden sm:flex items-center gap-2 p-2.5 rounded-xl bg-white border border-emerald-900/10 shadow-xs">
                 <CheckCircle2 className="w-4 h-4 text-[#3E7D25] shrink-0" />
                 <span className="text-xs font-bold text-neutral-900">Affordable Pricing</span>
               </div>
-              <div className="flex items-center gap-2 p-2.5 rounded-xl bg-white border border-emerald-900/10 shadow-xs">
+              <div className="hidden sm:flex items-center gap-2 p-2.5 rounded-xl bg-white border border-emerald-900/10 shadow-xs">
                 <CheckCircle2 className="w-4 h-4 text-[#3E7D25] shrink-0" />
                 <span className="text-xs font-bold text-neutral-900">QR Verifiable Certs</span>
               </div>
@@ -254,12 +254,12 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             {/* Action Buttons */}
             <div 
               ref={ctaGroupRef}
-              className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-2"
+              className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 pt-1 sm:pt-2"
             >
               <button
                 type="button"
                 onClick={() => onOpenEnquiry()}
-                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl text-sm font-bold tracking-wide text-white bg-gradient-to-r from-[#012B53] via-[#012B53] to-[#3E7D25] hover:opacity-95 shadow-md active:scale-[0.98] transition-all cursor-pointer"
+                className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl text-xs sm:text-sm font-bold tracking-wide text-white bg-gradient-to-r from-[#012B53] via-[#012B53] to-[#3E7D25] hover:opacity-95 shadow-md active:scale-[0.98] transition-all cursor-pointer"
               >
                 <span>Request Free Audit Guidance</span>
                 <ArrowRight className="w-4 h-4" />
@@ -269,9 +269,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               <div className="flex items-center gap-2">
                 <a
                   href="tel:+916395843850"
-                  className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-4 py-3.5 rounded-xl text-sm font-bold text-neutral-900 bg-white hover:bg-emerald-50 border border-emerald-600/30 shadow-xs transition-all active:scale-[0.98]"
+                  className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-1.5 px-3.5 py-3 rounded-xl text-xs sm:text-sm font-bold text-neutral-900 bg-white hover:bg-emerald-50 border border-emerald-600/30 shadow-xs transition-all active:scale-[0.98]"
                 >
-                  <Phone className="w-4 h-4 text-[#3E7D25]" />
+                  <Phone className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#3E7D25]" />
                   <span>Call: 6395843850</span>
                 </a>
 
@@ -279,17 +279,17 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                   href="https://wa.me/916395843850?text=Hi%20ESSOR%20Team%2C%20I%20would%20like%20to%20consult%20regarding%20Food%20Safety%20%26%20Audit%20Services."
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 px-3.5 py-3.5 rounded-xl text-sm font-bold text-white bg-[#25D366] hover:bg-[#20ba59] transition-all active:scale-[0.98]"
+                  className="inline-flex items-center justify-center gap-1.5 px-3.5 py-3 rounded-xl text-xs sm:text-sm font-bold text-white bg-[#25D366] hover:bg-[#20ba59] transition-all active:scale-[0.98]"
                   title="Chat on WhatsApp"
                 >
-                  <MessageCircle className="w-4 h-4 text-white" />
-                  <span className="hidden sm:inline">WhatsApp</span>
+                  <MessageCircle className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-white" />
+                  <span>WhatsApp</span>
                 </a>
               </div>
             </div>
 
             {/* Direct Contact Bar */}
-            <div className="pt-3 border-t border-neutral-200 text-xs text-neutral-700 flex flex-wrap items-center gap-y-2 gap-x-5">
+            <div className="pt-2 sm:pt-3 border-t border-neutral-200 text-[11px] sm:text-xs text-neutral-700 flex flex-wrap items-center gap-y-1.5 gap-x-4">
               <div className="flex items-center gap-1.5">
                 <Phone className="w-3.5 h-3.5 text-[#3E7D25]" />
                 <span className="font-bold text-neutral-900">+91 6395843850</span>
@@ -300,7 +300,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                   business@essorcompliance.com
                 </a>
               </div>
-              <div className="flex items-center gap-1.5">
+              <div className="hidden sm:flex items-center gap-1.5">
                 <MapPin className="w-3.5 h-3.5 text-[#3E7D25]" />
                 <span className="font-medium text-neutral-800">Doon IT Park, Dehradun</span>
               </div>

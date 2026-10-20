@@ -1,0 +1,13 @@
+# robots.txt for ESSOR Compliance Solutions India
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /admin/*
+Disallow: /client-portal
+Disallow: /consultant-portal
+Disallow: /trainer-portal
+Disallow: /participant-portal
+Disallow: /api/
+
+# Sitemap location
+Sitemap: https://www.essorcompliance.com/sitemap.xml

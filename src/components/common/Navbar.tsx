@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Logo } from './Logo';
 import { 
   ArrowRight, 
@@ -78,6 +78,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
   const navLinks = [
     { label: 'Services', path: '/services', icon: Layers },
+    { label: 'Audit Standards', path: '/standards', icon: Award },
     { label: 'Training', path: '/training', icon: GraduationCap },
     { label: 'Our Process', path: '/our-process', icon: Compass },
     { label: 'Digital Tools', path: '/digital-compliance', icon: Cpu },
@@ -88,6 +89,15 @@ export const Navbar: React.FC<NavbarProps> = ({
 
   const handleLinkClick = (path: string) => {
     setMobileMenuOpen(false);
+    if (path.startsWith('/#')) {
+      const targetId = path.replace('/#', '');
+      onNavigate('/');
+      setTimeout(() => {
+        const el = document.getElementById(targetId);
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      }, 120);
+      return;
+    }
     onNavigate(path);
   };
 
