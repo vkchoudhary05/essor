@@ -260,25 +260,30 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({
         </div>
 
         {/* Callout */}
-        <div className="mt-12 p-8 rounded-2xl bg-[#051F14] text-white border border-emerald-500/30 shadow-xl flex flex-col md:flex-row items-center justify-between gap-6 text-left">
-          <div>
-            <span className="text-xs font-bold uppercase tracking-widest text-[#A4D65E]">
-              Custom Audit Readiness Assignment
-            </span>
-            <h3 className="text-xl sm:text-2xl font-bold tracking-tight mt-1 text-white">
-              Need a factory floor gap audit for your upcoming inspection?
-            </h3>
-            <p className="text-xs sm:text-sm text-white/80 mt-1 max-w-xl">
-              We visit your plant in person, inspect all lines, identify findings, and guide your team to 100% compliance.
-            </p>
-          </div>
-          <button
-            onClick={() => onOpenEnquiry()}
-            className="px-6 py-3.5 text-xs font-bold uppercase tracking-wider text-white bg-[#3E7D25] hover:bg-[#256629] active:scale-[0.98] rounded-xl transition-all shadow-md whitespace-nowrap shrink-0 cursor-pointer"
-          >
-            Speak to a Lead Specialist
-          </button>
-        </div>
+       
+<div className="mt-12 p-8 rounded-2xl bg-white text-slate-900 border border-emerald-500/30 shadow-xl flex flex-col md:flex-row items-center justify-between gap-6 text-left">
+  <div>
+    <span className="text-xs font-bold uppercase tracking-widest text-[#3E7D25]">
+      Custom Audit Readiness Assignment
+    </span>
+
+    <h3 className="text-xl sm:text-2xl font-bold tracking-tight mt-1 text-[#051F14]">
+      Need a factory floor gap audit for your upcoming inspection?
+    </h3>
+
+    <p className="text-xs sm:text-sm text-slate-600 mt-1 max-w-xl">
+      We visit your plant in person, inspect all lines, identify findings, and guide your team to 100% compliance.
+    </p>
+  </div>
+
+  <button
+    onClick={() => onOpenEnquiry()}
+    className="px-6 py-3.5 text-xs font-bold uppercase tracking-wider text-white bg-[#3E7D25] hover:bg-[#256629] active:scale-[0.98] rounded-xl transition-all shadow-md whitespace-nowrap shrink-0 cursor-pointer"
+  >
+    Speak to a Lead Specialist
+  </button>
+</div>
+
       </section>
 
     </div>

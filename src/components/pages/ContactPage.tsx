@@ -325,10 +325,10 @@ export const ContactPage: React.FC<ContactPageProps> = ({ services }) => {
           <div className="lg:col-span-5 space-y-6">
             
             {/* Direct Official Brochure Contact Box */}
-            <div className="p-8 rounded-2xl bg-[#051F14] text-white border border-emerald-500/30 shadow-xl space-y-5">
+            <div className="p-8 rounded-2xl bg-white text-[#082D55] border border-[#E1E8E0] shadow-lg space-y-5 transition-all duration-300 hover:shadow-xl">
               <div className="space-y-2">
-                <Logo size="md" theme="dark" />
-                <p className="text-xs text-[#A4D65E] font-black uppercase tracking-wider">
+                <Logo size="md" theme="light" />
+                <p className="text-xs text-[#4C8D2B] font-black uppercase tracking-wider">
                   Compliance For A Safer Tomorrow
                 </p>
               </div>
@@ -339,75 +339,75 @@ export const ContactPage: React.FC<ContactPageProps> = ({ services }) => {
                   href="https://wa.me/916395843850?text=Hi%20ESSOR%20Team%2C%20I%20would%20like%20to%20consult%20regarding%20Food%20Safety%20%26%20Audit%20Services."
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full inline-flex items-center justify-center gap-2.5 px-4 py-3 rounded-xl bg-[#25D366] hover:bg-[#20ba59] text-white text-xs font-bold tracking-wide transition-all shadow-md active:scale-95"
+                  className="w-full inline-flex items-center justify-center gap-2.5 px-4 py-3 rounded-xl bg-[#25D366] hover:bg-[#20ba59] text-white text-xs font-bold tracking-wide transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-0.5 active:scale-95"
                 >
                   <MessageCircle className="w-4 h-4 text-white" />
                   <span>Chat on WhatsApp: +91 6395843850</span>
                 </a>
               </div>
 
-              <div className="space-y-4 text-xs text-white/90 pt-3 border-t border-white/15">
+              <div className="space-y-4 text-xs text-[#526579] pt-4 border-t border-[#E5EBF0]">
                 <div className="flex items-start gap-3">
-                  <MapPin className="w-4 h-4 text-[#A4D65E] shrink-0 mt-0.5" />
+                  <MapPin className="w-4 h-4 text-[#4C8D2B] shrink-0 mt-0.5" />
                   <div>
-                    <span className="font-bold text-white block">Corporate Headquarters</span>
-                    <span className="text-white/80 leading-relaxed block">
+                    <span className="font-bold text-[#082D55] block">Corporate Headquarters</span>
+                    <span className="text-[#64778A] leading-relaxed block">
                       Doon IT Park, Sahastradhara Road, Dehradun, Uttarakhand, India
                     </span>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-3">
-                  <Phone className="w-4 h-4 text-[#A4D65E] shrink-0 mt-0.5" />
+                  <Phone className="w-4 h-4 text-[#4C8D2B] shrink-0 mt-0.5" />
                   <div>
-                    <span className="font-bold text-white block">Direct Telephone / Helpline</span>
-                    <a href="tel:+916395843850" className="text-white hover:text-[#A4D65E] font-bold text-sm block">
+                    <span className="font-bold text-[#082D55] block">Direct Telephone / Helpline</span>
+                    <a href="tel:+916395843850" className="text-[#082D55] hover:text-[#4C8D2B] font-bold text-sm block transition-colors">
                       +91 63958 43850
                     </a>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-3">
-                  <Mail className="w-4 h-4 text-[#A4D65E] shrink-0 mt-0.5" />
+                  <Mail className="w-4 h-4 text-[#4C8D2B] shrink-0 mt-0.5" />
                   <div>
-                    <span className="font-bold text-white block">Business Inquiries</span>
-                    <a href="mailto:business@essorcompliance.com" className="text-white hover:text-[#A4D65E] font-medium block">
+                    <span className="font-bold text-[#082D55] block">Business Inquiries</span>
+                    <a href="mailto:business@essorcompliance.com" className="text-[#64778A] hover:text-[#4C8D2B] font-medium block transition-colors break-all">
                       business@essorcompliance.com
                     </a>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-3">
-                  <Mail className="w-4 h-4 text-[#A4D65E] shrink-0 mt-0.5" />
+                  <Mail className="w-4 h-4 text-[#4C8D2B] shrink-0 mt-0.5" />
                   <div>
-                    <span className="font-bold text-white block">Training Academy</span>
-                    <a href="mailto:training@essorcompliance.com" className="text-white hover:text-[#A4D65E] font-medium block">
+                    <span className="font-bold text-[#082D55] block">Training Academy</span>
+                    <a href="mailto:training@essorcompliance.com" className="text-[#64778A] hover:text-[#4C8D2B] font-medium block transition-colors break-all">
                       training@essorcompliance.com
                     </a>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-3">
-                  <Clock className="w-4 h-4 text-[#A4D65E] shrink-0 mt-0.5" />
+                  <Clock className="w-4 h-4 text-[#4C8D2B] shrink-0 mt-0.5" />
                   <div>
-                    <span className="font-bold text-white block">Hours &amp; Emergency Support</span>
-                    <span className="text-white/80 block">Monday – Friday: 09:00 – 18:00 IST</span>
-                    <span className="text-[#A4D65E] text-[11px] font-semibold">24/7 on call for pre-audit emergencies</span>
+                    <span className="font-bold text-[#082D55] block">Hours &amp; Emergency Support</span>
+                    <span className="text-[#64778A] block">Monday – Friday: 09:00 – 18:00 IST</span>
+                    <span className="text-[#4C8D2B] text-[11px] font-semibold block mt-1">24/7 on call for pre-audit emergencies</span>
                   </div>
                 </div>
               </div>
             </div>
 
             {/* Visual Photo Card */}
-            <div className="rounded-2xl overflow-hidden border border-neutral-200 shadow-md group">
+            <div className="rounded-2xl overflow-hidden border border-[#E1E8E0] shadow-md group transition-all duration-300 hover:shadow-xl">
               <img
                 src={kitchenImage}
                 alt="Commercial kitchen and food processing sanitation check"
                 className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-105"
               />
-              <div className="p-3 bg-white text-xs text-neutral-700 flex items-center justify-between">
-                <span className="font-bold text-neutral-900">Plant &amp; Facility Visits Across India</span>
-                <span className="text-[#3E7D25] font-semibold">On-Site Advisory</span>
+              <div className="p-4 bg-white text-xs text-[#526579] flex items-center justify-between gap-3">
+                <span className="font-bold text-[#082D55]">Plant &amp; Facility Visits Across India</span>
+                <span className="text-[#4C8D2B] font-semibold whitespace-nowrap">On-Site Advisory</span>
               </div>
             </div>
 

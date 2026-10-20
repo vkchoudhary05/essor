@@ -187,10 +187,10 @@ export const SectorsShowcase: React.FC<SectorsShowcaseProps> = ({
                   <Logo variant="icon-only" size="sm" className="w-4 h-4" />
                   <span>{selectedSector.category}</span>
                 </div>
-                <h3 className="text-lg font-bold text-white">
+                <h3 className="text-lg font-bold !text-[#A4D65E]">
                   {selectedSector.name}
                 </h3>
-                <p className="text-xs text-neutral-300 leading-relaxed max-w-xl">
+                <p className="text-xs !text-[#A4D65E] leading-relaxed max-w-xl">
                   {selectedSector.complianceHighlight}
                 </p>
               </div>

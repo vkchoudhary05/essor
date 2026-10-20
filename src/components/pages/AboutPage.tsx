@@ -198,39 +198,41 @@ export const AboutPage: React.FC<AboutPageProps> = ({ cms, onNavigate, onOpenEnq
               </div>
             </div>
 
-            <div className="lg:col-span-5">
-              <div className="rounded-2xl overflow-hidden border border-neutral-200 shadow-xl bg-[#051F14] text-white p-8 space-y-6">
-                <div>
-                  <Logo size="md" theme="dark" />
-                  <p className="text-xs text-[#A4D65E] font-bold uppercase tracking-wider mt-3">
-                    Compliance For A Safer Tomorrow
-                  </p>
-                </div>
+         <div className="lg:col-span-5">
+  <div className="rounded-2xl overflow-hidden border border-[#E1E8E0] shadow-xl bg-white text-[#082D55] p-8 space-y-6">
+    <div>
+      <Logo size="md" theme="light" />
+      <p className="text-xs text-[#4C8D2B] font-bold uppercase tracking-wider mt-3">
+        Compliance For A Safer Tomorrow
+      </p>
+    </div>
 
-                <div className="space-y-3 text-xs text-white/90">
-                  <div className="flex items-start gap-2.5">
-                    <MapPin className="w-4 h-4 text-[#A4D65E] shrink-0 mt-0.5" />
-                    <span>Doon IT Park, Sahastradhara Road, Dehradun, Uttarakhand, India</span>
-                  </div>
-                  <div className="flex items-center gap-2.5">
-                    <Phone className="w-4 h-4 text-[#A4D65E] shrink-0" />
-                    <span>+91 6395843850 (Direct / WhatsApp)</span>
-                  </div>
-                  <div className="flex items-center gap-2.5">
-                    <Mail className="w-4 h-4 text-[#A4D65E] shrink-0" />
-                    <span>business@essorcompliance.com</span>
-                  </div>
-                </div>
+    <div className="space-y-3 text-xs text-[#42566B]">
+      <div className="flex items-start gap-2.5">
+        <MapPin className="w-4 h-4 text-[#4C8D2B] shrink-0 mt-0.5" />
+        <span>Doon IT Park, Sahastradhara Road, Dehradun, Uttarakhand, India</span>
+      </div>
 
-                <button
-                  type="button"
-                  onClick={onOpenEnquiry}
-                  className="w-full py-3 rounded-xl bg-white text-neutral-900 hover:bg-neutral-100 text-xs font-black uppercase tracking-wider transition-all shadow-md cursor-pointer"
-                >
-                  Schedule Introductory Discussion
-                </button>
-              </div>
-            </div>
+      <div className="flex items-center gap-2.5">
+        <Phone className="w-4 h-4 text-[#4C8D2B] shrink-0" />
+        <span>+91 6395843850 (Direct / WhatsApp)</span>
+      </div>
+
+      <div className="flex items-center gap-2.5">
+        <Mail className="w-4 h-4 text-[#4C8D2B] shrink-0" />
+        <span>business@essorcompliance.com</span>
+      </div>
+    </div>
+
+    <button
+      type="button"
+      onClick={onOpenEnquiry}
+      className="w-full py-3 rounded-xl bg-[#082D55] text-white hover:bg-[#124A70] text-xs font-bold uppercase tracking-wider transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-0.5 cursor-pointer"
+    >
+      Schedule Introductory Discussion
+    </button>
+  </div>
+</div>
 
           </div>
         </div>

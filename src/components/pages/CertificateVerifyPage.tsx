@@ -1,19 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { 
-  ShieldCheck, 
-  Search, 
-  CheckCircle, 
-  AlertTriangle, 
-  Download, 
-  ChevronLeft,
+import {
+  Search,
+  CheckCircle,
+  AlertCircle,
+  Download,
   Loader2,
-  Sparkles
+  ShieldCheck,
 } from 'lucide-react';
 import { StorageService } from '../../services/storage';
 import { BackendApiService } from '../../services/api';
 import { PDFGeneratorService } from '../../services/pdfGenerator';
 import { Certificate } from '../../types';
-import { Logo } from '../common/Logo';
 
 interface CertificateVerifyPageProps {
   initialCertNumber?: string;
@@ -22,7 +19,7 @@ interface CertificateVerifyPageProps {
 
 export const CertificateVerifyPage: React.FC<CertificateVerifyPageProps> = ({
   initialCertNumber = '',
-  onNavigate
+  onNavigate,
 }) => {
   const [certQuery, setCertQuery] = useState(initialCertNumber);
   const [verifiedCert, setVerifiedCert] = useState<Certificate | null>(null);
@@ -31,22 +28,24 @@ export const CertificateVerifyPage: React.FC<CertificateVerifyPageProps> = ({
   const [isDownloading, setIsDownloading] = useState(false);
 
   useEffect(() => {
-    if (initialCertNumber) {
-      handleSearch(initialCertNumber);
-    }
+    if (initialCertNumber) handleSearch(initialCertNumber);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [initialCertNumber]);
 
   const handleSearch = async (queryToUse?: string) => {
-    const q = (queryToUse || certQuery).trim();
-    if (!q) return;
+    const query = (queryToUse ?? certQuery).trim();
+    if (!query || isVerifying) return;
 
+    setCertQuery(query);
     setSearched(true);
     setIsVerifying(true);
+    setVerifiedCert(null);
+
     try {
-      const res = await BackendApiService.verifyCertificate(q);
-      setVerifiedCert(res.certificate || null);
+      const response = await BackendApiService.verifyCertificate(query);
+      setVerifiedCert(response.certificate || null);
     } catch {
-      const result = StorageService.verifyCertificate(q);
+      const result = StorageService.verifyCertificate(query);
       setVerifiedCert(result || null);
     } finally {
       setIsVerifying(false);
@@ -59,231 +58,218 @@ export const CertificateVerifyPage: React.FC<CertificateVerifyPageProps> = ({
     try {
       const pdf = await PDFGeneratorService.generateCertificatePDF(verifiedCert);
       pdf.save(`${verifiedCert.certificateNumber}_Certificate.pdf`);
-    } catch (e) {
-      console.error('Failed to generate PDF', e);
-      alert('Error generating certificate PDF. Please try again.');
+    } catch (error) {
+      console.error('Failed to generate PDF', error);
+      alert('Could not generate the certificate PDF. Please try again.');
     } finally {
       setIsDownloading(false);
     }
   };
 
+  const formatDate = (date: string | Date) =>
+    new Date(date).toLocaleDateString('en-IN', {
+      day: '2-digit',
+      month: 'short',
+      year: 'numeric',
+    });
+
   return (
-    <div className="w-full bg-[#F8FAFC] py-16 sm:py-24">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        {/* Navigation Breadcrumb */}
-        <button
-          onClick={() => onNavigate('/')}
-          className="inline-flex items-center gap-1.5 text-xs font-bold text-neutral-500 hover:text-emerald-700 mb-8 transition-colors cursor-pointer group"
-        >
-          <ChevronLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
-          <span>Return to Homepage</span>
-        </button>
+    <main className="min-h-screen overflow-hidden bg-[#F6F8FA] text-[#062B52]">
+      <style>{`
+        @keyframes essor-fade-up {
+          from { opacity: 0; transform: translateY(16px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes essor-soft-glow {
+          0%, 100% { opacity: .35; transform: scale(.96); }
+          50% { opacity: .65; transform: scale(1.04); }
+        }
+        @keyframes essor-shimmer {
+          0% { background-position: -200% 0; }
+          100% { background-position: 200% 0; }
+        }
+        .essor-enter { animation: essor-fade-up .65s cubic-bezier(.2,.7,.2,1) both; }
+        .essor-enter-delay-1 { animation-delay: .08s; }
+        .essor-enter-delay-2 { animation-delay: .16s; }
+        .essor-enter-delay-3 { animation-delay: .24s; }
+        .essor-glow { animation: essor-soft-glow 7s ease-in-out infinite; }
+        .essor-button { transition: transform .22s ease, box-shadow .22s ease, background-color .22s ease; }
+        .essor-button:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(10,49,93,.16); }
+        .essor-card { transition: border-color .25s ease, box-shadow .25s ease, transform .25s ease; }
+        .essor-card:hover { border-color: rgba(103,190,53,.55); box-shadow: 0 12px 30px rgba(10,49,93,.055); transform: translateY(-2px); }
+        @media (prefers-reduced-motion: reduce) {
+          .essor-enter, .essor-glow { animation: none !important; }
+          .essor-button, .essor-card { transition: none !important; }
+          .essor-button:hover, .essor-card:hover { transform: none; }
+        }
+      `}</style>
 
-        {/* Verification Card */}
-        <div className="bg-white rounded-2xl border border-emerald-900/10 shadow-xl overflow-hidden">
-          
-          {/* Header */}
-          <div className="p-8 sm:p-10 bg-gradient-to-br from-[#012542] via-[#012B53] to-[#013C63] text-white border-b border-emerald-500/30">
-            <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#B5DE7A] mb-2">
-              <ShieldCheck className="w-4 h-4 text-emerald-400" />
-              <span>ESSOR Certificate Check</span>
-            </div>
-            <h1 className="text-2xl sm:text-3xl font-black tracking-tight">
-              Confirm a Training Certificate
-            </h1>
-            <p className="text-xs sm:text-sm text-white/85 mt-2 max-w-2xl leading-relaxed font-normal">
-              Enter the number printed on an ESSOR staff or student training certificate. We will show the official course and completion details for employers, auditors, and recruiters across India.
-            </p>
+      <div className="pointer-events-none fixed inset-0 -z-0 overflow-hidden" aria-hidden="true">
+        <div className="essor-glow absolute -right-24 top-36 h-72 w-72 rounded-full bg-[#72C638]/10 blur-3xl" />
+        <div className="essor-glow absolute -left-24 bottom-12 h-72 w-72 rounded-full bg-[#06305A]/[0.05] blur-3xl" />
+      </div>
 
-            {/* Search Input Box */}
-            <div className="mt-6 flex flex-col sm:flex-row gap-2 max-w-xl">
-              <div className="relative flex-1">
-                <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400" />
+      <div className="relative z-10 mx-auto max-w-3xl px-4 py-8 sm:px-6 sm:py-12">
+        <div className="essor-enter mb-7 text-center">
+          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-[#DCE9D4] bg-white px-3 py-1.5 text-xs font-semibold text-[#43872D] shadow-sm">
+            <ShieldCheck className="h-4 w-4" />
+            Secure certificate verification
+          </div>
+          <h1 className="text-2xl font-bold tracking-tight text-[#062B52] sm:text-3xl">
+            Verify Your Certificate
+          </h1>
+          <p className="mx-auto mt-2 max-w-xl text-sm leading-6 text-[#65798C]">
+            Verify the authenticity of an ESSOR training certificate using its unique reference number.
+          </p>
+          <div className="mx-auto mt-5 h-1 w-16 rounded-full bg-gradient-to-r from-[#0A315D] to-[#72C638]" />
+        </div>
+
+        <section className="essor-enter essor-enter-delay-1 relative rounded-2xl border border-white bg-white p-5 shadow-[0_16px_55px_rgba(10,49,93,0.08)] ring-1 ring-[#DCE5EC]/80 sm:p-7">
+          <div className="pointer-events-none absolute right-0 top-0 h-20 w-20 overflow-hidden rounded-tr-2xl" aria-hidden="true">
+            <div className="absolute right-0 top-0 h-20 w-20 translate-x-10 -translate-y-10 rotate-45 bg-[#72C638]/10" />
+          </div>
+
+          <form
+            onSubmit={(event) => {
+              event.preventDefault();
+              handleSearch();
+            }}
+          >
+            <label htmlFor="certificate-number" className="mb-2 block text-sm font-semibold text-[#183B5B]">
+              Certificate number
+            </label>
+            <div className="flex flex-col gap-3 sm:flex-row">
+              <div className="group relative min-w-0 flex-1">
+                <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-[#8293A2] transition-colors group-focus-within:text-[#43872D]" />
                 <input
+                  id="certificate-number"
                   type="text"
                   value={certQuery}
-                  onChange={e => setCertQuery(e.target.value)}
-                  placeholder="e.g. ECS-CERT-2026-0089"
-                  className="w-full pl-10 pr-4 py-3 text-xs sm:text-sm text-neutral-900 bg-white rounded-xl border border-neutral-200 focus:outline-none focus:ring-2 focus:ring-emerald-500"
-                  onKeyDown={e => e.key === 'Enter' && handleSearch()}
+                  onChange={(event) => setCertQuery(event.target.value)}
+                  placeholder="Enter certificate number"
+                  autoComplete="off"
+                  className="w-full rounded-xl border border-[#CBD6E0] bg-[#FBFCFD] py-3.5 pl-11 pr-4 text-sm text-[#062B52] outline-none transition duration-200 placeholder:text-[#9AA8B5] hover:border-[#9BB0C1] focus:border-[#72C638] focus:bg-white focus:ring-4 focus:ring-[#72C638]/15"
                 />
               </div>
               <button
-                onClick={() => handleSearch()}
-                className="px-6 py-3 text-xs font-bold uppercase tracking-wider text-white bg-gradient-to-r from-[#012B53] via-[#0C5A91] to-[#4C8E20] hover:from-[#0C5A91] hover:via-[#012B53] hover:to-[#3E7D25] active:scale-[0.98] rounded-xl transition-all shadow-md shadow-emerald-950/40 ring-1 ring-emerald-400/40 whitespace-nowrap shrink-0 cursor-pointer"
+                type="submit"
+                disabled={!certQuery.trim() || isVerifying}
+                className="essor-button inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#062B52] to-[#0C4A72] px-5 py-3.5 text-sm font-semibold text-white shadow-md shadow-[#0A315D]/15 disabled:cursor-not-allowed disabled:opacity-50"
               >
-                Check Certificate
+                {isVerifying ? <Loader2 className="h-4 w-4 animate-spin" /> : <Search className="h-4 w-4" />}
+                {isVerifying ? 'Checking...' : 'Verify certificate'}
               </button>
             </div>
+          </form>
 
-            {/* Quick Demo Shortcuts */}
-            <div className="mt-3 flex items-center gap-2 text-[11px] text-white/75 font-medium">
-              <span>Try a sample record:</span>
-              <button
-                onClick={() => {
-                  setCertQuery('ECS-CERT-2026-0089');
-                  handleSearch('ECS-CERT-2026-0089');
-                }}
-                className="font-mono underline text-emerald-300 hover:text-white cursor-pointer"
-              >
-                ECS-CERT-2026-0089
-              </button>
+          <div className="mt-4 flex flex-wrap items-center gap-2 text-xs text-[#74879A]">
+            <span>Try a sample:</span>
+            <button
+              type="button"
+              onClick={() => {
+                setCertQuery('ECS-CERT-2026-0089');
+                handleSearch('ECS-CERT-2026-0089');
+              }}
+              className="rounded-md bg-[#F0F7EB] px-2.5 py-1.5 font-medium text-[#397E2A] underline decoration-[#A8D394] underline-offset-2 transition hover:bg-[#E4F1DB]"
+            >
+              ECS-CERT-2026-0089
+            </button>
+          </div>
+        </section>
+
+        <section className="essor-enter essor-enter-delay-2 mt-5 rounded-2xl border border-[#E0E7ED] bg-white p-5 shadow-[0_10px_35px_rgba(10,49,93,0.045)] sm:p-7">
+          {!searched && !isVerifying && (
+            <div className="py-8 text-center">
+              <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-2xl border border-[#DCE9D4] bg-[#F1F8EC] text-[#43872D]">
+                <ShieldCheck className="h-6 w-6" />
+              </div>
+              <h2 className="mt-4 text-base font-bold text-[#062B52]">Your certificate details will appear here</h2>
+              <p className="mt-1 text-sm text-[#718397]">Enter a certificate number above to get started.</p>
             </div>
-          </div>
+          )}
 
-          {/* Verification Results Area */}
-          <div className="p-8 sm:p-10">
-            {isVerifying ? (
-              <div className="py-14 text-center space-y-3">
-                <Loader2 className="w-8 h-8 text-[#3E7D25] mx-auto animate-spin" />
-                <p className="text-sm font-semibold text-[#012B53]">Checking certificate details…</p>
-              </div>
-            ) : searched && verifiedCert ? (
-              <div className="space-y-6 animate-in fade-in duration-300">
-                
-                {/* Status Badge */}
-                <div className="flex items-center justify-between p-4 rounded-xl bg-emerald-50 border border-emerald-200">
-                  <div className="flex items-center gap-3">
-                    <CheckCircle className="w-6 h-6 text-emerald-600 shrink-0" />
-                    <div>
-                      <h3 className="text-sm font-bold text-[#012B53]">
-                        Certificate Confirmed
-                      </h3>
-                      <p className="text-xs text-emerald-800 font-normal">
-                        This training record has been confirmed by ESSOR Compliance Solutions.
-                      </p>
-                    </div>
-                  </div>
-                  <span className="px-3 py-1 bg-gradient-to-r from-[#012B53] to-[#0C5A91] text-white font-bold text-xs rounded-lg uppercase tracking-wider shadow-xs">
-                    {verifiedCert.status}
-                  </span>
-                </div>
-
-                {/* Details Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-6 rounded-2xl bg-[#F8FAFC] border border-emerald-900/10">
-                  <div>
-                    <span className="text-[11px] font-bold uppercase tracking-wider text-emerald-800 block mb-1">
-                      Participant Name
-                    </span>
-                    <h4 className="text-lg font-bold text-[#012B53]">
-                      {verifiedCert.participantName}
-                    </h4>
-                    {verifiedCert.organizationName && (
-                      <span className="text-xs text-neutral-600 font-semibold block mt-0.5">
-                        {verifiedCert.organizationName}
-                      </span>
-                    )}
-                  </div>
-
-                  <div>
-                    <span className="text-[11px] font-bold uppercase tracking-wider text-emerald-800 block mb-1">
-                      Certificate Reference
-                    </span>
-                    <span className="font-mono text-sm font-bold text-[#012B53] select-all">
-                      {verifiedCert.certificateNumber}
-                    </span>
-                    <span className="text-[10px] text-neutral-500 block mt-0.5">Official ESSOR training record</span>
-                  </div>
-
-                  <div>
-                    <span className="text-[11px] font-bold uppercase tracking-wider text-emerald-800 block mb-1">
-                      Certified Course Curriculum
-                    </span>
-                    <p className="text-sm font-semibold text-neutral-800">
-                      {verifiedCert.courseTitle}
-                    </p>
-                  </div>
-
-                  <div>
-                    <span className="text-[11px] font-bold uppercase tracking-wider text-emerald-800 block mb-1">
-                      Completion & Issue Dates
-                    </span>
-                    <p className="text-xs text-neutral-800 font-medium">
-                      Completed: {new Date(verifiedCert.completionDate).toLocaleDateString()}
-                    </p>
-                    <p className="text-xs text-neutral-500">
-                      Issued: {new Date(verifiedCert.issueDate).toLocaleDateString()} ({verifiedCert.durationHours} Training Hours)
-                    </p>
-                  </div>
-
-                  <div>
-                    <span className="text-[11px] font-bold uppercase tracking-wider text-emerald-800 block mb-1">
-                      Assessment Result
-                    </span>
-                    <p className="text-xs font-bold text-[#012B53]">
-                      Score: {verifiedCert.gradeScore ? `${verifiedCert.gradeScore}%` : 'Competent (Pass)'}
-                    </p>
-                  </div>
-
-                  <div>
-                    <span className="text-[11px] font-bold uppercase tracking-wider text-emerald-800 block mb-1">
-                      Authorized Signatory
-                    </span>
-                    <p className="text-xs font-bold text-[#012B53]">
-                      {verifiedCert.issuedByName}
-                    </p>
-                    <p className="text-[11px] text-emerald-800 font-medium">
-                      {verifiedCert.issuedByRole}, ESSOR Compliance Solutions
-                    </p>
-                  </div>
-                </div>
-
-                {/* Download Real Vector PDF Button */}
-                <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-4">
-                  <div className="text-xs text-neutral-500">
-                    Need a copy for your records? Download the official certificate below.
-                  </div>
-
-                  <button
-                    onClick={handleDownloadPDF}
-                    disabled={isDownloading}
-                    className="inline-flex items-center gap-2 px-6 py-3.5 text-xs font-bold uppercase tracking-wider text-white bg-gradient-to-r from-[#012B53] via-[#0C5A91] to-[#4C8E20] hover:from-[#0C5A91] hover:via-[#012B53] hover:to-[#3E7D25] active:scale-[0.98] rounded-xl transition-all shadow-md shadow-emerald-950/20 ring-1 ring-emerald-400/30 disabled:opacity-50 cursor-pointer"
-                  >
-                    {isDownloading ? (
-                      <>
-                        <Loader2 className="w-4 h-4 animate-spin" />
-                        <span>Rendering Certificate PDF...</span>
-                      </>
-                    ) : (
-                      <>
-                        <Download className="w-4 h-4" />
-                <span>Download Certificate PDF</span>
-                      </>
-                    )}
-                  </button>
-                </div>
-
-              </div>
-            ) : searched && !verifiedCert ? (
-              <div className="py-12 text-center space-y-3">
-                <AlertTriangle className="w-12 h-12 text-amber-600 mx-auto" />
-                <h3 className="text-lg font-bold text-[#012B53]">
-                  No Matching Certificate Found
-                </h3>
-                <p className="text-xs text-neutral-600 max-w-md mx-auto font-normal">
-                  We could not find a certificate matching <strong className="font-mono text-[#012B53]">{certQuery}</strong>. Please check the number and try again, or contact our training team for help.
-                </p>
-              </div>
-            ) : (
-              <div className="py-8 text-center text-xs text-neutral-400 font-normal">
-                Enter a certificate number above to view the official training record.
-              </div>
-            )}
-          </div>
-
-          {/* Privacy & Regulatory Footer */}
-          <div className="px-8 py-4 bg-[#F8FAFC] border-t border-emerald-900/10 text-[11px] text-neutral-500 flex items-center justify-between flex-wrap gap-2">
-            <span>Only essential certificate details are shown for privacy.</span>
-            <div className="flex items-center gap-1.5 font-bold text-[#012B53]">
-              <Logo variant="icon-only" size="sm" className="w-4 h-4" />
-              <span>ESSOR Compliance Solutions</span>
+          {isVerifying && (
+            <div className="py-10 text-center" role="status" aria-live="polite">
+              <Loader2 className="mx-auto h-7 w-7 animate-spin text-[#4A982E]" />
+              <p className="mt-3 text-sm font-semibold text-[#062B52]">Checking certificate...</p>
+              <p className="mt-1 text-xs text-[#718397]">This should only take a moment.</p>
             </div>
-          </div>
+          )}
 
-        </div>
+          {searched && !isVerifying && verifiedCert && (
+            <div className="essor-enter">
+              <div className="flex items-start gap-3 rounded-xl border border-[#D7EACB] bg-[#F4FAF0] p-4">
+                <CheckCircle className="mt-0.5 h-5 w-5 shrink-0 text-[#43872D]" />
+                <div className="min-w-0 flex-1">
+                  <h2 className="text-sm font-bold text-[#245D25]">Certificate found</h2>
+                  <p className="mt-1 text-xs leading-5 text-[#61796A]">A matching record was returned by the verification system.</p>
+                </div>
+                <span className="rounded-full border border-[#D1E5C5] bg-white px-3 py-1 text-xs font-semibold text-[#397E2A]">
+                  {verifiedCert.status}
+                </span>
+              </div>
 
+              <h3 className="mt-6 text-sm font-bold text-[#062B52]">Certificate information</h3>
+              <dl className="mt-4 grid gap-x-8 gap-y-5 sm:grid-cols-2">
+                <Info label="Participant name" value={verifiedCert.participantName} />
+                {verifiedCert.organizationName && <Info label="Organization" value={verifiedCert.organizationName} />}
+                <Info label="Certificate number" value={verifiedCert.certificateNumber} mono />
+                <Info label="Course" value={verifiedCert.courseTitle} />
+                <Info label="Completion date" value={formatDate(verifiedCert.completionDate)} />
+                <Info label="Issue date" value={formatDate(verifiedCert.issueDate)} />
+                <Info label="Training hours" value={String(verifiedCert.durationHours)} />
+                <Info
+                  label="Assessment result"
+                  value={verifiedCert.gradeScore ? `${verifiedCert.gradeScore}%` : 'Competent (Pass)'}
+                />
+                <Info label="Authorized signatory" value={verifiedCert.issuedByName} />
+                <Info label="Signatory role" value={`${verifiedCert.issuedByRole}, ESSOR Compliance Solutions`} />
+              </dl>
+
+              <div className="mt-6 border-t border-[#E7EDF2] pt-5">
+                <button
+                  type="button"
+                  onClick={handleDownloadPDF}
+                  disabled={isDownloading}
+                  className="essor-button inline-flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#062B52] to-[#0C4A72] px-5 py-3 text-sm font-semibold text-white shadow-md shadow-[#0A315D]/15 disabled:cursor-not-allowed disabled:opacity-50 sm:w-auto"
+                >
+                  {isDownloading ? <Loader2 className="h-4 w-4 animate-spin" /> : <Download className="h-4 w-4" />}
+                  {isDownloading ? 'Preparing PDF...' : 'Download certificate PDF'}
+                </button>
+              </div>
+            </div>
+          )}
+
+          {searched && !isVerifying && !verifiedCert && (
+            <div className="essor-enter py-8 text-center">
+              <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-2xl bg-amber-50 text-amber-600">
+                <AlertCircle className="h-6 w-6" />
+              </div>
+              <h2 className="mt-3 text-base font-bold text-[#062B52]">Certificate not found</h2>
+              <p className="mx-auto mt-1 max-w-md text-sm leading-6 text-[#718397]">
+                We couldn’t find a certificate with that number. Check the number and try again.
+              </p>
+            </div>
+          )}
+        </section>
+
+        <footer className="essor-enter essor-enter-delay-3 mt-6 flex flex-col items-center justify-between gap-2 text-center text-xs text-[#8190A0] sm:flex-row">
+          <span className="inline-flex items-center gap-1.5">
+            <ShieldCheck className="h-3.5 w-3.5 text-[#67A847]" />
+            Essential certificate details only
+          </span>
+          <span>© {new Date().getFullYear()} ESSOR Compliance Solutions</span>
+        </footer>
       </div>
-    </div>
+    </main>
   );
 };
+
+const Info: React.FC<{ label: string; value: string; mono?: boolean }> = ({ label, value, mono }) => (
+  <div className="essor-card rounded-lg border border-transparent px-3 py-2.5 -mx-3">
+    <dt className="text-xs font-medium tracking-wide text-[#74879A]">{label}</dt>
+    <dd className={`mt-1 break-words text-sm font-semibold text-[#173A59] ${mono ? 'font-mono' : ''}`}>
+      {value || '—'}
+    </dd>
+  </div>
+);

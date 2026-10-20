@@ -232,39 +232,44 @@ export const ProcessPage: React.FC<ProcessPageProps> = ({ onOpenEnquiry }) => {
         )}
 
         {/* Visual Callout with Packaging & Audit Photos */}
-        <div className="mt-14 p-8 sm:p-10 rounded-2xl bg-[#051F14] text-white border border-emerald-500/30 shadow-xl grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
-          <div className="md:col-span-7 space-y-3">
-            <div className="flex items-center gap-2">
-              <Logo variant="icon-only" size="sm" className="w-5 h-5" />
-              <span className="text-xs font-bold uppercase tracking-widest text-[#A4D65E]">
-                Flexible Engagement Model
-              </span>
-            </div>
-            <h4 className="text-xl sm:text-2xl font-bold tracking-tight text-white">
-              Start with one requirement and expand only where it creates genuine value.
-            </h4>
-            <p className="text-xs sm:text-sm text-white/80 leading-relaxed font-normal">
-              You are never locked into an all-or-nothing consulting contract. Many food processors begin with a targeted 2-day Gap Assessment, expanding into full implementation or annual surveillance support once they experience our practical floor results.
-            </p>
-            <div className="pt-2">
-              <button
-                onClick={() => onOpenEnquiry('Gap Assessment')}
-                className="inline-flex items-center gap-2 px-6 py-3.5 text-xs font-bold uppercase tracking-wider text-white bg-[#3E7D25] hover:bg-[#256629] active:scale-[0.98] rounded-xl transition-all shadow-md cursor-pointer"
-              >
-                <span>Initiate Step 1: Gap Analysis</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </button>
-            </div>
-          </div>
+ 
+<div className="mt-14 p-8 sm:p-10 rounded-2xl bg-white text-slate-900 border border-emerald-500/30 shadow-xl grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+  <div className="md:col-span-7 space-y-3">
+    <div className="flex items-center gap-2">
+      <Logo variant="icon-only" size="sm" className="w-5 h-5" />
+      <span className="text-xs font-bold uppercase tracking-widest text-[#3E7D25]">
+        Flexible Engagement Model
+      </span>
+    </div>
 
-          <div className="md:col-span-5 rounded-xl overflow-hidden shadow-lg border border-white/20">
-            <img
-              src={auditImage}
-              alt="Auditor on factory floor conducting gap review"
-              className="w-full h-56 object-cover"
-            />
-          </div>
-        </div>
+    <h4 className="text-xl sm:text-2xl font-bold tracking-tight text-[#051F14]">
+      Start with one requirement and expand only where it creates genuine value.
+    </h4>
+
+    <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
+      You are never locked into an all-or-nothing consulting contract. Many food processors begin with a targeted 2-day Gap Assessment, expanding into full implementation or annual surveillance support once they experience our practical floor results.
+    </p>
+
+    <div className="pt-2">
+      <button
+        onClick={() => onOpenEnquiry('Gap Assessment')}
+        className="inline-flex items-center gap-2 px-6 py-3.5 text-xs font-bold uppercase tracking-wider text-white bg-[#3E7D25] hover:bg-[#256629] active:scale-[0.98] rounded-xl transition-all shadow-md cursor-pointer"
+      >
+        <span>Initiate Step 1: Gap Analysis</span>
+        <ArrowRight className="w-3.5 h-3.5" />
+      </button>
+    </div>
+  </div>
+
+  <div className="md:col-span-5 rounded-xl overflow-hidden shadow-lg border border-slate-200">
+    <img
+      src={auditImage}
+      alt="Auditor on factory floor conducting gap review"
+      className="w-full h-56 object-cover"
+    />
+  </div>
+</div>
+
 
       </section>
 

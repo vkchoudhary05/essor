@@ -257,13 +257,13 @@ export const ProcessSection: React.FC<ProcessSectionProps> = ({ onNavigate }) =>
         {/* Visual Callout Bar with Packaging Line Image */}
         <div className="mt-12 rounded-2xl overflow-hidden border border-[#012B53]/15 shadow-xl bg-gradient-to-br from-[#012542] via-[#012B53] to-[#0C5A91] text-white grid grid-cols-1 md:grid-cols-12 items-center text-left">
           <div className="md:col-span-8 p-6 sm:p-8 space-y-2">
-            <span className="text-[11px] font-bold uppercase tracking-wider text-[#A4D65E]">
+            <span className="text-[15px] font-bold uppercase tracking-wider text-[#A4D65E]">
               Zero-Stress Factory Floor Readiness
             </span>
-            <h4 className="text-lg sm:text-xl font-bold text-white">
+            <h4 className="text-lg sm:text-xl font-bold !text-white">
               Facing an Upcoming FSSAI, ISO 22000, or Customer Supplier Audit?
             </h4>
-            <p className="text-xs sm:text-sm text-white/90 max-w-xl font-medium leading-relaxed">
+            <p className="text-xs sm:text-sm !text-white max-w-xl font-medium leading-relaxed">
               We conduct a preliminary 48-hour gap inspection to uncover every finding before the official audit team arrives.
             </p>
             <div className="pt-2 flex items-center gap-3">
