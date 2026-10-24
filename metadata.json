@@ -1,6 +1,0 @@
-{
-  "name": "ESSOR Compliance Solutions Enterprise Website",
-  "description": "Enterprise food-safety consulting, audit-readiness, training, and digital compliance platform for food manufacturers and exporters.",
-  "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
-}
